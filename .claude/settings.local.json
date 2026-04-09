@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(sips -s format jpeg \"/Users/fukushidaichi/Desktop/3rd place 写真/3rd place event/カレー会_2.heic\" --out \"/Users/fukushidaichi/Desktop/claude code/3rd-place-website/public/images/events/curry2.jpg\")",
+      "Bash(sips -s format jpeg \"/Users/fukushidaichi/Desktop/3rd place 写真/3rd place japan event/3rd place japan event_3.heic\" --out \"/Users/fukushidaichi/Desktop/claude code/3rd-place-website/public/images/japan/event3.jpg\")",
+      "Read(//Users/fukushidaichi/Desktop/claude code/3rd-place-website/**)",
+      "Bash(npx tsc:*)",
+      "Read(//Users/fukushidaichi/.claude/**)",
+      "Bash(npx next:*)",
+      "Bash(pkill -f \"next dev\")",
+      "Bash(npm run:*)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000)",
+      "Bash(curl -s http://localhost:3003)",
+      "Read(//tmp/**)",
+      "Bash(kill %1)"
+    ]
+  }
+}
