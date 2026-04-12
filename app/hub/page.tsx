@@ -200,35 +200,40 @@ export default function HubPage() {
           <Image src="/images/events/curry1.jpg" alt="" fill className="object-cover" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-navy/80 to-navy" />
+
+        {/* Glow effects */}
+        <div className="absolute top-1/3 right-1/4 w-80 h-80 rounded-full bg-orange/10 blur-[100px] pointer-events-none" />
+        <div className="absolute bottom-1/4 left-1/5 w-64 h-64 rounded-full bg-orange/5 blur-[80px] pointer-events-none" />
+
         <div className="relative max-w-7xl mx-auto px-6 md:px-12">
           <div className="max-w-3xl">
-            <span className="inline-block bg-orange/20 text-orange text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-8">
+            <div className="animate-fade-in inline-flex items-center gap-2 bg-orange/20 text-orange text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-8">
               3rd Place Hub
-            </span>
-            <h1 className="font-heading text-5xl md:text-7xl font-bold text-white leading-tight mb-8">
+              <span className="bg-orange/30 text-orange text-[10px] px-2 py-0.5 rounded-full">
+                {s('開発中', 'Coming Soon', l)}
+              </span>
+            </div>
+            <h1 className="animate-fade-up delay-100 font-heading text-5xl md:text-7xl font-bold text-white leading-tight mb-8">
               {s(
                 <>先輩の経験を、<br /><span className="text-orange">あなたの武器に。</span></>,
                 <>Turn seniors' experience<br />into <span className="text-orange">your advantage.</span></>,
                 l
               )}
             </h1>
-            <p className="text-white/60 text-lg md:text-xl leading-relaxed mb-12 max-w-2xl">
+            <p className="animate-fade-up delay-300 text-white/60 text-lg md:text-xl leading-relaxed mb-12 max-w-2xl">
               {s(
                 'メルボルンで仕事・住居を「自分で取りに行ける人」になるための情報パッケージ。先輩が残したリアルな記録と、コミュニティの繋がりが、あなたの到着初日を変えます。',
                 'An information package that turns you into someone who can find work and housing in Melbourne on your own. Senior members\' real records and community connections will transform your first day.',
                 l
               )}
             </p>
-            <div className="inline-block bg-orange/20 text-orange text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-6">
-              {s('開発中 — 近日公開', 'Coming Soon', l)}
-            </div>
-            <div className="flex flex-wrap gap-4">
+            <div className="animate-fade-up delay-500 flex flex-wrap gap-4">
               <a href="#apply"
-                className="bg-orange text-white font-bold px-10 py-4 rounded-full hover:bg-orange-dark transition-colors duration-200 text-base cursor-pointer">
+                className="bg-orange text-white font-bold px-10 py-4 rounded-full hover:bg-orange-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 text-base cursor-pointer">
                 {s('LINEで通知を受け取る', 'Get notified via LINE', l)}
               </a>
               <a href="#features"
-                className="bg-white/10 text-white font-semibold px-10 py-4 rounded-full hover:bg-white/20 transition-colors duration-200 text-base cursor-pointer">
+                className="bg-white/10 text-white font-semibold px-10 py-4 rounded-full hover:bg-white/20 hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 text-base cursor-pointer">
                 {s('サービス内容を見る', 'See what\'s included', l)}
               </a>
             </div>
@@ -505,12 +510,17 @@ export default function HubPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="https://line.me/ti/p/5ET_QCNdpX" target="_blank" rel="noopener noreferrer"
-              className="bg-white text-orange font-bold px-10 py-4 rounded-full hover:bg-cream transition-colors duration-200 text-base cursor-pointer">
+              className="bg-white text-orange font-bold px-10 py-4 rounded-full hover:bg-cream hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 text-base cursor-pointer">
               {s('LINEで通知を受け取る', 'Get notified via LINE', l)}
             </a>
-            <Link href="/"
-              className="bg-white/20 text-white font-semibold px-10 py-4 rounded-full hover:bg-white/30 transition-colors duration-200 text-base cursor-pointer">
-              {s('← コミュニティを見る', '← See the Community', l)}
+            <Link href="/japan"
+              className="bg-white/20 text-white font-semibold px-10 py-4 rounded-full hover:bg-white/30 hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 text-base cursor-pointer">
+              {s('東京イベントはこちら →', 'Tokyo Events →', l)}
+            </Link>
+          </div>
+          <div className="mt-6">
+            <Link href="/" className="text-white/40 hover:text-white/60 text-sm font-medium transition-colors duration-200 cursor-pointer">
+              {s('← コミュニティトップに戻る', '← Back to Community', l)}
             </Link>
           </div>
         </div>

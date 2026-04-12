@@ -6,6 +6,7 @@ import Link from 'next/link'
 import Navbar from '../components/Navbar'
 import FAQSection from '../components/FAQ'
 import ScrollReveal from '../components/ScrollReveal'
+import GallerySection from '../components/GallerySection'
 
 type Lang = 'ja' | 'en'
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -18,6 +19,7 @@ export default function Home() {
   const faqItems = {
     ja: [
       { q: 'カレー会に参加するには何が必要ですか？', a: '特別な準備は必要ありません。まずはLINEグループに参加してメッセージをお送りください。次回のカレー会の詳細をお知らせします。費用は無料です。' },
+      { q: '初めてで一人なのですが、大丈夫ですか？', a: '全く問題ありません。毎回5〜10人の初参加者がいて、ほとんどの方が一人で来られています。到着したら運営メンバーが声をかけるので安心してください。' },
       { q: '英語が話せなくても大丈夫ですか？', a: 'まったく問題ありません。コミュニティ内は基本的に日本語でのコミュニケーションです。英語交流の機会も設けていますが、参加は任意です。' },
       { q: 'ワーホリ以外の方も参加できますか？', a: 'もちろんです。ワーホリ・留学・駐在・永住者・旅行者など、様々な方が参加されています。メルボルンに関わるすべての日本人を歓迎します。' },
       { q: 'メルボルンに着いてからでも参加できますか？', a: 'はい、どのタイミングでも歓迎です。渡航前・到着直後・滞在中・帰国前、いつでもご参加いただけます。' },
@@ -27,6 +29,7 @@ export default function Home() {
     ],
     en: [
       { q: 'What do I need to join the Curry Gathering?', a: 'No special preparation needed. Just join our LINE group and send us a message. We\'ll share the details for the next gathering. It\'s completely free.' },
+      { q: 'Is it okay to come alone for the first time?', a: 'Absolutely. Every event has 5–10 first-timers, and most come solo. Our team will greet you when you arrive — no need to worry.' },
       { q: 'Is it okay if I can\'t speak English?', a: 'Absolutely. Communication within the community is primarily in Japanese. English exchange opportunities are available but entirely optional.' },
       { q: 'Can people other than working holidaymakers join?', a: 'Of course. We welcome working holidaymakers, students, expats, permanent residents, and travelers — anyone connected to Melbourne.' },
       { q: 'Can I join after arriving in Melbourne?', a: 'Yes, you\'re welcome at any stage — before departure, right after arrival, during your stay, or before heading home.' },
@@ -67,7 +70,7 @@ export default function Home() {
             )}
           </h1>
 
-          <p className="animate-fade-up delay-300 text-white/55 text-base md:text-lg leading-relaxed mb-12 max-w-xl mx-auto">
+          <p className="animate-fade-up delay-300 text-white/50 text-base md:text-lg leading-relaxed mb-12 max-w-xl mx-auto">
             {s(
               'ワーホリ・留学・駐在・永住者が集まる、メルボルンの日本人コミュニティ。先輩たちのリアルな経験が、あなたのメルボルン生活を豊かにします。',
               'A Japanese community in Melbourne for working holidaymakers, students, expats, and residents.',
@@ -316,7 +319,7 @@ export default function Home() {
                 </p>
               </blockquote>
 
-              <p className="text-white/55 leading-relaxed text-sm">
+              <p className="text-white/50 leading-relaxed text-sm">
                 {s(
                   '大切にしているのは「真心」。互いに助け合い、ここでの経験を糧に、将来は日本、そして世界をより良く変えていける。そんな皆さんの成長を支える場所でありたいという想いで、今日も活動を続けています。',
                   'The value he holds most dear is "magokoro" — sincere, selfless goodwill. He believes that by supporting each other here, members can grow to make Japan and the world a better place.',
@@ -371,61 +374,8 @@ export default function Home() {
       </section>
 
       {/* ── GALLERY ──────────────────────────── */}
-      <section className="py-28 bg-cream">
-        <ScrollReveal>
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="mb-14">
-            <span className="text-orange text-xs font-semibold uppercase tracking-widest">
-              {s('活動の様子', 'Gallery', l)}
-            </span>
-            <h2 className="font-heading text-4xl md:text-5xl font-bold text-navy mt-4">
-              {s('みんなの写真', 'Our Moments', l)}
-            </h2>
-          </div>
+      <GallerySection l={l} />
 
-          <div className="bg-white rounded-xl p-5 mb-10 border border-gray-100 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <div className="w-10 h-10 rounded-full bg-orange/10 flex items-center justify-center flex-shrink-0">
-              <svg className="w-5 h-5 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
-            </div>
-            <div>
-              <p className="text-navy font-semibold text-sm">
-                {s('初参加でも大丈夫。一人で来る方がほとんどです。', 'First time? No worries. Most people come alone.', l)}
-              </p>
-              <p className="text-slate-500 text-xs mt-1">
-                {s('毎回初参加の方が5〜10人。18:00頃集合 → カレーを食べながら交流 → 20:00頃解散。気軽にどうぞ。', 'Every event has 5–10 newcomers. Arrive around 6 PM → eat curry & chat → wrap up around 8 PM. Come as you are.', l)}
-              </p>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-            {[
-              { img: '/images/events/curry1.jpg', label: s('カレー会', 'Curry Night', l), sub: s('毎月開催・無料', 'Monthly · Free', l) },
-              { img: '/images/events/curry3.jpg', label: s('カレー会', 'Curry Night', l), sub: s('30〜40人', '30–40 people', l) },
-              { img: '/images/events/bbq.jpg', label: s('BBQ会', 'BBQ', l), sub: s('季節のイベント', 'Seasonal', l) },
-              { img: '/images/events/cafe.jpg', label: s('カフェ会', 'Café Meetup', l), sub: s('気軽に話せる場所', 'Casual hangout', l) },
-              { img: '/images/japan/farewell1.jpg', label: s('いってらっしゃい会', 'Farewell Party', l), sub: s('渡航前のお見送り', 'Send-off party', l) },
-              { img: '/images/events/nabe.jpg', label: s('鍋会', 'Hot Pot Night', l), sub: s('みんなで囲む食卓', 'Around the table', l) },
-            ].map((item, i) => (
-              <div key={i} className="group relative rounded-xl overflow-hidden aspect-[4/3] shadow-md">
-                <Image src={item.img} alt={item.label} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-transparent to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-4">
-                  <p className="text-white font-semibold text-sm">{item.label}</p>
-                  <p className="text-white/60 text-xs mt-0.5">{item.sub}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-10 text-center">
-            <a href="#cta" className="inline-flex items-center gap-2 text-slate-400 hover:text-orange text-sm font-medium transition-colors duration-200 cursor-pointer">
-              {s('LINEグループに参加する', 'Join the LINE Group', l)}
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
-            </a>
-          </div>
-        </div>
-        </ScrollReveal>
-      </section>
 
       {/* ── TEAM ─────────────────────────────── */}
       <section id="team" className="py-28 bg-white">

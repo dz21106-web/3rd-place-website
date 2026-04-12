@@ -28,8 +28,12 @@ export default function JapanPage() {
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-navy/60 to-navy" />
 
+        {/* Glow effects */}
+        <div className="absolute top-1/3 right-1/4 w-80 h-80 rounded-full bg-orange/10 blur-[100px] pointer-events-none" />
+        <div className="absolute bottom-1/4 left-1/5 w-64 h-64 rounded-full bg-orange/5 blur-[80px] pointer-events-none" />
+
         <div className="relative max-w-7xl mx-auto px-6 md:px-12">
-          <div className="flex items-center gap-3 mb-6">
+          <div className="animate-fade-in flex items-center gap-3 mb-6">
             <Image src="/images/japan/logo-japan.jpg" alt="3rd Place Japan" width={48} height={48} className="object-contain rounded-xl" />
             <div>
               <p className="text-orange text-xs font-bold uppercase tracking-widest">3rd Place Japan</p>
@@ -37,14 +41,14 @@ export default function JapanPage() {
             </div>
           </div>
 
-          <h1 className="font-heading text-5xl md:text-7xl font-bold text-white leading-tight mb-6 max-w-3xl">
+          <h1 className="animate-fade-up delay-100 font-heading text-5xl md:text-7xl font-bold text-white leading-tight mb-6 max-w-3xl">
             {s(
               '渡航前に、\n先輩の声を\n聞いておこう。',
               'Before you go,\nhear from those\nwho\'ve been.',
               l
             )}
           </h1>
-          <p className="text-white/60 text-lg max-w-xl leading-relaxed mb-10">
+          <p className="animate-fade-up delay-300 text-white/60 text-lg max-w-xl leading-relaxed mb-10">
             {s(
               '東京で毎月開催する、ワーホリ・留学準備のためのイベント。メルボルン帰国者のリアルな話と、英語交流で出発前の不安をなくそう。',
               'A monthly event in Tokyo for anyone preparing for a working holiday or study abroad. Get real stories from Melbourne returnees and build confidence through English exchange.',
@@ -52,13 +56,13 @@ export default function JapanPage() {
             )}
           </p>
 
-          <div className="flex flex-wrap gap-4">
+          <div className="animate-fade-up delay-500 flex flex-wrap gap-4">
             <a href="#apply"
-              className="bg-orange text-white font-semibold px-8 py-4 rounded-full hover:bg-orange-dark transition-colors duration-200 text-base cursor-pointer">
+              className="bg-orange text-white font-semibold px-8 py-4 rounded-full hover:bg-orange-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 text-base cursor-pointer">
               {s('次回イベントに申し込む', 'Apply for Next Event', l)}
             </a>
             <a href="#details"
-              className="bg-white/10 text-white font-semibold px-8 py-4 rounded-full hover:bg-white/20 transition-colors duration-200 text-base cursor-pointer">
+              className="bg-white/10 text-white font-semibold px-8 py-4 rounded-full hover:bg-white/20 hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 text-base cursor-pointer">
               {s('詳細を見る', 'See Details', l)}
             </a>
           </div>
