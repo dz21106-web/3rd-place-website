@@ -6,6 +6,7 @@ import Link from 'next/link'
 import SubNavbar from '../../components/SubNavbar'
 import SubFooter from '../../components/SubFooter'
 import FAQSection from '../../components/FAQ'
+import ScrollReveal from '../../components/ScrollReveal'
 
 type Lang = 'ja' | 'en'
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -195,7 +196,7 @@ export default function HubPage() {
 
       {/* ── Hero ── */}
       <section className="pt-40 pb-28 bg-navy relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 opacity-15">
           <Image src="/images/events/curry1.jpg" alt="" fill className="object-cover" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-navy/80 to-navy" />
@@ -256,6 +257,7 @@ export default function HubPage() {
 
       {/* ── Features ── */}
       <section id="features" className="py-28 bg-cream">
+        <ScrollReveal>
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="text-center mb-20">
             <span className="text-orange text-xs font-semibold uppercase tracking-widest">
@@ -277,10 +279,12 @@ export default function HubPage() {
             ))}
           </div>
         </div>
+        </ScrollReveal>
       </section>
 
       {/* ── Pricing ── */}
       <section className="py-28 bg-navy">
+        <ScrollReveal>
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="text-center mb-20">
             <span className="text-orange text-xs font-semibold uppercase tracking-widest">
@@ -298,8 +302,8 @@ export default function HubPage() {
             {/* Package price */}
             <div className="bg-navy-light rounded-2xl p-10 border border-white/10">
               <p className="text-orange text-xs font-bold uppercase tracking-widest mb-4">{s('パッケージ料金', 'Package Price', l)}</p>
-              <p className="text-6xl font-bold text-white mb-2">A$150<span className="text-3xl text-white/40">〜200</span></p>
-              <p className="text-white/40 text-sm mb-8">{s('一括払い・渡航前に購入', 'One-time payment, purchased before departure', l)}</p>
+              <p className="text-6xl font-bold text-white mb-2">A$150<span className="text-3xl text-white/60">〜200</span></p>
+              <p className="text-white/60 text-sm mb-8">{s('一括払い・渡航前に購入', 'One-time payment, purchased before departure', l)}</p>
               <div className="space-y-3">
                 {tags(
                   ['引き継ぎノート閲覧', '渡航前Zoomブリーフィング', '公認推薦状', '到着後1ヶ月フォロー', 'カレー会招待', 'キャッシュバック対象'],
@@ -349,15 +353,89 @@ export default function HubPage() {
           <div className="mt-8 max-w-4xl mx-auto bg-white/5 rounded-2xl p-6 border border-white/10 text-center">
             <p className="text-white/50 text-sm mb-2">{s('12ヶ月フル参加した場合の実質コスト', 'Net cost with 12 months full participation', l)}</p>
             <p className="text-white text-3xl font-bold">
-              A$85<span className="text-white/40 text-xl">〜135</span>
-              <span className="text-white/40 text-base font-normal ml-3">{s('（後輩紹介ありで最安値）', '(lowest with referral)', l)}</span>
+              A$85<span className="text-white/60 text-xl">〜135</span>
+              <span className="text-white/60 text-base font-normal ml-3">{s('（後輩紹介ありで最安値）', '(lowest with referral)', l)}</span>
+            </p>
+          </div>
+
+          {/* ── 比較表 ── */}
+          <div className="mt-16 max-w-4xl mx-auto">
+            <div className="text-center mb-10">
+              <h3 className="font-heading text-2xl md:text-3xl font-bold text-white">
+                {s('留学エージェントとの違い', 'How we compare to agencies', l)}
+              </h3>
+              <p className="text-white/50 text-sm mt-3 max-w-lg mx-auto">
+                {s('エージェントが悪いわけではありません。ただ、情報の「鮮度」と「リアルさ」が違います。', 'Agencies aren\'t bad — but the freshness and authenticity of information is different.', l)}
+              </p>
+            </div>
+
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-white/10">
+                    <th className="text-left text-white/40 font-normal py-4 pr-4 w-1/3"></th>
+                    <th className="text-center text-white/40 font-normal py-4 px-4 w-1/3">
+                      {s('一般的な留学エージェント', 'Typical Agency', l)}
+                    </th>
+                    <th className="text-center py-4 pl-4 w-1/3">
+                      <span className="text-orange font-bold">3rd Place Hub</span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    {
+                      label: s('情報の出どころ', 'Info source', l),
+                      agency: s('提携先の企業・学校', 'Partner companies & schools', l),
+                      hub: s('実際に現地で生活しているメンバー', 'Members actually living there', l),
+                    },
+                    {
+                      label: s('仕事・住居情報', 'Job & housing info', l),
+                      agency: s('提携先のみ（選択肢が限定的）', 'Limited to partners', l),
+                      hub: s('先輩が実際に働いた・住んだリアルな記録', 'Real records from people who worked & lived there', l),
+                    },
+                    {
+                      label: s('情報の鮮度', 'Info freshness', l),
+                      agency: s('パンフレット・Webサイト（更新頻度低め）', 'Brochures & websites (less frequent updates)', l),
+                      hub: s('メンバーが随時更新する生の情報', 'Continuously updated by members', l),
+                    },
+                    {
+                      label: s('渡航後のサポート', 'Post-arrival support', l),
+                      agency: s('学校・保険関連のみ', 'School & insurance only', l),
+                      hub: s('1ヶ月のLINEフォロー + カレー会で仲間づくり', '1-month LINE support + curry night community', l),
+                    },
+                    {
+                      label: s('コミュニティ', 'Community', l),
+                      agency: s('なし（契約終了で関係終了）', 'None (relationship ends at contract)', l),
+                      hub: s('300人のLINEグループに永久参加', 'Permanent access to 300-member LINE group', l),
+                    },
+                    {
+                      label: s('費用', 'Cost', l),
+                      agency: s('無料〜数十万円', 'Free – hundreds of $$$', l),
+                      hub: s('A$150〜200（実質A$85〜135）', 'A$150–200 (net A$85–135)', l),
+                    },
+                  ].map((row, i) => (
+                    <tr key={i} className="border-b border-white/5">
+                      <td className="text-white/60 py-4 pr-4 font-medium">{row.label}</td>
+                      <td className="text-white/40 py-4 px-4 text-center">{row.agency}</td>
+                      <td className="text-white py-4 pl-4 text-center font-medium">{row.hub}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <p className="text-white/30 text-xs text-center mt-6">
+              {s('※ 3rd Place Hubは求人斡旋・仕事の保証はしていません。「自分で動ける状態をつくるための情報・繋がり・武器」を提供します。', '* 3rd Place Hub does not guarantee job placement. We provide information, connections, and tools to help you act on your own.', l)}
             </p>
           </div>
         </div>
+        </ScrollReveal>
       </section>
 
       {/* ── Testimonials ── */}
       <section className="py-28 bg-white">
+        <ScrollReveal>
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="text-center mb-20">
             <span className="text-orange text-xs font-semibold uppercase tracking-widest">
@@ -387,6 +465,7 @@ export default function HubPage() {
             {s('※ 掲載内容はダミーです。実際の声は順次掲載予定。', '* Testimonials above are placeholders. Real voices coming soon.', l)}
           </p>
         </div>
+        </ScrollReveal>
       </section>
 
       {/* ── FAQ ── */}
@@ -425,7 +504,7 @@ export default function HubPage() {
             )}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://line.me" target="_blank" rel="noopener noreferrer"
+            <a href="https://line.me/ti/p/5ET_QCNdpX" target="_blank" rel="noopener noreferrer"
               className="bg-white text-orange font-bold px-10 py-4 rounded-full hover:bg-cream transition-colors duration-200 text-base cursor-pointer">
               {s('LINEで通知を受け取る', 'Get notified via LINE', l)}
             </a>

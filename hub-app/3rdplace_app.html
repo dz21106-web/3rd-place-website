@@ -245,7 +245,7 @@ h1,h2,h3 { font-family: 'Noto Serif JP','Hiragino Mincho ProN',serif; }
 .card:hover { transform:translateY(-3px); box-shadow:var(--sh-md); border-color:var(--border); }
 .card.stale-card { opacity:.75; }
 .card.old-card { opacity:.6; }
-.card-photo { position:relative; height:200px; overflow:hidden; background:var(--bg-elevated); }
+.card-photo { position:relative; aspect-ratio:4/3; overflow:hidden; background:var(--bg-elevated); }
 .card-photo img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s var(--ease); }
 .card:hover .card-photo img { transform:scale(1.03); }
 .card-photo-placeholder { width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:40px; color:var(--navy); }
@@ -311,7 +311,7 @@ h1,h2,h3 { font-family: 'Noto Serif JP','Hiragino Mincho ProN',serif; }
 .modal { background:var(--surface); width:100%; max-width:660px; max-height:92vh; border-radius:var(--r-lg) var(--r-lg) 0 0; overflow-y:auto; animation:slideUp .3s var(--ease); }
 @keyframes slideUp { from{transform:translateY(100%)} to{transform:translateY(0)} }
 @media(min-width:768px){ .modal-overlay.show{align-items:center;} .modal{border-radius:var(--r-lg);max-height:88vh;} }
-.modal-carousel { position:relative; height:260px; background:var(--bg-elevated); overflow:hidden; }
+.modal-carousel { position:relative; width:100%; aspect-ratio:4/3; background:var(--bg-elevated); overflow:hidden; }
 .modal-carousel img { width:100%; height:100%; object-fit:cover; display:block; }
 .modal-carousel-placeholder { width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:48px; color:var(--navy); }
 .carousel-btn { position:absolute; top:50%; transform:translateY(-50%); width:38px; height:38px; border-radius:50%; background:rgba(255,255,255,.9); backdrop-filter:blur(8px); border:none; cursor:pointer; font-size:14px; color:var(--text); display:flex; align-items:center; justify-content:center; z-index:5; transition:background var(--duration); }
@@ -323,16 +323,21 @@ h1,h2,h3 { font-family: 'Noto Serif JP','Hiragino Mincho ProN',serif; }
 .cdot.active { background:#fff; width:20px; border-radius:3px; }
 .modal-close { position:absolute; top:12px; right:12px; width:36px; height:36px; border-radius:50%; background:rgba(0,0,0,.35); color:#fff; border:none; cursor:pointer; font-size:18px; z-index:6; display:flex; align-items:center; justify-content:center; transition:background var(--duration); }
 .modal-close:hover { background:rgba(0,0,0,.5); }
-.modal-badge { position:absolute; bottom:12px; left:12px; padding:5px 14px; border-radius:var(--r-lg); font-size:12px; font-weight:700; color:#fff; backdrop-filter:blur(8px); z-index:5; }
+.modal-badge { position:absolute; bottom:12px; left:12px; padding:4px 10px; border-radius:var(--r-lg); font-size:10px; font-weight:700; color:#fff; backdrop-filter:blur(8px); z-index:5; }
 .modal-body { padding:24px 24px 32px; }
 .modal-title { font-size:22px; font-weight:700; color:var(--text); margin-bottom:6px; }
 .modal-sub { font-size:14px; color:var(--text-2); margin-bottom:6px; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
 .modal-section { margin-bottom:24px; }
 .modal-section-title { font-size:12px; font-weight:700; color:var(--text-3); letter-spacing:.6px; text-transform:uppercase; margin-bottom:14px; }
 .info-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-.info-item { background:var(--bg); border-radius:var(--r-sm); padding:12px 14px; }
-.info-item .key { font-size:10px; font-weight:700; color:var(--text-3); letter-spacing:.5px; text-transform:uppercase; margin-bottom:4px; }
-.info-item .val { font-size:14px; font-weight:700; color:var(--text); }
+.info-item { background:var(--bg); border-radius:var(--r-sm); padding:12px 14px; display:flex; align-items:center; gap:12px; }
+.info-item .info-icon { width:36px; height:36px; border-radius:var(--r-sm); display:flex; align-items:center; justify-content:center; font-size:15px; flex-shrink:0; }
+.info-item .info-icon.green { background:rgba(74,122,88,.1); color:var(--sage); }
+.info-item .info-icon.blue { background:rgba(27,45,91,.08); color:var(--navy); }
+.info-item .info-icon.coral { background:rgba(232,88,58,.08); color:var(--coral); }
+.info-item .info-icon.amber { background:rgba(232,168,56,.1); color:var(--amber); }
+.info-item .key { font-size:10px; font-weight:700; color:var(--text-3); letter-spacing:.4px; text-transform:uppercase; margin-bottom:2px; }
+.info-item .val { font-size:14px; font-weight:700; color:var(--text); line-height:1.4; }
 .baton-banner { background:linear-gradient(135deg,var(--coral),var(--coral-hover)); color:#fff; padding:16px 18px; border-radius:var(--r); margin-bottom:20px; display:flex; align-items:flex-start; gap:12px; }
 .baton-banner i { font-size:20px; flex-shrink:0; margin-top:2px; }
 .baton-banner strong { font-size:14px; font-weight:700; display:block; margin-bottom:3px; }
@@ -352,10 +357,17 @@ h1,h2,h3 { font-family: 'Noto Serif JP','Hiragino Mincho ProN',serif; }
 .review-text { font-size:13px; color:var(--text-2); line-height:1.7; }
 
 /* Handover Notes (unlocked for package users) */
-.handover-notes { display:flex; flex-direction:column; gap:12px; }
-.handover-note-item { background:var(--bg); border-radius:var(--r-sm); padding:16px 18px; border-left:3px solid var(--sage); }
-.handover-note-label { font-size:11px; font-weight:700; color:var(--sage); letter-spacing:.4px; text-transform:uppercase; margin-bottom:6px; }
-.handover-note-text { font-size:14px; color:var(--text); line-height:1.7; }
+.handover-notes { display:flex; flex-direction:column; gap:14px; }
+.handover-note-item { background:var(--bg); border-radius:var(--r); padding:18px 20px; border-left:3px solid var(--sage); }
+.handover-note-item.note-navy { border-left-color:var(--navy); }
+.handover-note-item.note-amber { border-left-color:var(--amber); }
+.handover-note-header { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+.handover-note-icon { width:32px; height:32px; border-radius:var(--r-sm); display:flex; align-items:center; justify-content:center; font-size:14px; flex-shrink:0; }
+.handover-note-icon.icon-sage { background:rgba(74,122,88,.1); color:var(--sage); }
+.handover-note-icon.icon-navy { background:rgba(27,45,91,.08); color:var(--navy); }
+.handover-note-icon.icon-amber { background:rgba(232,168,56,.1); color:var(--amber); }
+.handover-note-label { font-size:12px; font-weight:700; color:var(--text-2); letter-spacing:.3px; }
+.handover-note-text { font-size:14px; color:var(--text); line-height:1.8; }
 
 .btn-cta { display:flex; align-items:center; justify-content:center; gap:8px; width:100%; padding:16px; background:var(--coral); color:#fff; border:none; border-radius:var(--r); font-size:15px; font-weight:700; cursor:pointer; margin-top:16px; transition:filter var(--duration),transform var(--duration); }
 .btn-cta:hover { filter:brightness(1.06); transform:translateY(-1px); }
@@ -592,7 +604,7 @@ html { scroll-behavior:smooth; }
     <div class="header-logo"><img src="logo.png" alt="3rd place"></div>
     <div class="header-text">
       <h1>3rd place hub</h1>
-      <div class="htag">Melbourne — パッケージ購入者専用</div>
+      <div class="htag">Melbourne</div>
     </div>
   </div>
   <div class="header-actions">
@@ -692,6 +704,183 @@ html { scroll-behavior:smooth; }
     </div>
   </div>
 
+  <!-- 利用規約・個人情報 -->
+  <div style="max-width:600px;margin:24px auto 0;padding:0 20px;">
+    <div style="background:var(--surface);border-radius:var(--r);box-shadow:var(--sh-sm);padding:20px 24px;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+        <i class="fas fa-shield-halved" style="color:var(--navy);font-size:15px;"></i>
+        <span style="font-size:14px;font-weight:700;color:var(--text);">利用規約・個人情報の取り扱い</span>
+      </div>
+      <p style="font-size:12px;color:var(--text-3);line-height:1.7;margin-bottom:14px;">当サービスは「情報・知識・接続機会の提供」であり、就労先・住居の斡旋・仲介・紹介を行うものではありません。</p>
+      <div style="display:flex;gap:10px;">
+        <button onclick="document.getElementById('termsModal').style.display='flex'" class="btn-ghost" style="background:rgba(27,45,91,.06);border-color:var(--border);color:var(--navy);font-size:12px;padding:8px 14px;cursor:pointer;"><i class="fas fa-file-lines" style="margin-right:4px;"></i>利用規約</button>
+        <button onclick="document.getElementById('privacyModal').style.display='flex'" class="btn-ghost" style="background:rgba(27,45,91,.06);border-color:var(--border);color:var(--navy);font-size:12px;padding:8px 14px;cursor:pointer;"><i class="fas fa-user-shield" style="margin-right:4px;"></i>個人情報の取り扱い</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Terms Modal -->
+<div id="termsModal" style="display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.5);align-items:center;justify-content:center;padding:20px;" onclick="if(event.target===this)this.style.display='none'">
+  <div style="background:var(--surface);border-radius:var(--r-lg);max-width:640px;width:100%;max-height:80vh;overflow-y:auto;padding:32px 28px;position:relative;">
+    <button onclick="document.getElementById('termsModal').style.display='none'" style="position:absolute;top:16px;right:16px;background:none;border:none;cursor:pointer;font-size:18px;color:var(--text-3);"><i class="fas fa-xmark"></i></button>
+    <h2 style="font-size:18px;font-weight:700;margin-bottom:20px;color:var(--navy);">利用規約</h2>
+    <div style="font-size:13px;color:var(--text-2);line-height:1.9;">
+      <p style="font-size:11px;color:var(--text-3);margin-bottom:16px;">バージョン：v2.0 Final（弁護士確認済み）｜最終更新日：2026年4月9日</p>
+      <p style="margin-bottom:12px;">3rd place hub（以下「当サービス」）をご利用になる前に、本利用規約（以下「本規約」）をお読みください。</p>
+
+      <h3 style="font-size:14px;font-weight:700;color:var(--text);margin:20px 0 8px;">第1条（目的・サービス内容）</h3>
+      <p>当サービスは、メルボルン（オーストラリア）での就労・生活を検討する方に対し、以下の情報提供・コミュニティ支援サービスを提供します。</p>
+      <ol style="padding-left:20px;margin:8px 0;">
+        <li>渡航前ブリーフィング（ビザ・生活情報の案内）</li>
+        <li>メルボルン在住メンバーとのコミュニティ接続・イベント参加</li>
+        <li>渡航先での就労・住居探しに必要な情報・知識・接続機会の提供</li>
+        <li>引き継ぎノート（過去の渡航者が作成した就労先情報）の閲覧</li>
+      </ol>
+      <div style="background:rgba(232,88,58,.05);border-left:3px solid var(--coral);padding:12px 16px;border-radius:0 8px 8px 0;margin:12px 0;">
+        <strong>重要：</strong>当サービスが提供するのは「情報・知識・接続機会」であり、就労先・住居の斡旋・仲介・紹介を行うものではありません。採用・入居の可否は利用者本人と雇用先・家主との間で決定されるものであり、当サービスはその過程に介在しません。
+      </div>
+
+      <h3 style="font-size:14px;font-weight:700;color:var(--text);margin:20px 0 8px;">第2条（利用資格）</h3>
+      <ol style="padding-left:20px;margin:8px 0;">
+        <li>日本国籍または日本語を主要言語とする方</li>
+        <li>メルボルンへの渡航を検討中または渡航予定の方</li>
+        <li>本規約に同意された方</li>
+        <li>18歳以上の方</li>
+      </ol>
+
+      <h3 style="font-size:14px;font-weight:700;color:var(--text);margin:20px 0 8px;">第3条（登録と料金）</h3>
+      <ol style="padding-left:20px;margin:8px 0;">
+        <li>利用登録はLINEグループへの参加およびアンケート回答（Stage 0）をもって完了とします。</li>
+        <li>メルボルン着パッケージ（A$150〜200）の購入は任意です。</li>
+        <li>料金は購入時に当サービスが指定する方法でお支払いください。</li>
+        <li>一度購入されたパッケージの返金は原則お断りします。ただし、渡航中止の場合は個別に対応します。</li>
+      </ol>
+
+      <h3 style="font-size:14px;font-weight:700;color:var(--text);margin:20px 0 8px;">第4条（キャッシュバック制度）</h3>
+      <ol style="padding-left:20px;margin:8px 0;">
+        <li>所定の条件（各Stageの完了・アンケート回答・引き継ぎノート作成等）を満たした場合、キャッシュバックをお支払いします。</li>
+        <li>キャッシュバックの法的性質は「情報提供への謝礼」であり、雇用契約・業務委託契約に基づくものではありません。</li>
+        <li>キャッシュバックの支払いは、当サービスの判断により変更・終了する場合があります。</li>
+        <li>キャッシュバックは、メルボルン着パッケージの代金を上限とします（上限：約A$100）。</li>
+        <li>引き継ぎノートの作成に伴うキャッシュバックは、ノートの内容・品質を当サービスが確認したうえで支払います。虚偽・不正確な情報が含まれていた場合は支払いの対象外とします。</li>
+        <li>キャッシュバックの受取人は、受取額が年間の雑所得合計¥20万を超える場合、確定申告が必要となる場合があります。</li>
+      </ol>
+
+      <h3 style="font-size:14px;font-weight:700;color:var(--text);margin:20px 0 8px;">第5条（引き継ぎノートの取り扱い）</h3>
+      <ol style="padding-left:20px;margin:8px 0;">
+        <li><strong>閲覧目的の限定：</strong>引き継ぎノートに含まれる情報は、自身の渡航・就労準備のためにのみ使用できます。</li>
+        <li><strong>二次配布の禁止：</strong>ノート内の情報を第三者に転送・転載・販売・公開することを禁止します。</li>
+        <li><strong>口コミサイト化の禁止：</strong>ノート内の店舗情報をSNS・レビューサイト等に掲載・評価・批評することを禁止します。</li>
+        <li><strong>店舗名の取り扱い：</strong>ノート内に記載された店舗名・オーナー情報は非公開情報として扱い、外部への漏洩を禁止します。</li>
+        <li><strong>記載内容のガイドライン：</strong>ノートを作成する場合、客観的な事実（時給・勤務時間・業務内容・設備状況等）の記載を推奨します。個人を特定した攻撃・誹謗中傷・差別的表現は禁止します。運営が不適切と判断した記載は削除する場合があります。</li>
+      </ol>
+      <p style="margin-top:8px;">上記ルールは、情報提供者・閲覧者・関係者の信頼関係を守るために設けています。違反した場合は利用停止処分とします。</p>
+      <p style="margin-top:8px;">なお、掲載にあたり就労先・家主への事前同意の取得を推奨しますが、必須とはしません。同意を取得せずに掲載した情報に関して生じたトラブルについては、投稿者と当該第三者との間で解決するものとし、当サービスは仲介・調停の義務を負いません。</p>
+
+      <h3 style="font-size:14px;font-weight:700;color:var(--text);margin:20px 0 8px;">第6条（禁止事項）</h3>
+      <ol style="padding-left:20px;margin:8px 0;">
+        <li>虚偽の情報を登録すること</li>
+        <li>当サービスを通じて知り得た情報を第三者に販売・転用すること</li>
+        <li>他の利用者やパートナー店舗への迷惑行為</li>
+        <li>法令に違反する行為</li>
+        <li>当サービスの運営を妨害する行為</li>
+        <li>引き継ぎノートの情報を口コミサイト・SNSに転載すること、または特定の店舗・個人への誹謗中傷を行うこと</li>
+        <li>当サービスが「採用・入居を保証した」かのような虚偽の説明を第三者に行うこと</li>
+      </ol>
+
+      <h3 style="font-size:14px;font-weight:700;color:var(--text);margin:20px 0 8px;">第7条（免責事項）</h3>
+      <ol style="padding-left:20px;margin:8px 0;">
+        <li>当サービスは、採用・入居の成立を保証しません。就労・住居の最終決定は利用者本人と雇用先・家主との間で行われます。</li>
+        <li>当サービスは、引き継ぎノートを含む情報の正確性・最新性・完全性を保証しません。</li>
+        <li>当サービスは、利用者と雇用先・家主との間のトラブル・損害について責任を負いません。</li>
+        <li>当サービスは、法的アドバイスを提供するものではありません。ビザ・税務等は専門家にご相談ください。</li>
+        <li>キャッシュバック制度は、資金状況等により変更・中止する場合があります。</li>
+      </ol>
+
+      <h3 style="font-size:14px;font-weight:700;color:var(--text);margin:20px 0 8px;">第8条（個人情報の取り扱い）</h3>
+      <p>個人情報の取り扱いは、別途「個人情報取り扱いに関する同意書」に定めるとおりとします。</p>
+
+      <h3 style="font-size:14px;font-weight:700;color:var(--text);margin:20px 0 8px;">第9条（規約の変更）</h3>
+      <p>当サービスは、必要と判断した場合に本規約を変更できるものとします。変更後の規約はLINEグループにて告知し、告知後も利用を継続した場合は変更に同意したものとみなします。</p>
+
+      <h3 style="font-size:14px;font-weight:700;color:var(--text);margin:20px 0 8px;">第10条（準拠法・管轄）</h3>
+      <p>本規約は日本法に準拠するものとします。紛争が生じた場合は、東京地方裁判所を第一審の合意管轄裁判所とします。</p>
+    </div>
+  </div>
+</div>
+
+<!-- Privacy Modal -->
+<div id="privacyModal" style="display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.5);align-items:center;justify-content:center;padding:20px;" onclick="if(event.target===this)this.style.display='none'">
+  <div style="background:var(--surface);border-radius:var(--r-lg);max-width:640px;width:100%;max-height:80vh;overflow-y:auto;padding:32px 28px;position:relative;">
+    <button onclick="document.getElementById('privacyModal').style.display='none'" style="position:absolute;top:16px;right:16px;background:none;border:none;cursor:pointer;font-size:18px;color:var(--text-3);"><i class="fas fa-xmark"></i></button>
+    <h2 style="font-size:18px;font-weight:700;margin-bottom:20px;color:var(--navy);">個人情報取り扱いに関する同意書</h2>
+    <div style="font-size:13px;color:var(--text-2);line-height:1.9;">
+      <p style="font-size:11px;color:var(--text-3);margin-bottom:16px;">バージョン：v2.0 Final（弁護士確認済み）｜最終更新日：2026年4月9日</p>
+
+      <h3 style="font-size:14px;font-weight:700;color:var(--text);margin:20px 0 8px;">1. 個人情報の取得項目</h3>
+      <ul style="padding-left:20px;margin:8px 0;">
+        <li>氏名・ニックネーム</li>
+        <li>連絡先（LINEアカウント・メールアドレス等）</li>
+        <li>渡航予定日・滞在予定期間</li>
+        <li>希望職種・希望時給・英語力</li>
+        <li>職歴・スキル等（任意）</li>
+        <li>メルボルン滞在中に取得した就労先情報（引き継ぎノート）※任意</li>
+      </ul>
+
+      <h3 style="font-size:14px;font-weight:700;color:var(--text);margin:20px 0 8px;">2. 利用目的</h3>
+      <ol style="padding-left:20px;margin:8px 0;">
+        <li>メルボルン渡航に関する情報提供・コミュニティ運営</li>
+        <li>渡航先での就労・住居探しに必要な情報・知識・接続機会の提供（採用・入居の斡旋・保証は行いません）</li>
+        <li>キャッシュバックの支払い管理</li>
+        <li>サービス改善・統計分析（個人を特定しない形）</li>
+        <li>サービスに関する連絡・案内</li>
+        <li>引き継ぎノート作成者へのインセンティブの提供</li>
+      </ol>
+
+      <h3 style="font-size:14px;font-weight:700;color:var(--text);margin:20px 0 8px;">3. 第三者提供について</h3>
+      <p><strong>（1）接続機会提供のための情報共有</strong></p>
+      <ul style="padding-left:20px;margin:8px 0;">
+        <li>提供先：メルボルン市内の日本食・日本語対応店舗・企業</li>
+        <li>提供情報：氏名・希望職種・英語力・希望時給・簡単な自己紹介</li>
+        <li>提供目的：利用者と就労先との接点づくりのため</li>
+      </ul>
+      <p style="margin-top:8px;">採否の決定・雇用契約の締結は店舗・企業が独立して行います。当サービスはその過程に介在しません。</p>
+      <p><strong>（2）その他の提供</strong></p>
+      <p>法令に基づく場合を除き、上記以外の第三者への提供は行いません。</p>
+
+      <h3 style="font-size:14px;font-weight:700;color:var(--text);margin:20px 0 8px;">4. 外国にある第三者への提供</h3>
+      <p>当サービスは、メルボルン（オーストラリア）在住のメンバーおよびパートナー店舗と情報を共有します。</p>
+      <ul style="padding-left:20px;margin:8px 0;">
+        <li>提供先の国：オーストラリア連邦</li>
+        <li>当該国の個人情報保護制度：Privacy Act 1988が適用されます</li>
+        <li>提供する情報：氏名・希望職種・英語力・希望時給・簡単な自己紹介</li>
+      </ul>
+
+      <h3 style="font-size:14px;font-weight:700;color:var(--text);margin:20px 0 8px;">5. 引き継ぎノートの取り扱い</h3>
+      <ul style="padding-left:20px;margin:8px 0;">
+        <li>ノートの作成は任意です。強制されるものではありません。</li>
+        <li>ノートに含まれる就労先情報は、サービス内の限定メンバーのみが閲覧できる形式で管理します。外部公開・口コミサイトへの転載は禁止です。</li>
+        <li>ノートには客観的な事実の記載を推奨します。特定個人への攻撃・誹謗中傷・差別的表現が含まれる場合、運営の判断で削除します。</li>
+        <li>店舗名は半匿名形式（カテゴリ・地域・業態のみ表示等）での管理を基本とします。</li>
+        <li>就労先・家主への事前同意の取得を推奨しますが、必須ではありません。同意未取得で掲載した場合のトラブルは、投稿者と当該第三者間で解決するものとします。</li>
+      </ul>
+
+      <h3 style="font-size:14px;font-weight:700;color:var(--text);margin:20px 0 8px;">6. 個人情報の管理・保管</h3>
+      <ul style="padding-left:20px;margin:8px 0;">
+        <li>情報はSupabase（PostgreSQL）・Notionにて管理します（アクセス権限は運営メンバーのみ）</li>
+        <li>退会または希望があれば、情報を速やかに削除します</li>
+      </ul>
+
+      <h3 style="font-size:14px;font-weight:700;color:var(--text);margin:20px 0 8px;">7. 同意の撤回・情報削除の請求</h3>
+      <p>いつでも同意を撤回し、情報の削除を請求できます。</p>
+      <p>請求先：3rd place hub LINEアカウント（@3rdplacehub）または担当者LINE</p>
+
+      <h3 style="font-size:14px;font-weight:700;color:var(--text);margin:20px 0 8px;">8. お問い合わせ</h3>
+      <p>3rd place hub 運営事務局<br>LINE：@3rdplacehub</p>
+    </div>
+  </div>
 </div>
 
 <!-- ==================== 知る SECTION ==================== -->
@@ -938,7 +1127,12 @@ let housingData=[
   {id:"H005",status:"developing",type:"シェアハウス（4人）",area:"Brunswick",address:"Sydney Rd付近",lat:-37.7662,lng:144.9600,rent:160,billsIncluded:true,wifiIncluded:false,furnished:false,minStay:"3ヶ月〜",shortTermOk:false,jpHousemate:true,jpHousemateCount:1,totalHousemates:3,nearestTram:"19番 徒歩4分",nearestSuper:"Aldi 徒歩6分",availableDate:"未定",atmosphere:"多文化でアートな雰囲気、物価安め",rating:0,pastMembers:0,currentMember:"りょうた",lastUpdated:"2026-01",
     photos:["https://images.unsplash.com/photo-1571055107559-3e67626fa8be?w=600&h=400&fit=crop"],
     residentProfile:{name:"りょうた",age:23,from:"札幌",flag:"JP",since:"2026年01月",months:3,bio:"Brunswickでアート系の仕事を探しながら生活中。"},reviews:[],
-    lockedOwnerTips:"",lockedHousemateTips:"",lockedFirstWeek:""}
+    lockedOwnerTips:"",lockedHousemateTips:"",lockedFirstWeek:""},
+  {id:"H006",status:"baton_recruiting",batonDeadline:"2026年4月23日",type:"一軒家シェアハウス（5人）",area:"Clayton",address:"Clayton駅付近",lat:-37.9254,lng:145.1200,rent:250,roomType:"own",addressVisibility:"area",billsIncluded:true,wifiIncluded:true,furnished:true,minStay:"6ヶ月〜",shortTermOk:false,jpHousemate:false,jpHousemateCount:0,totalHousemates:4,nearestTram:"Clayton駅・Huntingdale駅、バス630番（Elwood行き）",nearestSuper:"Coles・アジアンスーパー 徒歩15分",availableDate:"2026年4月22日〜",atmosphere:"",rating:0,pastMembers:0,currentMember:"ちあき",lastUpdated:"2026-04",
+    photos:["photos/H006/S__99131398.jpg","photos/H006/S__99131401.jpg","photos/H006/S__99131400.jpg","photos/H006/S__99131402.jpg","photos/H006/S__99131403.jpg"],
+    residentProfile:null,
+    reviews:[],
+    lockedOwnerTips:"Whatappでいつでも連絡可能、レスポンスは早いです。掃除やゴミ出しの当番が決まっていて、当番が週末にオーナーに写真を送って確認してもらうので常に清潔です。オーナーも2週に一度くらい来て、家を確認してくれるので、故障箇所が放置されることはなかったです。",lockedHousemateTips:"共用スペースで会ったら挨拶する程度、住人用のWhatappがあるので連絡事項を共有しやすかった。気軽に呼べます！オーナーに相談なしのお泊まりはNGです。",lockedFirstWeek:"家のルールの確認、前住人が残した汚れ等がないか確認すること。マンションと違って毎週のゴミ出しのルールが決まっています。オーナーに確認するようにしてください！大通りから少し中に入るので、夜道が暗かった。"}
 ];
 
 let jobData=[
@@ -1113,6 +1307,7 @@ function renderCards(items){
           <div class="card-row"><i class="fas fa-basket-shopping"></i>${h.nearestSuper}</div>
           <div class="card-tags">
             ${h.status==='baton_recruiting'?`<span class="tag hot">${h.batonDeadline||'近日退去'}まで</span>`:''}
+            ${h.roomType==='own'?'<span class="tag">オウンルーム</span>':'<span class="tag">シェアルーム</span>'}
             ${h.furnished?'<span class="tag">家具付き</span>':''}
             ${h.wifiIncluded?'<span class="tag">Wi-Fi込</span>':''}
             ${h.jpHousemate?`<span class="tag">日本人${h.jpHousemateCount}名</span>`:''}
@@ -1159,12 +1354,17 @@ function carouselHtml(photos,iconClass){modalPhotos=photos?.length?photos:[];mod
 function residentProfileHtml(p,label){if(!p)return'';return`<div class="modal-section"><div class="modal-section-title">${label}</div><div class="resident-card"><div class="resident-avatar" style="background:${avatarColor(p.name)}">${p.name[0]}</div><div class="resident-info"><div class="resident-name">${p.name} (${p.age}歳)</div><div class="resident-meta">${p.from}出身 · ${p.since}〜</div><div class="resident-badge"><i class="fas fa-leaf"></i> メンバー歴 ${p.months}ヶ月</div><div class="resident-bio">${p.bio}</div></div></div></div>`;}
 
 // ═══════════════ HANDOVER NOTES (unlocked for package users) ═══════════════
+function noteStyle(label){
+  const m={'オーナーTips':{icon:'fa-user-tie',color:'sage',card:''},'オーナーの性格':{icon:'fa-user-tie',color:'sage',card:''},'同居人メモ':{icon:'fa-people-group',color:'navy',card:'note-navy'},'最初の1週間':{icon:'fa-calendar-check',color:'amber',card:'note-amber'},'最初の1週間Tips':{icon:'fa-lightbulb',color:'amber',card:'note-amber'}};
+  return m[label]||{icon:'fa-circle-info',color:'sage',card:''};
+}
 function lockedHtml(lines){
   const items=lines.filter(l=>l.text);
   if(!items.length) return '';
   return `<div class="modal-section"><div class="modal-section-title"><i class="fas fa-book-open" style="margin-right:6px;color:var(--sage)"></i> 引き継ぎノート</div>
+    <div style="display:flex;align-items:center;gap:6px;padding:8px 12px;background:rgba(27,45,91,.04);border-radius:var(--r-sm);margin-bottom:12px;"><i class="fas fa-lock" style="font-size:11px;color:var(--text-3);"></i><span style="font-size:11px;color:var(--text-3);line-height:1.5;">この情報はサービス内限定です。外部への転載・口コミサイトへの投稿は禁止されています。</span></div>
     <div class="handover-notes">
-      ${items.map(l=>`<div class="handover-note-item"><div class="handover-note-label">${l.label}</div><div class="handover-note-text">${l.text}</div></div>`).join('')}
+      ${items.map(l=>{const s=noteStyle(l.label);return`<div class="handover-note-item ${s.card}"><div class="handover-note-header"><div class="handover-note-icon icon-${s.color}"><i class="fas ${s.icon}"></i></div><div class="handover-note-label">${l.label}</div></div><div class="handover-note-text">${l.text}</div></div>`;}).join('')}
     </div>
   </div>`;
 }
@@ -1174,21 +1374,22 @@ function openHousingModal(id){
   const h=housingData.find(x=>x.id===id);if(!h)return;
   const mc=document.getElementById('modalContent');
   mc.innerHTML=`
-    <div style="position:relative">${carouselHtml(h.photos,'fa-house')}<span class="modal-badge badge-status ${statusClass(h.status)}">${statusLabel(h.status)}</span></div>
+    <div style="position:relative">${carouselHtml(h.photos,'fa-house')}</div>
     <div class="modal-body">
       <div class="modal-title">${displayAddress(h)}</div>
       <div class="modal-sub"><span>${h.type} · ${h.area}</span><span>${starsHtml(h.rating)}</span></div>
       <div style="font-size:11px;color:var(--text-3);margin-bottom:12px;"><i class="fas fa-clock" style="margin-right:4px;"></i>最終更新：${h.lastUpdated||'不明'} <span class="freshness-tag ${freshnessClass(h.lastUpdated)}" style="margin-left:6px;">${freshnessLabel(h.lastUpdated)}</span></div>
       ${h.status==='baton_recruiting'?`<div class="baton-banner"><i class="fas fa-fire"></i><div><strong>後任募集中</strong><p>${h.currentMember||'現メンバー'}が${h.batonDeadline||'近日'}に退去予定。</p></div></div>`:''}
       <div class="modal-section"><div class="modal-section-title">基本情報</div><div class="info-grid">
-        <div class="info-item"><div class="key">家賃</div><div class="val">A$${h.rent}/w${h.billsIncluded?' (光熱費込)':''}</div></div>
-        <div class="info-item"><div class="key">Wi-Fi</div><div class="val">${h.wifiIncluded?'込み':'別途'}</div></div>
-        <div class="info-item"><div class="key">家具</div><div class="val">${h.furnished?'付き':'なし'}</div></div>
-        <div class="info-item"><div class="key">最低滞在</div><div class="val">${h.minStay}</div></div>
-        <div class="info-item"><div class="key">入居可能日</div><div class="val">${h.availableDate}</div></div>
-        <div class="info-item"><div class="key">同居人数</div><div class="val">${h.totalHousemates}人${h.jpHousemate?' (日本人'+h.jpHousemateCount+'名)':''}</div></div>
-        <div class="info-item"><div class="key">最寄トラム</div><div class="val">${h.nearestTram}</div></div>
-        <div class="info-item"><div class="key">最寄スーパー</div><div class="val">${h.nearestSuper}</div></div>
+        <div class="info-item"><div class="info-icon coral"><i class="fas fa-dollar-sign"></i></div><div><div class="key">家賃</div><div class="val">A$${h.rent}/w${h.billsIncluded?' (光熱費込)':''}</div></div></div>
+        <div class="info-item"><div class="info-icon blue"><i class="fas fa-door-open"></i></div><div><div class="key">部屋タイプ</div><div class="val">${h.roomType==='own'?'オウンルーム':'シェアルーム'}</div></div></div>
+        <div class="info-item"><div class="info-icon green"><i class="fas fa-wifi"></i></div><div><div class="key">Wi-Fi</div><div class="val">${h.wifiIncluded?'込み':'別途'}</div></div></div>
+        <div class="info-item"><div class="info-icon amber"><i class="fas fa-couch"></i></div><div><div class="key">家具</div><div class="val">${h.furnished?'付き':'なし'}</div></div></div>
+        <div class="info-item"><div class="info-icon blue"><i class="fas fa-calendar-check"></i></div><div><div class="key">最低滞在</div><div class="val">${h.minStay}</div></div></div>
+        <div class="info-item"><div class="info-icon green"><i class="fas fa-calendar-day"></i></div><div><div class="key">入居可能日</div><div class="val">${h.availableDate}</div></div></div>
+        <div class="info-item"><div class="info-icon amber"><i class="fas fa-users"></i></div><div><div class="key">同居人数</div><div class="val">${h.totalHousemates}人${h.jpHousemate?' (日本人'+h.jpHousemateCount+'名)':''}</div></div></div>
+        <div class="info-item"><div class="info-icon blue"><i class="fas fa-train-subway"></i></div><div><div class="key">最寄駅</div><div class="val">${h.nearestTram}</div></div></div>
+        <div class="info-item"><div class="info-icon green"><i class="fas fa-basket-shopping"></i></div><div><div class="key">最寄スーパー</div><div class="val">${h.nearestSuper}</div></div></div>
       </div></div>
       <div class="modal-section"><div class="modal-section-title">雰囲気</div><p style="font-size:14px;line-height:1.7;color:var(--text-2)">${h.atmosphere}</p></div>
       ${residentProfileHtml(h.residentProfile,'現メンバー')}
@@ -1201,19 +1402,19 @@ function openJobModal(id){
   const j=jobData.find(x=>x.id===id);if(!j)return;
   const mc=document.getElementById('modalContent');
   mc.innerHTML=`
-    <div style="position:relative">${carouselHtml(j.photos,industryIcon(j.industry))}<span class="modal-badge badge-status ${statusClass(j.status)}">${statusLabel(j.status)}</span></div>
+    <div style="position:relative">${carouselHtml(j.photos,industryIcon(j.industry))}</div>
     <div class="modal-body">
       <div class="modal-title">${j.name||jobDisplayName(j)}</div>
       <div class="modal-sub"><span>${j.industry} · ${j.area}</span><span>${starsHtml(j.rating)}</span></div>
       <div style="font-size:11px;color:var(--text-3);margin-bottom:12px;"><i class="fas fa-clock" style="margin-right:4px;"></i>最終更新：${j.lastUpdated||'不明'} <span class="freshness-tag ${freshnessClass(j.lastUpdated)}" style="margin-left:6px;">${freshnessLabel(j.lastUpdated)}</span></div>
       ${j.status==='baton_recruiting'?`<div class="baton-banner"><i class="fas fa-fire"></i><div><strong>後任募集中</strong><p>現メンバーが${j.batonDeadline||'近日'}に退職予定。</p></div></div>`:''}
       <div class="modal-section"><div class="modal-section-title">基本情報</div><div class="info-grid">
-        <div class="info-item"><div class="key">時給</div><div class="val">${j.payRange}/h</div></div>
-        <div class="info-item"><div class="key">ポジション</div><div class="val">${j.positions}</div></div>
-        <div class="info-item"><div class="key">シフト</div><div class="val">${j.shift}</div></div>
-        <div class="info-item"><div class="key">英語</div><div class="val">${j.englishLevel==='beginner'?'初級OK':'中級'}</div></div>
-        <div class="info-item"><div class="key">まかない</div><div class="val">${j.mealsProvided?'あり':'なし'}</div></div>
-        <div class="info-item"><div class="key">土日休み</div><div class="val">${j.weekendOff?'OK':'不可'}</div></div>
+        <div class="info-item"><div class="info-icon coral"><i class="fas fa-dollar-sign"></i></div><div><div class="key">時給</div><div class="val">${j.payRange}/h</div></div></div>
+        <div class="info-item"><div class="info-icon blue"><i class="fas fa-briefcase"></i></div><div><div class="key">ポジション</div><div class="val">${j.positions}</div></div></div>
+        <div class="info-item"><div class="info-icon amber"><i class="fas fa-clock"></i></div><div><div class="key">シフト</div><div class="val">${j.shift}</div></div></div>
+        <div class="info-item"><div class="info-icon green"><i class="fas fa-language"></i></div><div><div class="key">英語</div><div class="val">${j.englishLevel==='beginner'?'初級OK':'中級'}</div></div></div>
+        <div class="info-item"><div class="info-icon amber"><i class="fas fa-utensils"></i></div><div><div class="key">まかない</div><div class="val">${j.mealsProvided?'あり':'なし'}</div></div></div>
+        <div class="info-item"><div class="info-icon blue"><i class="fas fa-calendar-week"></i></div><div><div class="key">土日休み</div><div class="val">${j.weekendOff?'OK':'不可'}</div></div></div>
       </div></div>
       <div class="modal-section"><div class="modal-section-title">職場の雰囲気</div><p style="font-size:14px;line-height:1.7;color:var(--text-2)">${j.vibe}</p></div>
       ${j.warnings?`<div class="modal-section"><div class="modal-section-title">注意点</div><p style="font-size:14px;line-height:1.7;color:#c0392b;background:#fff5f5;padding:12px 16px;border-radius:var(--r-sm)">${j.warnings}</p></div>`:''}
@@ -1379,8 +1580,8 @@ ${hasNote?`<div class="form-confirm-block" style="border:1.5px dashed rgba(74,12
   <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;padding:14px 16px;border:1.5px solid var(--border);border-radius:12px;margin-top:12px;">
     <input type="checkbox" id="consentCheck" style="width:18px;height:18px;margin-top:2px;flex-shrink:0;accent-color:var(--sage)">
     <span style="font-size:13px;color:var(--text-2);line-height:1.7">以下に同意して送信します：<br>
-    ・入力した情報が3rd Placeアプリに掲載されること<br>
-    ・パッケージ購入者に閲覧されること<br>
+    ・<a href="#" onclick="event.preventDefault();document.getElementById('privacyModal').style.display='flex'" style="color:var(--navy);text-decoration:underline;cursor:pointer;">個人情報の取り扱い</a>について理解しました<br>
+    ・当サービスが斡旋・紹介ではなく、情報・接続機会の提供であることを理解しました<br>
     ・個人を特定できる第三者の情報は含んでいないこと<br>
     ・運営による編集・非公開対応があり得ること</span>
   </label>`;}

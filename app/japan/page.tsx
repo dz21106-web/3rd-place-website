@@ -5,6 +5,7 @@ import Image from 'next/image'
 import SubNavbar from '../../components/SubNavbar'
 import SubFooter from '../../components/SubFooter'
 import FAQSection from '../../components/FAQ'
+import ScrollReveal from '../../components/ScrollReveal'
 
 type Lang = 'ja' | 'en'
 const s = (ja: string, en: string, l: Lang) => l === 'ja' ? ja : en
@@ -22,7 +23,7 @@ export default function JapanPage() {
 
       {/* ── Hero ── */}
       <section className="pt-32 pb-20 bg-navy relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
+        <div className="absolute inset-0 opacity-15">
           <Image src="/images/japan/event1.jpg" alt="3rd Place Japan" fill className="object-cover" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-navy/60 to-navy" />
@@ -67,10 +68,11 @@ export default function JapanPage() {
       {/* ── Stats ── */}
       <section className="py-16 bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-3 gap-8 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
-              { num: '¥500', label: s('参加費', 'Entry Fee', l) },
+              { num: '¥1,000', label: s('参加費（1ドリンク付）', 'Entry Fee (1 drink incl.)', l) },
               { num: s('毎月', 'Monthly', l), label: s('定期開催', 'Regular Event', l) },
+              { num: s('2部制', '2 Parts', l), label: s('相談会 + 交流会', 'Consultation + Exchange', l) },
               { num: s('東京', 'Tokyo', l), label: s('喫茶店で開催', 'Café Venue', l) },
             ].map((stat, i) => (
               <div key={i}>
@@ -82,8 +84,36 @@ export default function JapanPage() {
         </div>
       </section>
 
+      {/* ── NEXT EVENT BANNER ── */}
+      <section className="bg-orange py-5">
+        <div className="max-w-5xl mx-auto px-6 md:px-12 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-center sm:text-left">
+          <div className="flex items-center gap-2">
+            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+            <span className="text-white font-bold text-sm">{s('次回イベント', 'Next Event', l)}</span>
+          </div>
+          <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-4">
+            <span className="text-white/90 text-sm">
+              {s('4月19日（日）', 'Apr 19 (Sun)', l)}
+            </span>
+            <span className="text-white/80 text-xs">
+              {s('18:00〜20:00 ワーホリ・留学相談会 / 20:00〜22:00 外国人との交流会', '18:00–20:00 WHV Consultation / 20:00–22:00 International Exchange', l)}
+            </span>
+          </div>
+          <div className="flex flex-col items-center sm:items-start gap-1">
+            <span className="text-white/70 text-xs">
+              {s('📍 喫茶店エル（神保町/御茶ノ水）', '📍 Café El (Jimbocho/Ochanomizu)', l)}
+            </span>
+          </div>
+          <a href="#apply"
+            className="bg-white text-orange font-bold text-xs px-4 py-2 rounded-full hover:bg-cream transition-colors duration-200 cursor-pointer whitespace-nowrap">
+            {s('申し込む', 'Apply', l)}
+          </a>
+        </div>
+      </section>
+
       {/* ── Event Details ── */}
       <section id="details" className="py-28 bg-cream">
+        <ScrollReveal>
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="mb-16">
             <span className="text-orange text-xs font-semibold uppercase tracking-widest">
@@ -162,10 +192,12 @@ export default function JapanPage() {
             ))}
           </div>
         </div>
+        </ScrollReveal>
       </section>
 
       {/* ── いってらっしゃい会 ── */}
       <section className="py-28 bg-white">
+        <ScrollReveal>
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
@@ -197,6 +229,7 @@ export default function JapanPage() {
             </div>
           </div>
         </div>
+        </ScrollReveal>
       </section>
 
       {/* ── Hub pre-departure ── */}
@@ -279,7 +312,7 @@ export default function JapanPage() {
                   </div>
                   <div>
                     <p className="text-white font-semibold text-sm mb-1">{item.title}</p>
-                    <p className="text-white/40 text-xs leading-relaxed">{item.desc}</p>
+                    <p className="text-white/60 text-xs leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
               ))}
@@ -336,13 +369,13 @@ export default function JapanPage() {
           </h2>
           <p className="text-white/80 text-lg mb-10 leading-relaxed">
             {s(
-              '毎月東京で開催中。参加費500円。まずはLINEグループに参加して、次回の告知を待とう。',
-              'Held monthly in Tokyo. ¥500 entry. Join our LINE group to get notified about the next event.',
+              '毎月東京で開催中。参加費¥1,000（1ドリンク付き）。まずはLINEグループに参加して、次回の告知を待とう。',
+              'Held monthly in Tokyo. ¥1,000 entry (1 drink included). Join our LINE group to get notified about the next event.',
               l
             )}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://line.me" target="_blank" rel="noopener noreferrer"
+            <a href="https://line.me/ti/p/5ET_QCNdpX" target="_blank" rel="noopener noreferrer"
               className="bg-white text-orange font-bold px-10 py-4 rounded-full hover:bg-cream transition-colors duration-200 text-base cursor-pointer">
               {s('LINEグループに参加する', 'Join LINE Group', l)}
             </a>
@@ -351,6 +384,9 @@ export default function JapanPage() {
               {s('申し込みフォーム', 'Apply via Form', l)}
             </a>
           </div>
+          <p className="text-white/60 text-xs mt-4">
+            {s('入るだけでOK。挨拶不要。次回開催の告知だけ届きます。', 'Just join — no intro needed. You\'ll only get event announcements.', l)}
+          </p>
         </div>
       </section>
 

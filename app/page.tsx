@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '../components/Navbar'
 import FAQSection from '../components/FAQ'
+import ScrollReveal from '../components/ScrollReveal'
 
 type Lang = 'ja' | 'en'
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -42,7 +43,7 @@ export default function Home() {
       {/* ── HERO ─────────────────────────────── */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-navy">
         <div className="absolute inset-0">
-          <Image src="/images/events/curry1.jpg" alt="" fill className="object-cover opacity-[0.12]" priority />
+          <Image src="/images/events/curry1.jpg" alt="" fill className="object-cover opacity-15" priority />
           <div className="absolute inset-0 bg-gradient-to-b from-navy/80 via-navy/90 to-navy" />
         </div>
 
@@ -75,15 +76,15 @@ export default function Home() {
           </p>
 
           <div className="animate-fade-up delay-500 flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#cta" className="bg-orange text-white font-semibold px-8 py-3.5 rounded-full hover:bg-orange-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 text-sm cursor-pointer">
-              {s('参加する →', 'Get Started →', l)}
+            <a href="https://line.me/ti/p/5ET_QCNdpX" target="_blank" rel="noopener noreferrer" className="bg-orange text-white font-semibold px-8 py-3.5 rounded-full hover:bg-orange-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 text-sm cursor-pointer">
+              {s('LINEグループに参加する', 'Join LINE Group', l)}
             </a>
             <a href="#about" className="border border-white/25 text-white font-medium px-8 py-3.5 rounded-full hover:bg-white/10 transition-colors duration-200 text-sm cursor-pointer">
               {s('3rd Placeとは', 'About Us', l)}
             </a>
           </div>
           <div className="animate-fade-up delay-500 mt-8">
-            <Link href="/japan" className="inline-flex items-center gap-2 border border-white/25 text-white/60 hover:text-white hover:border-white/40 text-sm px-5 py-2 rounded-full transition-colors duration-200 cursor-pointer">
+            <Link href="/japan" className="inline-flex items-center gap-2 border border-white/40 text-white/80 hover:text-white hover:border-white/60 hover:bg-white/10 text-sm px-5 py-2 rounded-full transition-all duration-200 cursor-pointer">
               {s('日本からメルボルンを目指している方はこちら', 'Planning your move from Japan?', l)}
               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
             </Link>
@@ -101,9 +102,9 @@ export default function Home() {
         <div className="max-w-5xl mx-auto px-6 md:px-12 grid grid-cols-2 md:grid-cols-4 gap-8">
           {[
             { num: '2', unit: s('年', 'yrs', l), label: s('コミュニティ運営', 'Running', l) },
-            { num: '300+', unit: s('人', '', l), label: s('LINEグループ在籍', 'LINE Members', l) },
-            { num: '30〜40', unit: s('人', '', l), label: s('毎月のカレー会', 'Monthly Curry', l) },
-            { num: s('月1', 'Monthly', l), unit: s('回', '', l), label: s('定期イベント', 'Events', l) },
+            { num: '300', unit: s('人', '', l), label: s('累計参加者', 'Total Members', l) },
+            { num: '20+', unit: s('回', '', l), label: s('カレー会開催', 'Curry Nights Held', l) },
+            { num: '30〜40', unit: s('人', '', l), label: s('毎月のカレー会', 'Monthly Attendance', l) },
           ].map((stat, i) => (
             <div key={i} className="text-center">
               <p className="text-3xl md:text-4xl font-bold text-navy">
@@ -116,8 +117,29 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── NEXT EVENT BANNER ────────────────── */}
+      <section id="next-event" className="bg-orange py-5">
+        <div className="max-w-5xl mx-auto px-6 md:px-12 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-center sm:text-left">
+          <div className="flex items-center gap-2">
+            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+            <span className="text-white font-bold text-sm">{s('次回カレー会', 'Next Curry Night', l)}</span>
+          </div>
+          <span className="text-white/90 text-sm">
+            {s('4月18日（土）18:00〜22:00 @ みんなの館', 'Apr 18 (Sat) 18:00–22:00 @ Minna no Yakata', l)}
+          </span>
+          <span className="text-white/70 text-xs">
+            {s('※ 住所はLINEグループでお知らせします', '* Address shared in LINE group', l)}
+          </span>
+          <a href="https://line.me/ti/p/5ET_QCNdpX" target="_blank" rel="noopener noreferrer"
+            className="bg-white text-orange font-bold text-xs px-4 py-2 rounded-full hover:bg-cream transition-colors duration-200 cursor-pointer whitespace-nowrap">
+            {s('LINEで参加する', 'Join via LINE', l)}
+          </a>
+        </div>
+      </section>
+
       {/* ── ABOUT ────────────────────────────── */}
       <section id="about" className="py-28 bg-white">
+        <ScrollReveal>
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-16 items-center">
           <div>
             <span className="text-orange text-xs font-semibold uppercase tracking-widest">
@@ -160,10 +182,107 @@ export default function Home() {
             </div>
           </div>
         </div>
+        </ScrollReveal>
+
+        {/* ── 参加フロー図解 ── */}
+        <ScrollReveal>
+        <div className="max-w-7xl mx-auto px-6 md:px-12 mt-24">
+          <div className="text-center mb-14">
+            <span className="text-orange text-xs font-semibold uppercase tracking-widest">
+              {s('はじめかた', 'How to Join', l)}
+            </span>
+            <h3 className="font-heading text-3xl md:text-4xl font-bold text-navy mt-4">
+              {s('3つのステップで、仲間に出会える', 'Three steps to find your crew', l)}
+            </h3>
+            <p className="text-slate-500 text-sm mt-3 max-w-lg mx-auto">
+              {s('難しいことは何もありません。まずは気軽に覗いてみてください。', 'Nothing complicated. Just start with a peek.', l)}
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 mb-10">
+            {[
+              {
+                step: '1',
+                title: s('LINEグループに入る', 'Join the LINE Group', l),
+                desc: s('ボタンひとつで参加完了。挨拶も不要です。次回イベントの告知が届くのを待つだけ。', 'One tap and you\'re in. No intro needed. Just wait for the next event announcement.', l),
+                sub: s('所要時間：10秒', 'Takes: 10 seconds', l),
+                icon: (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
+                ),
+              },
+              {
+                step: '2',
+                title: s('イベントに来てみる', 'Show up to an event', l),
+                desc: s('メルボルンならカレー会、日本なら東京イベントへ。一人で来る方がほとんどなので安心してください。', 'Curry night in Melbourne, or Tokyo event in Japan. Most people come alone — you\'ll fit right in.', l),
+                sub: s('毎月開催・予約不要', 'Monthly · No reservation', l),
+                icon: (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                ),
+              },
+              {
+                step: '3',
+                title: s('仲間と情報が手に入る', 'Get friends & real info', l),
+                desc: s('気づいたら友達ができて、仕事・住居・生活のリアルな情報も自然と集まってきます。', 'Before you know it, you\'ll have friends — and real intel on jobs, housing, and life.', l),
+                sub: s('ここからがスタート', 'This is where it begins', l),
+                icon: (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                ),
+              },
+            ].map((item, i) => (
+              <div key={i} className="relative bg-cream rounded-2xl p-8 border border-gray-100">
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="w-10 h-10 rounded-full bg-orange flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
+                    {item.step}
+                  </div>
+                  <div className="w-10 h-10 rounded-xl bg-orange/10 flex items-center justify-center text-orange flex-shrink-0">
+                    {item.icon}
+                  </div>
+                </div>
+                <h4 className="font-heading text-lg font-bold text-navy mb-3">{item.title}</h4>
+                <p className="text-slate-600 text-sm leading-relaxed mb-4">{item.desc}</p>
+                <p className="text-orange text-xs font-semibold">{item.sub}</p>
+                {i < 2 && (
+                  <div className="hidden md:block absolute top-1/2 -right-3 -translate-y-1/2 z-10">
+                    <svg className="w-6 h-6 text-orange/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Step 4: Hub（開発中） */}
+          <div className="bg-navy rounded-2xl p-8 border border-white/10 flex flex-col md:flex-row items-center gap-6">
+            <div className="flex items-center gap-3 flex-shrink-0">
+              <div className="w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white/60 font-bold text-sm">
+                4
+              </div>
+              <div className="inline-block bg-orange/20 text-orange text-xs font-bold px-3 py-1 rounded-full">
+                {s('開発中', 'Coming Soon', l)}
+              </div>
+            </div>
+            <div className="flex-grow text-center md:text-left">
+              <h4 className="font-heading text-lg font-bold text-white mb-1">
+                {s('もっと本格的に準備したい人へ — 3rd Place Hub', 'For serious preparation — 3rd Place Hub', l)}
+              </h4>
+              <p className="text-white/50 text-sm">
+                {s(
+                  '先輩の引き継ぎノート・渡航前Zoom・推薦状・到着後フォローが揃った有料パッケージ。自分で動ける状態を作ります。',
+                  'A paid package with handover notes, pre-departure Zoom, recommendation letter, and post-arrival support.',
+                  l
+                )}
+              </p>
+            </div>
+            <Link href="/hub" className="bg-white/10 text-white/80 font-medium px-6 py-3 rounded-xl hover:bg-white/15 transition-colors duration-200 text-sm cursor-pointer whitespace-nowrap flex-shrink-0">
+              {s('詳しく見る →', 'Learn more →', l)}
+            </Link>
+          </div>
+        </div>
+        </ScrollReveal>
       </section>
 
       {/* ── FOUNDER ──────────────────────────── */}
       <section className="py-28 bg-navy">
+        <ScrollReveal>
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="mb-14">
             <span className="text-orange text-xs font-semibold uppercase tracking-widest">
@@ -248,10 +367,12 @@ export default function Home() {
             </a>
           </div>
         </div>
+        </ScrollReveal>
       </section>
 
       {/* ── GALLERY ──────────────────────────── */}
       <section className="py-28 bg-cream">
+        <ScrollReveal>
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="mb-14">
             <span className="text-orange text-xs font-semibold uppercase tracking-widest">
@@ -303,10 +424,12 @@ export default function Home() {
             </a>
           </div>
         </div>
+        </ScrollReveal>
       </section>
 
       {/* ── TEAM ─────────────────────────────── */}
       <section id="team" className="py-28 bg-white">
+        <ScrollReveal>
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="text-center mb-14">
             <span className="text-orange text-xs font-semibold uppercase tracking-widest">
@@ -334,6 +457,7 @@ export default function Home() {
             ))}
           </div>
         </div>
+        </ScrollReveal>
       </section>
 
       {/* ── FAQ ──────────────────────────────── */}
@@ -380,17 +504,23 @@ export default function Home() {
                 )}
               </p>
               <div className="flex flex-col gap-3">
-                <a href="https://line.me" target="_blank" rel="noopener noreferrer"
+                <a href="https://line.me/ti/p/5ET_QCNdpX" target="_blank" rel="noopener noreferrer"
                   className="bg-orange text-white font-semibold px-6 py-3 rounded-xl text-center hover:bg-orange-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 text-sm cursor-pointer">
                   {s('LINEグループに参加する', 'Join LINE Group', l)}
                 </a>
+                <p className="text-white/40 text-xs text-center">
+                  {s('入るだけでOK。挨拶不要。次回開催の告知だけ届きます。', 'Just join — no intro needed. You\'ll only get event announcements.', l)}
+                </p>
                 <Link href="/hub"
                   className="bg-white/10 text-white/80 font-medium px-6 py-3 rounded-xl text-center hover:bg-white/15 transition-colors duration-200 text-sm cursor-pointer">
                   {s('3rd Place Hubを見る', 'See 3rd Place Hub', l)}
                 </Link>
               </div>
-              <p className="text-white/25 text-xs text-center mt-4">
-                {s('すでにLINEグループにいる方は、グループ内の告知で次回開催日をご確認ください', 'Already in the LINE group? Check the group for the next event date.', l)}
+              <p className="text-white/50 text-xs text-center mt-4">
+                {s('すでにメンバーの方 → ', 'Already a member? → ', l)}
+                <a href="#next-event" className="text-orange hover:text-orange-dark underline underline-offset-2 transition-colors duration-200 cursor-pointer">
+                  {s('次回開催日をチェック ↑', 'Check next event date ↑', l)}
+                </a>
               </p>
             </div>
 
@@ -414,7 +544,7 @@ export default function Home() {
                   className="bg-white text-orange font-bold px-6 py-3 rounded-xl text-center hover:bg-cream transition-colors duration-200 text-sm cursor-pointer">
                   {s('3rd Place Japanを見る', 'See 3rd Place Japan', l)}
                 </Link>
-                <a href="https://line.me" target="_blank" rel="noopener noreferrer"
+                <a href="https://line.me/ti/p/5ET_QCNdpX" target="_blank" rel="noopener noreferrer"
                   className="bg-white/20 text-white font-medium px-6 py-3 rounded-xl text-center hover:bg-white/30 transition-colors duration-200 text-sm cursor-pointer">
                   {s('LINEグループに参加する', 'Join LINE Group', l)}
                 </a>
