@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import SubNavbar from '../../components/SubNavbar'
+import Navbar from '../../components/Navbar'
 import SubFooter from '../../components/SubFooter'
 import FAQSection from '../../components/FAQ'
 import ScrollReveal from '../../components/ScrollReveal'
@@ -192,7 +192,7 @@ export default function HubPage() {
     <div className="min-h-screen bg-cream">
 
       {/* ── Navbar ── */}
-      <SubNavbar lang={lang} setLang={setLang} page="hub" ctaHref="#apply" />
+      <Navbar lang={lang} setLang={setLang} />
 
       {/* ── Hero ── */}
       <section className="pt-40 pb-28 bg-navy relative overflow-hidden">

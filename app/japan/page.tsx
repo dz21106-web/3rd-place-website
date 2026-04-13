@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
-import SubNavbar from '../../components/SubNavbar'
+import Navbar from '../../components/Navbar'
 import SubFooter from '../../components/SubFooter'
 import FAQSection from '../../components/FAQ'
 import ScrollReveal from '../../components/ScrollReveal'
@@ -19,7 +19,7 @@ export default function JapanPage() {
     <div className="min-h-screen bg-cream">
 
       {/* ── Navbar ── */}
-      <SubNavbar lang={lang} setLang={setLang} page="japan" ctaHref="#apply" />
+      <Navbar lang={lang} setLang={setLang} />
 
       {/* ── Hero ── */}
       <section className="pt-32 pb-20 bg-navy relative overflow-hidden">
