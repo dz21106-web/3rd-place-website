@@ -28,10 +28,12 @@ fontFamily:
 ## 共通コンポーネント
 | コンポーネント | 用途 |
 |--------------|------|
-| `components/Navbar.tsx` | トップページ用ナビバー（透明→白のスクロール変化） |
-| `components/SubNavbar.tsx` | Japan/Hub用ナビバー（常時白、モバイルハンバーガーメニューあり） |
+| `components/Navbar.tsx` | **全3ページ共通**の統一ナビバー。`usePathname()`でページ検出。ドロップダウン式サブメニュー付き。トップページは透明→白スクロール変化、Japan/Hubは常時白 |
+| `components/SubNavbar.tsx` | **未使用（レガシー）** — Navbar.tsxに統合済み |
 | `components/SubFooter.tsx` | Japan/Hub用フッター（bg-ink、クロスリンク付き） |
 | `components/FAQ.tsx` | FAQ アコーディオン（全ページ共通で使う。hub独自実装はNG） |
+| `components/GallerySection.tsx` | トップページのギャラリー。カテゴリ別セクション（カレー会：横スクロール、特別イベント：4列グリッド、ワークショップ：2列グリッド） |
+| `components/ScrollReveal.tsx` | スクロール時のフェードインアニメーション（IntersectionObserver） |
 
 ## 多言語対応
 - `useState<Lang>('ja')` + `const s = (ja, en, l) => l === 'ja' ? ja : en` ヘルパー
@@ -71,6 +73,16 @@ fontFamily:
 - report.md: 最新のレビュー結果
 
 **使い方**: 「Hub appをレビューして」で6エージェントを並列実行 → 統合レポートを `agents/hub-app/report.md` に出力
+
+## イベント写真（public/images/events/）
+| カテゴリ | パス | 枚数 |
+|---------|------|------|
+| カレー会 | `curry/` | 18枚（curry3〜curry19, curry-food） |
+| 特別イベント | `special/` | 8枚（bbq, cafe, christmas, drive, nabe1-2, newyear1-2） |
+| ワークショップ | `workshop/` | 4枚（udon1-2, ikebana1-2） |
+| Japan用 | `../japan/` | 5枚（japan-event1/2/4, farewell-new1/2） |
+
+※ `events/` 直下にも旧写真あり（curry1-8, bbq, cafe, nabe, curry2）— GallerySectionはサブフォルダを参照
 
 ## 保留事項（実装しないでおくもの）
 - **CTA の LINE URL**: 現在 `https://line.me` はプレースホルダー。本番URLが決まるまで変更不要
@@ -166,8 +178,9 @@ favorites       // お気に入りID Set（localStorage: '3p_favs'）
 
 ---
 
-## 直近の改善実装履歴（2026-04-06）
-レポート第2回の改善1〜8を全て実装済み:
+## 改善実装履歴
+
+### 第2回レビュー改善（2026-04-06）
 - 中間セクション（Founder/Gallery末尾）にインラインCTA追加
 - 「初参加でも大丈夫」メッセージ + カレー会タイムラインをGallery内に追加
 - ヒーロー「日本から〜」リンクをピルボタン化（視認性向上）
@@ -178,3 +191,27 @@ favorites       // お気に入りID Set（localStorage: '3p_favs'）
 - Hub ヒーローに「開発中」バッジ追加 + CTA文言を「LINEで通知を受け取る」に変更
 - CTAボタンに hover:-translate-y-0.5 hover:shadow-lg マイクロインタラクション
 - コピーライト年 2025→2026
+
+### 第4回レビュー改善（2026-04-13）
+- **ギャラリー全面リニューアル**: タブ式→カテゴリ別セクション（カレー会横スクロール＋特別イベント4列グリッド＋ワークショップ2列グリッド）。初参加バッジ・リクエスト歓迎メッセージ付き
+- **イベント写真30枚追加**: curry/18枚、special/8枚、workshop/4枚をpublic/images/events/に整理
+- **Japan/Hub Hero演出強化**: グロー効果（bg-orange/10 blur-[100px]）＋フェードイン・フェードアップアニメーション追加
+- **Hub→Japan導線追加**: Hub Final CTAの2ボタン目を「東京イベントはこちら →」（/japanリンク）に変更
+- **FAQ追加**: 「初めてで一人でも大丈夫？」をトップページFAQの最初に追加
+- **globals.css**: `.scrollbar-hide` ユーティリティ追加（横スクロール用）
+
+### ナビバー統一（2026-04-13）
+- **SubNavbar廃止** → Navbar.tsxに全3ページ対応のドロップダウン式メニューを実装
+- `usePathname()`でページ検出（melbourne/japan/hub）
+- 3タブ構成: コミュニティ / 東京イベント / 渡航サポート
+- ホバーでサブメニュー表示（デスクトップ）、アコーディオン式（モバイル）
+- ページごとにCTAボタン文言が変化（参加する / 申し込む / 通知を受け取る）
+
+## Git履歴
+```
+a781b90 ナビバーを3ページ共通のドロップダウン式に統一
+f3e4886 第4回レビュー実施 & ギャラリー全面リニューアル + 3ページ演出統一
+5639392 第3回レビュー実施 & 改善実装（S-1〜S-3 + 競合分析）
+442b29a Add Instagram and Facebook links to all footers
+fb7f443 Initial commit (Clean)
+```

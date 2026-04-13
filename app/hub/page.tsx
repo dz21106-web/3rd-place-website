@@ -192,7 +192,7 @@ export default function HubPage() {
     <div className="min-h-screen bg-cream">
 
       {/* ── Navbar ── */}
-      <Navbar lang={lang} setLang={setLang} />
+      <Navbar lang={lang} setLang={setLang} page="hub" />
 
       {/* ── Hero ── */}
       <section className="pt-40 pb-28 bg-navy relative overflow-hidden">

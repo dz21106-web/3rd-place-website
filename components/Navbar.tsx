@@ -3,11 +3,11 @@
 import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 
 interface NavbarProps {
   lang: 'ja' | 'en'
   setLang: (lang: 'ja' | 'en') => void
+  page?: 'melbourne' | 'japan' | 'hub'
 }
 
 type PageKey = 'melbourne' | 'japan' | 'hub'
@@ -40,14 +40,13 @@ const ctaConfig: Record<PageKey, { href: string; ja: string; en: string }> = {
   hub: { href: '#apply', ja: '通知を受け取る', en: 'Get Notified' },
 }
 
-export default function Navbar({ lang, setLang }: NavbarProps) {
+export default function Navbar({ lang, setLang, page = 'melbourne' }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [dropdownOpen, setDropdownOpen] = useState<PageKey | null>(null)
   const dropdownTimeout = useRef<ReturnType<typeof setTimeout> | null>(null)
-  const pathname = usePathname()
 
-  const currentPage: PageKey = pathname === '/japan' ? 'japan' : pathname === '/hub' ? 'hub' : 'melbourne'
+  const currentPage: PageKey = page
   const isHome = currentPage === 'melbourne'
 
   useEffect(() => {
@@ -55,11 +54,6 @@ export default function Navbar({ lang, setLang }: NavbarProps) {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
-
-  useEffect(() => {
-    setMenuOpen(false)
-    setDropdownOpen(null)
-  }, [pathname])
 
   const showWhiteText = isHome && !scrolled
   const cta = ctaConfig[currentPage]

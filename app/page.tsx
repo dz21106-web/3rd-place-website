@@ -16,6 +16,29 @@ export default function Home() {
   const [lang, setLang] = useState<Lang>('ja')
   const l = lang
 
+  // Hero photo strips — alternate curry/non-curry so no similar photos are adjacent
+  // Last item must differ from first item (they touch at the loop seam)
+  const heroStripTop = [
+    '/images/events/special/bbq.jpg',
+    '/images/events/curry/curry3.jpg',
+    '/images/events/special/christmas.jpg',
+    '/images/events/curry/curry12.jpg',
+    '/images/events/workshop/udon1.jpg',
+    '/images/events/curry/curry7.jpg',
+    '/images/events/special/drive.jpg',
+    '/images/events/curry/curry15.jpg',
+  ]
+  const heroStripBottom = [
+    '/images/events/curry/curry5.jpg',
+    '/images/events/special/nabe1.jpg',
+    '/images/events/curry/curry9.jpg',
+    '/images/events/special/cafe.jpg',
+    '/images/events/curry/curry-food.jpg',
+    '/images/events/workshop/ikebana1.jpg',
+    '/images/events/curry/curry14.jpg',
+    '/images/events/special/newyear1.jpg',
+  ]
+
   const faqItems = {
     ja: [
       { q: 'カレー会に参加するには何が必要ですか？', a: '特別な準備は必要ありません。まずはLINEグループに参加してメッセージをお送りください。次回のカレー会の詳細をお知らせします。費用は無料です。' },
@@ -44,25 +67,35 @@ export default function Home() {
       <Navbar lang={lang} setLang={setLang} />
 
       {/* ── HERO ─────────────────────────────── */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-navy">
-        <div className="absolute inset-0">
-          <Image src="/images/events/curry1.jpg" alt="" fill className="object-cover opacity-15" priority />
-          <div className="absolute inset-0 bg-gradient-to-b from-navy/80 via-navy/90 to-navy" />
-        </div>
-
+      <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-navy">
         {/* Subtle background glow */}
         <div className="absolute top-1/3 right-1/4 w-96 h-96 rounded-full bg-orange/10 blur-[120px] pointer-events-none" />
         <div className="absolute bottom-1/4 left-1/4 w-72 h-72 rounded-full bg-orange/5 blur-[80px] pointer-events-none" />
 
-        <div className="relative z-10 text-center px-6 max-w-4xl mx-auto pt-24">
-          <div className="animate-fade-in inline-flex items-center gap-2 border border-white/20 rounded-full px-4 py-1.5 mb-10">
+        {/* Top photo strip — scrolls right */}
+        <div className="relative z-10 overflow-hidden mt-20 mb-8 opacity-80">
+          <div className="flex w-max animate-scroll-right">
+            {[...heroStripTop, ...heroStripTop].map((src, i) => (
+              <div key={i} className="flex-shrink-0 w-48 h-32 md:w-56 md:h-36 rounded-xl overflow-hidden ml-3">
+                <Image src={src} alt="" width={224} height={144} className="object-cover w-full h-full" />
+              </div>
+            ))}
+          </div>
+          {/* Fade edges */}
+          <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-navy to-transparent pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-navy to-transparent pointer-events-none" />
+        </div>
+
+        {/* Center text */}
+        <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
+          <div className="animate-fade-in inline-flex items-center gap-2 border border-white/20 rounded-full px-4 py-1.5 mb-8">
             <span className="w-1.5 h-1.5 rounded-full bg-orange animate-pulse" />
             <span className="text-white/60 text-xs font-medium tracking-widest uppercase">
               Melbourne · Japanese Community
             </span>
           </div>
 
-          <h1 className="animate-fade-up delay-100 font-heading text-5xl md:text-7xl font-bold text-white leading-tight mb-8">
+          <h1 className="animate-fade-up delay-100 font-heading text-5xl md:text-7xl font-bold text-white leading-tight mb-6">
             {s(
               <>メルボルンで、<br /><span className="text-orange">仲間</span>と出会い、<br />自分を広げる場所。</>,
               <><span className="text-orange">Meet friends.</span><br />Grow yourself.<br />Melbourne.</>,
@@ -70,7 +103,7 @@ export default function Home() {
             )}
           </h1>
 
-          <p className="animate-fade-up delay-300 text-white/50 text-base md:text-lg leading-relaxed mb-12 max-w-xl mx-auto">
+          <p className="animate-fade-up delay-300 text-white/50 text-base md:text-lg leading-relaxed mb-10 max-w-xl mx-auto">
             {s(
               'ワーホリ・留学・駐在・永住者が集まる、メルボルンの日本人コミュニティ。先輩たちのリアルな経験が、あなたのメルボルン生活を豊かにします。',
               'A Japanese community in Melbourne for working holidaymakers, students, expats, and residents.',
@@ -86,7 +119,7 @@ export default function Home() {
               {s('3rd Placeとは', 'About Us', l)}
             </a>
           </div>
-          <div className="animate-fade-up delay-500 mt-8">
+          <div className="animate-fade-up delay-500 mt-6">
             <Link href="/japan" className="inline-flex items-center gap-2 border border-white/40 text-white/80 hover:text-white hover:border-white/60 hover:bg-white/10 text-sm px-5 py-2 rounded-full transition-all duration-200 cursor-pointer">
               {s('日本からメルボルンを目指している方はこちら', 'Planning your move from Japan?', l)}
               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
@@ -94,7 +127,21 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+        {/* Bottom photo strip — scrolls left */}
+        <div className="relative z-10 overflow-hidden mt-8 mb-4 opacity-80">
+          <div className="flex w-max animate-scroll-left">
+            {[...heroStripBottom, ...heroStripBottom].map((src, i) => (
+              <div key={i} className="flex-shrink-0 w-48 h-32 md:w-56 md:h-36 rounded-xl overflow-hidden ml-3">
+                <Image src={src} alt="" width={224} height={144} className="object-cover w-full h-full" />
+              </div>
+            ))}
+          </div>
+          {/* Fade edges */}
+          <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-navy to-transparent pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-navy to-transparent pointer-events-none" />
+        </div>
+
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
           <span className="text-white/20 text-[10px] tracking-widest uppercase">scroll</span>
           <div className="w-px h-10 bg-gradient-to-b from-white/20 to-transparent" />
         </div>
@@ -142,6 +189,7 @@ export default function Home() {
 
       {/* ── ABOUT ────────────────────────────── */}
       <section id="about" className="py-28 bg-white">
+        {/* Top: Text + Photo Collage */}
         <ScrollReveal>
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-16 items-center">
           <div>
@@ -151,38 +199,80 @@ export default function Home() {
             <h2 className="font-heading text-4xl md:text-5xl font-bold text-navy mt-4 mb-6 leading-tight">
               {s('なぜ、3rd Placeは\n生まれたのか', 'Why 3rd Place\nWas Founded', l)}
             </h2>
-            <p className="text-slate-600 leading-relaxed mb-10 text-base">
+            <p className="text-slate-600 leading-relaxed text-base">
               {s(
                 'オーストラリアに来て間もない日本人の多くは、知り合いが少なく孤独な思いをしています。現地の日本人が連携し、情報を共有し合える「第3の場所」をつくりたい——それが原点です。',
                 'Many Japanese people who first come to Australia feel isolated and alone. Our mission was to create a "third place" where local Japanese can connect, share knowledge, and support each other.',
                 l
               )}
             </p>
-            <div className="space-y-6">
-              {[
-                { n: '01', title: s('まごころ', 'Genuine Care', l), desc: s('見返りを求めない善意でつながるコミュニティ', 'A community built on genuine goodwill without expectation', l) },
-                { n: '02', title: s('バトンパス', 'Pay It Forward', l), desc: s('先輩から後輩へ、経験と情報を引き継ぐ循環', 'Passing on experience and knowledge from seniors to newcomers', l) },
-                { n: '03', title: s('透明性', 'Transparency', l), desc: s('外からも中からも、開かれた誠実なコミュニティ', 'An honest, open community visible from inside and out', l) },
-                { n: '04', title: s('自走力', 'Empowerment', l), desc: s('一人ひとりが自分で動ける状態をつくる', 'Preparing each person to act confidently on their own', l) },
-              ].map((v, i) => (
-                <div key={i} className="flex gap-5 items-start">
-                  <span className="text-orange font-bold text-sm mt-0.5 flex-shrink-0 w-7">{v.n}</span>
-                  <div>
-                    <p className="font-semibold text-navy text-sm">{v.title}</p>
-                    <p className="text-slate-500 text-sm mt-1 leading-relaxed">{v.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
-            <div className="relative aspect-[3/4] rounded-2xl overflow-hidden mt-8 shadow-lg">
-              <Image src="/images/events/curry1.jpg" alt="カレー会" fill className="object-cover hover:scale-105 transition-transform duration-500" />
+          {/* Photo Collage */}
+          <div className="relative">
+            {/* Glow */}
+            <div className="absolute -top-8 -right-8 w-64 h-64 bg-orange/10 rounded-full blur-[80px] pointer-events-none" />
+            <div className="grid grid-cols-3 gap-3 relative">
+              <div className="col-span-2 relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
+                <Image src="/images/events/curry/curry12.jpg" alt="カレー会" fill className="object-cover hover:scale-105 transition-transform duration-500" />
+              </div>
+              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-lg mt-6">
+                <Image src="/images/events/special/christmas.jpg" alt="クリスマスパーティー" fill className="object-cover hover:scale-105 transition-transform duration-500" />
+              </div>
+              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-lg -mt-4">
+                <Image src="/images/events/workshop/udon1.jpg" alt="うどんワークショップ" fill className="object-cover hover:scale-105 transition-transform duration-500" />
+              </div>
+              <div className="col-span-2 relative aspect-[5/3] rounded-2xl overflow-hidden shadow-lg -mt-4">
+                <Image src="/images/events/special/bbq.jpg" alt="BBQ" fill className="object-cover hover:scale-105 transition-transform duration-500" />
+              </div>
             </div>
-            <div className="relative aspect-[3/4] rounded-2xl overflow-hidden -mt-8 shadow-lg">
-              <Image src="/images/japan/farewell1.jpg" alt="いってらっしゃい会" fill className="object-cover hover:scale-105 transition-transform duration-500" />
-            </div>
+          </div>
+        </div>
+        </ScrollReveal>
+
+        {/* Values cards */}
+        <ScrollReveal>
+        <div className="max-w-7xl mx-auto px-6 md:px-12 mt-20">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              {
+                n: '01',
+                title: s('仲間ができる', 'Make Friends', l),
+                desc: s('一人で来ても、帰る頃には友達がいる', 'Come alone, leave with friends', l),
+                icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>,
+              },
+              {
+                n: '02',
+                title: s('情報が手に入る', 'Get Real Info', l),
+                desc: s('仕事・住居・生活のリアルな話が聞ける', 'Hear real stories about jobs, housing, and life', l),
+                icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
+              },
+              {
+                n: '03',
+                title: s('居場所がある', 'A Place to Belong', l),
+                desc: s('困った時に頼れるコミュニティ', 'A community you can count on when you need it', l),
+                icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1h-2z" /></svg>,
+              },
+              {
+                n: '04',
+                title: s('自分で動ける', 'Stand On Your Own', l),
+                desc: s('誰かに依存せず、自分の足で進める', 'Move forward on your own two feet', l),
+                icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>,
+              },
+            ].map((v, i) => (
+              <div key={i} className="group relative bg-navy rounded-2xl p-6 overflow-hidden hover:-translate-y-1 hover:shadow-xl transition-all duration-300 cursor-default">
+                {/* Top accent line — expands on hover */}
+                <div className="absolute top-0 left-0 h-1 w-8 group-hover:w-full bg-orange transition-all duration-500" />
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-orange/15 flex items-center justify-center text-orange flex-shrink-0">
+                    {v.icon}
+                  </div>
+                  <span className="text-white/20 font-bold text-xs">{v.n}</span>
+                </div>
+                <p className="font-bold text-white text-sm mb-2">{v.title}</p>
+                <p className="text-white/50 text-xs leading-relaxed">{v.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
         </ScrollReveal>

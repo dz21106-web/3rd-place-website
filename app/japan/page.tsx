@@ -19,7 +19,7 @@ export default function JapanPage() {
     <div className="min-h-screen bg-cream">
 
       {/* ── Navbar ── */}
-      <Navbar lang={lang} setLang={setLang} />
+      <Navbar lang={lang} setLang={setLang} page="japan" />
 
       {/* ── Hero ── */}
       <section className="pt-32 pb-20 bg-navy relative overflow-hidden">

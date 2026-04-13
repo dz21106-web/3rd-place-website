@@ -43,6 +43,21 @@ body {
 .delay-400 { animation-delay: 0.4s; }
 .delay-500 { animation-delay: 0.5s; }
 
+@keyframes scrollRight {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes scrollLeft {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+.animate-scroll-right {
+  animation: scrollRight 30s linear infinite;
+}
+.animate-scroll-left {
+  animation: scrollLeft 30s linear infinite;
+}
+
 @layer utilities {
   .section-padding {
     @apply px-6 md:px-12 lg:px-24;

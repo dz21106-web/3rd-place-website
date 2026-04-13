@@ -7,57 +7,128 @@ import ScrollReveal from './ScrollReveal'
 type Lang = 'ja' | 'en'
 const s = (ja: string, en: string, l: Lang) => l === 'ja' ? ja : en
 
-interface PhotoItem {
-  img: string
-  label?: string
+interface EventCard {
+  id: string
+  labelJa: string
+  labelEn: string
+  descJa: string
+  descEn: string
+  cover: string
+  photos: string[]
 }
 
-const curryPhotos: PhotoItem[] = [
-  { img: '/images/events/curry/curry5.jpg' },
-  { img: '/images/events/curry/curry12.jpg' },
-  { img: '/images/events/curry/curry16.jpg' },
-  { img: '/images/events/curry/curry-food.jpg' },
-  { img: '/images/events/curry/curry3.jpg' },
-  { img: '/images/events/curry/curry7.jpg' },
-  { img: '/images/events/curry/curry8.jpg' },
-  { img: '/images/events/curry/curry9.jpg' },
-  { img: '/images/events/curry/curry4.jpg' },
-  { img: '/images/events/curry/curry6.jpg' },
-  { img: '/images/events/curry/curry10.jpg' },
-  { img: '/images/events/curry/curry11.jpg' },
-  { img: '/images/events/curry/curry13.jpg' },
-  { img: '/images/events/curry/curry14.jpg' },
-  { img: '/images/events/curry/curry15.jpg' },
-  { img: '/images/events/curry/curry17.jpg' },
-  { img: '/images/events/curry/curry18.jpg' },
-  { img: '/images/events/curry/curry19.jpg' },
-]
-
-const specialPhotos: { img: string; labelJa: string; labelEn: string; badge?: { ja: string; en: string } }[] = [
-  { img: '/images/events/special/bbq.jpg', labelJa: 'BBQ会', labelEn: 'BBQ', badge: { ja: 'メンバーの提案で実現', en: 'Suggested by a member' } },
-  { img: '/images/events/special/nabe1.jpg', labelJa: '鍋会', labelEn: 'Hot Pot Night' },
-  { img: '/images/events/special/nabe2.jpg', labelJa: '鍋会', labelEn: 'Hot Pot Night' },
-  { img: '/images/events/special/christmas.jpg', labelJa: 'クリスマスパーティー', labelEn: 'Christmas Party' },
-  { img: '/images/events/special/newyear1.jpg', labelJa: '大晦日パーティー', labelEn: "New Year's Eve" },
-  { img: '/images/events/special/newyear2.jpg', labelJa: '大晦日パーティー', labelEn: "New Year's Eve" },
-  { img: '/images/events/special/cafe.jpg', labelJa: 'カフェ会', labelEn: 'Café Meetup' },
-  { img: '/images/events/special/drive.jpg', labelJa: 'ドライブツアー', labelEn: 'Drive Tour' },
-]
-
-const workshopPhotos: { img: string; labelJa: string; labelEn: string; badge?: { ja: string; en: string } }[] = [
-  { img: '/images/events/workshop/udon1.jpg', labelJa: 'うどんワークショップ', labelEn: 'Udon Workshop', badge: { ja: 'みんなで作って食べる', en: 'Made and eaten together' } },
-  { img: '/images/events/workshop/udon2.jpg', labelJa: 'うどんワークショップ', labelEn: 'Udon Workshop' },
-  { img: '/images/events/workshop/ikebana1.jpg', labelJa: '生花ワークショップ', labelEn: 'Ikebana Workshop' },
-  { img: '/images/events/workshop/ikebana2.jpg', labelJa: '生花ワークショップ', labelEn: 'Ikebana Workshop' },
+const events: EventCard[] = [
+  {
+    id: 'curry',
+    labelJa: 'カレー会',
+    labelEn: 'Curry Night',
+    descJa: '毎月定期開催・無料',
+    descEn: 'Monthly · Free',
+    cover: '/images/events/curry/curry5.jpg',
+    photos: [
+      '/images/events/curry/curry5.jpg',
+      '/images/events/curry/curry12.jpg',
+      '/images/events/curry/curry3.jpg',
+      '/images/events/curry/curry-food.jpg',
+      '/images/events/curry/curry7.jpg',
+      '/images/events/curry/curry9.jpg',
+      '/images/events/curry/curry16.jpg',
+      '/images/events/curry/curry4.jpg',
+      '/images/events/curry/curry6.jpg',
+      '/images/events/curry/curry10.jpg',
+      '/images/events/curry/curry11.jpg',
+      '/images/events/curry/curry13.jpg',
+      '/images/events/curry/curry14.jpg',
+      '/images/events/curry/curry15.jpg',
+      '/images/events/curry/curry17.jpg',
+      '/images/events/curry/curry18.jpg',
+      '/images/events/curry/curry19.jpg',
+      '/images/events/curry/curry8.jpg',
+    ],
+  },
+  {
+    id: 'bbq',
+    labelJa: 'BBQ会',
+    labelEn: 'BBQ',
+    descJa: 'メンバーの提案で実現',
+    descEn: 'Suggested by a member',
+    cover: '/images/events/special/bbq.jpg',
+    photos: ['/images/events/special/bbq.jpg'],
+  },
+  {
+    id: 'nabe',
+    labelJa: '鍋会',
+    labelEn: 'Hot Pot Night',
+    descJa: '冬の定番イベント',
+    descEn: 'Winter favorite',
+    cover: '/images/events/special/nabe1.jpg',
+    photos: ['/images/events/special/nabe1.jpg', '/images/events/special/nabe2.jpg'],
+  },
+  {
+    id: 'christmas',
+    labelJa: 'クリスマスパーティー',
+    labelEn: 'Christmas Party',
+    descJa: '年末の特別イベント',
+    descEn: 'Year-end special',
+    cover: '/images/events/special/christmas.jpg',
+    photos: ['/images/events/special/christmas.jpg'],
+  },
+  {
+    id: 'newyear',
+    labelJa: '大晦日パーティー',
+    labelEn: "New Year's Eve",
+    descJa: 'みんなで年越し',
+    descEn: 'Celebrate together',
+    cover: '/images/events/special/newyear1.jpg',
+    photos: ['/images/events/special/newyear1.jpg', '/images/events/special/newyear2.jpg'],
+  },
+  {
+    id: 'cafe',
+    labelJa: 'カフェ会',
+    labelEn: 'Café Meetup',
+    descJa: 'メルボルンのカフェ文化を楽しむ',
+    descEn: 'Enjoy Melbourne café culture',
+    cover: '/images/events/special/cafe.jpg',
+    photos: ['/images/events/special/cafe.jpg'],
+  },
+  {
+    id: 'drive',
+    labelJa: 'ドライブツアー',
+    labelEn: 'Drive Tour',
+    descJa: '郊外の絶景スポットへ',
+    descEn: 'Scenic spots outside the city',
+    cover: '/images/events/special/drive.jpg',
+    photos: ['/images/events/special/drive.jpg'],
+  },
+  {
+    id: 'udon',
+    labelJa: 'うどんワークショップ',
+    labelEn: 'Udon Workshop',
+    descJa: 'みんなで作って食べる',
+    descEn: 'Made and eaten together',
+    cover: '/images/events/workshop/udon1.jpg',
+    photos: ['/images/events/workshop/udon1.jpg', '/images/events/workshop/udon2.jpg'],
+  },
+  {
+    id: 'ikebana',
+    labelJa: '生花ワークショップ',
+    labelEn: 'Ikebana Workshop',
+    descJa: '日本文化を体験',
+    descEn: 'Experience Japanese culture',
+    cover: '/images/events/workshop/ikebana1.jpg',
+    photos: ['/images/events/workshop/ikebana1.jpg', '/images/events/workshop/ikebana2.jpg'],
+  },
 ]
 
 export default function GallerySection({ l }: { l: Lang }) {
+  const [expanded, setExpanded] = useState<string | null>(null)
+
   return (
     <section className="py-28 bg-cream">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Header */}
         <ScrollReveal>
-          <div className="mb-16">
+          <div className="mb-12">
             <span className="text-orange text-xs font-semibold uppercase tracking-widest">
               {s('活動の様子', 'Gallery', l)}
             </span>
@@ -74,145 +145,67 @@ export default function GallerySection({ l }: { l: Lang }) {
           </div>
         </ScrollReveal>
 
-        {/* ── カレー会 ── */}
+        {/* Event cards grid */}
         <ScrollReveal>
-          <div className="mb-16">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-9 h-9 rounded-lg bg-orange/10 flex items-center justify-center flex-shrink-0">
-                <svg className="w-5 h-5 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" /></svg>
-              </div>
-              <div>
-                <h3 className="font-heading text-xl font-bold text-navy">
-                  {s('カレー会', 'Curry Night', l)}
-                </h3>
-                <p className="text-slate-400 text-xs mt-0.5">
-                  {s('毎月定期開催・無料', 'Monthly · Free', l)}
-                </p>
-              </div>
-            </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {events.map(event => {
+              const isOpen = expanded === event.id
+              return (
+                <div key={event.id} className="flex flex-col">
+                  <button
+                    onClick={() => setExpanded(isOpen ? null : event.id)}
+                    className="group relative rounded-xl overflow-hidden aspect-[4/3] shadow-md cursor-pointer"
+                  >
+                    <Image
+                      src={event.cover}
+                      alt={l === 'ja' ? event.labelJa : event.labelEn}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 768px) 50vw, 25vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/20 to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 p-3">
+                      <p className="text-white font-bold text-sm">
+                        {l === 'ja' ? event.labelJa : event.labelEn}
+                      </p>
+                      <p className="text-white/60 text-xs mt-0.5">
+                        {l === 'ja' ? event.descJa : event.descEn}
+                      </p>
+                    </div>
+                    {/* Photo count badge */}
+                    {event.photos.length > 1 && (
+                      <div className="absolute top-2.5 right-2.5 bg-navy/70 text-white text-xs font-semibold px-2 py-0.5 rounded-full flex items-center gap-1">
+                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                        {event.photos.length}
+                      </div>
+                    )}
+                  </button>
 
-            {/* 横スクロール */}
-            <div className="relative">
-              <div className="flex gap-3 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4 -mx-6 px-6 md:-mx-0 md:px-0">
-                {/* 1枚目を大きく */}
-                <div className="group relative flex-shrink-0 w-72 md:w-96 aspect-square rounded-xl overflow-hidden shadow-md snap-start">
-                  <Image src={curryPhotos[0].img} alt={s('カレー会', 'Curry Night', l)} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 288px, 384px" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="absolute top-3 left-3">
-                    <span className="bg-orange/90 text-white text-xs font-bold px-3 py-1 rounded-full">
-                      {s('この日、初参加10人', '10 first-timers this night', l)}
-                    </span>
-                  </div>
-                </div>
-                {/* 残りの写真 */}
-                {curryPhotos.slice(1).map((photo, i) => (
-                  <div key={i} className="group relative flex-shrink-0 w-48 md:w-64 aspect-[4/3] rounded-xl overflow-hidden shadow-md snap-start">
-                    <Image src={photo.img} alt={s('カレー会', 'Curry Night', l)} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 192px, 256px" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
-                ))}
-              </div>
-              {/* スクロールヒント */}
-              <div className="absolute right-0 top-0 bottom-4 w-16 bg-gradient-to-l from-cream to-transparent pointer-events-none hidden md:block" />
-            </div>
-          </div>
-        </ScrollReveal>
-
-        {/* ── スペシャルイベント ── */}
-        <ScrollReveal>
-          <div className="mb-16">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-9 h-9 rounded-lg bg-orange/10 flex items-center justify-center flex-shrink-0">
-                <svg className="w-5 h-5 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>
-              </div>
-              <div>
-                <h3 className="font-heading text-xl font-bold text-navy">
-                  {s('スペシャルイベント', 'Special Events', l)}
-                </h3>
-                <p className="text-slate-400 text-xs mt-0.5">
-                  {s('BBQ・鍋会・パーティー・ドライブなど', 'BBQ · Hot Pot · Parties · Drive Tours', l)}
-                </p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              {specialPhotos.map((photo, i) => (
-                <div key={i} className="group relative rounded-xl overflow-hidden aspect-[4/3] shadow-md">
-                  <Image
-                    src={photo.img}
-                    alt={l === 'ja' ? photo.labelJa : photo.labelEn}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    sizes="(max-width: 768px) 50vw, 25vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-transparent to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-3">
-                    <p className="text-white font-semibold text-sm">
-                      {l === 'ja' ? photo.labelJa : photo.labelEn}
-                    </p>
-                  </div>
-                  {photo.badge && (
-                    <div className="absolute top-3 left-3">
-                      <span className="bg-orange/90 text-white text-xs font-bold px-2.5 py-1 rounded-full">
-                        {l === 'ja' ? photo.badge.ja : photo.badge.en}
-                      </span>
+                  {/* Expanded photos */}
+                  {isOpen && event.photos.length > 1 && (
+                    <div className="mt-2 grid grid-cols-3 gap-1.5 animate-fade-in">
+                      {event.photos.slice(1).map((photo, i) => (
+                        <div key={i} className="relative rounded-lg overflow-hidden aspect-square">
+                          <Image
+                            src={photo}
+                            alt={l === 'ja' ? event.labelJa : event.labelEn}
+                            fill
+                            className="object-cover"
+                            sizes="(max-width: 768px) 16vw, 8vw"
+                          />
+                        </div>
+                      ))}
                     </div>
                   )}
                 </div>
-              ))}
-            </div>
+              )
+            })}
           </div>
         </ScrollReveal>
 
-        {/* ── ワークショップ ── */}
+        {/* Request message */}
         <ScrollReveal>
-          <div className="mb-12">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-9 h-9 rounded-lg bg-orange/10 flex items-center justify-center flex-shrink-0">
-                <svg className="w-5 h-5 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>
-              </div>
-              <div>
-                <h3 className="font-heading text-xl font-bold text-navy">
-                  {s('ワークショップ', 'Workshops', l)}
-                </h3>
-                <p className="text-slate-400 text-xs mt-0.5">
-                  {s('うどん作り・生花体験など', 'Udon making · Ikebana etc.', l)}
-                </p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-3">
-              {workshopPhotos.map((photo, i) => (
-                <div key={i} className="group relative rounded-xl overflow-hidden aspect-[3/2] shadow-md">
-                  <Image
-                    src={photo.img}
-                    alt={l === 'ja' ? photo.labelJa : photo.labelEn}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    sizes="50vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-transparent to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <p className="text-white font-semibold text-sm">
-                      {l === 'ja' ? photo.labelJa : photo.labelEn}
-                    </p>
-                  </div>
-                  {photo.badge && (
-                    <div className="absolute top-3 left-3">
-                      <span className="bg-orange/90 text-white text-xs font-bold px-2.5 py-1 rounded-full">
-                        {l === 'ja' ? photo.badge.ja : photo.badge.en}
-                      </span>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        </ScrollReveal>
-
-        {/* ── リクエスト歓迎メッセージ ── */}
-        <ScrollReveal>
-          <div className="bg-white rounded-xl p-6 border border-gray-100 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+          <div className="mt-12 bg-white rounded-xl p-6 border border-gray-100 flex flex-col sm:flex-row items-start sm:items-center gap-4">
             <div className="w-10 h-10 rounded-full bg-orange/10 flex items-center justify-center flex-shrink-0">
               <svg className="w-5 h-5 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
             </div>
