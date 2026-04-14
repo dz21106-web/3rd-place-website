@@ -298,7 +298,6 @@ export default function Home() {
                 step: '1',
                 title: s('LINEグループに入る', 'Join the LINE Group', l),
                 desc: s('ボタンひとつで参加完了。挨拶も不要です。次回イベントの告知が届くのを待つだけ。', 'One tap and you\'re in. No intro needed. Just wait for the next event announcement.', l),
-                sub: s('所要時間：10秒', 'Takes: 10 seconds', l),
                 icon: (
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
                 ),
@@ -307,7 +306,6 @@ export default function Home() {
                 step: '2',
                 title: s('イベントに来てみる', 'Show up to an event', l),
                 desc: s('メルボルンならカレー会、日本なら東京イベントへ。一人で来る方がほとんどなので安心してください。', 'Curry night in Melbourne, or Tokyo event in Japan. Most people come alone — you\'ll fit right in.', l),
-                sub: s('毎月開催・予約不要', 'Monthly · No reservation', l),
                 icon: (
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                 ),
@@ -316,7 +314,6 @@ export default function Home() {
                 step: '3',
                 title: s('仲間と情報が手に入る', 'Get friends & real info', l),
                 desc: s('気づいたら友達ができて、仕事・住居・生活のリアルな情報も自然と集まってきます。', 'Before you know it, you\'ll have friends — and real intel on jobs, housing, and life.', l),
-                sub: s('ここからがスタート', 'This is where it begins', l),
                 icon: (
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                 ),
@@ -333,7 +330,12 @@ export default function Home() {
                 </div>
                 <h4 className="font-heading text-lg font-bold text-navy mb-3">{item.title}</h4>
                 <p className="text-slate-600 text-sm leading-relaxed mb-4">{item.desc}</p>
-                <p className="text-orange text-xs font-semibold">{item.sub}</p>
+                {i === 1 && (
+                  <Link href="/japan" className="inline-flex items-center gap-1.5 text-orange hover:text-orange-dark text-xs font-semibold mb-3 transition-colors duration-200 cursor-pointer">
+                    {s('東京イベントの詳細はこちら', 'Tokyo Event Details', l)}
+                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                  </Link>
+                )}
                 {i < 2 && (
                   <div className="hidden md:block absolute top-1/2 -right-3 -translate-y-1/2 z-10">
                     <svg className="w-6 h-6 text-orange/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
@@ -468,7 +470,7 @@ export default function Home() {
 
 
       {/* ── TEAM ─────────────────────────────── */}
-      <section id="team" className="py-28 bg-white">
+      <section id="team" className="py-28 bg-cream">
         <ScrollReveal>
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="text-center mb-14">
@@ -476,23 +478,32 @@ export default function Home() {
               {s('運営チーム', 'Our Team', l)}
             </span>
             <h2 className="font-heading text-4xl md:text-5xl font-bold text-navy mt-4">
-              {s('メンバーを知る', 'Meet the Team', l)}
+              {s('メンバー紹介', 'Meet the Team', l)}
             </h2>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {[
-              { name: 'ヒロト', nameEn: 'Hiroto', role: s('代表 / オペレーション', 'Lead / Operations', l), bio: s('全体統括・Notion/DB・KPI管理。3rd Placeを仕組みとして動かす。', 'Oversees operations, Notion/DB, and KPIs.', l), img: '/images/team/hiroto.png' },
-              { name: 'ダイチ', nameEn: 'Daichi', role: s('テック / プロダクト', 'Tech / Product', l), bio: s('アプリ開発・DB設計担当。情報インフラで人と人を繋げる。', 'App development and DB design.', l), img: '/images/team/daichi.png' },
-              { name: 'あさひ', nameEn: 'Asahi', role: s('マッチング / 戦略', 'Strategy / Matching', l), bio: s('マッチング選定・投資家対応。3rd Placeの成長戦略を描く。', 'Handles matching curation and investor relations.', l), img: '/images/team/asahi.jpg' },
-              { name: 'みなと', nameEn: 'Minato', role: s('マーケティング / 発信', 'Marketing / Comms', l), bio: s('SNS運用・BtoB資料作成。現在メルボルン滞在中。', 'Manages SNS and outreach. Currently in Melbourne.', l), img: '/images/team/minato.png' },
+              { name: 'ヒロト', nameEn: 'Hiroto', from: s('東京都出身', 'From Tokyo', l), bio: s('メルボルンワーホリ2024年経験。ウクレレと山登りが趣味。いつかメルボルンに住みたいくらいメルボルンが大好き。', 'Melbourne WHV 2024. Loves ukulele and hiking. Loves Melbourne so much he wants to live there someday.', l), img: '/images/team/hiroto.png', scale: 'scale-110', pos: 'center 20%' },
+              { name: 'ダイチ', nameEn: 'Daichi', from: s('青森県出身', 'From Aomori', l), bio: s('メルボルンワーホリ2024年経験。海外旅行とサッカーが趣味。いつかイギリスでサッカー観戦をしたい。', 'Melbourne WHV 2024. Into travel and football. Dreams of watching a match in England.', l), img: '/images/team/daichi-new.jpg', scale: 'scale-125', pos: 'center 15%' },
+              { name: 'あさひ', nameEn: 'Asahi', from: s('福島県出身', 'From Fukushima', l), bio: s('世界一周で約35カ国を経験。ランニングとサウナが趣味。国内旅行も大好き。', 'Traveled to 35+ countries. Loves running, sauna, and domestic travel too.', l), img: '/images/team/asahi-new.jpg', scale: 'scale-110', pos: 'center center' },
+              { name: 'みなと', nameEn: 'Minato', from: s('神奈川県出身', 'From Kanagawa', l), bio: s('メルボルンワーホリ2024年経験。言語学習が趣味で中国語も話せる。ムードメーカー。', 'Melbourne WHV 2024. Language enthusiast who speaks Chinese. The mood maker.', l), img: '/images/team/minato-new2.png', scale: 'scale-110', pos: 'center 20%' },
             ].map((m, i) => (
-              <div key={i} className="flex flex-col items-center text-center">
-                <div className="relative w-32 h-32 rounded-full overflow-hidden bg-cream mb-5 ring-4 ring-cream shadow-md hover:ring-orange/30 transition-all duration-300 cursor-pointer">
-                  <Image src={m.img} alt={m.name} fill className="object-cover hover:scale-105 transition-transform duration-300" />
+              <div key={i} className="group bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+                <div className="flex items-center gap-4 mb-4">
+                  {/* Large circle photo */}
+                  <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden flex-shrink-0 ring-3 ring-orange/20 group-hover:ring-orange/50 transition-all duration-300">
+                    <Image src={m.img} alt={m.name} fill className={`object-cover ${m.scale}`} style={{ objectPosition: m.pos }} sizes="96px" />
+                  </div>
+                  <div>
+                    <p className="font-bold text-navy text-lg">{l === 'ja' ? m.name : m.nameEn}</p>
+                    <p className="text-slate-400 text-xs mt-0.5">{m.from}</p>
+                  </div>
                 </div>
-                <p className="font-bold text-navy text-base">{l === 'ja' ? m.name : m.nameEn}</p>
-                <p className="text-orange text-xs font-semibold mt-1 uppercase tracking-wide">{m.role}</p>
-                <p className="text-slate-500 text-xs mt-2 leading-relaxed max-w-[150px]">{m.bio}</p>
+                {/* Speech bubble */}
+                <div className="relative bg-cream rounded-xl px-4 py-3">
+                  <div className="absolute -top-2 left-8 w-4 h-4 bg-cream rotate-45" />
+                  <p className="relative text-navy/70 text-sm leading-relaxed">{m.bio}</p>
+                </div>
               </div>
             ))}
           </div>

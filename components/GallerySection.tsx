@@ -168,9 +168,6 @@ export default function GallerySection({ l }: { l: Lang }) {
                       <p className="text-white font-bold text-sm">
                         {l === 'ja' ? event.labelJa : event.labelEn}
                       </p>
-                      <p className="text-white/60 text-xs mt-0.5">
-                        {l === 'ja' ? event.descJa : event.descEn}
-                      </p>
                     </div>
                     {/* Photo count badge */}
                     {event.photos.length > 1 && (
