@@ -7,15 +7,14 @@ import Link from 'next/link'
 interface NavbarProps {
   lang: 'ja' | 'en'
   setLang: (lang: 'ja' | 'en') => void
-  page?: 'melbourne' | 'japan' | 'hub'
+  page?: 'melbourne' | 'japan'
 }
 
-type PageKey = 'melbourne' | 'japan' | 'hub'
+type PageKey = 'melbourne' | 'japan'
 
 const pageConfig: Record<PageKey, { path: string; ja: string; en: string }> = {
   melbourne: { path: '/', ja: 'コミュニティ', en: 'Community' },
   japan: { path: '/japan', ja: '東京イベント', en: 'Tokyo Event' },
-  hub: { path: '/hub', ja: '渡航サポート', en: 'Hub' },
 }
 
 const subLinks: Record<PageKey, { href: string; ja: string; en: string }[]> = {
@@ -28,16 +27,11 @@ const subLinks: Record<PageKey, { href: string; ja: string; en: string }[]> = {
     { href: '#details', ja: 'イベント詳細', en: 'Details' },
     { href: '#apply', ja: '申し込み', en: 'Apply' },
   ],
-  hub: [
-    { href: '#features', ja: 'サービス内容', en: 'Features' },
-    { href: '#apply', ja: '料金', en: 'Pricing' },
-  ],
 }
 
 const ctaConfig: Record<PageKey, { href: string; ja: string; en: string }> = {
-  melbourne: { href: 'https://line.me/ti/p/5ET_QCNdpX', ja: '参加する', en: 'Join Us' },
+  melbourne: { href: 'https://lin.ee/U8PVapG', ja: '参加する', en: 'Join Us' },
   japan: { href: '#apply', ja: '申し込む', en: 'Apply' },
-  hub: { href: '#apply', ja: '通知を受け取る', en: 'Get Notified' },
 }
 
 export default function Navbar({ lang, setLang, page = 'melbourne' }: NavbarProps) {

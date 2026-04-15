@@ -41,24 +41,22 @@ export default function Home() {
 
   const faqItems = {
     ja: [
-      { q: 'カレー会に参加するには何が必要ですか？', a: '特別な準備は必要ありません。まずはLINEグループに参加してメッセージをお送りください。次回のカレー会の詳細をお知らせします。費用は無料です。' },
-      { q: '初めてで一人なのですが、大丈夫ですか？', a: '全く問題ありません。毎回5〜10人の初参加者がいて、ほとんどの方が一人で来られています。到着したら運営メンバーが声をかけるので安心してください。' },
-      { q: '英語が話せなくても大丈夫ですか？', a: 'まったく問題ありません。コミュニティ内は基本的に日本語でのコミュニケーションです。英語交流の機会も設けていますが、参加は任意です。' },
-      { q: 'ワーホリ以外の方も参加できますか？', a: 'もちろんです。ワーホリ・留学・駐在・永住者・旅行者など、様々な方が参加されています。メルボルンに関わるすべての日本人を歓迎します。' },
-      { q: 'メルボルンに着いてからでも参加できますか？', a: 'はい、どのタイミングでも歓迎です。渡航前・到着直後・滞在中・帰国前、いつでもご参加いただけます。' },
-      { q: 'カレー会の参加費はかかりますか？', a: 'カレー会は完全無料です。まごころ精神のもと、永久無料で運営しています。' },
-      { q: '3rd Place HubとLINEグループは別ですか？', a: 'はい、別物です。LINEグループは誰でも無料で参加できるコミュニティです。3rd Place Hubは仕事・住居サポートの有料サービスで、現在開発中です。' },
-      { q: '運営に参加したい場合はどうすればいいですか？', a: 'LINEグループからお気軽にご連絡ください。現在、メルボルン現地での運営メンバーを随時募集しています。' },
+      { q: 'カレー会に参加するには何が必要ですか？', a: '特別な準備は何もいらないですよ！まずは公式LINEを友だち追加して、自動で届く申請フォームにお答えください。運営が確認後、3日以内にコミュニティLINEグループへご招待します。費用はもちろん無料です。' },
+      { q: '初めてで一人なのですが、大丈夫ですか？', a: '全然大丈夫です！毎回5〜10人くらい初参加の方がいて、ほぼみんな一人で来てますよ。到着したら運営メンバーから声をかけるので、安心してきてくださいね。' },
+      { q: '英語が話せなくても大丈夫ですか？', a: '全然問題ないです！コミュニティ内は基本日本語なので安心してください。英語交流の機会もあるけど、もちろん参加は自由です。' },
+      { q: 'ワーホリ以外の方も参加できますか？', a: 'もちろん！ワーホリ・留学・駐在・永住者・旅行者まで、いろんな人が参加してます。メルボルンに関わるすべての日本人を歓迎してるよ。' },
+      { q: 'メルボルンに着いてからでも参加できますか？', a: 'もちろん！渡航前でも到着直後でも、滞在中でも帰国前でも、どんなタイミングでも歓迎ですよ。' },
+      { q: 'カレー会の参加費はかかりますか？', a: 'カレー会は完全無料！まごころ精神のもと、これからもずっと無料でやっていきます。' },
+      { q: '運営に参加したい場合はどうすればいいですか？', a: 'ぜひぜひ！LINEグループから気軽にメッセージください。メルボルン現地の運営メンバーを絶賛募集中です。' },
     ],
     en: [
-      { q: 'What do I need to join the Curry Gathering?', a: 'No special preparation needed. Just join our LINE group and send us a message. We\'ll share the details for the next gathering. It\'s completely free.' },
-      { q: 'Is it okay to come alone for the first time?', a: 'Absolutely. Every event has 5–10 first-timers, and most come solo. Our team will greet you when you arrive — no need to worry.' },
-      { q: 'Is it okay if I can\'t speak English?', a: 'Absolutely. Communication within the community is primarily in Japanese. English exchange opportunities are available but entirely optional.' },
-      { q: 'Can people other than working holidaymakers join?', a: 'Of course. We welcome working holidaymakers, students, expats, permanent residents, and travelers — anyone connected to Melbourne.' },
-      { q: 'Can I join after arriving in Melbourne?', a: 'Yes, you\'re welcome at any stage — before departure, right after arrival, during your stay, or before heading home.' },
-      { q: 'Is there a fee for the Curry Gathering?', a: 'The Curry Gathering is completely free, and will always be. That\'s the spirit of magokoro.' },
-      { q: 'Is 3rd Place Hub different from the LINE group?', a: 'Yes. The LINE group is a free community open to everyone. 3rd Place Hub is a paid service for job and housing support, currently in development.' },
-      { q: 'How can I get involved in operations?', a: 'Feel free to reach out via our LINE group. We\'re always looking for local members in Melbourne to join our operations team.' },
+      { q: 'What do I need to join the Curry Gathering?', a: 'Nothing to prepare! Just add our Official LINE — you\'ll automatically get a short application form. Our team reviews it and invites you into the community LINE group within 3 days. And yep, it\'s totally free.' },
+      { q: 'Is it okay to come alone for the first time?', a: 'Totally fine! Every event has 5–10 first-timers, and almost everyone shows up solo. Our team will say hi when you arrive, so don\'t stress.' },
+      { q: 'Is it okay if I can\'t speak English?', a: 'No problem at all! The community runs mostly in Japanese. There are English exchange opportunities too, but jumping in is totally up to you.' },
+      { q: 'Can people other than working holidaymakers join?', a: 'Of course! WHV folks, students, expats, PRs, travelers — anyone with a Melbourne connection is welcome here.' },
+      { q: 'Can I join after arriving in Melbourne?', a: 'Yep, anytime works! Before you leave, right after you land, mid-stay, or right before heading home — whenever.' },
+      { q: 'Is there a fee for the Curry Gathering?', a: 'Curry Night is completely free — always has been, always will be. That\'s the spirit of magokoro.' },
+      { q: 'How can I get involved in operations?', a: 'Please do! Just drop us a message in the LINE group. We\'re always looking for local Melbourne members to help run things.' },
     ],
   }
 
@@ -112,11 +110,11 @@ export default function Home() {
           </p>
 
           <div className="animate-fade-up delay-500 flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://line.me/ti/p/5ET_QCNdpX" target="_blank" rel="noopener noreferrer" className="bg-orange text-white font-semibold px-8 py-3.5 rounded-full hover:bg-orange-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 text-sm cursor-pointer">
+            <a href="https://lin.ee/U8PVapG" target="_blank" rel="noopener noreferrer" className="bg-orange text-white font-semibold px-8 py-3.5 rounded-full hover:bg-orange-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 text-sm cursor-pointer">
               {s('LINEグループに参加する', 'Join LINE Group', l)}
             </a>
             <a href="#about" className="border border-white/25 text-white font-medium px-8 py-3.5 rounded-full hover:bg-white/10 transition-colors duration-200 text-sm cursor-pointer">
-              {s('3rd Placeとは', 'About Us', l)}
+              {s('3rd Placeってどんなとこ？', 'What\'s this place?', l)}
             </a>
           </div>
           <div className="animate-fade-up delay-500 mt-6">
@@ -180,7 +178,7 @@ export default function Home() {
           <span className="text-white/70 text-xs">
             {s('※ 住所はLINEグループでお知らせします', '* Address shared in LINE group', l)}
           </span>
-          <a href="https://line.me/ti/p/5ET_QCNdpX" target="_blank" rel="noopener noreferrer"
+          <a href="https://lin.ee/U8PVapG" target="_blank" rel="noopener noreferrer"
             className="bg-white text-orange font-bold text-xs px-4 py-2 rounded-full hover:bg-cream transition-colors duration-200 cursor-pointer whitespace-nowrap">
             {s('LINEで参加する', 'Join via LINE', l)}
           </a>
@@ -285,37 +283,45 @@ export default function Home() {
               {s('はじめかた', 'How to Join', l)}
             </span>
             <h3 className="font-heading text-3xl md:text-4xl font-bold text-navy mt-4">
-              {s('3つのステップで、仲間に出会える', 'Three steps to find your crew', l)}
+              {s('たった4ステップで、仲間に出会えちゃいます', 'Just 4 steps and you\'ll find your crew', l)}
             </h3>
             <p className="text-slate-500 text-sm mt-3 max-w-lg mx-auto">
-              {s('難しいことは何もありません。まずは気軽に覗いてみてください。', 'Nothing complicated. Just start with a peek.', l)}
+              {s('難しいことは何もないよ！まずはのぞいてみてね', 'Nothing tricky at all — just come take a peek!', l)}
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 mb-10">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
             {[
               {
                 step: '1',
-                title: s('LINEグループに入る', 'Join the LINE Group', l),
-                desc: s('ボタンひとつで参加完了。挨拶も不要です。次回イベントの告知が届くのを待つだけ。', 'One tap and you\'re in. No intro needed. Just wait for the next event announcement.', l),
+                title: s('公式LINEを友だち追加', 'Add our Official LINE', l),
+                desc: s('下のボタンから3rd Placeの公式LINEを友だち追加してね。追加すると、参加申請フォームのリンクが自動で届きます。', 'Tap the button below to add our 3rd Place Official LINE. Once you add us, you\'ll automatically get a link to our application form.', l),
                 icon: (
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
                 ),
               },
               {
                 step: '2',
-                title: s('イベントに来てみる', 'Show up to an event', l),
-                desc: s('メルボルンならカレー会、日本なら東京イベントへ。一人で来る方がほとんどなので安心してください。', 'Curry night in Melbourne, or Tokyo event in Japan. Most people come alone — you\'ll fit right in.', l),
+                title: s('申請フォームに回答', 'Fill out the form', l),
+                desc: s('お名前や参加したい理由など、簡単なアンケートに答えるだけ。1分くらいで終わるくらいの内容なので、気軽にどうぞ。', 'Just answer a short survey — your name, why you\'d like to join, and a few basics. It only takes about a minute.', l),
                 icon: (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
                 ),
               },
               {
                 step: '3',
-                title: s('仲間と情報が手に入る', 'Get friends & real info', l),
-                desc: s('気づいたら友達ができて、仕事・住居・生活のリアルな情報も自然と集まってきます。', 'Before you know it, you\'ll have friends — and real intel on jobs, housing, and life.', l),
+                title: s('承認後、コミュニティに参加', 'Approved & welcomed in', l),
+                desc: s('運営が内容を確認して、3日以内に公式LINEからご連絡します。承認されたら、そのままコミュニティLINEグループへご招待！', 'Our team will review your application and message you via Official LINE within 3 days. Once approved, we\'ll invite you straight into our community LINE group!', l),
                 icon: (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                ),
+              },
+              {
+                step: '4',
+                title: s('イベントに来てみる', 'Show up to an event', l),
+                desc: s('メルボルンならカレー会、日本なら東京イベントへ遊びに来てみてね。みんな一人で来る人ばかりだから、「ぼっちになったらどうしよう…」って心配はいりません！', 'Come hang out at curry night in Melbourne, or the Tokyo event in Japan! Almost everyone shows up solo, so don\'t worry about being "that person alone in the corner."', l),
+                icon: (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                 ),
               },
             ].map((item, i) => (
@@ -330,14 +336,14 @@ export default function Home() {
                 </div>
                 <h4 className="font-heading text-lg font-bold text-navy mb-3">{item.title}</h4>
                 <p className="text-slate-600 text-sm leading-relaxed mb-4">{item.desc}</p>
-                {i === 1 && (
+                {i === 3 && (
                   <Link href="/japan" className="inline-flex items-center gap-1.5 text-orange hover:text-orange-dark text-xs font-semibold mb-3 transition-colors duration-200 cursor-pointer">
                     {s('東京イベントの詳細はこちら', 'Tokyo Event Details', l)}
                     <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
                   </Link>
                 )}
-                {i < 2 && (
-                  <div className="hidden md:block absolute top-1/2 -right-3 -translate-y-1/2 z-10">
+                {i < 3 && (
+                  <div className="hidden lg:block absolute top-1/2 -right-3 -translate-y-1/2 z-10">
                     <svg className="w-6 h-6 text-orange/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
                   </div>
                 )}
@@ -345,31 +351,18 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Step 4: Hub（開発中） */}
-          <div className="bg-navy rounded-2xl p-8 border border-white/10 flex flex-col md:flex-row items-center gap-6">
-            <div className="flex items-center gap-3 flex-shrink-0">
-              <div className="w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white/60 font-bold text-sm">
-                4
-              </div>
-              <div className="inline-block bg-orange/20 text-orange text-xs font-bold px-3 py-1 rounded-full">
-                {s('開発中', 'Coming Soon', l)}
-              </div>
+          {/* 渡航サポート開発中の一言お知らせ */}
+          <div className="rounded-2xl px-6 py-5 border border-gray-200 bg-white flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left">
+            <div className="inline-block bg-orange/10 text-orange text-xs font-semibold px-3 py-1 rounded-full flex-shrink-0">
+              {s('お知らせ', 'Note', l)}
             </div>
-            <div className="flex-grow text-center md:text-left">
-              <h4 className="font-heading text-lg font-bold text-white mb-1">
-                {s('もっと本格的に準備したい人へ — 3rd Place Hub', 'For serious preparation — 3rd Place Hub', l)}
-              </h4>
-              <p className="text-white/50 text-sm">
-                {s(
-                  '先輩の引き継ぎノート・渡航前Zoom・推薦状・到着後フォローが揃った有料パッケージ。自分で動ける状態を作ります。',
-                  'A paid package with handover notes, pre-departure Zoom, recommendation letter, and post-arrival support.',
-                  l
-                )}
-              </p>
-            </div>
-            <Link href="/hub" className="bg-white/10 text-white/80 font-medium px-6 py-3 rounded-xl hover:bg-white/15 transition-colors duration-200 text-sm cursor-pointer whitespace-nowrap flex-shrink-0">
-              {s('詳しく見る →', 'Learn more →', l)}
-            </Link>
+            <p className="text-slate-600 text-sm leading-relaxed">
+              {s(
+                '渡航サポートサービスは現在開発中です。詳細はLINEグループで随時公開していきますね。',
+                'A pre-departure support service is in the works. We\'ll share details in the LINE group as things come together.',
+                l
+              )}
+            </p>
           </div>
         </div>
         </ScrollReveal>
@@ -396,7 +389,7 @@ export default function Home() {
                 </div>
                 <div>
                   <p className="text-white font-bold text-lg">{s('野口 マサ', 'Masa Noguchi', l)}</p>
-                  <p className="text-orange text-sm font-medium mt-0.5">{s('創設者 · みんなの「マサさん」', 'Founder · "Masa-san"', l)}</p>
+                  <p className="text-orange text-sm font-medium mt-0.5">{s('創設者 · メルボルン在住大学教授', 'Founder · University Professor in Melbourne', l)}</p>
                   <p className="text-white/40 text-xs mt-0.5">Melbourne, Australia</p>
                 </div>
               </div>
@@ -410,6 +403,14 @@ export default function Home() {
                   )}
                 </p>
               </blockquote>
+
+              <p className="text-white/60 leading-relaxed text-sm mb-4">
+                {s(
+                  'メルボルンの大学で教鞭をとる野口さんは、学生たちの孤独や経済的困難を間近で見てきました。その経験が、世代や立場を超えて支え合えるコミュニティ「3rd Place」を生み出す原動力となっています。',
+                  'As a university professor in Melbourne, Masa has witnessed firsthand the loneliness and financial struggles faced by young people. That experience became the driving force behind 3rd Place — a community where people support each other across generations and backgrounds.',
+                  l
+                )}
+              </p>
 
               <p className="text-white/50 leading-relaxed text-sm">
                 {s(
@@ -429,7 +430,7 @@ export default function Home() {
                 </div>
                 <div>
                   <p className="text-orange text-xs font-semibold uppercase tracking-widest">{s('誕生秘話', 'Origin Story', l)}</p>
-                  <h3 className="text-white font-bold text-lg mt-0.5">{s('マサカレーの始まり', "The Story of Masa's Curry", l)}</h3>
+                  <h3 className="text-white font-bold text-lg mt-0.5">{s('カレー会の始まり', "The Story of the Curry Night", l)}</h3>
                 </div>
               </div>
               <p className="text-white/60 leading-relaxed text-sm mb-5">
@@ -441,8 +442,8 @@ export default function Home() {
               </p>
               <p className="text-white/60 leading-relaxed text-sm">
                 {s(
-                  '日本のソウルフードであるカレーの香りと温かさを通じて、孤独を解消し、誰もが笑顔になれる場所を作ること。それが「マサカレー」に込められた願いです。',
-                  "Using the warmth of Japan's soul food to dissolve loneliness and bring smiles — that's the wish behind every pot of Masa's curry.",
+                  '日本のソウルフードであるカレーの香りと温かさを通じて、孤独を解消し、誰もが笑顔になれる場所を作ること。それが、このカレー会に込められた願いです。',
+                  "Using the warmth of Japan's soul food to dissolve loneliness and bring smiles — that's the wish behind every curry night.",
                   l
                 )}
               </p>
@@ -457,7 +458,7 @@ export default function Home() {
 
           <div className="mt-12 text-center">
             <a href="#cta" className="inline-flex items-center gap-2 text-white/50 hover:text-orange text-sm font-medium transition-colors duration-200 cursor-pointer">
-              {s('マサさんのカレー会に参加する', "Join Masa's Curry Night", l)}
+              {s('カレー会に参加する', "Join the Curry Night", l)}
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
             </a>
           </div>
@@ -531,41 +532,40 @@ export default function Home() {
         <div className="max-w-5xl mx-auto px-6 md:px-12">
           <div className="text-center mb-14">
             <h2 className="font-heading text-4xl md:text-5xl font-bold text-white">
-              {s('あなたはどちらですか？', 'Where are you right now?', l)}
+              {s('あなたは今、どこにいますか？', 'Where are you right now?', l)}
             </h2>
             <p className="text-white/50 mt-4 text-sm">
-              {s('状況に合わせた入口を選んでください', 'Choose the path that fits your situation', l)}
+              {s('あなたの状況に合う入口を選んでね', 'Pick the entrance that fits you', l)}
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-5">
-            {/* Melbourne */}
+            {/* Already in Melbourne */}
             <div className="bg-navy-light rounded-2xl p-8 border border-white/10 hover:border-orange/30 transition-colors duration-200 flex flex-col">
               <div className="flex items-center gap-3 mb-5">
                 <span className="text-2xl">🇦🇺</span>
                 <h3 className="text-xl font-bold text-white">
-                  {s('メルボルンにいる・これから行く方', 'In Melbourne or Heading There', l)}
+                  {s('すでにメルボルンにいる方', 'Already in Melbourne', l)}
                 </h3>
+              </div>
+              <div className="relative aspect-[16/9] rounded-xl overflow-hidden mb-5">
+                <Image src="/images/events/curry/curry12.jpg" alt="カレー会" fill className="object-cover" />
               </div>
               <p className="text-white/50 text-sm leading-relaxed mb-7 flex-grow">
                 {s(
-                  'LINEグループに参加して、カレー会・各種イベントに参加しよう。渡航前の準備は3rd Place Hubで。',
-                  'Join our LINE group and come to curry nights and events. Prepare for your move with 3rd Place Hub.',
+                  'まずは公式LINEを友だち追加→届くフォームに答えるだけ。承認後、カレー会や他のイベントに遊びに来てね。月1ペースで集まってます。',
+                  'Just add our Official LINE and fill out the short form. Once approved, come hang out at curry nights and other events — we meet monthly.',
                   l
                 )}
               </p>
               <div className="flex flex-col gap-3">
-                <a href="https://line.me/ti/p/5ET_QCNdpX" target="_blank" rel="noopener noreferrer"
+                <a href="https://lin.ee/U8PVapG" target="_blank" rel="noopener noreferrer"
                   className="bg-orange text-white font-semibold px-6 py-3 rounded-xl text-center hover:bg-orange-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 text-sm cursor-pointer">
                   {s('LINEグループに参加する', 'Join LINE Group', l)}
                 </a>
                 <p className="text-white/40 text-xs text-center">
-                  {s('入るだけでOK。挨拶不要。次回開催の告知だけ届きます。', 'Just join — no intro needed. You\'ll only get event announcements.', l)}
+                  {s('友だち追加→1分のフォーム→承認後にご招待。シンプルな3ステップです。', 'Add us → 1-min form → invited once approved. Simple 3-step flow.', l)}
                 </p>
-                <Link href="/hub"
-                  className="bg-white/10 text-white/80 font-medium px-6 py-3 rounded-xl text-center hover:bg-white/15 transition-colors duration-200 text-sm cursor-pointer">
-                  {s('3rd Place Hubを見る', 'See 3rd Place Hub', l)}
-                </Link>
               </div>
               <p className="text-white/50 text-xs text-center mt-4">
                 {s('すでにメンバーの方 → ', 'Already a member? → ', l)}
@@ -575,29 +575,37 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Japan */}
+            {/* Heading to Melbourne */}
             <div className="bg-orange rounded-2xl p-8 flex flex-col hover:bg-orange-dark transition-colors duration-200">
-              <div className="flex items-center gap-3 mb-5">
-                <span className="text-2xl">🇯🇵</span>
+              <div className="flex items-center gap-3 mb-2">
+                <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                </svg>
                 <h3 className="text-xl font-bold text-white">
-                  {s('日本にいる方', 'Currently in Japan', l)}
+                  {s('これからメルボルンに行く方', 'Heading to Melbourne', l)}
                 </h3>
+              </div>
+              <p className="text-white/70 text-xs mb-5">
+                {s('日本にいる方・渡航を検討中の方はこちら', 'For those in Japan or considering the move', l)}
+              </p>
+              <div className="relative aspect-[16/9] rounded-xl overflow-hidden mb-5">
+                <Image src="/images/japan/event1.jpg" alt="3rd Place Japan" fill className="object-cover" />
               </div>
               <p className="text-white/80 text-sm leading-relaxed mb-7 flex-grow">
                 {s(
-                  '東京で毎月開催するワーホリ・留学準備イベント「3rd Place Japan」へ。メルボルン帰国者のリアルな話を聞こう。',
-                  'Join our monthly Tokyo event "3rd Place Japan" for working holiday preparation. Hear real stories from Melbourne returnees.',
+                  '渡航前の不安は、先輩の話と準備で全部解消しちゃいましょう。3つの入口があります。',
+                  'Turn pre-departure nerves into confidence with senpai stories and real prep. Three ways in:',
                   l
                 )}
               </p>
               <div className="flex flex-col gap-3">
                 <Link href="/japan"
                   className="bg-white text-orange font-bold px-6 py-3 rounded-xl text-center hover:bg-cream transition-colors duration-200 text-sm cursor-pointer">
-                  {s('3rd Place Japanを見る', 'See 3rd Place Japan', l)}
+                  {s('東京イベント（3rd Place Japan）を見る', 'See 3rd Place Japan (Tokyo)', l)}
                 </Link>
-                <a href="https://line.me/ti/p/5ET_QCNdpX" target="_blank" rel="noopener noreferrer"
-                  className="bg-white/20 text-white font-medium px-6 py-3 rounded-xl text-center hover:bg-white/30 transition-colors duration-200 text-sm cursor-pointer">
-                  {s('LINEグループに参加する', 'Join LINE Group', l)}
+                <a href="https://lin.ee/U8PVapG" target="_blank" rel="noopener noreferrer"
+                  className="bg-white/15 border border-white/40 text-white font-medium px-6 py-3 rounded-xl text-center hover:bg-white/25 transition-colors duration-200 text-sm cursor-pointer">
+                  {s('または、まずLINEグループに参加する', 'Or just join the LINE group', l)}
                 </a>
               </div>
             </div>
@@ -618,7 +626,6 @@ export default function Home() {
           <div className="flex flex-wrap justify-center gap-6 text-sm">
             <a href="#about" className="text-white/40 hover:text-white/80 transition-colors duration-200 cursor-pointer">{s('わたしたちについて', 'About', l)}</a>
             <Link href="/japan" className="text-white/40 hover:text-white/80 transition-colors duration-200 cursor-pointer">3rd Place Japan</Link>
-            <Link href="/hub" className="text-white/40 hover:text-white/80 transition-colors duration-200 cursor-pointer">3rd Place Hub</Link>
             <a href="#team" className="text-white/40 hover:text-white/80 transition-colors duration-200 cursor-pointer">{s('チーム', 'Team', l)}</a>
           </div>
           <div className="flex items-center gap-4">

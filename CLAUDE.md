@@ -22,13 +22,15 @@ fontFamily:
 | パス | 内容 |
 |------|------|
 | `/` (app/page.tsx) | トップページ — Hero, Stats, About, Founder, Gallery, Team, FAQ, Final CTA, Footer |
-| `/japan` (app/japan/page.tsx) | 3rd Place Japan — 東京での月1イベント（¥500） |
-| `/hub` (app/hub/page.tsx) | 3rd Place Hub — 有料渡航サポートパッケージ（A$150〜200、**現在開発中**） |
+| `/japan` (app/japan/page.tsx) | 3rd Place Japan — 東京での月1イベント（¥1,000） |
+
+> **⚠️ 3rd Place Hub は現在非公開（2026-04-14〜）**
+> 運営判断により `/hub` ページおよびHub関連セクションは全てサイトから削除済み。サイト上には「渡航サポートサービス開発中・LINEグループで随時公開予定」の一言のみ残している。サービス内容が確定するまで復元しないこと。アーカイブは `docs/hub-archive/` に保存（hub-page.tsx.txt / README.md）。
 
 ## 共通コンポーネント
 | コンポーネント | 用途 |
 |--------------|------|
-| `components/Navbar.tsx` | **全3ページ共通**の統一ナビバー。`usePathname()`でページ検出。ドロップダウン式サブメニュー付き。トップページは透明→白スクロール変化、Japan/Hubは常時白 |
+| `components/Navbar.tsx` | **全2ページ共通**の統一ナビバー。`usePathname()`でページ検出。ドロップダウン式サブメニュー付き。トップページは透明→白スクロール変化、Japanは常時白 |
 | `components/SubNavbar.tsx` | **未使用（レガシー）** — Navbar.tsxに統合済み |
 | `components/SubFooter.tsx` | Japan/Hub用フッター（bg-ink、クロスリンク付き） |
 | `components/FAQ.tsx` | FAQ アコーディオン（全ページ共通で使う。hub独自実装はNG） |
@@ -85,7 +87,7 @@ fontFamily:
 ※ `events/` 直下にも旧写真あり（curry1-8, bbq, cafe, nabe, curry2）— GallerySectionはサブフォルダを参照
 
 ## 保留事項（実装しないでおくもの）
-- **CTA の LINE URL**: 現在 `https://line.me` はプレースホルダー。本番URLが決まるまで変更不要
+- **CTA の LINE URL**: 全ページ `https://lin.ee/U8PVapG`（3rd Place Melbourne公式LINEアカウント）。友だち追加→あいさつメッセージ内のGoogleフォームリンクから申請→運営が審査→手動でコミュニティLINEグループに招待、という2段階フロー
 - **Hub のダミーテスティモニアル**: 実際の参加者の声が集まるまで置き換えない
 - **GitHub Pages デプロイ**: 未実施
 
