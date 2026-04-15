@@ -137,8 +137,8 @@ export default function GallerySection({ l }: { l: Lang }) {
             </h2>
             <p className="text-slate-500 text-sm mt-3 max-w-xl">
               {s(
-                'カレー会を中心に、メンバーの「やりたい！」から生まれた多彩なイベントを開催しています。',
-                'From regular Curry Nights to events born from members\' ideas — here\'s what we do.',
+                'カレー会を中心に、メンバーの「これやりたい！」って声から生まれたイベントをいろいろやってます。',
+                'Regular Curry Nights plus all kinds of events that started with someone saying "let\'s do this!"',
                 l
               )}
             </p>
@@ -208,12 +208,12 @@ export default function GallerySection({ l }: { l: Lang }) {
             </div>
             <div>
               <p className="text-navy font-semibold text-sm">
-                {s('「こんなイベントやりたい！」メンバーの声でイベントが生まれます。', '"I want to do this!" — Events are born from members\' voices.', l)}
+                {s('「こんなイベントやってみたい！」そんな声から、次のイベントが生まれます。', '"I want to do this!" — that\'s how new events get started.', l)}
               </p>
               <p className="text-slate-500 text-xs mt-1">
                 {s(
-                  'カレー会は毎月無料で定期開催。それ以外のイベントは、メンバーからのリクエストで実現しています。あなたのアイデアも大歓迎。',
-                  'Curry Night runs monthly for free. All other events are member-requested. Your ideas are welcome too.',
+                  'カレー会は毎月無料でやってます。それ以外のイベントは、みんなからのリクエストで実現してるよ。あなたのアイデアもぜひ聞かせてね！',
+                  'Curry Night happens every month, always free. Everything else? Born from members\' ideas — so bring yours too!',
                   l
                 )}
               </p>

@@ -3,11 +3,11 @@ import Link from 'next/link'
 
 interface SubFooterProps {
   lang: 'ja' | 'en'
-  page: 'japan' | 'hub'
+  page: 'japan'
 }
 
-export default function SubFooter({ lang, page }: SubFooterProps) {
-  const pageName = page === 'japan' ? 'Japan' : 'Hub'
+export default function SubFooter({ lang }: SubFooterProps) {
+  const pageName = 'Japan'
   const backLabel = lang === 'ja' ? '← トップページへ戻る' : '← Back to Top'
 
   return (
@@ -21,16 +21,6 @@ export default function SubFooter({ lang, page }: SubFooterProps) {
           <Link href="/" className="text-white/30 hover:text-white/60 transition-colors duration-200 cursor-pointer">
             {backLabel}
           </Link>
-          {page === 'japan' && (
-            <Link href="/hub" className="text-white/30 hover:text-white/60 transition-colors duration-200 cursor-pointer">
-              3rd Place Hub
-            </Link>
-          )}
-          {page === 'hub' && (
-            <Link href="/japan" className="text-white/30 hover:text-white/60 transition-colors duration-200 cursor-pointer">
-              3rd Place Japan
-            </Link>
-          )}
         </div>
         <div className="flex items-center gap-4">
           <a href="https://www.instagram.com/3rd.placejapan?igsh=OHZsMDFtM3BvbTli&utm_source=qr" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-white/60 transition-colors duration-200 cursor-pointer" aria-label="Instagram">
