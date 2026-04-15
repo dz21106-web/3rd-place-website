@@ -195,7 +195,11 @@ export default function Home() {
               {s('わたしたちについて', 'About Us', l)}
             </span>
             <h2 className="font-heading text-4xl md:text-5xl font-bold text-navy mt-4 mb-6 leading-tight">
-              {s('なぜ、3rd Placeは生まれたのか', 'Why 3rd Place Was Founded', l)}
+              {s(
+                <>なぜ、3rd Placeは<br className="md:hidden" />生まれたのか</>,
+                <>Why 3rd Place<br className="md:hidden" />Was Founded</>,
+                l
+              )}
             </h2>
             <p className="text-slate-600 leading-relaxed text-base">
               {s(
@@ -283,7 +287,7 @@ export default function Home() {
               {s('はじめかた', 'How to Join', l)}
             </span>
             <h3 className="font-heading text-3xl md:text-4xl font-bold text-navy mt-4">
-              {s('たった3ステップで、仲間に出会えちゃいます', 'Just 3 steps and you\'ll find your crew', l)}
+              {s('たった3ステップで、仲間に出会えます', 'Just 3 steps and you\'ll find your crew', l)}
             </h3>
             <p className="text-slate-500 text-sm mt-3 max-w-lg mx-auto">
               {s('難しいことは何もないよ！まずはのぞいてみてね', 'Nothing tricky at all — just come take a peek!', l)}
@@ -523,8 +527,12 @@ export default function Home() {
       <section id="cta" className="py-28 bg-navy">
         <div className="max-w-5xl mx-auto px-6 md:px-12">
           <div className="text-center mb-14">
-            <h2 className="font-heading text-4xl md:text-5xl font-bold text-white">
-              {s('あなたは今、どこにいますか？', 'Where are you right now?', l)}
+            <h2 className="font-heading text-4xl md:text-5xl font-bold text-white leading-tight">
+              {s(
+                <>あなたは今、<br className="md:hidden" />どこにいますか？</>,
+                'Where are you right now?',
+                l
+              )}
             </h2>
             <p className="text-white/50 mt-4 text-sm">
               {s('あなたの状況に合う入口を選んでね', 'Pick the entrance that fits you', l)}

@@ -124,8 +124,12 @@ export default function JapanPage() {
             <span className="text-orange text-xs font-semibold uppercase tracking-widest">
               {s('イベント内容', 'Event Details', l)}
             </span>
-            <h2 className="font-heading text-4xl md:text-5xl font-bold text-navy mt-4 max-w-2xl leading-tight">
-              {s('2部構成で、出発前の準備を整える', 'Two parts to prepare you before departure', l)}
+            <h2 className="font-heading text-3xl md:text-5xl font-bold text-navy mt-4 max-w-2xl leading-tight">
+              {s(
+                <>2部構成で、<br className="md:hidden" />出発前の準備を整える</>,
+                <>Two parts to prepare<br className="md:hidden" /> you before departure</>,
+                l
+              )}
             </h2>
           </div>
 
@@ -209,7 +213,7 @@ export default function JapanPage() {
               <span className="text-orange text-xs font-semibold uppercase tracking-widest">
                 {s('特別イベント', 'Special Event', l)}
               </span>
-              <h2 className="font-heading text-4xl font-bold text-navy mt-4 mb-6 leading-tight">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold text-navy mt-4 mb-6 leading-tight">
                 {s('いってらっしゃい会', '"See You Off" Party', l)}
               </h2>
               <p className="text-slate-600 leading-relaxed mb-6">
@@ -237,7 +241,7 @@ export default function JapanPage() {
         </ScrollReveal>
       </section>
 
-      {/* ── はじめかた（4ステップ） ── */}
+      {/* ── はじめかた（3ステップ） ── */}
       <section className="py-28 bg-cream">
         <ScrollReveal>
         <div className="max-w-7xl mx-auto px-6 md:px-12">
@@ -246,7 +250,7 @@ export default function JapanPage() {
               {s('はじめかた', 'How to Join', l)}
             </span>
             <h3 className="font-heading text-3xl md:text-4xl font-bold text-navy mt-4">
-              {s('たった3ステップで、仲間に出会えちゃいます', 'Just 3 steps and you\'ll find your crew', l)}
+              {s('たった3ステップで、仲間に出会えます', 'Just 3 steps and you\'ll find your crew', l)}
             </h3>
             <p className="text-slate-500 text-sm mt-3 max-w-lg mx-auto">
               {s('難しいことは何もないよ！まずはのぞいてみてね', 'Nothing tricky at all — just come take a peek!', l)}
@@ -337,7 +341,7 @@ export default function JapanPage() {
                 a: s('東京都内の喫茶店で開催しています。具体的な会場は申し込み後にLINEでお知らせします。', 'At a café in Tokyo. The exact venue is shared via LINE after you apply.', l),
               },
               {
-                q: s('参加費の500円はどうやって払いますか？', 'How do I pay the ¥500 entry fee?', l),
+                q: s('参加費の¥1,000はどうやって払いますか？', 'How do I pay the ¥1,000 entry fee?', l),
                 a: s('当日現地でお支払いいただきます。事前決済は不要です。', 'Pay on the day at the venue. No advance payment required.', l),
               },
               {
@@ -365,7 +369,11 @@ export default function JapanPage() {
       <section id="apply" className="py-28 bg-orange">
         <div className="max-w-3xl mx-auto px-6 md:px-12 text-center">
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            {s('次のイベントに申し込む', 'Apply for the next event', l)}
+            {s(
+              <>次のイベントに<br className="md:hidden" />申し込む</>,
+              <>Apply for the<br className="md:hidden" /> next event</>,
+              l
+            )}
           </h2>
           <p className="text-white/80 text-lg mb-10 leading-relaxed">
             {s(
