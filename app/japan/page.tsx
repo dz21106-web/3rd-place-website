@@ -78,7 +78,7 @@ export default function JapanPage() {
               { num: '¥1,000', label: s('参加費（1ドリンク付）', 'Entry Fee (1 drink incl.)', l) },
               { num: s('毎月', 'Monthly', l), label: s('定期開催', 'Regular Event', l) },
               { num: s('2部制', '2 Parts', l), label: s('相談会 + 交流会', 'Consultation + Exchange', l) },
-              { num: s('東京', 'Tokyo', l), label: s('喫茶店で開催', 'Café Venue', l) },
+              { num: s('東京', 'Tokyo', l), label: s('神保町で開催', 'Jimbocho Venue', l) },
             ].map((stat, i) => (
               <div key={i}>
                 <p className="text-4xl md:text-5xl font-bold text-navy">{stat.num}</p>
@@ -106,7 +106,7 @@ export default function JapanPage() {
           </div>
           <div className="flex flex-col items-center sm:items-start gap-1">
             <span className="text-white/70 text-xs">
-              {s('📍 喫茶店エル（神保町/御茶ノ水）', '📍 Café El (Jimbocho/Ochanomizu)', l)}
+              {s('📍 Bar/Grill PINE（神保町/御茶ノ水）', '📍 Bar/Grill PINE (Jimbocho/Ochanomizu)', l)}
             </span>
           </div>
           <a href="#apply"
@@ -338,7 +338,7 @@ export default function JapanPage() {
             <FAQSection items={[
               {
                 q: s('東京イベントはどこで開催されますか？', 'Where does the Tokyo event take place?', l),
-                a: s('東京都内の喫茶店で開催しています。具体的な会場は申し込み後にメールでお知らせします。', 'At a café in Tokyo. The exact venue is emailed to you after you apply.', l),
+                a: s('神保町/御茶ノ水のBar/Grill PINEで開催しています。詳細な場所は申し込み後にメールでお知らせします。', 'We hold it at Bar/Grill PINE in Jimbocho/Ochanomizu. Full details are emailed to you after you apply.', l),
               },
               {
                 q: s('参加費の¥1,000はどうやって払いますか？', 'How do I pay the ¥1,000 entry fee?', l),
