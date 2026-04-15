@@ -8,7 +8,8 @@ import FAQSection from '../../components/FAQ'
 import ScrollReveal from '../../components/ScrollReveal'
 
 type Lang = 'ja' | 'en'
-const s = (ja: string, en: string, l: Lang) => l === 'ja' ? ja : en
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const s = (ja: any, en: any, l: Lang) => l === 'ja' ? ja : en
 const tags = (ja: string[], en: string[], l: Lang) => l === 'ja' ? ja : en
 
 export default function JapanPage() {
@@ -41,10 +42,10 @@ export default function JapanPage() {
             </div>
           </div>
 
-          <h1 className="animate-fade-up delay-100 font-heading text-5xl md:text-7xl font-bold text-white leading-tight mb-6 max-w-3xl">
+          <h1 className="animate-fade-up delay-100 font-heading text-4xl md:text-7xl font-bold text-white leading-tight mb-6 max-w-3xl">
             {s(
-              '渡航前に、\n先輩の声を\n聞いておこう。',
-              'Before you go,\nhear from those\nwho\'ve been.',
+              <>渡航前に、<br />先輩の声を<br />聞いておこう。</>,
+              <>Before you go,<br />hear from those<br />who&apos;ve been.</>,
               l
             )}
           </h1>
@@ -124,7 +125,7 @@ export default function JapanPage() {
               {s('イベント内容', 'Event Details', l)}
             </span>
             <h2 className="font-heading text-4xl md:text-5xl font-bold text-navy mt-4 max-w-2xl leading-tight">
-              {s('2部構成で、\n出発前の準備を整える', 'Two parts to prepare\nyou before departure', l)}
+              {s('2部構成で、出発前の準備を整える', 'Two parts to prepare you before departure', l)}
             </h2>
           </div>
 
@@ -245,33 +246,25 @@ export default function JapanPage() {
               {s('はじめかた', 'How to Join', l)}
             </span>
             <h3 className="font-heading text-3xl md:text-4xl font-bold text-navy mt-4">
-              {s('たった4ステップで、仲間に出会えちゃいます', 'Just 4 steps and you\'ll find your crew', l)}
+              {s('たった3ステップで、仲間に出会えちゃいます', 'Just 3 steps and you\'ll find your crew', l)}
             </h3>
             <p className="text-slate-500 text-sm mt-3 max-w-lg mx-auto">
               {s('難しいことは何もないよ！まずはのぞいてみてね', 'Nothing tricky at all — just come take a peek!', l)}
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-3 gap-6">
             {[
               {
                 step: '1',
-                title: s('公式LINEを友だち追加', 'Add our Official LINE', l),
-                desc: s('下のボタンから3rd Placeの公式LINEを友だち追加してね。追加すると、参加申請フォームのリンクが自動で届きます。', 'Tap the button below to add our 3rd Place Official LINE. Once you add us, you\'ll automatically get a link to our application form.', l),
+                title: s('公式LINE追加＆フォーム回答', 'Add LINE & fill the form', l),
+                desc: s('下のボタンから公式LINEを友だち追加すると、1分で終わる参加申請フォームが自動で届きます。お名前や参加したい理由など、簡単な内容です。', 'Tap the button to add our Official LINE — you\'ll automatically get a short application form. It only takes about a minute to fill out.', l),
                 icon: (
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
                 ),
               },
               {
                 step: '2',
-                title: s('申請フォームに回答', 'Fill out the form', l),
-                desc: s('お名前や参加したい理由など、簡単なアンケートに答えるだけ。1分くらいで終わる内容なので、気軽にどうぞ。', 'Just answer a short survey — your name, why you\'d like to join, and a few basics. It only takes about a minute.', l),
-                icon: (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
-                ),
-              },
-              {
-                step: '3',
                 title: s('承認後、コミュニティに参加', 'Approved & welcomed in', l),
                 desc: s('運営が内容を確認して、3日以内に公式LINEからご連絡します。承認されたら、そのままコミュニティLINEグループへご招待！', 'Our team will review your application and message you via Official LINE within 3 days. Once approved, we\'ll invite you straight into our community LINE group!', l),
                 icon: (
@@ -279,7 +272,7 @@ export default function JapanPage() {
                 ),
               },
               {
-                step: '4',
+                step: '3',
                 title: s('東京イベントに来てみる', 'Come to the Tokyo event', l),
                 desc: s('毎月東京で開催している相談会＆英語交流会に遊びに来てね。一人で来る人がほとんどなので、気軽にどうぞ。', 'Come join our monthly consultation & English exchange event in Tokyo. Most people come solo — feel free to drop by!', l),
                 icon: (
@@ -298,8 +291,8 @@ export default function JapanPage() {
                 </div>
                 <h4 className="font-heading text-lg font-bold text-navy mb-3">{item.title}</h4>
                 <p className="text-slate-600 text-sm leading-relaxed">{item.desc}</p>
-                {i < 3 && (
-                  <div className="hidden lg:block absolute top-1/2 -right-3 -translate-y-1/2 z-10">
+                {i < 2 && (
+                  <div className="hidden md:block absolute top-1/2 -right-3 -translate-y-1/2 z-10">
                     <svg className="w-6 h-6 text-orange/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
                   </div>
                 )}
@@ -372,7 +365,7 @@ export default function JapanPage() {
       <section id="apply" className="py-28 bg-orange">
         <div className="max-w-3xl mx-auto px-6 md:px-12 text-center">
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            {s('次のイベントに\n申し込む', 'Apply for the\nnext event', l)}
+            {s('次のイベントに申し込む', 'Apply for the next event', l)}
           </h2>
           <p className="text-white/80 text-lg mb-10 leading-relaxed">
             {s(

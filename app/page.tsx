@@ -93,7 +93,7 @@ export default function Home() {
             </span>
           </div>
 
-          <h1 className="animate-fade-up delay-100 font-heading text-5xl md:text-7xl font-bold text-white leading-tight mb-6">
+          <h1 className="animate-fade-up delay-100 font-heading text-4xl md:text-7xl font-bold text-white leading-tight mb-6">
             {s(
               <>メルボルンで、<br /><span className="text-orange">仲間</span>と出会い、<br />自分を広げる場所。</>,
               <><span className="text-orange">Meet friends.</span><br />Grow yourself.<br />Melbourne.</>,
@@ -195,7 +195,7 @@ export default function Home() {
               {s('わたしたちについて', 'About Us', l)}
             </span>
             <h2 className="font-heading text-4xl md:text-5xl font-bold text-navy mt-4 mb-6 leading-tight">
-              {s('なぜ、3rd Placeは\n生まれたのか', 'Why 3rd Place\nWas Founded', l)}
+              {s('なぜ、3rd Placeは生まれたのか', 'Why 3rd Place Was Founded', l)}
             </h2>
             <p className="text-slate-600 leading-relaxed text-base">
               {s(
@@ -283,33 +283,25 @@ export default function Home() {
               {s('はじめかた', 'How to Join', l)}
             </span>
             <h3 className="font-heading text-3xl md:text-4xl font-bold text-navy mt-4">
-              {s('たった4ステップで、仲間に出会えちゃいます', 'Just 4 steps and you\'ll find your crew', l)}
+              {s('たった3ステップで、仲間に出会えちゃいます', 'Just 3 steps and you\'ll find your crew', l)}
             </h3>
             <p className="text-slate-500 text-sm mt-3 max-w-lg mx-auto">
               {s('難しいことは何もないよ！まずはのぞいてみてね', 'Nothing tricky at all — just come take a peek!', l)}
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+          <div className="grid md:grid-cols-3 gap-6 mb-10">
             {[
               {
                 step: '1',
-                title: s('公式LINEを友だち追加', 'Add our Official LINE', l),
-                desc: s('下のボタンから3rd Placeの公式LINEを友だち追加してね。追加すると、参加申請フォームのリンクが自動で届きます。', 'Tap the button below to add our 3rd Place Official LINE. Once you add us, you\'ll automatically get a link to our application form.', l),
+                title: s('公式LINE追加＆フォーム回答', 'Add LINE & fill the form', l),
+                desc: s('下のボタンから公式LINEを友だち追加すると、1分で終わる参加申請フォームが自動で届きます。お名前や参加したい理由など、簡単な内容です。', 'Tap the button to add our Official LINE — you\'ll automatically get a short application form. It only takes about a minute to fill out.', l),
                 icon: (
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
                 ),
               },
               {
                 step: '2',
-                title: s('申請フォームに回答', 'Fill out the form', l),
-                desc: s('お名前や参加したい理由など、簡単なアンケートに答えるだけ。1分くらいで終わるくらいの内容なので、気軽にどうぞ。', 'Just answer a short survey — your name, why you\'d like to join, and a few basics. It only takes about a minute.', l),
-                icon: (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
-                ),
-              },
-              {
-                step: '3',
                 title: s('承認後、コミュニティに参加', 'Approved & welcomed in', l),
                 desc: s('運営が内容を確認して、3日以内に公式LINEからご連絡します。承認されたら、そのままコミュニティLINEグループへご招待！', 'Our team will review your application and message you via Official LINE within 3 days. Once approved, we\'ll invite you straight into our community LINE group!', l),
                 icon: (
@@ -317,7 +309,7 @@ export default function Home() {
                 ),
               },
               {
-                step: '4',
+                step: '3',
                 title: s('イベントに来てみる', 'Show up to an event', l),
                 desc: s('メルボルンならカレー会、日本なら東京イベントへ遊びに来てみてね。みんな一人で来る人ばかりだから、「ぼっちになったらどうしよう…」って心配はいりません！', 'Come hang out at curry night in Melbourne, or the Tokyo event in Japan! Almost everyone shows up solo, so don\'t worry about being "that person alone in the corner."', l),
                 icon: (
@@ -336,14 +328,14 @@ export default function Home() {
                 </div>
                 <h4 className="font-heading text-lg font-bold text-navy mb-3">{item.title}</h4>
                 <p className="text-slate-600 text-sm leading-relaxed mb-4">{item.desc}</p>
-                {i === 3 && (
+                {i === 2 && (
                   <Link href="/japan" className="inline-flex items-center gap-1.5 text-orange hover:text-orange-dark text-xs font-semibold mb-3 transition-colors duration-200 cursor-pointer">
                     {s('東京イベントの詳細はこちら', 'Tokyo Event Details', l)}
                     <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
                   </Link>
                 )}
-                {i < 3 && (
-                  <div className="hidden lg:block absolute top-1/2 -right-3 -translate-y-1/2 z-10">
+                {i < 2 && (
+                  <div className="hidden md:block absolute top-1/2 -right-3 -translate-y-1/2 z-10">
                     <svg className="w-6 h-6 text-orange/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
                   </div>
                 )}
