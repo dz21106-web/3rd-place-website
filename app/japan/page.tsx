@@ -225,7 +225,7 @@ export default function JapanPage() {
               </p>
               <a href="#apply"
                 className="inline-block bg-navy text-white font-semibold px-8 py-4 rounded-full hover:bg-navy-light transition-colors duration-200 cursor-pointer">
-                {s('コミュニティに参加する', 'Join the Community', l)}
+                {s('次のイベントに申し込む', 'Apply for the next event', l)}
               </a>
             </div>
             <div className="grid grid-cols-2 gap-4">
@@ -261,23 +261,23 @@ export default function JapanPage() {
             {[
               {
                 step: '1',
-                title: s('公式LINE追加＆フォーム回答', 'Add LINE & fill the form', l),
-                desc: s('下のボタンから公式LINEを友だち追加すると、1分で終わる参加申請フォームが自動で届きます。お名前や参加したい理由など、簡単な内容です。', 'Tap the button to add our Official LINE — you\'ll automatically get a short application form. It only takes about a minute to fill out.', l),
+                title: s('申し込みフォームに回答', 'Fill out the form', l),
+                desc: s('下のボタンから申し込みフォームへ。お名前や参加したい理由など、1分で終わる簡単な内容です。', 'Tap the button to open the application form. Just your name, reason for joining, and a few quick questions — takes about a minute.', l),
                 icon: (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>
                 ),
               },
               {
                 step: '2',
-                title: s('承認後、コミュニティに参加', 'Approved & welcomed in', l),
-                desc: s('運営が内容を確認して、3日以内に公式LINEからご連絡します。承認されたら、そのままコミュニティLINEグループへご招待！', 'Our team will review your application and message you via Official LINE within 3 days. Once approved, we\'ll invite you straight into our community LINE group!', l),
+                title: s('運営から確認のご連絡', 'We\'ll confirm via email', l),
+                desc: s('運営が内容を確認して、メールで会場や当日の流れをご案内します。返信は数日以内を目安にお送りしています。', 'We\'ll review your application and email you the venue details and run-of-show within a few days.', l),
                 icon: (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
                 ),
               },
               {
                 step: '3',
-                title: s('東京イベントに来てみる', 'Come to the Tokyo event', l),
+                title: s('当日、東京イベントへ', 'Come to the Tokyo event', l),
                 desc: s('毎月東京で開催している相談会＆英語交流会に遊びに来てね。一人で来る人がほとんどなので、気軽にどうぞ。', 'Come join our monthly consultation & English exchange event in Tokyo. Most people come solo — feel free to drop by!', l),
                 icon: (
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
@@ -338,7 +338,7 @@ export default function JapanPage() {
             <FAQSection items={[
               {
                 q: s('東京イベントはどこで開催されますか？', 'Where does the Tokyo event take place?', l),
-                a: s('東京都内の喫茶店で開催しています。具体的な会場は申し込み後にLINEでお知らせします。', 'At a café in Tokyo. The exact venue is shared via LINE after you apply.', l),
+                a: s('東京都内の喫茶店で開催しています。具体的な会場は申し込み後にメールでお知らせします。', 'At a café in Tokyo. The exact venue is emailed to you after you apply.', l),
               },
               {
                 q: s('参加費の¥1,000はどうやって払いますか？', 'How do I pay the ¥1,000 entry fee?', l),
@@ -354,7 +354,7 @@ export default function JapanPage() {
               },
               {
                 q: s('帰国者として話す側で参加することはできますか？', 'Can I participate as a returnee and share my experience?', l),
-                a: s('大歓迎です！メルボルンでの経験を後輩に伝えたいという方は、LINEグループからご連絡ください。', 'We\'d love to have you! If you want to share your Melbourne experience with newcomers, reach out via our LINE group.', l),
+                a: s('大歓迎です！メルボルンでの経験を後輩に伝えたいという方は、申し込みフォームの自由記入欄からお知らせください。', 'We\'d love to have you! If you want to share your Melbourne experience with newcomers, just let us know in the application form.', l),
               },
               {
                 q: s('3rd Place Japanと3rd Place（メルボルン）は別ですか？', 'Is 3rd Place Japan separate from 3rd Place Melbourne?', l),
@@ -377,19 +377,19 @@ export default function JapanPage() {
           </h2>
           <p className="text-white/80 text-lg mb-10 leading-relaxed">
             {s(
-              '毎月東京で開催中。参加費¥1,000（1ドリンク付き）。まずは公式LINEを友だち追加して、届く申請フォームにお答えください。',
-              'Held monthly in Tokyo. ¥1,000 entry (1 drink included). Add our Official LINE and fill out the short form to apply.',
+              '毎月東京で開催中。参加費¥1,000（1ドリンク付き）。申し込みは下記フォームからどうぞ。',
+              'Held monthly in Tokyo. ¥1,000 entry (1 drink included). Apply via the form below.',
               l
             )}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://lin.ee/U8PVapG" target="_blank" rel="noopener noreferrer"
+            <a href="https://forms.gle/v2ekhnWfmZdpv3BP7" target="_blank" rel="noopener noreferrer"
               className="bg-white text-orange font-bold px-10 py-4 rounded-full hover:bg-cream transition-colors duration-200 text-base cursor-pointer">
-              {s('LINEグループに参加する', 'Join LINE Group', l)}
+              {s('申し込みフォームを開く', 'Open Application Form', l)}
             </a>
           </div>
           <p className="text-white/60 text-xs mt-4">
-            {s('友だち追加→1分のフォーム→承認後にご招待。シンプルな3ステップです。', 'Add us → 1-min form → invited once approved. Simple 3-step flow.', l)}
+            {s('1分で終わる簡単なフォームです。お気軽にどうぞ。', 'Takes about a minute — easy and simple.', l)}
           </p>
         </div>
       </section>
