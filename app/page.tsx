@@ -47,7 +47,7 @@ export default function Home() {
       { q: 'ワーホリ以外の方も参加できますか？', a: 'もちろん！ワーホリ・留学・駐在・永住者・旅行者まで、いろんな人が参加してます。メルボルンに関わるすべての日本人を歓迎してるよ。' },
       { q: 'メルボルンに着いてからでも参加できますか？', a: 'もちろん！渡航前でも到着直後でも、滞在中でも帰国前でも、どんなタイミングでも歓迎ですよ。' },
       { q: 'カレー会の参加費はかかりますか？', a: 'カレー会は完全無料！まごころ精神のもと、これからもずっと無料でやっていきます。' },
-      { q: '運営に参加したい場合はどうすればいいですか？', a: 'ぜひぜひ！LINEグループから気軽にメッセージください。メルボルン現地の運営メンバーを絶賛募集中です。' },
+      { q: '運営に参加したい場合はどうすればいいですか？', a: <>ぜひぜひ！メルボルン現地の運営メンバーを絶賛募集中です。<a href="https://forms.gle/9CzhUdRkuxJ4VKLTA" target="_blank" rel="noopener noreferrer" className="text-orange underline hover:text-orange-dark transition-colors duration-200 cursor-pointer">こちらのフォーム</a>からお気軽にご応募ください。</> },
     ],
     en: [
       { q: 'What do I need to join the Curry Gathering?', a: 'Nothing to prepare! Just add our Official LINE — you\'ll automatically get a short application form. Our team reviews it and invites you into the community LINE group within 3 days. And yep, it\'s totally free.' },
@@ -56,7 +56,7 @@ export default function Home() {
       { q: 'Can people other than working holidaymakers join?', a: 'Of course! WHV folks, students, expats, PRs, travelers — anyone with a Melbourne connection is welcome here.' },
       { q: 'Can I join after arriving in Melbourne?', a: 'Yep, anytime works! Before you leave, right after you land, mid-stay, or right before heading home — whenever.' },
       { q: 'Is there a fee for the Curry Gathering?', a: 'Curry Night is completely free — always has been, always will be. That\'s the spirit of magokoro.' },
-      { q: 'How can I get involved in operations?', a: 'Please do! Just drop us a message in the LINE group. We\'re always looking for local Melbourne members to help run things.' },
+      { q: 'How can I get involved in operations?', a: <>Please do! We&apos;re always looking for local Melbourne members to help run things. Apply via <a href="https://forms.gle/9CzhUdRkuxJ4VKLTA" target="_blank" rel="noopener noreferrer" className="text-orange underline hover:text-orange-dark transition-colors duration-200 cursor-pointer">this form</a>.</> },
     ],
   }
 
@@ -467,40 +467,30 @@ export default function Home() {
 
 
       {/* ── TEAM ─────────────────────────────── */}
-      <section id="team" className="py-28 bg-cream">
+      <section id="team" className="py-20 bg-cream">
         <ScrollReveal>
         <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="text-center mb-14">
+          <div className="text-center mb-12">
             <span className="text-orange text-xs font-semibold uppercase tracking-widest">
               {s('運営チーム', 'Our Team', l)}
             </span>
-            <h2 className="font-heading text-4xl md:text-5xl font-bold text-navy mt-4">
-              {s('メンバー紹介', 'Meet the Team', l)}
-            </h2>
+            <p className="text-slate-500 text-sm mt-3">
+              {s('日本とメルボルンをつなぐ、元ワーホリメンバーが運営しています', 'Run by former WHV members bridging Japan and Melbourne', l)}
+            </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { name: 'ヒロト', nameEn: 'Hiroto', from: s('東京都出身', 'From Tokyo', l), bio: s('メルボルンワーホリ2024年経験。ウクレレと山登りが趣味。いつかメルボルンに住みたいくらいメルボルンが大好き。', 'Melbourne WHV 2024. Loves ukulele and hiking. Loves Melbourne so much he wants to live there someday.', l), img: '/images/team/hiroto.png', scale: 'scale-110', pos: 'center 20%' },
-              { name: 'ダイチ', nameEn: 'Daichi', from: s('青森県出身', 'From Aomori', l), bio: s('メルボルンワーホリ2024年経験。海外旅行とサッカーが趣味。いつかイギリスでサッカー観戦をしたい。', 'Melbourne WHV 2024. Into travel and football. Dreams of watching a match in England.', l), img: '/images/team/daichi-new.jpg', scale: 'scale-125', pos: 'center 15%' },
-              { name: 'あさひ', nameEn: 'Asahi', from: s('福島県出身', 'From Fukushima', l), bio: s('世界一周で約35カ国を経験。ランニングとサウナが趣味。国内旅行も大好き。', 'Traveled to 35+ countries. Loves running, sauna, and domestic travel too.', l), img: '/images/team/asahi-new.jpg', scale: 'scale-110', pos: 'center center' },
-              { name: 'みなと', nameEn: 'Minato', from: s('神奈川県出身', 'From Kanagawa', l), bio: s('メルボルンワーホリ2024年経験。言語学習が趣味で中国語も話せる。ムードメーカー。', 'Melbourne WHV 2024. Language enthusiast who speaks Chinese. The mood maker.', l), img: '/images/team/minato-new2.png', scale: 'scale-110', pos: 'center 20%' },
+              { name: 'ヒロト', nameEn: 'Hiroto', bio: s('メルボルンワーホリ2024年経験。ウクレレと山登りが趣味。', 'Melbourne WHV 2024. Loves ukulele and hiking.', l), img: '/images/team/hiroto.png', scale: 'scale-110', pos: 'center 20%' },
+              { name: 'ダイチ', nameEn: 'Daichi', bio: s('メルボルンワーホリ2024年経験。海外旅行とサッカーが趣味。', 'Melbourne WHV 2024. Into travel and football.', l), img: '/images/team/daichi-new.jpg', scale: 'scale-125', pos: 'center 15%' },
+              { name: 'あさひ', nameEn: 'Asahi', bio: s('世界一周で約35カ国を経験。ランニングとサウナが趣味。', 'Traveled to 35+ countries. Loves running and sauna.', l), img: '/images/team/asahi-new.jpg', scale: 'scale-110', pos: 'center center' },
+              { name: 'みなと', nameEn: 'Minato', bio: s('メルボルンワーホリ2024年経験。中国語も話せるムードメーカー。', 'Melbourne WHV 2024. Speaks Chinese. The mood maker.', l), img: '/images/team/minato-new2.png', scale: 'scale-110', pos: 'center 20%' },
             ].map((m, i) => (
-              <div key={i} className="group bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer">
-                <div className="flex items-center gap-4 mb-4">
-                  {/* Large circle photo */}
-                  <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden flex-shrink-0 ring-3 ring-orange/20 group-hover:ring-orange/50 transition-all duration-300">
-                    <Image src={m.img} alt={m.name} fill className={`object-cover ${m.scale}`} style={{ objectPosition: m.pos }} sizes="96px" />
-                  </div>
-                  <div>
-                    <p className="font-bold text-navy text-lg">{l === 'ja' ? m.name : m.nameEn}</p>
-                    <p className="text-slate-400 text-xs mt-0.5">{m.from}</p>
-                  </div>
+              <div key={i} className="flex flex-col items-center text-center">
+                <div className="relative w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden ring-2 ring-orange/20 mb-3">
+                  <Image src={m.img} alt={m.name} fill className={`object-cover ${m.scale}`} style={{ objectPosition: m.pos }} sizes="112px" />
                 </div>
-                {/* Speech bubble */}
-                <div className="relative bg-cream rounded-xl px-4 py-3">
-                  <div className="absolute -top-2 left-8 w-4 h-4 bg-cream rotate-45" />
-                  <p className="relative text-navy/70 text-sm leading-relaxed">{m.bio}</p>
-                </div>
+                <p className="font-bold text-navy text-base">{l === 'ja' ? m.name : m.nameEn}</p>
+                <p className="text-slate-500 text-xs mt-1 leading-relaxed">{m.bio}</p>
               </div>
             ))}
           </div>
