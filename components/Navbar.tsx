@@ -53,9 +53,7 @@ export default function Navbar({ lang, setLang, page = 'melbourne' }: NavbarProp
   const showWhiteText = isHome && !scrolled
   const cta = ctaConfig[currentPage]
   const isExternal = cta.href.startsWith('http')
-  const visiblePages = (Object.keys(pageConfig) as PageKey[]).filter(
-    key => FEATURE_FLAGS.hubPublic || key !== 'hub'
-  )
+  const visiblePages = Object.keys(pageConfig) as PageKey[]
 
   const handleMouseEnter = (key: PageKey) => {
     if (dropdownTimeout.current) clearTimeout(dropdownTimeout.current)
