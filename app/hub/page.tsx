@@ -1,5 +1,4 @@
 import { notFound } from 'next/navigation'
-import HubPageClient from './HubPageClient'
 import { FEATURE_FLAGS } from '../../lib/site'
 
 export default function HubPage() {
@@ -7,5 +6,5 @@ export default function HubPage() {
     notFound()
   }
 
-  return <HubPageClient />
+  return null
 }

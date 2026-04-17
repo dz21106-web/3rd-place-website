@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { FEATURE_FLAGS } from '../lib/site'
 
 interface NavbarProps {
   lang: 'ja' | 'en'
@@ -52,6 +53,7 @@ export default function Navbar({ lang, setLang, page = 'melbourne' }: NavbarProp
   const showWhiteText = isHome && !scrolled
   const cta = ctaConfig[currentPage]
   const isExternal = cta.href.startsWith('http')
+  const visiblePages = Object.keys(pageConfig) as PageKey[]
 
   const handleMouseEnter = (key: PageKey) => {
     if (dropdownTimeout.current) clearTimeout(dropdownTimeout.current)
@@ -78,7 +80,7 @@ export default function Navbar({ lang, setLang, page = 'melbourne' }: NavbarProp
 
         {/* Desktop: Page tabs with dropdowns */}
         <div className="hidden md:flex items-center gap-1">
-          {(Object.keys(pageConfig) as PageKey[]).map(key => {
+          {visiblePages.map(key => {
             const page = pageConfig[key]
             const isActive = currentPage === key
             const hasSubLinks = subLinks[key].length > 0
@@ -195,7 +197,7 @@ export default function Navbar({ lang, setLang, page = 'melbourne' }: NavbarProp
       {/* Mobile menu */}
       {menuOpen && (
         <div className="md:hidden bg-white border-t border-gray-100 px-6 py-6 flex flex-col gap-1">
-          {(Object.keys(pageConfig) as PageKey[]).map(key => {
+          {visiblePages.map(key => {
             const page = pageConfig[key]
             const isActive = currentPage === key
             return (

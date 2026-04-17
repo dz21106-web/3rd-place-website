@@ -8,6 +8,11 @@
 - TypeScript
 - Tailwind CSS（カスタムトークン定義済み）
 
+## 運用前提
+- このリポジトリは公開前提で運用する
+- 個人情報、社内メモ、作業ログ、未公開資料はコミットしない
+- 公開運用ルールと後で棚卸しする資料は `docs/operations/public-repo-policy.md` を参照する
+
 ## デザイントークン（tailwind.config.ts）
 ```
 colors: navy, navy-light, orange, orange-dark, cream, cream-dark, ink

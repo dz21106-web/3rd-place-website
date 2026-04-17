@@ -233,7 +233,7 @@ export default function JapanPage() {
                 <Image src="/images/japan/farewell1.jpg" alt="Farewell party" fill className="object-cover hover:scale-105 transition-transform duration-500" />
               </div>
               <div className="relative aspect-[3/4] rounded-2xl overflow-hidden mt-8 shadow-md">
-                <Image src="/images/japan/farewell2.jpg" alt="Farewell party" fill className="object-cover hover:scale-105 transition-transform duration-500" />
+                <Image src="/images/japan/farewell-new2.jpg" alt="Farewell party" fill className="object-cover hover:scale-105 transition-transform duration-500" />
               </div>
             </div>
           </div>
