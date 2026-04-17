@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { FEATURE_FLAGS } from '../lib/site'
 
 interface SubFooterProps {
   lang: 'ja' | 'en'
@@ -21,12 +22,12 @@ export default function SubFooter({ lang, page }: SubFooterProps) {
           <Link href="/" className="text-white/30 hover:text-white/60 transition-colors duration-200 cursor-pointer">
             {backLabel}
           </Link>
-          {page === 'japan' && (
+          {FEATURE_FLAGS.hubPublic && page === 'japan' && (
             <Link href="/hub" className="text-white/30 hover:text-white/60 transition-colors duration-200 cursor-pointer">
               3rd Place Hub
             </Link>
           )}
-          {page === 'hub' && (
+          {FEATURE_FLAGS.hubPublic && page === 'hub' && (
             <Link href="/japan" className="text-white/30 hover:text-white/60 transition-colors duration-200 cursor-pointer">
               3rd Place Japan
             </Link>
