@@ -480,10 +480,10 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { name: 'ヒロト', nameEn: 'Hiroto', bio: s('メルボルンワーホリ2024年経験。ウクレレと山登りが趣味。', 'Melbourne WHV 2024. Loves ukulele and hiking.', l), img: '/images/team/hiroto.png', scale: 'scale-110', pos: 'center 20%' },
-              { name: 'ダイチ', nameEn: 'Daichi', bio: s('メルボルンワーホリ2024年経験。海外旅行とサッカーが趣味。', 'Melbourne WHV 2024. Into travel and football.', l), img: '/images/team/daichi.png', scale: 'scale-125', pos: 'center 15%' },
-              { name: 'あさひ', nameEn: 'Asahi', bio: s('世界一周で約35カ国を経験。ランニングとサウナが趣味。', 'Traveled to 35+ countries. Loves running and sauna.', l), img: '/images/team/asahi.jpg', scale: 'scale-110', pos: 'center center' },
-              { name: 'みなと', nameEn: 'Minato', bio: s('メルボルンワーホリ2024年経験。中国語も話せるムードメーカー。', 'Melbourne WHV 2024. Speaks Chinese. The mood maker.', l), img: '/images/team/minato.png', scale: 'scale-110', pos: 'center 20%' },
+              { name: 'ヒロト', nameEn: 'Hiroto', bio: s('メルボルンワーホリ2024年経験。ウクレレと山登りが趣味。', 'Melbourne WHV 2024. Loves ukulele and hiking.', l), img: '/images/team/hiroto.png', scale: 'scale-100', pos: '60% 30%' },
+              { name: 'ダイチ', nameEn: 'Daichi', bio: s('メルボルンワーホリ2024年経験。海外旅行とサッカーが趣味。', 'Melbourne WHV 2024. Into travel and football.', l), img: '/images/team/daichi-new.jpg', scale: 'scale-125', pos: 'center center' },
+              { name: 'あさひ', nameEn: 'Asahi', bio: s('世界一周で約35カ国を経験。ランニングとサウナが趣味。', 'Traveled to 35+ countries. Loves running and sauna.', l), img: '/images/team/asahi-new.jpg', scale: 'scale-110', pos: 'center center' },
+              { name: 'みなと', nameEn: 'Minato', bio: s('メルボルンワーホリ2024年経験。中国語も話せるムードメーカー。', 'Melbourne WHV 2024. Speaks Chinese. The mood maker.', l), img: '/images/team/minato-new2.png', scale: 'scale-110', pos: 'center 40%' },
             ].map((m, i) => (
               <div key={i} className="flex flex-col items-center text-center">
                 <div className="relative w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden ring-2 ring-orange/20 mb-3">
