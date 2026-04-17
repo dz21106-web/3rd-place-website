@@ -35,7 +35,7 @@ const subLinks: Record<PageKey, { href: string; ja: string; en: string }[]> = {
 }
 
 const ctaConfig: Record<PageKey, { href: string; ja: string; en: string }> = {
-  melbourne: { href: 'https://line.me/ti/p/5ET_QCNdpX', ja: '参加する', en: 'Join Us' },
+  melbourne: { href: 'https://lin.ee/U8PVapG', ja: '参加する', en: 'Join Us' },
   japan: { href: '#apply', ja: '申し込む', en: 'Apply' },
   hub: { href: '#apply', ja: '通知を受け取る', en: 'Get Notified' },
 }

@@ -9,3 +9,6 @@ build/
 *:Zone.Identifier
 *.tsbuildinfo
 .claude/
+docs/private/
+docs/employees/
+docs/operations/*-work-log.md

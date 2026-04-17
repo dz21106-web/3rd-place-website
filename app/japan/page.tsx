@@ -8,7 +8,8 @@ import FAQSection from '../../components/FAQ'
 import ScrollReveal from '../../components/ScrollReveal'
 
 type Lang = 'ja' | 'en'
-const s = (ja: string, en: string, l: Lang) => l === 'ja' ? ja : en
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const s = (ja: any, en: any, l: Lang) => l === 'ja' ? ja : en
 const tags = (ja: string[], en: string[], l: Lang) => l === 'ja' ? ja : en
 
 export default function JapanPage() {
@@ -41,10 +42,10 @@ export default function JapanPage() {
             </div>
           </div>
 
-          <h1 className="animate-fade-up delay-100 font-heading text-5xl md:text-7xl font-bold text-white leading-tight mb-6 max-w-3xl">
+          <h1 className="animate-fade-up delay-100 font-heading text-4xl md:text-7xl font-bold text-white leading-tight mb-6 max-w-3xl">
             {s(
-              '渡航前に、\n先輩の声を\n聞いておこう。',
-              'Before you go,\nhear from those\nwho\'ve been.',
+              <>渡航前に、<br />先輩の声を<br />聞いておこう。</>,
+              <>Before you go,<br />hear from those<br />who&apos;ve been.</>,
               l
             )}
           </h1>
@@ -77,7 +78,7 @@ export default function JapanPage() {
               { num: '¥1,000', label: s('参加費（1ドリンク付）', 'Entry Fee (1 drink incl.)', l) },
               { num: s('毎月', 'Monthly', l), label: s('定期開催', 'Regular Event', l) },
               { num: s('2部制', '2 Parts', l), label: s('相談会 + 交流会', 'Consultation + Exchange', l) },
-              { num: s('東京', 'Tokyo', l), label: s('喫茶店で開催', 'Café Venue', l) },
+              { num: s('東京', 'Tokyo', l), label: s('神保町で開催', 'Jimbocho Venue', l) },
             ].map((stat, i) => (
               <div key={i}>
                 <p className="text-4xl md:text-5xl font-bold text-navy">{stat.num}</p>
@@ -105,7 +106,7 @@ export default function JapanPage() {
           </div>
           <div className="flex flex-col items-center sm:items-start gap-1">
             <span className="text-white/70 text-xs">
-              {s('📍 喫茶店エル（神保町/御茶ノ水）', '📍 Café El (Jimbocho/Ochanomizu)', l)}
+              {s('📍 Bar/Grill PINE（神保町/御茶ノ水）', '📍 Bar/Grill PINE (Jimbocho/Ochanomizu)', l)}
             </span>
           </div>
           <a href="#apply"
@@ -123,8 +124,12 @@ export default function JapanPage() {
             <span className="text-orange text-xs font-semibold uppercase tracking-widest">
               {s('イベント内容', 'Event Details', l)}
             </span>
-            <h2 className="font-heading text-4xl md:text-5xl font-bold text-navy mt-4 max-w-2xl leading-tight">
-              {s('2部構成で、\n出発前の準備を整える', 'Two parts to prepare\nyou before departure', l)}
+            <h2 className="font-heading text-3xl md:text-5xl font-bold text-navy mt-4 max-w-2xl leading-tight">
+              {s(
+                <>2部構成で、<br className="md:hidden" />出発前の準備を整える</>,
+                <>Two parts to prepare<br className="md:hidden" /> you before departure</>,
+                l
+              )}
             </h2>
           </div>
 
@@ -208,7 +213,7 @@ export default function JapanPage() {
               <span className="text-orange text-xs font-semibold uppercase tracking-widest">
                 {s('特別イベント', 'Special Event', l)}
               </span>
-              <h2 className="font-heading text-4xl font-bold text-navy mt-4 mb-6 leading-tight">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold text-navy mt-4 mb-6 leading-tight">
                 {s('いってらっしゃい会', '"See You Off" Party', l)}
               </h2>
               <p className="text-slate-600 leading-relaxed mb-6">
@@ -220,7 +225,7 @@ export default function JapanPage() {
               </p>
               <a href="#apply"
                 className="inline-block bg-navy text-white font-semibold px-8 py-4 rounded-full hover:bg-navy-light transition-colors duration-200 cursor-pointer">
-                {s('コミュニティに参加する', 'Join the Community', l)}
+                {s('次のイベントに申し込む', 'Apply for the next event', l)}
               </a>
             </div>
             <div className="grid grid-cols-2 gap-4">
@@ -236,91 +241,86 @@ export default function JapanPage() {
         </ScrollReveal>
       </section>
 
-      {/* ── Hub pre-departure ── */}
-      <section className="py-28 bg-navy">
+      {/* ── はじめかた（3ステップ） ── */}
+      <section className="py-28 bg-cream">
+        <ScrollReveal>
         <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div>
-              <span className="text-orange text-xs font-semibold uppercase tracking-widest">
-                {s('有料サービス', 'Paid Service', l)}
-              </span>
-              <h2 className="font-heading text-4xl font-bold text-white mt-4 mb-2 leading-tight">
-                3rd Place Hub
-              </h2>
-              <p className="text-orange font-semibold mb-6">A$150〜200</p>
-              <p className="text-white/60 leading-relaxed mb-8">
-                {s(
-                  'イベントで話を聞くだけでなく、もっと本格的に渡航準備をしたい方のためのパッケージ。先輩が書いた「引き継ぎノート」で仕事・住居の情報を事前にインプットし、渡航前Zoomブリーフィング・推薦状発行・到着後1ヶ月フォローまで含む。',
-                  'For those who want to go beyond the event and seriously prepare for their move. Access senior members\' handover notes on jobs and housing, join a pre-departure Zoom briefing, get a recommendation letter, and receive 1 month of post-arrival support.',
-                  l
-                )}
-              </p>
-              <div className="flex flex-wrap gap-3 mb-8">
-                {tags(
-                  ['引き継ぎノート閲覧', '渡航前Zoom', '公認推薦状', '到着後1ヶ月フォロー', 'キャッシュバック最大A$100'],
-                  ['Handover Notes', 'Pre-departure Zoom', 'Rec. Letter', '1-month Follow-up', 'Up to A$100 Cashback'],
-                  l
-                ).map((tag, i) => (
-                  <span key={i} className="bg-white/10 text-white/60 text-xs px-3 py-1.5 rounded-full">{tag}</span>
-                ))}
-              </div>
-              <div className="inline-block bg-orange/20 text-orange text-sm font-bold px-4 py-2 rounded-full">
-                {s('開発中 — 近日公開', 'Coming Soon', l)}
-              </div>
-            </div>
-            <div className="bg-navy-light rounded-2xl p-10 border border-white/10">
-              <h3 className="font-heading text-xl font-bold text-white mb-6">
-                {s('パッケージに含まれるもの', 'What\'s included', l)}
-              </h3>
-              {[
-                {
-                  icon: (
-                    <svg className="w-5 h-5 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                    </svg>
-                  ),
-                  title: s('引き継ぎノート', 'Handover Notes', l),
-                  desc: s('先輩が書いたリアルな職場・住居レポート（店舗名非公開・エリア別）', 'Real workplace & housing reports from seniors (anonymous, by area)', l),
-                },
-                {
-                  icon: (
-                    <svg className="w-5 h-5 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 10l4.553-2.069A1 1 0 0121 8.87v6.26a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z" />
-                    </svg>
-                  ),
-                  title: s('渡航前Zoomブリーフィング', 'Pre-departure Zoom', l),
-                  desc: s('担当メンバーとの個別Zoom。疑問を全部解消してから出発できる', 'One-on-one Zoom with a team member. Clear every question before you leave.', l),
-                },
-                {
-                  icon: (
-                    <svg className="w-5 h-5 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                    </svg>
-                  ),
-                  title: s('公認推薦状', 'Official Rec. Letter', l),
-                  desc: s('3rd Place発行の推薦状。履歴書に添付してコミュニティの信頼を活用', '3rd Place-issued letter. Attach to your resume to leverage community trust.', l),
-                },
-                {
-                  icon: (
-                    <svg className="w-5 h-5 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                    </svg>
-                  ),
-                  title: s('到着後1ヶ月フォロー', '1-month Follow-up', l),
-                  desc: s('到着後に困ったことをLINEで相談できる。一人で悩まない', 'Chat with us on LINE after arrival. You\'re never navigating it alone.', l),
-                },
-              ].map((item, i) => (
-                <div key={i} className="flex gap-4 mb-6 last:mb-0">
-                  <div className="w-9 h-9 rounded-xl bg-orange/20 flex items-center justify-center flex-shrink-0">
+          <div className="text-center mb-14">
+            <span className="text-orange text-xs font-semibold uppercase tracking-widest">
+              {s('はじめかた', 'How to Join', l)}
+            </span>
+            <h3 className="font-heading text-3xl md:text-4xl font-bold text-navy mt-4">
+              {s('たった3ステップで、仲間に出会えます', 'Just 3 steps and you\'ll find your crew', l)}
+            </h3>
+            <p className="text-slate-500 text-sm mt-3 max-w-lg mx-auto">
+              {s('難しいことは何もないよ！まずはのぞいてみてね', 'Nothing tricky at all — just come take a peek!', l)}
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                step: '1',
+                title: s('申し込みフォームに回答', 'Fill out the form', l),
+                desc: s('下のボタンから申し込みフォームへ。お名前や参加したい理由など、1分で終わる簡単な内容です。', 'Tap the button to open the application form. Just your name, reason for joining, and a few quick questions — takes about a minute.', l),
+                icon: (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>
+                ),
+              },
+              {
+                step: '2',
+                title: s('運営から確認のご連絡', 'We\'ll confirm via email', l),
+                desc: s('運営が内容を確認して、メールで会場や当日の流れをご案内します。返信は数日以内を目安にお送りしています。', 'We\'ll review your application and email you the venue details and run-of-show within a few days.', l),
+                icon: (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                ),
+              },
+              {
+                step: '3',
+                title: s('当日、東京イベントへ', 'Come to the Tokyo event', l),
+                desc: s('毎月東京で開催している相談会＆英語交流会に遊びに来てね。一人で来る人がほとんどなので、気軽にどうぞ。', 'Come join our monthly consultation & English exchange event in Tokyo. Most people come solo — feel free to drop by!', l),
+                icon: (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                ),
+              },
+            ].map((item, i) => (
+              <div key={i} className="relative bg-white rounded-2xl p-8 border border-gray-100">
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="w-10 h-10 rounded-full bg-orange flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
+                    {item.step}
+                  </div>
+                  <div className="w-10 h-10 rounded-xl bg-orange/10 flex items-center justify-center text-orange flex-shrink-0">
                     {item.icon}
                   </div>
-                  <div>
-                    <p className="text-white font-semibold text-sm mb-1">{item.title}</p>
-                    <p className="text-white/60 text-xs leading-relaxed">{item.desc}</p>
-                  </div>
                 </div>
-              ))}
+                <h4 className="font-heading text-lg font-bold text-navy mb-3">{item.title}</h4>
+                <p className="text-slate-600 text-sm leading-relaxed">{item.desc}</p>
+                {i < 2 && (
+                  <div className="hidden md:block absolute top-1/2 -right-3 -translate-y-1/2 z-10">
+                    <svg className="w-6 h-6 text-orange/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+        </ScrollReveal>
+      </section>
+
+      {/* ── 渡航サポート 開発中お知らせ ── */}
+      <section className="py-20 bg-navy">
+        <div className="max-w-3xl mx-auto px-6 md:px-12">
+          <div className="rounded-2xl px-6 py-6 border border-white/10 bg-white/[0.04] flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
+            <div className="inline-block bg-orange/20 text-orange text-xs font-semibold px-3 py-1 rounded-full flex-shrink-0">
+              {s('お知らせ', 'Note', l)}
             </div>
+            <p className="text-white/70 text-sm leading-relaxed">
+              {s(
+                '渡航前にもっと本格的な準備をしたい方向けのサポートサービスも開発中です。詳細はLINEグループで随時公開していきますね。',
+                'A more in-depth pre-departure support service is in the works. We\'ll share details in the LINE group as things come together.',
+                l
+              )}
+            </p>
           </div>
         </div>
       </section>
@@ -338,10 +338,10 @@ export default function JapanPage() {
             <FAQSection items={[
               {
                 q: s('東京イベントはどこで開催されますか？', 'Where does the Tokyo event take place?', l),
-                a: s('東京都内の喫茶店で開催しています。具体的な会場は申し込み後にLINEでお知らせします。', 'At a café in Tokyo. The exact venue is shared via LINE after you apply.', l),
+                a: s('神保町/御茶ノ水のBar/Grill PINEで開催しています。詳細な場所は申し込み後にメールでお知らせします。', 'We hold it at Bar/Grill PINE in Jimbocho/Ochanomizu. Full details are emailed to you after you apply.', l),
               },
               {
-                q: s('参加費の500円はどうやって払いますか？', 'How do I pay the ¥500 entry fee?', l),
+                q: s('参加費の¥1,000はどうやって払いますか？', 'How do I pay the ¥1,000 entry fee?', l),
                 a: s('当日現地でお支払いいただきます。事前決済は不要です。', 'Pay on the day at the venue. No advance payment required.', l),
               },
               {
@@ -354,7 +354,7 @@ export default function JapanPage() {
               },
               {
                 q: s('帰国者として話す側で参加することはできますか？', 'Can I participate as a returnee and share my experience?', l),
-                a: s('大歓迎です！メルボルンでの経験を後輩に伝えたいという方は、LINEグループからご連絡ください。', 'We\'d love to have you! If you want to share your Melbourne experience with newcomers, reach out via our LINE group.', l),
+                a: s('大歓迎です！メルボルンでの経験を後輩に伝えたいという方は、申し込みフォームの自由記入欄からお知らせください。', 'We\'d love to have you! If you want to share your Melbourne experience with newcomers, just let us know in the application form.', l),
               },
               {
                 q: s('3rd Place Japanと3rd Place（メルボルン）は別ですか？', 'Is 3rd Place Japan separate from 3rd Place Melbourne?', l),
@@ -369,27 +369,27 @@ export default function JapanPage() {
       <section id="apply" className="py-28 bg-orange">
         <div className="max-w-3xl mx-auto px-6 md:px-12 text-center">
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            {s('次のイベントに\n申し込む', 'Apply for the\nnext event', l)}
+            {s(
+              <>次のイベントに<br className="md:hidden" />申し込む</>,
+              <>Apply for the<br className="md:hidden" /> next event</>,
+              l
+            )}
           </h2>
           <p className="text-white/80 text-lg mb-10 leading-relaxed">
             {s(
-              '毎月東京で開催中。参加費¥1,000（1ドリンク付き）。まずはLINEグループに参加して、次回の告知を待とう。',
-              'Held monthly in Tokyo. ¥1,000 entry (1 drink included). Join our LINE group to get notified about the next event.',
+              '毎月東京で開催中。参加費¥1,000（1ドリンク付き）。申し込みは下記フォームからどうぞ。',
+              'Held monthly in Tokyo. ¥1,000 entry (1 drink included). Apply via the form below.',
               l
             )}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://line.me/ti/p/5ET_QCNdpX" target="_blank" rel="noopener noreferrer"
+            <a href="https://forms.gle/v2ekhnWfmZdpv3BP7" target="_blank" rel="noopener noreferrer"
               className="bg-white text-orange font-bold px-10 py-4 rounded-full hover:bg-cream transition-colors duration-200 text-base cursor-pointer">
-              {s('LINEグループに参加する', 'Join LINE Group', l)}
-            </a>
-            <a href="https://docs.google.com/forms" target="_blank" rel="noopener noreferrer"
-              className="bg-white/20 text-white font-semibold px-10 py-4 rounded-full hover:bg-white/30 transition-colors duration-200 text-base cursor-pointer">
-              {s('申し込みフォーム', 'Apply via Form', l)}
+              {s('申し込みフォームを開く', 'Open Application Form', l)}
             </a>
           </div>
           <p className="text-white/60 text-xs mt-4">
-            {s('入るだけでOK。挨拶不要。次回開催の告知だけ届きます。', 'Just join — no intro needed. You\'ll only get event announcements.', l)}
+            {s('1分で終わる簡単なフォームです。お気軽にどうぞ。', 'Takes about a minute — easy and simple.', l)}
           </p>
         </div>
       </section>

@@ -1,10 +1,10 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, ReactNode } from 'react'
 
 interface FAQItem {
   q: string
-  a: string
+  a: string | ReactNode
 }
 
 export default function FAQSection({ items }: { items: FAQItem[] }) {
@@ -34,7 +34,7 @@ export default function FAQSection({ items }: { items: FAQItem[] }) {
             </span>
           </button>
           <div className={`overflow-hidden transition-all duration-300 ${open === i ? 'max-h-96 pb-6' : 'max-h-0'}`}>
-            <p className="text-gray-500 leading-relaxed">{item.a}</p>
+            <div className="text-gray-500 leading-relaxed">{item.a}</div>
           </div>
         </div>
       ))}
