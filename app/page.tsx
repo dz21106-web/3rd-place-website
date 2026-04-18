@@ -46,7 +46,7 @@ export default function Home() {
 
   const faqItems = {
     ja: [
-      { q: 'カレー会に参加するには何が必要ですか？', a: '特別な準備は何もいらないですよ！まずは公式LINEを友だち追加して、自動で届く申請フォームにお答えください。運営が確認後、3日以内にコミュニティLINEグループへご招待します。費用はもちろん無料です。' },
+      { q: 'カレー会に参加するには何が必要ですか？', a: '特別な準備は何もいらないですよ！まずは公式LINEを友だち追加して、自動で届く申請フォームにお答えください。運営が確認次第、コミュニティLINEグループへご招待します。費用はもちろん無料です。' },
       { q: '初めてで一人なのですが、大丈夫ですか？', a: '全然大丈夫です！毎回5〜10人くらい初参加の方がいて、ほぼみんな一人で来てますよ。到着したら運営メンバーから声をかけるので、安心してきてくださいね。' },
       { q: '英語が話せなくても大丈夫ですか？', a: '全然問題ないです！コミュニティ内は基本日本語なので安心してください。英語交流の機会もあるけど、もちろん参加は自由です。' },
       { q: 'ワーホリ以外の方も参加できますか？', a: 'もちろん！ワーホリ・留学・駐在・永住者・旅行者まで、いろんな人が参加してます。メルボルンに関わるすべての日本人を歓迎してるよ。' },
@@ -55,7 +55,7 @@ export default function Home() {
       { q: '運営に参加したい場合はどうすればいいですか？', a: <>ぜひぜひ！メルボルン現地の運営メンバーを絶賛募集中です。<a href="https://forms.gle/9CzhUdRkuxJ4VKLTA" target="_blank" rel="noopener noreferrer" className="text-orange underline hover:text-orange-dark transition-colors duration-200 cursor-pointer">こちらのフォーム</a>からお気軽にご応募ください。</> },
     ],
     en: [
-      { q: 'What do I need to join the Curry Gathering?', a: 'Nothing to prepare! Just add our Official LINE — you\'ll automatically get a short application form. Our team reviews it and invites you into the community LINE group within 3 days. And yep, it\'s totally free.' },
+      { q: 'What do I need to join the Curry Gathering?', a: 'Nothing to prepare! Just add our Official LINE — you\'ll automatically get a short application form. Our team reviews it and invites you into the community LINE group once approved. And yep, it\'s totally free.' },
       { q: 'Is it okay to come alone for the first time?', a: 'Totally fine! Every event has 5–10 first-timers, and almost everyone shows up solo. Our team will say hi when you arrive, so don\'t stress.' },
       { q: 'Is it okay if I can\'t speak English?', a: 'No problem at all! The community runs mostly in Japanese. There are English exchange opportunities too, but jumping in is totally up to you.' },
       { q: 'Can people other than working holidaymakers join?', a: 'Of course! WHV folks, students, expats, PRs, travelers — anyone with a Melbourne connection is welcome here.' },
@@ -313,7 +313,7 @@ export default function Home() {
               {
                 step: '2',
                 title: s('承認後、コミュニティに参加', 'Approved & welcomed in', l),
-                desc: s('運営が内容を確認して、3日以内に公式LINEからご連絡します。承認されたら、そのままコミュニティLINEグループへご招待！', 'Our team will review your application and message you via Official LINE within 3 days. Once approved, we\'ll invite you straight into our community LINE group!', l),
+                desc: s('運営が内容を確認次第、そのままコミュニティLINEグループへご招待します！', 'Our team will review your application and invite you straight into the community LINE group!', l),
                 icon: (
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
                 ),
