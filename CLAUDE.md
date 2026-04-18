@@ -1,5 +1,9 @@
 # 3rd Place Webサイト — CLAUDE.md
 
+## 📘 事業コンテキストが必要なとき
+このファイルは **Webサイト/アプリのコード規約** に特化している。
+ビジネスモデル・法務NGワード・KPI・チーム体制・サービス設計など **事業全体の前提** が必要な相談（LPコピー・SNS案・サービス改善提案等）では、先に `docs/3rdplace-core.md`（3rd Place コアナレッジベース v3.0）を参照すること。
+
 ## プロジェクト概要
 メルボルンの日本人コミュニティ「3rd Place」の公式Webサイト。Next.js 14 App Router + Tailwind CSS + TypeScript。静的エクスポート。
 

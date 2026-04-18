@@ -58,6 +58,40 @@ body {
   animation: scrollLeft 30s linear infinite;
 }
 
+/* Slide-in animations for ScrollReveal direction variants */
+@keyframes fadeLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.animate-fade-left {
+  animation: fadeLeft 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.animate-fade-right {
+  animation: fadeRight 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Staggered card reveal — used with inline style animation-delay */
+@keyframes staggerUp {
+  from { opacity: 0; transform: translateY(24px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.animate-stagger-up {
+  animation: staggerUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* CTA pulse glow */
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 135, 74, 0); }
+  50%      { box-shadow: 0 0 20px 6px rgba(212, 135, 74, 0.35); }
+}
+.animate-pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
 @layer utilities {
   .section-padding {
     @apply px-6 md:px-12 lg:px-24;

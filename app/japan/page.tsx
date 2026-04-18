@@ -6,6 +6,11 @@ import Navbar from '../../components/Navbar'
 import SubFooter from '../../components/SubFooter'
 import FAQSection from '../../components/FAQ'
 import ScrollReveal from '../../components/ScrollReveal'
+import CountUp from '../../components/CountUp'
+import StaggerReveal from '../../components/StaggerReveal'
+import ScrollProgress from '../../components/ScrollProgress'
+import Parallax from '../../components/Parallax'
+import ScrollGlow from '../../components/ScrollGlow'
 
 type Lang = 'ja' | 'en'
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -17,21 +22,22 @@ export default function JapanPage() {
   const l = lang
 
   return (
-    <div className="min-h-screen bg-cream">
+    <div className="min-h-screen bg-cream overflow-x-hidden">
+      <ScrollProgress />
 
       {/* ── Navbar ── */}
       <Navbar lang={lang} setLang={setLang} page="japan" />
 
       {/* ── Hero ── */}
-      <section className="pt-32 pb-20 bg-navy relative overflow-hidden">
+      <section className="pt-32 pb-24 bg-navy relative overflow-hidden">
         <div className="absolute inset-0 opacity-15">
           <Image src="/images/japan/event1.jpg" alt="3rd Place Japan" fill className="object-cover" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-navy/60 to-navy" />
 
-        {/* Glow effects */}
-        <div className="absolute top-1/3 right-1/4 w-80 h-80 rounded-full bg-orange/10 blur-[100px] pointer-events-none" />
-        <div className="absolute bottom-1/4 left-1/5 w-64 h-64 rounded-full bg-orange/5 blur-[80px] pointer-events-none" />
+        {/* Glow effects — scroll-linked */}
+        <ScrollGlow className="absolute top-1/3 right-1/4 w-80 h-80 rounded-full bg-orange/10 blur-[100px] pointer-events-none" range={60} />
+        <ScrollGlow className="absolute bottom-1/4 left-[20%] w-64 h-64 rounded-full bg-orange/5 blur-[80px] pointer-events-none" range={40} />
 
         <div className="relative max-w-7xl mx-auto px-6 md:px-12">
           <div className="animate-fade-in flex items-center gap-3 mb-6">
@@ -57,9 +63,9 @@ export default function JapanPage() {
             )}
           </p>
 
-          <div className="animate-fade-up delay-500 flex flex-wrap gap-4">
+          <div className="animate-fade-up delay-500 flex flex-wrap gap-4 mb-12">
             <a href="#apply"
-              className="bg-orange text-white font-semibold px-8 py-4 rounded-full hover:bg-orange-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 text-base cursor-pointer">
+              className="animate-pulse-glow bg-orange text-white font-semibold px-8 py-4 rounded-full hover:bg-orange-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 text-base cursor-pointer">
               {s('次回イベントに申し込む', 'Apply for Next Event', l)}
             </a>
             <a href="#details"
@@ -67,11 +73,44 @@ export default function JapanPage() {
               {s('詳細を見る', 'See Details', l)}
             </a>
           </div>
+
+          {/* Hero Stats overlay + photo thumbnails */}
+          <div className="animate-fade-up delay-500">
+            <div className="flex flex-col sm:flex-row items-start sm:items-end gap-6">
+              {/* Mini stats */}
+              <div className="flex gap-6">
+                {[
+                  { value: '¥1,000', label: s('参加費', 'Entry', l) },
+                  { value: s('毎月', 'Monthly', l), label: s('定期開催', 'Regular', l) },
+                  { value: s('2部制', '2 Parts', l), label: s('相談+交流', 'Talk+Mix', l) },
+                ].map((stat, i) => (
+                  <div key={i} className="text-left">
+                    <p className="text-white font-bold text-lg">{stat.value}</p>
+                    <p className="text-white/40 text-xs">{stat.label}</p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Photo thumbnails */}
+              <div className="flex gap-2 ml-auto">
+                {[
+                  '/images/japan/event2.jpg',
+                  '/images/japan/event3.jpg',
+                  '/images/japan/event4.jpg',
+                  '/images/japan/farewell1.jpg',
+                ].map((src, i) => (
+                  <div key={i} className="relative w-14 h-14 md:w-16 md:h-16 rounded-lg overflow-hidden opacity-70 hover:opacity-100 transition-opacity duration-200">
+                    <Image src={src} alt="" fill className="object-cover" sizes="64px" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* ── Stats ── */}
-      <section className="py-16 bg-white border-b border-gray-200">
+      <section className="py-12 bg-white border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
@@ -81,7 +120,9 @@ export default function JapanPage() {
               { num: s('東京', 'Tokyo', l), label: s('神保町で開催', 'Jimbocho Venue', l) },
             ].map((stat, i) => (
               <div key={i}>
-                <p className="text-4xl md:text-5xl font-bold text-navy">{stat.num}</p>
+                <p className="text-3xl md:text-4xl font-bold text-navy">
+                  <CountUp value={stat.num} />
+                </p>
                 <p className="text-slate-500 text-sm mt-2">{stat.label}</p>
               </div>
             ))}
@@ -106,7 +147,7 @@ export default function JapanPage() {
           </div>
           <div className="flex flex-col items-center sm:items-start gap-1">
             <span className="text-white/70 text-xs">
-              {s('📍 Bar/Grill PINE（神保町/御茶ノ水）', '📍 Bar/Grill PINE (Jimbocho/Ochanomizu)', l)}
+              {s('Bar/Grill PINE（神保町/御茶ノ水）', 'Bar/Grill PINE (Jimbocho/Ochanomizu)', l)}
             </span>
           </div>
           <a href="#apply"
@@ -135,8 +176,8 @@ export default function JapanPage() {
 
           <div className="grid md:grid-cols-2 gap-8 mb-16">
             {/* Part 1 */}
-            <div className="bg-white rounded-3xl p-10 shadow-sm border border-gray-100">
-              <div className="w-12 h-12 rounded-2xl bg-navy flex items-center justify-center text-white font-bold text-lg mb-6">
+            <div className="bg-white rounded-xl p-10 shadow-sm border border-gray-100">
+              <div className="w-12 h-12 rounded-xl bg-navy flex items-center justify-center text-white font-bold text-lg mb-6">
                 1
               </div>
               <h3 className="font-heading text-2xl font-bold text-navy mb-4">
@@ -161,8 +202,8 @@ export default function JapanPage() {
             </div>
 
             {/* Part 2 */}
-            <div className="bg-orange rounded-3xl p-10">
-              <div className="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center text-white font-bold text-lg mb-6">
+            <div className="bg-orange rounded-xl p-10">
+              <div className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center text-white font-bold text-lg mb-6">
                 2
               </div>
               <h3 className="font-heading text-2xl font-bold text-white mb-4">
@@ -195,7 +236,7 @@ export default function JapanPage() {
               '/images/japan/event3.jpg',
               '/images/japan/event4.jpg',
             ].map((src, i) => (
-              <div key={i} className="relative aspect-square rounded-2xl overflow-hidden">
+              <div key={i} className="relative aspect-square rounded-xl overflow-hidden">
                 <Image src={src} alt={`Event photo ${i + 1}`} fill className="object-cover hover:scale-105 transition-transform duration-500" />
               </div>
             ))}
@@ -206,7 +247,7 @@ export default function JapanPage() {
 
       {/* ── いってらっしゃい会 ── */}
       <section className="py-28 bg-white">
-        <ScrollReveal>
+        <ScrollReveal direction="right">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
@@ -228,28 +269,37 @@ export default function JapanPage() {
                 {s('次のイベントに申し込む', 'Apply for the next event', l)}
               </a>
             </div>
+            <Parallax speed={0.08}>
             <div className="grid grid-cols-2 gap-4">
-              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-md">
+              <div className="relative aspect-[3/4] rounded-xl overflow-hidden shadow-md">
                 <Image src="/images/japan/farewell1.jpg" alt="Farewell party" fill className="object-cover hover:scale-105 transition-transform duration-500" />
               </div>
-              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden mt-8 shadow-md">
+              <div className="relative aspect-[3/4] rounded-xl overflow-hidden mt-8 shadow-md">
                 <Image src="/images/japan/farewell-new2.jpg" alt="Farewell party" fill className="object-cover hover:scale-105 transition-transform duration-500" />
               </div>
             </div>
+            </Parallax>
           </div>
         </div>
         </ScrollReveal>
       </section>
 
+      {/* Wave divider: white → cream */}
+      <div className="relative -mt-px">
+        <svg viewBox="0 0 1440 56" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full block" preserveAspectRatio="none">
+          <path d="M0 0h1440v16c-240 26-480 40-720 40S240 42 0 16V0z" fill="#FFFFFF" />
+        </svg>
+      </div>
+
       {/* ── はじめかた（3ステップ） ── */}
       <section className="py-28 bg-cream">
-        <ScrollReveal>
+        <ScrollReveal direction="left">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="text-center mb-14">
             <span className="text-orange text-xs font-semibold uppercase tracking-widest">
               {s('はじめかた', 'How to Join', l)}
             </span>
-            <h3 className="font-heading text-3xl md:text-4xl font-bold text-navy mt-4">
+            <h3 className="font-heading text-2xl md:text-3xl font-bold text-navy mt-4">
               {s('たった3ステップで、仲間に出会えます', 'Just 3 steps and you\'ll find your crew', l)}
             </h3>
             <p className="text-slate-500 text-sm mt-3 max-w-lg mx-auto">
@@ -284,7 +334,7 @@ export default function JapanPage() {
                 ),
               },
             ].map((item, i) => (
-              <div key={i} className="relative bg-white rounded-2xl p-8 border border-gray-100">
+              <StaggerReveal key={i} index={i} className="relative bg-white rounded-xl p-8 border border-gray-100">
                 <div className="flex items-center gap-3 mb-5">
                   <div className="w-10 h-10 rounded-full bg-orange flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
                     {item.step}
@@ -300,7 +350,7 @@ export default function JapanPage() {
                     <svg className="w-6 h-6 text-orange/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
                   </div>
                 )}
-              </div>
+              </StaggerReveal>
             ))}
           </div>
         </div>
@@ -310,7 +360,7 @@ export default function JapanPage() {
       {/* ── 渡航サポート 開発中お知らせ ── */}
       <section className="py-20 bg-navy">
         <div className="max-w-3xl mx-auto px-6 md:px-12">
-          <div className="rounded-2xl px-6 py-6 border border-white/10 bg-white/[0.04] flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
+          <div className="rounded-xl px-6 py-6 border border-white/10 bg-white/[0.04] flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
             <div className="inline-block bg-orange/20 text-orange text-xs font-semibold px-3 py-1 rounded-full flex-shrink-0">
               {s('お知らせ', 'Note', l)}
             </div>
@@ -325,16 +375,23 @@ export default function JapanPage() {
         </div>
       </section>
 
+      {/* Wave divider: navy → cream */}
+      <div className="relative -mt-px">
+        <svg viewBox="0 0 1440 56" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full block" preserveAspectRatio="none">
+          <path d="M0 0h1440v16c-240 26-480 40-720 40S240 42 0 16V0z" fill="#0B1F3A" />
+        </svg>
+      </div>
+
       {/* ── FAQ ── */}
       <section className="py-28 bg-cream">
         <div className="max-w-3xl mx-auto px-6 md:px-12">
           <div className="text-center mb-16">
             <span className="text-orange text-xs font-semibold uppercase tracking-widest">FAQ</span>
-            <h2 className="font-heading text-4xl font-bold text-navy mt-4">
+            <h2 className="font-heading text-3xl md:text-5xl font-bold text-navy mt-4">
               {s('よくある質問', 'Frequently Asked Questions', l)}
             </h2>
           </div>
-          <div className="bg-white rounded-2xl p-8 md:p-12 shadow-sm border border-gray-100">
+          <div className="bg-white rounded-xl p-8 md:p-12 shadow-sm border border-gray-100">
             <FAQSection items={[
               {
                 q: s('東京イベントはどこで開催されますか？', 'Where does the Tokyo event take place?', l),
@@ -365,10 +422,17 @@ export default function JapanPage() {
         </div>
       </section>
 
+      {/* Wave divider: cream → orange */}
+      <div className="relative -mb-px">
+        <svg viewBox="0 0 1440 56" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full block" preserveAspectRatio="none">
+          <path d="M0 56h1440V40c-240-26-480-40-720-40S240 14 0 40v16z" fill="#D4874A" />
+        </svg>
+      </div>
+
       {/* ── Apply CTA ── */}
       <section id="apply" className="py-28 bg-orange">
         <div className="max-w-3xl mx-auto px-6 md:px-12 text-center">
-          <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+          <h2 className="font-heading text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
             {s(
               <>次のイベントに<br className="md:hidden" />申し込む</>,
               <>Apply for the<br className="md:hidden" /> next event</>,
@@ -384,7 +448,7 @@ export default function JapanPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="https://forms.gle/v2ekhnWfmZdpv3BP7" target="_blank" rel="noopener noreferrer"
-              className="bg-white text-orange font-bold px-10 py-4 rounded-full hover:bg-cream transition-colors duration-200 text-base cursor-pointer">
+              className="animate-pulse-glow bg-white text-orange font-bold px-10 py-4 rounded-full hover:bg-cream transition-colors duration-200 text-base cursor-pointer">
               {s('申し込みフォームを開く', 'Open Application Form', l)}
             </a>
           </div>

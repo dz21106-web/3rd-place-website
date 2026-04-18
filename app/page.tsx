@@ -7,6 +7,11 @@ import Navbar from '../components/Navbar'
 import FAQSection from '../components/FAQ'
 import ScrollReveal from '../components/ScrollReveal'
 import GallerySection from '../components/GallerySection'
+import CountUp from '../components/CountUp'
+import StaggerReveal from '../components/StaggerReveal'
+import ScrollProgress from '../components/ScrollProgress'
+import Parallax from '../components/Parallax'
+import ScrollGlow from '../components/ScrollGlow'
 
 type Lang = 'ja' | 'en'
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -61,14 +66,15 @@ export default function Home() {
   }
 
   return (
-    <main className="bg-cream">
+    <main className="bg-cream overflow-x-hidden">
+      <ScrollProgress />
       <Navbar lang={lang} setLang={setLang} />
 
       {/* ── HERO ─────────────────────────────── */}
       <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-navy">
-        {/* Subtle background glow */}
-        <div className="absolute top-1/3 right-1/4 w-96 h-96 rounded-full bg-orange/10 blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-1/4 left-1/4 w-72 h-72 rounded-full bg-orange/5 blur-[80px] pointer-events-none" />
+        {/* Scroll-linked background glows */}
+        <ScrollGlow className="absolute top-1/3 right-1/4 w-96 h-96 rounded-full bg-orange/10 blur-[120px] pointer-events-none" range={60} />
+        <ScrollGlow className="absolute bottom-1/4 left-1/4 w-72 h-72 rounded-full bg-orange/5 blur-[80px] pointer-events-none" range={40} />
 
         {/* Top photo strip — scrolls right */}
         <div className="relative z-10 overflow-hidden mt-20 mb-8 opacity-80">
@@ -110,7 +116,7 @@ export default function Home() {
           </p>
 
           <div className="animate-fade-up delay-500 flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://lin.ee/U8PVapG" target="_blank" rel="noopener noreferrer" className="bg-orange text-white font-semibold px-8 py-3.5 rounded-full hover:bg-orange-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 text-sm cursor-pointer">
+            <a href="https://lin.ee/U8PVapG" target="_blank" rel="noopener noreferrer" className="animate-pulse-glow bg-orange text-white font-semibold px-8 py-3.5 rounded-full hover:bg-orange-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 text-sm cursor-pointer">
               {s('LINEグループに参加する', 'Join LINE Group', l)}
             </a>
             <a href="#about" className="border border-white/25 text-white font-medium px-8 py-3.5 rounded-full hover:bg-white/10 transition-colors duration-200 text-sm cursor-pointer">
@@ -151,12 +157,12 @@ export default function Home() {
           {[
             { num: '2', unit: s('年', 'yrs', l), label: s('コミュニティ運営', 'Running', l) },
             { num: '300', unit: s('人', '', l), label: s('累計参加者', 'Total Members', l) },
-            { num: '20+', unit: s('回', '', l), label: s('カレー会開催', 'Curry Nights Held', l) },
+            { num: '20', unit: s('+回', '+', l), label: s('カレー会開催', 'Curry Nights Held', l) },
             { num: '30〜40', unit: s('人', '', l), label: s('毎月のカレー会', 'Monthly Attendance', l) },
           ].map((stat, i) => (
             <div key={i} className="text-center">
               <p className="text-3xl md:text-4xl font-bold text-navy">
-                {stat.num}
+                <CountUp value={stat.num} />
                 <span className="text-base ml-0.5 text-orange font-semibold">{stat.unit}</span>
               </p>
               <p className="text-slate-500 text-sm mt-1.5">{stat.label}</p>
@@ -188,13 +194,13 @@ export default function Home() {
       {/* ── ABOUT ────────────────────────────── */}
       <section id="about" className="py-28 bg-white">
         {/* Top: Text + Photo Collage */}
-        <ScrollReveal>
+        <ScrollReveal direction="left">
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-16 items-center">
           <div>
             <span className="text-orange text-xs font-semibold uppercase tracking-widest">
               {s('わたしたちについて', 'About Us', l)}
             </span>
-            <h2 className="font-heading text-4xl md:text-5xl font-bold text-navy mt-4 mb-6 leading-tight">
+            <h2 className="font-heading text-3xl md:text-5xl font-bold text-navy mt-4 mb-6 leading-tight">
               {s(
                 <>なぜ、3rd Placeは<br className="md:hidden" />生まれたのか</>,
                 <>Why 3rd Place<br className="md:hidden" />Was Founded</>,
@@ -211,29 +217,28 @@ export default function Home() {
           </div>
 
           {/* Photo Collage */}
-          <div className="relative">
+          <Parallax speed={0.08} className="relative">
             {/* Glow */}
             <div className="absolute -top-8 -right-8 w-64 h-64 bg-orange/10 rounded-full blur-[80px] pointer-events-none" />
             <div className="grid grid-cols-3 gap-3 relative">
-              <div className="col-span-2 relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
+              <div className="col-span-2 relative aspect-[4/3] rounded-xl overflow-hidden shadow-lg">
                 <Image src="/images/events/curry/curry12.jpg" alt="カレー会" fill className="object-cover hover:scale-105 transition-transform duration-500" />
               </div>
-              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-lg mt-6">
+              <div className="relative aspect-[3/4] rounded-xl overflow-hidden shadow-lg mt-6">
                 <Image src="/images/events/special/christmas.jpg" alt="クリスマスパーティー" fill className="object-cover hover:scale-105 transition-transform duration-500" />
               </div>
-              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-lg -mt-4">
+              <div className="relative aspect-[3/4] rounded-xl overflow-hidden shadow-lg -mt-4">
                 <Image src="/images/events/workshop/udon1.jpg" alt="うどんワークショップ" fill className="object-cover hover:scale-105 transition-transform duration-500" />
               </div>
-              <div className="col-span-2 relative aspect-[5/3] rounded-2xl overflow-hidden shadow-lg -mt-4">
+              <div className="col-span-2 relative aspect-[5/3] rounded-xl overflow-hidden shadow-lg -mt-4">
                 <Image src="/images/events/special/bbq.jpg" alt="BBQ" fill className="object-cover hover:scale-105 transition-transform duration-500" />
               </div>
             </div>
-          </div>
+          </Parallax>
         </div>
         </ScrollReveal>
 
-        {/* Values cards */}
-        <ScrollReveal>
+        {/* Values cards — staggered reveal */}
         <div className="max-w-7xl mx-auto px-6 md:px-12 mt-20">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
@@ -262,7 +267,8 @@ export default function Home() {
                 icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>,
               },
             ].map((v, i) => (
-              <div key={i} className="group relative bg-navy rounded-2xl p-6 overflow-hidden hover:-translate-y-1 hover:shadow-xl transition-all duration-300 cursor-default">
+              <StaggerReveal key={i} index={i}>
+              <div className="group relative bg-navy rounded-2xl p-6 overflow-hidden hover:-translate-y-1 hover:shadow-xl transition-all duration-300 cursor-default">
                 {/* Top accent line — expands on hover */}
                 <div className="absolute top-0 left-0 h-1 w-8 group-hover:w-full bg-orange transition-all duration-500" />
                 <div className="flex items-center gap-3 mb-4">
@@ -274,10 +280,10 @@ export default function Home() {
                 <p className="font-bold text-white text-sm mb-2">{v.title}</p>
                 <p className="text-white/50 text-xs leading-relaxed">{v.desc}</p>
               </div>
+              </StaggerReveal>
             ))}
           </div>
         </div>
-        </ScrollReveal>
 
         {/* ── 参加フロー図解 ── */}
         <ScrollReveal>
@@ -286,7 +292,7 @@ export default function Home() {
             <span className="text-orange text-xs font-semibold uppercase tracking-widest">
               {s('はじめかた', 'How to Join', l)}
             </span>
-            <h3 className="font-heading text-3xl md:text-4xl font-bold text-navy mt-4">
+            <h3 className="font-heading text-2xl md:text-3xl font-bold text-navy mt-4">
               {s('たった3ステップで、仲間に出会えます', 'Just 3 steps and you\'ll find your crew', l)}
             </h3>
             <p className="text-slate-500 text-sm mt-3 max-w-lg mx-auto">
@@ -321,7 +327,8 @@ export default function Home() {
                 ),
               },
             ].map((item, i) => (
-              <div key={i} className="relative bg-cream rounded-2xl p-8 border border-gray-100">
+              <StaggerReveal key={i} index={i}>
+              <div className="relative bg-cream rounded-xl p-8 border border-gray-100">
                 <div className="flex items-center gap-3 mb-5">
                   <div className="w-10 h-10 rounded-full bg-orange flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
                     {item.step}
@@ -344,6 +351,7 @@ export default function Home() {
                   </div>
                 )}
               </div>
+              </StaggerReveal>
             ))}
           </div>
 
@@ -366,13 +374,13 @@ export default function Home() {
 
       {/* ── FOUNDER ──────────────────────────── */}
       <section className="py-28 bg-navy">
-        <ScrollReveal>
+        <ScrollReveal direction="right">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="mb-14">
             <span className="text-orange text-xs font-semibold uppercase tracking-widest">
               {s('創設者', 'Founder', l)}
             </span>
-            <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mt-4">
+            <h2 className="font-heading text-3xl md:text-5xl font-bold text-white mt-4">
               {s('3rd Placeの原点', 'The Origin of 3rd Place', l)}
             </h2>
           </div>
@@ -381,10 +389,10 @@ export default function Home() {
             <div>
               <div className="flex items-center gap-5 mb-8">
                 <div className="relative w-16 h-16 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-orange/40">
-                  <Image src="/images/team/masa.jpg" alt="野口マサ" fill className="object-cover" />
+                  <Image src="/images/team/masa.jpg" alt="野口まさ" fill className="object-cover" />
                 </div>
                 <div>
-                  <p className="text-white font-bold text-lg">{s('野口 マサ', 'Masa Noguchi', l)}</p>
+                  <p className="text-white font-bold text-lg">{s('野口 まさ', 'Masa Noguchi', l)}</p>
                   <p className="text-orange text-sm font-medium mt-0.5">{s('創設者 · メルボルン在住大学教授', 'Founder · University Professor in Melbourne', l)}</p>
                   <p className="text-white/40 text-xs mt-0.5">Melbourne, Australia</p>
                 </div>
@@ -402,7 +410,7 @@ export default function Home() {
 
               <p className="text-white/60 leading-relaxed text-sm mb-4">
                 {s(
-                  'メルボルンの大学で教鞭をとる野口さんは、学生たちの孤独や経済的困難を間近で見てきました。その経験が、世代や立場を超えて支え合えるコミュニティ「3rd Place」を生み出す原動力となっています。',
+                  'メルボルンの大学で教鞭をとる野口まささんは、学生たちの孤独や経済的困難を間近で見てきました。その経験が、世代や立場を超えて支え合えるコミュニティ「3rd Place」を生み出す原動力となっています。',
                   'As a university professor in Melbourne, Masa has witnessed firsthand the loneliness and financial struggles faced by young people. That experience became the driving force behind 3rd Place — a community where people support each other across generations and backgrounds.',
                   l
                 )}
@@ -431,7 +439,7 @@ export default function Home() {
               </div>
               <p className="text-white/60 leading-relaxed text-sm mb-5">
                 {s(
-                  'メルボルンの記録的なインフレの影響で、若者たちが「トーストだけ」「具のないラーメンだけ」で空腹をしのいでいる——そんな切実な現実を目の当たりにしたマサさんの、「心まで荒んでほしくない」という親心から、カレー会は始まりました。',
+                  'メルボルンの記録的なインフレの影響で、若者たちが「トーストだけ」「具のないラーメンだけ」で空腹をしのいでいる——そんな切実な現実を目の当たりにした野口まささんの、「心まで荒んでほしくない」という親心から、カレー会は始まりました。',
                   "As Melbourne's cost of living soared, Masa saw young people surviving on plain toast and ramen with no toppings. He couldn't bear the thought of their spirits breaking too. That's where the curry night was born.",
                   l
                 )}
@@ -461,6 +469,13 @@ export default function Home() {
         </div>
         </ScrollReveal>
       </section>
+
+      {/* Wave divider: navy → cream */}
+      <div className="relative -mt-px">
+        <svg viewBox="0 0 1440 56" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full block" preserveAspectRatio="none">
+          <path d="M0 0h1440v16c-240 26-480 40-720 40S240 42 0 16V0z" fill="#0B1F3A" />
+        </svg>
+      </div>
 
       {/* ── GALLERY ──────────────────────────── */}
       <GallerySection l={l} />
@@ -498,26 +513,38 @@ export default function Home() {
         </ScrollReveal>
       </section>
 
+      {/* Subtle divider between Team and FAQ (both cream) */}
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <div className="border-t border-gray-200/60" />
+      </div>
+
       {/* ── FAQ ──────────────────────────────── */}
       <section id="faq" className="py-28 bg-cream">
         <div className="max-w-3xl mx-auto px-6 md:px-12">
           <div className="text-center mb-14">
             <span className="text-orange text-xs font-semibold uppercase tracking-widest">FAQ</span>
-            <h2 className="font-heading text-4xl md:text-5xl font-bold text-navy mt-4">
+            <h2 className="font-heading text-3xl md:text-5xl font-bold text-navy mt-4">
               {s('よくある質問', 'Frequently Asked Questions', l)}
             </h2>
           </div>
-          <div className="bg-white rounded-2xl p-8 md:p-12 shadow-sm border border-gray-100">
+          <div className="bg-white rounded-xl p-8 md:p-12 shadow-sm border border-gray-100">
             <FAQSection items={faqItems[l]} />
           </div>
         </div>
       </section>
 
+      {/* Wave divider: cream → navy */}
+      <div className="relative -mb-px">
+        <svg viewBox="0 0 1440 56" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full block" preserveAspectRatio="none">
+          <path d="M0 56h1440V40c-240-26-480-40-720-40S240 14 0 40v16z" fill="#0B1F3A" />
+        </svg>
+      </div>
+
       {/* ── FINAL CTA ────────────────────────── */}
       <section id="cta" className="py-28 bg-navy">
         <div className="max-w-5xl mx-auto px-6 md:px-12">
           <div className="text-center mb-14">
-            <h2 className="font-heading text-4xl md:text-5xl font-bold text-white leading-tight">
+            <h2 className="font-heading text-3xl md:text-5xl font-bold text-white leading-tight">
               {s(
                 <>あなたは今、<br className="md:hidden" />どこにいますか？</>,
                 'Where are you right now?',
@@ -531,7 +558,7 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 gap-5">
             {/* Already in Melbourne */}
-            <div className="bg-navy-light rounded-2xl p-8 border border-white/10 hover:border-orange/30 transition-colors duration-200 flex flex-col">
+            <div className="bg-navy-light rounded-xl p-8 border border-white/10 hover:border-orange/30 transition-colors duration-200 flex flex-col">
               <div className="flex items-center gap-3 mb-5">
                 <span className="text-2xl">🇦🇺</span>
                 <h3 className="text-xl font-bold text-white">
@@ -566,7 +593,7 @@ export default function Home() {
             </div>
 
             {/* Heading to Melbourne */}
-            <div className="bg-orange rounded-2xl p-8 flex flex-col hover:bg-orange-dark transition-colors duration-200">
+            <div className="bg-orange rounded-xl p-8 flex flex-col hover:bg-orange-dark transition-colors duration-200">
               <div className="flex items-center gap-3 mb-2">
                 <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
@@ -584,7 +611,7 @@ export default function Home() {
               <p className="text-white/80 text-sm leading-relaxed mb-7 flex-grow">
                 {s(
                   '渡航前の不安は、先輩の話と準備で全部解消しちゃいましょう。3つの入口があります。',
-                  'Turn pre-departure nerves into confidence with senpai stories and real prep. Three ways in:',
+                  'Turn pre-departure nerves into confidence with senpai stories and real prep. Two ways in:',
                   l
                 )}
               </p>
@@ -594,7 +621,7 @@ export default function Home() {
                   {s('東京イベント（3rd Place Japan）を見る', 'See 3rd Place Japan (Tokyo)', l)}
                 </Link>
                 <a href="https://lin.ee/U8PVapG" target="_blank" rel="noopener noreferrer"
-                  className="bg-white/15 border border-white/40 text-white font-medium px-6 py-3 rounded-xl text-center hover:bg-white/25 transition-colors duration-200 text-sm cursor-pointer">
+                  className="animate-pulse-glow bg-white/15 border border-white/40 text-white font-medium px-6 py-3 rounded-xl text-center hover:bg-white/25 transition-colors duration-200 text-sm cursor-pointer">
                   {s('または、まずLINEグループに参加する', 'Or just join the LINE group', l)}
                 </a>
               </div>

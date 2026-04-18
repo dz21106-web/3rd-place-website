@@ -5,9 +5,22 @@ import { useEffect, useRef, ReactNode } from 'react'
 interface ScrollRevealProps {
   children: ReactNode
   className?: string
+  direction?: 'up' | 'left' | 'right'
 }
 
-export default function ScrollReveal({ children, className = '' }: ScrollRevealProps) {
+const animationClass = {
+  up: 'animate-fade-up',
+  left: 'animate-fade-left',
+  right: 'animate-fade-right',
+}
+
+const initialTransform = {
+  up: 'translate-y-4',
+  left: '-translate-x-8',
+  right: 'translate-x-8',
+}
+
+export default function ScrollReveal({ children, className = '', direction = 'up' }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -17,7 +30,7 @@ export default function ScrollReveal({ children, className = '' }: ScrollRevealP
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          el.classList.add('animate-fade-up')
+          el.classList.add(animationClass[direction])
           observer.unobserve(el)
         }
       },
@@ -26,10 +39,10 @@ export default function ScrollReveal({ children, className = '' }: ScrollRevealP
 
     observer.observe(el)
     return () => observer.disconnect()
-  }, [])
+  }, [direction])
 
   return (
-    <div ref={ref} className={`opacity-0 translate-y-4 ${className}`}>
+    <div ref={ref} className={`opacity-0 ${initialTransform[direction]} ${className}`}>
       {children}
     </div>
   )
