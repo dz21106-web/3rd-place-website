@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { FEATURE_FLAGS } from '../lib/site'
+import { EXTERNAL_LINKS } from '../lib/site'
 
 interface NavbarProps {
   lang: 'ja' | 'en'
@@ -31,7 +31,7 @@ const subLinks: Record<PageKey, { href: string; ja: string; en: string }[]> = {
 }
 
 const ctaConfig: Record<PageKey, { href: string; ja: string; en: string }> = {
-  melbourne: { href: 'https://lin.ee/U8PVapG', ja: '参加する', en: 'Join Us' },
+  melbourne: { href: EXTERNAL_LINKS.lineGroup, ja: '参加する', en: 'Join Us' },
   japan: { href: '#apply', ja: '申し込む', en: 'Apply' },
 }
 
