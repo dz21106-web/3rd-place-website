@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import HomePageClient from './HomePageClient'
 
-const title = 'Melbourne Japanese Community'
+const title = 'メルボルン日本人コミュニティ・交流イベント'
 const description =
   'メルボルンで、仲間と出会い、自分を広げる場所。初参加や一人参加でも入りやすい、日本人コミュニティです。'
 const socialImage = '/images/events/curry1.jpg'
