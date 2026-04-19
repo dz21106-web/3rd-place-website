@@ -7,7 +7,9 @@
 - `main` で直接作業しない
 - 必ず作業ブランチで変更する
 - `main` は安定版・統合用ブランチとして扱う
+- 作業開始前に `git fetch origin main` を実行し、`origin/main` が進んでいないか確認する
 - `main` に統合する前に、最新の `main` を自分のブランチへ取り込む
+- PR作成前にも再度 `git fetch origin main` を実行し、必要なら `origin/main` を取り込んでから push する
 - 変更はできるだけ小さく分ける
 
 ## 担当分担
@@ -47,3 +49,4 @@ Claude Code / Codex などのエージェントを使う場合は、作業開始
 - 自分が UI担当かインフラ担当か
 - 担当外のファイルは勝手に変更しないこと
 - `main` では直接作業しないこと
+- 作業開始前とPR前に `git fetch origin main` で最新の `origin/main` を確認すること

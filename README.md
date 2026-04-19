@@ -25,6 +25,7 @@ npm run build
 - 外部リンクと公開フラグは `lib/site.ts` で一元管理
 - `/hub` は `app/hub/page.tsx` で公開判定し、実体は `app/hub/HubPageClient.tsx`
 - `main` 直pushは禁止。作業ブランチを切ってPRで反映する
+- 作業開始前とPR前に `git fetch origin main` を実行し、最新の `origin/main` を確認する
 
 ## 公開リポジトリ運用
 - このリポジトリは公開前提で扱う
