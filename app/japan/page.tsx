@@ -245,8 +245,64 @@ export default function JapanPage() {
         </ScrollReveal>
       </section>
 
-      {/* ── いってらっしゃい会 ── */}
+      {/* ── 参加者の声 ── */}
       <section className="py-28 bg-white">
+        <ScrollReveal>
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <div className="mb-14">
+            <span className="text-orange text-xs font-semibold uppercase tracking-widest">
+              {s('参加者の声', 'Voices', l)}
+            </span>
+            <h2 className="font-heading text-3xl md:text-5xl font-bold text-navy mt-4">
+              {s('イベントに参加した人たちの感想', 'What participants say', l)}
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                quote: s(
+                  <>私自身何も知らずの参加だったけど、私でもワーホリとは何かなど魅力に感じることができるくらい<span className="text-orange font-semibold">丁寧に説明してくださった</span>。</>,
+                  <>I came in knowing nothing, but everything was <span className="text-orange font-semibold">explained so clearly</span> that even I could feel the appeal of a working holiday.</>,
+                  l
+                ),
+                profile: s('社会人・女性', 'Working professional, F', l),
+              },
+              {
+                quote: s(
+                  <>国内外の友達が増えることで一緒に経験したいことが増えて、<span className="text-orange font-semibold">できることや考え方が変わる</span>ことがわかりました。<span className="text-orange font-semibold">これからが楽しみ</span>になりました。</>,
+                  <>Making friends from Japan and abroad opened up so many things I want to experience together. I realized how much my <span className="text-orange font-semibold">perspective and possibilities can change</span>. I&apos;m <span className="text-orange font-semibold">excited for what&apos;s ahead</span>.</>,
+                  l
+                ),
+                profile: s('大学2年・女性', 'University sophomore, F', l),
+              },
+              {
+                quote: s(
+                  <>ワクワク感と漠然とした不安が入り混じっていた感情が、昨日のお話を聞いて具体的に調べて、<span className="text-orange font-semibold">このワクワクをカタチにしたい</span>と思うようになりました。</>,
+                  <>I had a mix of excitement and vague anxiety, but after hearing everyone&apos;s stories, I want to do my own research and <span className="text-orange font-semibold">turn this excitement into something real</span>.</>,
+                  l
+                ),
+                profile: s('大学4年・男性', 'University senior, M', l),
+              },
+            ].map((item, i) => (
+              <StaggerReveal key={i} index={i}>
+              <div className="group relative bg-cream rounded-xl p-8 border border-gray-100 flex flex-col h-full overflow-hidden hover:-translate-y-1.5 hover:shadow-lg hover:border-orange/20 transition-all duration-300 cursor-default">
+                <div className="absolute top-0 left-0 h-1 w-0 group-hover:w-full bg-orange/40 transition-all duration-500 rounded-t-xl" />
+                <svg className="w-8 h-8 text-orange/30 group-hover:text-orange/60 group-hover:scale-110 mb-4 flex-shrink-0 transition-all duration-300" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983z" />
+                </svg>
+                <p className="text-slate-700 text-sm leading-relaxed flex-grow mb-5">{item.quote}</p>
+                <p className="text-slate-400 text-xs font-medium group-hover:text-orange transition-colors duration-300">{item.profile}</p>
+              </div>
+              </StaggerReveal>
+            ))}
+          </div>
+        </div>
+        </ScrollReveal>
+      </section>
+
+      {/* ── いってらっしゃい会 ── */}
+      <section className="py-28 bg-white border-t border-gray-100">
         <ScrollReveal direction="right">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="grid md:grid-cols-2 gap-16 items-center">

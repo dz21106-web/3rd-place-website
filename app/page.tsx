@@ -46,7 +46,7 @@ export default function Home() {
 
   const faqItems = {
     ja: [
-      { q: 'カレー会に参加するには何が必要ですか？', a: '特別な準備は何もいらないですよ！まずは公式LINEを友だち追加して、自動で届く申請フォームにお答えください。運営が確認次第、コミュニティLINEグループへご招待します。費用はもちろん無料です。' },
+      { q: 'カレー会に参加するには何が必要ですか？', a: '特別な準備は何もいらないですよ！まずは運営のLINEを友だち追加してください。追加後、運営から参加申請フォームをお送りします。内容を確認次第、コミュニティLINEグループへご招待します。費用はもちろん無料です。' },
       { q: '初めてで一人なのですが、大丈夫ですか？', a: '全然大丈夫です！毎回5〜10人くらい初参加の方がいて、ほぼみんな一人で来てますよ。到着したら運営メンバーから声をかけるので、安心してきてくださいね。' },
       { q: '英語が話せなくても大丈夫ですか？', a: '全然問題ないです！コミュニティ内は基本日本語なので安心してください。英語交流の機会もあるけど、もちろん参加は自由です。' },
       { q: 'ワーホリ以外の方も参加できますか？', a: 'もちろん！ワーホリ・留学・駐在・永住者・旅行者まで、いろんな人が参加してます。メルボルンに関わるすべての日本人を歓迎してるよ。' },
@@ -55,7 +55,7 @@ export default function Home() {
       { q: '運営に参加したい場合はどうすればいいですか？', a: <>ぜひぜひ！メルボルン現地の運営メンバーを絶賛募集中です。<a href="https://forms.gle/9CzhUdRkuxJ4VKLTA" target="_blank" rel="noopener noreferrer" className="text-orange underline hover:text-orange-dark transition-colors duration-200 cursor-pointer">こちらのフォーム</a>からお気軽にご応募ください。</> },
     ],
     en: [
-      { q: 'What do I need to join the Curry Gathering?', a: 'Nothing to prepare! Just add our Official LINE — you\'ll automatically get a short application form. Our team reviews it and invites you into the community LINE group once approved. And yep, it\'s totally free.' },
+      { q: 'What do I need to join the Curry Gathering?', a: 'Nothing to prepare! Just add us on LINE. Once added, we\'ll send you a short application form. After a quick review, you\'ll be invited into the community LINE group. And yep, it\'s totally free.' },
       { q: 'Is it okay to come alone for the first time?', a: 'Totally fine! Every event has 5–10 first-timers, and almost everyone shows up solo. Our team will say hi when you arrive, so don\'t stress.' },
       { q: 'Is it okay if I can\'t speak English?', a: 'No problem at all! The community runs mostly in Japanese. There are English exchange opportunities too, but jumping in is totally up to you.' },
       { q: 'Can people other than working holidaymakers join?', a: 'Of course! WHV folks, students, expats, PRs, travelers — anyone with a Melbourne connection is welcome here.' },
@@ -116,8 +116,8 @@ export default function Home() {
           </p>
 
           <div className="animate-fade-up delay-500 flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://lin.ee/U8PVapG" target="_blank" rel="noopener noreferrer" className="animate-pulse-glow bg-orange text-white font-semibold px-8 py-3.5 rounded-full hover:bg-orange-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 text-sm cursor-pointer">
-              {s('LINEグループに参加する', 'Join LINE Group', l)}
+            <a href="https://line.me/ti/p/5ET_QCNdpX" target="_blank" rel="noopener noreferrer" className="animate-pulse-glow bg-orange text-white font-semibold px-8 py-3.5 rounded-full hover:bg-orange-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 text-sm cursor-pointer">
+              {s('LINEで参加する', 'Join via LINE', l)}
             </a>
             <a href="#about" className="border border-white/25 text-white font-medium px-8 py-3.5 rounded-full hover:bg-white/10 transition-colors duration-200 text-sm cursor-pointer">
               {s('3rd Placeってどんなとこ？', 'What\'s this place?', l)}
@@ -184,9 +184,9 @@ export default function Home() {
           <span className="text-white/70 text-xs">
             {s('※ 住所はLINEグループでお知らせします', '* Address shared in LINE group', l)}
           </span>
-          <a href="https://lin.ee/U8PVapG" target="_blank" rel="noopener noreferrer"
+          <a href="https://line.me/ti/p/5ET_QCNdpX" target="_blank" rel="noopener noreferrer"
             className="bg-white text-orange font-bold text-xs px-4 py-2 rounded-full hover:bg-cream transition-colors duration-200 cursor-pointer whitespace-nowrap">
-            {s('LINEで参加する', 'Join via LINE', l)}
+            {s('LINEを追加する', 'Add on LINE', l)}
           </a>
         </div>
       </section>
@@ -304,16 +304,16 @@ export default function Home() {
             {[
               {
                 step: '1',
-                title: s('公式LINE追加＆フォーム回答', 'Add LINE & fill the form', l),
-                desc: s('下のボタンから公式LINEを友だち追加すると、1分で終わる参加申請フォームが自動で届きます。お名前や参加したい理由など、簡単な内容です。', 'Tap the button to add our Official LINE — you\'ll automatically get a short application form. It only takes about a minute to fill out.', l),
+                title: s('運営のLINEを追加', 'Add our LINE', l),
+                desc: s('下のボタンから運営のLINEを友だち追加してください。追加後、運営から簡単な参加申請フォームをお送りします。', 'Tap the button to add us on LINE. Once added, we\'ll send you a quick application form.', l),
                 icon: (
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
                 ),
               },
               {
                 step: '2',
-                title: s('承認後、コミュニティに参加', 'Approved & welcomed in', l),
-                desc: s('運営が内容を確認次第、そのままコミュニティLINEグループへご招待します！', 'Our team will review your application and invite you straight into the community LINE group!', l),
+                title: s('確認後、コミュニティに招待', 'Reviewed & invited', l),
+                desc: s('フォームの内容を確認次第、コミュニティLINEグループへご招待します！', 'Once we review your form, we\'ll invite you straight into the community LINE group!', l),
                 icon: (
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
                 ),
@@ -570,18 +570,18 @@ export default function Home() {
               </div>
               <p className="text-white/50 text-sm leading-relaxed mb-7 flex-grow">
                 {s(
-                  'まずは公式LINEを友だち追加→届くフォームに答えるだけ。承認後、カレー会や他のイベントに遊びに来てね。月1ペースで集まってます。',
-                  'Just add our Official LINE and fill out the short form. Once approved, come hang out at curry nights and other events — we meet monthly.',
+                  'まずは運営のLINEを友だち追加→届くフォームに答えるだけ。確認後、カレー会や他のイベントに遊びに来てね。月1ペースで集まってます。',
+                  'Just add our organizer on LINE and fill out the form we send you. Once reviewed, come hang out at curry nights and other events — we meet monthly.',
                   l
                 )}
               </p>
               <div className="flex flex-col gap-3">
-                <a href="https://lin.ee/U8PVapG" target="_blank" rel="noopener noreferrer"
+                <a href="https://line.me/ti/p/5ET_QCNdpX" target="_blank" rel="noopener noreferrer"
                   className="bg-orange text-white font-semibold px-6 py-3 rounded-xl text-center hover:bg-orange-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 text-sm cursor-pointer">
-                  {s('LINEグループに参加する', 'Join LINE Group', l)}
+                  {s('運営のLINEを追加する', 'Add us on LINE', l)}
                 </a>
                 <p className="text-white/40 text-xs text-center">
-                  {s('友だち追加→1分のフォーム→承認後にご招待。シンプルな3ステップです。', 'Add us → 1-min form → invited once approved. Simple 3-step flow.', l)}
+                  {s('LINE追加→届くフォームに回答→確認後にご招待。シンプルな3ステップです。', 'Add us → fill the form we send → invited after review. Simple 3 steps.', l)}
                 </p>
               </div>
               <p className="text-white/50 text-xs text-center mt-4">
@@ -620,9 +620,9 @@ export default function Home() {
                   className="bg-white text-orange font-bold px-6 py-3 rounded-xl text-center hover:bg-cream transition-colors duration-200 text-sm cursor-pointer">
                   {s('東京イベント（3rd Place Japan）を見る', 'See 3rd Place Japan (Tokyo)', l)}
                 </Link>
-                <a href="https://lin.ee/U8PVapG" target="_blank" rel="noopener noreferrer"
+                <a href="https://line.me/ti/p/5ET_QCNdpX" target="_blank" rel="noopener noreferrer"
                   className="animate-pulse-glow bg-white/15 border border-white/40 text-white font-medium px-6 py-3 rounded-xl text-center hover:bg-white/25 transition-colors duration-200 text-sm cursor-pointer">
-                  {s('または、まずLINEグループに参加する', 'Or just join the LINE group', l)}
+                  {s('または、まずLINEを追加する', 'Or just add us on LINE', l)}
                 </a>
               </div>
             </div>
@@ -634,7 +634,7 @@ export default function Home() {
       <footer className="py-12 bg-ink border-t border-white/5">
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3">
-            <Image src="/images/logo.png" alt="3rd Place" width={30} height={30} className="object-contain" />
+            <Image src="/images/3rd-place-melbourne.jpg" alt="3rd Place" width={30} height={30} className="object-contain rounded-lg" />
             <div>
               <p className="text-white font-bold text-sm">3rd Place</p>
               <p className="text-white/30 text-xs">Melbourne Japanese Community</p>

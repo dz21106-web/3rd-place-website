@@ -96,7 +96,7 @@ fontFamily:
 ※ `events/` 直下にも旧写真あり（curry1-8, bbq, cafe, nabe, curry2）— GallerySectionはサブフォルダを参照
 
 ## 保留事項（実装しないでおくもの）
-- **CTA の LINE URL**: 全ページ `https://lin.ee/U8PVapG`（3rd Place Melbourne公式LINEアカウント）。友だち追加→あいさつメッセージ内のGoogleフォームリンクから申請→運営が審査→手動でコミュニティLINEグループに招待、という2段階フロー
+- **CTA の LINE URL**: 全ページ `https://line.me/ti/p/5ET_QCNdpX`（運営の個人LINE）。友だち追加→運営がフォームを送付→回答確認後にコミュニティLINEグループに招待、というフロー
 - **Hub のダミーテスティモニアル**: 実際の参加者の声が集まるまで置き換えない
 - **GitHub Pages デプロイ**: 未実施
 
