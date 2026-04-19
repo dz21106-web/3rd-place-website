@@ -1,5 +1,9 @@
 # 3rd Place Webサイト — CLAUDE.md
 
+## 📘 事業コンテキストが必要なとき
+このファイルは **Webサイト/アプリのコード規約** に特化している。
+ビジネスモデル・法務NGワード・KPI・チーム体制・サービス設計など **事業全体の前提** が必要な相談（LPコピー・SNS案・サービス改善提案等）では、先に `docs/3rdplace-core.md`（3rd Place コアナレッジベース v3.0）を参照すること。
+
 ## プロジェクト概要
 メルボルンの日本人コミュニティ「3rd Place」の公式Webサイト。Next.js 14 App Router + Tailwind CSS + TypeScript。静的エクスポート。
 
@@ -92,7 +96,7 @@ fontFamily:
 ※ `events/` 直下にも旧写真あり（curry1-8, bbq, cafe, nabe, curry2）— GallerySectionはサブフォルダを参照
 
 ## 保留事項（実装しないでおくもの）
-- **CTA の LINE URL**: 全ページ `https://lin.ee/U8PVapG`（3rd Place Melbourne公式LINEアカウント）。友だち追加→あいさつメッセージ内のGoogleフォームリンクから申請→運営が審査→手動でコミュニティLINEグループに招待、という2段階フロー
+- **CTA の LINE URL**: 全ページ `https://line.me/ti/p/5ET_QCNdpX`（運営の個人LINE）。友だち追加→運営がフォームを送付→回答確認後にコミュニティLINEグループに招待、というフロー
 - **Hub のダミーテスティモニアル**: 実際の参加者の声が集まるまで置き換えない
 - **GitHub Pages デプロイ**: 未実施
 

@@ -70,11 +70,17 @@ export default function Navbar({ lang, setLang, page = 'melbourne' }: NavbarProp
     }`}>
       <div className="max-w-7xl mx-auto px-6 md:px-12 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3">
-          <Image src="/images/logo.png" alt="3rd Place" width={34} height={34} className="object-contain" />
+        <Link href={isHome ? '/' : '/japan'} className="flex items-center gap-3">
+          <Image
+            src={isHome ? '/images/3rd-place-melbourne.jpg' : '/images/japan/logo-japan.jpg'}
+            alt="3rd Place"
+            width={34}
+            height={34}
+            className="object-contain rounded-lg"
+          />
           <div className="flex flex-col leading-none">
             <span className={`font-bold text-sm tracking-wide ${showWhiteText ? 'text-white' : 'text-navy'}`}>3rd Place</span>
-            <span className={`text-xs ${showWhiteText ? 'text-white/50' : 'text-slate-400'}`}>Melbourne</span>
+            <span className={`text-xs ${showWhiteText ? 'text-white/50' : 'text-slate-400'}`}>{isHome ? 'Melbourne' : 'Japan'}</span>
           </div>
         </Link>
 
