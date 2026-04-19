@@ -6,6 +6,7 @@ build/
 .env
 .env.local
 .vercel
+.tools/
 *:Zone.Identifier
 *.tsbuildinfo
 .claude/

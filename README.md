@@ -32,3 +32,10 @@ npm run build
 - 個人情報、社内メモ、作業ログ、未公開資料はコミットしない
 - 非公開資料は `docs/private/` または外部ストレージで管理する
 - 詳細ルールは `docs/operations/public-repo-policy.md` を参照
+
+## GitHub CLI と自動PR作成
+- `gh` ローカル導入: `npm run gh:install`
+- この環境では `gh` をローカル配置で利用: `.tools/gh/bin/gh`
+- 初回のみ認証: `.tools/gh/bin/gh auth login`
+- PR自動作成: `npm run pr:create`
+- 既定のベースブランチは `main`。変更する場合は `BASE_BRANCH=develop npm run pr:create`
