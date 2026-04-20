@@ -10,6 +10,9 @@ build/
 *:Zone.Identifier
 *.tsbuildinfo
 .claude/
+.vscode/
+hub-app/data/
+hub-app/photos/
 docs/private/
 docs/employees/
 docs/operations/*-work-log.md

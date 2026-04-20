@@ -1,0 +1,29 @@
+# Build output
+.next/
+out/
+dist/
+build/
+
+# Dependencies
+node_modules/
+
+# Vercel
+.vercel/
+
+# TypeScript build info
+*.tsbuildinfo
+
+# Deploy artifacts
+.claude/scheduled_tasks.lock
+
+# Large assets not used by the site
+3rd place 写真/
+docs/*.pdf
+
+# OS files
+.DS_Store
+
+# Env files (AI should not index secrets)
+.env
+.env.local
+.env*.local

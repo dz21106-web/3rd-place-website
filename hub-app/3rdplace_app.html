@@ -21,6 +21,8 @@
   --amber: #E8A838;
   --amber-d: #C88820;
   --sage: #4A7A58;
+  --sage-dark: #2a5a3a;
+  --sage-darker: #1a3a2a;
   --brown: #3D1E0A;
 
   /* ── Neutrals ── */
@@ -38,13 +40,11 @@
   --sh: 0 2px 8px rgba(26,14,6,.06);
   --sh-md: 0 4px 16px rgba(26,14,6,.08);
   --sh-lg: 0 8px 32px rgba(26,14,6,.12);
-  --sh-h: 0 8px 32px rgba(26,14,6,.12);
 
   /* ── Radius (3 levels) ── */
   --r-sm: 8px;
   --r: 14px;
   --r-lg: 20px;
-  --rs: 10px;
 
   /* ── Freshness ── */
   --fresh: #4A7A58;
@@ -203,6 +203,152 @@ h1,h2,h3 { font-family: 'Noto Serif JP','Hiragino Mincho ProN',serif; }
 .zoom-meta { font-size:12px; color:var(--text-2); margin-top:3px; }
 .zoom-badge { padding:5px 12px; background:rgba(27,45,91,.06); color:var(--navy); border-radius:var(--r-lg); font-size:11px; font-weight:700; white-space:nowrap; }
 
+/* ── 知る TAB: メンバー投稿機能 ── */
+.learn-topbar { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:8px; flex-wrap:wrap; }
+.learn-intro { font-size:13px; color:var(--text-2); line-height:1.7; margin-bottom:24px; }
+.contribute-btn {
+  display:inline-flex; align-items:center; gap:8px;
+  padding:11px 20px; background:var(--coral); color:#fff;
+  border:none; border-radius:var(--r-sm); font-size:13px; font-weight:700;
+  cursor:pointer; transition:transform var(--duration) var(--ease),box-shadow var(--duration),background var(--duration);
+  box-shadow:0 2px 6px rgba(232,88,58,.25);
+}
+.contribute-btn:hover { transform:translateY(-1px); box-shadow:0 4px 12px rgba(232,88,58,.35); background:#d84828; }
+.contribute-btn-small { padding:9px 16px; font-size:12px; }
+
+.industry-card { position:relative; }
+.industry-card-new {
+  position:absolute; top:14px; right:14px;
+  padding:3px 8px; background:var(--coral); color:#fff;
+  border-radius:var(--r-sm); font-size:10px; font-weight:800; letter-spacing:.5px;
+  animation:glowPulse 2.2s var(--ease) infinite;
+}
+
+/* 業界詳細: 自動集計サマリー */
+.industry-aggregate {
+  background:linear-gradient(135deg,rgba(27,45,91,.03) 0%,rgba(232,168,56,.05) 100%);
+  border:1px solid var(--border-light); border-radius:var(--r); padding:20px 22px; margin-bottom:24px;
+}
+.industry-aggregate-heading {
+  font-size:12px; font-weight:700; color:var(--navy); letter-spacing:.4px;
+  margin-bottom:14px; display:flex; align-items:center; gap:8px;
+}
+.industry-aggregate-heading i { color:var(--amber); }
+.industry-aggregate .data-summary { margin-bottom:0; }
+.industry-aggregate-empty-msg { font-size:13px; color:var(--text-2); line-height:1.7; }
+
+/* 業界詳細: 投稿ボタン（ヘッダー内） */
+.detail-header .contribute-btn { margin-top:14px; }
+
+/* メンバーの声 セクション */
+.contribution-heading { margin-top:8px; margin-bottom:16px; }
+.contribution-list { display:grid; grid-template-columns:1fr; gap:14px; margin-bottom:28px; }
+.contribution-card {
+  background:var(--surface); border-radius:var(--r); padding:22px;
+  box-shadow:var(--sh-sm); border:1px solid var(--border-light);
+  transition:box-shadow var(--duration),transform var(--duration) var(--ease);
+}
+.contribution-card:hover { box-shadow:var(--sh); transform:translateY(-1px); }
+.contribution-header { display:flex; align-items:center; gap:12px; margin-bottom:16px; }
+.contribution-avatar {
+  width:42px; height:42px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+  font-size:16px; font-weight:700; color:#fff; flex-shrink:0;
+}
+.contribution-meta { flex:1; min-width:0; }
+.contribution-name {
+  font-size:14px; font-weight:700; color:var(--text);
+  display:flex; align-items:center; gap:8px;
+}
+.contribution-sub { font-size:12px; color:var(--text-3); margin-top:3px; }
+.contribution-new-badge {
+  padding:2px 7px; background:var(--coral); color:#fff;
+  border-radius:var(--r-sm); font-size:9px; font-weight:800; letter-spacing:.5px;
+}
+.contribution-field { margin-top:14px; padding-top:14px; border-top:1px dashed var(--border-light); }
+.contribution-field:first-of-type { margin-top:0; padding-top:0; border-top:none; }
+.contribution-field-label {
+  font-size:11px; font-weight:700; color:var(--navy); letter-spacing:.4px;
+  margin-bottom:6px; display:flex; align-items:center; gap:6px;
+}
+.contribution-field-label i { color:var(--amber); font-size:12px; }
+.contribution-field-body { font-size:13px; color:var(--text); line-height:1.75; white-space:pre-wrap; }
+.contribution-wage { padding:16px 20px; }
+.contribution-wage .contribution-header { margin-bottom:8px; }
+.contribution-tag {
+  display:inline-flex; align-items:center; gap:5px;
+  padding:3px 9px; background:rgba(27,45,91,.06); color:var(--navy);
+  border-radius:var(--r-sm); font-size:11px; font-weight:700;
+}
+.contribution-empty {
+  text-align:center; padding:40px 20px; background:var(--surface);
+  border:1px dashed var(--border); border-radius:var(--r); margin-bottom:28px;
+}
+.contribution-empty i { font-size:28px; color:var(--text-3); margin-bottom:10px; }
+.contribution-empty p { font-size:14px; font-weight:700; color:var(--text-2); }
+.contribution-empty small { display:block; margin-top:4px; font-size:12px; color:var(--text-3); }
+
+/* 運営の基礎ガイド（折りたたみ） */
+.operator-guide {
+  background:var(--surface); border:1px solid var(--border-light); border-radius:var(--r);
+  margin-bottom:28px; overflow:hidden;
+}
+.operator-guide summary {
+  padding:18px 22px; font-size:14px; font-weight:700; color:var(--text-2);
+  cursor:pointer; display:flex; align-items:center; gap:10px;
+  list-style:none; transition:background var(--duration);
+}
+.operator-guide summary::-webkit-details-marker { display:none; }
+.operator-guide summary i { color:var(--navy); }
+.operator-guide summary::after {
+  content:'\f078'; font-family:'Font Awesome 6 Free'; font-weight:900;
+  margin-left:auto; font-size:11px; color:var(--text-3);
+  transition:transform var(--duration);
+}
+.operator-guide[open] summary::after { transform:rotate(180deg); }
+.operator-guide summary:hover { background:var(--bg); }
+.operator-guide-body { padding:4px 22px 22px; }
+
+/* 投稿フォーム */
+.contrib-intro {
+  font-size:13px; color:var(--text-2); line-height:1.7;
+  padding:12px 14px; background:rgba(232,168,56,.1); border-radius:var(--r-sm);
+  margin-bottom:18px;
+}
+.contrib-intro strong { color:var(--coral); }
+.contrib-kind-tabs { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:18px; }
+.contrib-kind-tab {
+  padding:14px 12px; background:var(--bg); border:2px solid transparent; border-radius:var(--r-sm);
+  display:flex; flex-direction:column; align-items:center; gap:4px; cursor:pointer;
+  transition:all var(--duration) var(--ease); color:var(--text-2); text-align:center;
+}
+.contrib-kind-tab i { font-size:18px; color:var(--text-3); }
+.contrib-kind-tab span { font-size:13px; font-weight:700; color:var(--text); }
+.contrib-kind-tab small { font-size:11px; color:var(--text-3); }
+.contrib-kind-tab.active { background:var(--surface); border-color:var(--coral); box-shadow:0 2px 8px rgba(232,88,58,.15); }
+.contrib-kind-tab.active i { color:var(--coral); }
+.contrib-row { margin-bottom:16px; }
+.contrib-label { display:flex; align-items:center; gap:6px; font-size:12px; font-weight:700; color:var(--text); margin-bottom:6px; }
+.contrib-label i { color:var(--navy); font-size:11px; }
+.contrib-req { padding:1px 7px; background:var(--coral); color:#fff; border-radius:var(--r-sm); font-size:9px; font-weight:800; letter-spacing:.4px; }
+.contrib-input {
+  width:100%; padding:10px 12px; font-size:14px; color:var(--text);
+  background:var(--surface); border:1.5px solid var(--border); border-radius:var(--r-sm);
+  font-family:inherit; transition:border-color var(--duration),box-shadow var(--duration);
+}
+.contrib-input:focus { outline:none; border-color:var(--navy); box-shadow:0 0 0 3px rgba(27,45,91,.1); }
+.contrib-textarea { resize:vertical; min-height:90px; line-height:1.6; }
+.contrib-hint { display:block; margin-top:5px; font-size:11px; color:var(--text-3); line-height:1.5; }
+.contrib-success { text-align:center; padding:30px 16px; }
+.contrib-success-icon { font-size:56px; color:var(--sage); margin-bottom:14px; }
+.contrib-success h3 { font-size:18px; font-weight:700; color:var(--text); margin-bottom:10px; }
+.contrib-success p { font-size:13px; color:var(--text-2); line-height:1.8; }
+
+@media(max-width:600px){
+  .learn-topbar { align-items:flex-start; }
+  .contrib-kind-tabs { grid-template-columns:1fr; }
+  .industry-aggregate .data-summary { grid-template-columns:repeat(2,1fr); }
+}
+
 /* ── 探す TAB ── */
 .explore-toolbar { background:var(--surface); border-bottom:1px solid var(--border); padding:12px 20px; display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
 .tab-group { display:flex; background:var(--bg-elevated); border-radius:var(--r-sm); overflow:hidden; }
@@ -253,8 +399,12 @@ h1,h2,h3 { font-family: 'Noto Serif JP','Hiragino Mincho ProN',serif; }
 .badge-status.recruiting, .badge-status.available { background:rgba(232,88,58,.85); }
 .badge-status.stocked, .badge-status.notes_only { background:rgba(27,45,91,.85); }
 .badge-status.developing, .badge-status.member_working { background:rgba(232,168,56,.92); color:var(--text); }
-.badge-status.baton_recruiting { background:rgba(232,88,58,.92); animation:pulse 2s ease-in-out infinite; }
+.badge-status.baton_recruiting { background:rgba(232,88,58,.92); animation:glowPulse 2.4s ease-in-out infinite; }
 @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.8} }
+@keyframes glowPulse { 0%,100%{box-shadow:0 0 0 0 rgba(232,88,58,0);} 50%{box-shadow:0 0 14px 3px rgba(232,88,58,.55);} }
+@keyframes favBounce { 0%{transform:scale(1);} 30%{transform:scale(1.35);} 60%{transform:scale(.92);} 100%{transform:scale(1);} }
+.card.card-recruiting { border-left:4px solid var(--coral); }
+.fav-btn.active { animation:favBounce .45s var(--ease); }
 .badge-price { position:absolute; bottom:12px; right:12px; background:rgba(20,10,4,.6); backdrop-filter:blur(10px); color:#fff; padding:5px 12px; border-radius:var(--r-lg); font-size:13px; font-weight:700; }
 .fav-btn { position:absolute; top:10px; right:10px; width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,.9); backdrop-filter:blur(8px); border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:16px; transition:transform var(--duration) var(--ease); box-shadow:var(--sh-sm); z-index:2; }
 .fav-btn:hover { transform:scale(1.1); }
@@ -292,7 +442,7 @@ h1,h2,h3 { font-family: 'Noto Serif JP','Hiragino Mincho ProN',serif; }
 
 /* ── 引き継ぐ TAB ── */
 .handover-content { padding:32px 24px; max-width:800px; margin:0 auto; }
-.handover-hero { background:linear-gradient(135deg,#1a3a2a,#2a5a3a); color:#fff; padding:40px 24px 36px; text-align:center; }
+.handover-hero { background:linear-gradient(135deg,var(--sage-darker),var(--sage-dark)); color:#fff; padding:40px 24px 36px; text-align:center; }
 .handover-hero h2 { font-size:24px; font-weight:700; margin-bottom:10px; line-height:1.4; }
 .handover-hero p { font-size:14px; color:rgba(255,255,255,.75); line-height:1.7; }
 .handover-steps { display:flex; flex-direction:column; gap:14px; margin-bottom:36px; }
@@ -422,6 +572,142 @@ h1,h2,h3 { font-family: 'Noto Serif JP','Hiragino Mincho ProN',serif; }
   .modal-carousel{height:200px;}
 }
 
+/* ── ゆずる (MARKET) TAB ── */
+.market-hero{background:linear-gradient(160deg,var(--sage) 0%,#3A6248 60%,#2C4D38 100%);padding:40px 24px 32px;text-align:center;color:#fff;}
+.market-hero-inner{max-width:680px;margin:0 auto;}
+.market-hero h2{font-size:24px;font-weight:700;margin-bottom:10px;letter-spacing:.5px;}
+.market-hero p{font-size:14px;color:rgba(255,255,255,.8);line-height:1.7;}
+.market-hero .market-tagline{display:inline-block;font-size:11px;font-weight:700;color:rgba(255,255,255,.7);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:8px;padding:4px 12px;background:rgba(255,255,255,.1);border-radius:12px;}
+.market-stats{display:flex;justify-content:center;gap:32px;margin-top:20px;flex-wrap:wrap;}
+.market-stat{text-align:center;}
+.market-stat-num{font-size:22px;font-weight:700;color:#fff;font-family:'Noto Sans JP',sans-serif;}
+.market-stat-label{font-size:11px;color:rgba(255,255,255,.65);margin-top:2px;letter-spacing:.4px;}
+
+.dummy-banner{background:#FFF8E5;border-bottom:1px solid rgba(232,168,56,.3);padding:10px 20px;text-align:center;font-size:12px;color:#7A5A20;font-weight:600;display:flex;align-items:center;justify-content:center;gap:8px;}
+.dummy-banner i{color:var(--amber-d);}
+
+.market-content{padding:24px 20px 40px;max-width:1200px;margin:0 auto;}
+.market-toolbar{display:flex;align-items:center;gap:10px;margin-bottom:18px;flex-wrap:wrap;}
+.market-search-wrap{position:relative;flex:1;min-width:180px;}
+.market-search{width:100%;padding:10px 14px 10px 38px;border:1.5px solid var(--border);border-radius:var(--r-sm);font-size:13px;font-family:inherit;background:var(--surface);transition:border-color var(--duration);}
+.market-search:focus{outline:none;border-color:var(--sage);}
+.market-search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--text-3);font-size:13px;}
+.market-sort{padding:10px 14px;border:1.5px solid var(--border);border-radius:var(--r-sm);font-size:13px;font-family:inherit;background:var(--surface);cursor:pointer;color:var(--text);}
+.market-sort:focus{outline:none;border-color:var(--sage);}
+.market-post-btn{padding:10px 18px;background:var(--sage);color:#fff;border:none;border-radius:var(--r-sm);font-size:13px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:filter var(--duration);white-space:nowrap;font-family:inherit;}
+.market-post-btn:hover{filter:brightness(1.08);}
+
+.market-categories{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px;}
+.market-categories::-webkit-scrollbar{display:none;}
+.market-cat-chip{padding:8px 16px;border:1.5px solid var(--border);border-radius:var(--r-lg);background:var(--surface);cursor:pointer;font-size:12px;font-weight:600;color:var(--text-2);transition:all var(--duration);white-space:nowrap;display:inline-flex;align-items:center;gap:6px;font-family:inherit;}
+.market-cat-chip i{font-size:11px;}
+.market-cat-chip.active{background:var(--sage);color:#fff;border-color:var(--sage);}
+.market-cat-chip:hover:not(.active){border-color:var(--sage);color:var(--sage);}
+
+.market-result-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:12px;color:var(--text-3);}
+.market-result-count strong{color:var(--text);font-weight:700;}
+
+.item-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px;}
+.item-card{background:var(--surface);border-radius:var(--r);overflow:hidden;cursor:pointer;transition:transform var(--duration) var(--ease),box-shadow var(--duration) var(--ease);border:1px solid var(--border-light);position:relative;display:flex;flex-direction:column;}
+.item-card:hover{transform:translateY(-3px);box-shadow:var(--sh-md);}
+.item-card.is-sold{opacity:.65;}
+.item-card.is-sold .item-photo::after{content:'SOLD';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.5);color:#fff;font-size:24px;font-weight:800;letter-spacing:4px;font-family:'Noto Sans JP',sans-serif;}
+.item-photo{position:relative;width:100%;aspect-ratio:1/1;background:var(--bg);overflow:hidden;}
+.item-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s var(--ease);}
+.item-card:hover .item-photo img{transform:scale(1.04);}
+.item-fav-btn{position:absolute;top:8px;right:8px;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.92);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text-3);transition:all var(--duration);font-size:14px;backdrop-filter:blur(4px);z-index:2;}
+.item-fav-btn:hover{background:#fff;color:var(--coral);}
+.item-fav-btn.active{color:var(--coral);background:#fff;}
+.item-package-tag{position:absolute;top:8px;left:8px;background:var(--coral);color:#fff;padding:4px 9px;border-radius:6px;font-size:10px;font-weight:700;letter-spacing:.4px;display:inline-flex;align-items:center;gap:4px;z-index:2;}
+.item-condition-tag{position:absolute;bottom:8px;left:8px;background:rgba(0,0,0,.7);color:#fff;padding:3px 9px;border-radius:6px;font-size:10px;font-weight:600;backdrop-filter:blur(4px);z-index:2;}
+.item-info{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1;}
+.item-title{font-size:14px;font-weight:700;color:var(--text);line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.8em;}
+.item-price{font-size:20px;font-weight:800;color:var(--coral);font-family:'Noto Sans JP',sans-serif;letter-spacing:-.3px;}
+.item-price .currency{font-size:13px;font-weight:700;margin-right:1px;}
+.item-meta{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--text-3);margin-top:2px;}
+.item-meta-area{display:inline-flex;align-items:center;gap:3px;}
+.item-meta-dot{width:3px;height:3px;border-radius:50%;background:var(--text-3);}
+.item-urgent{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;background:rgba(232,88,58,.1);color:var(--coral);font-size:10px;font-weight:700;border-radius:6px;margin-top:2px;align-self:flex-start;}
+
+.market-empty{padding:60px 20px;text-align:center;color:var(--text-3);}
+.market-empty i{font-size:36px;margin-bottom:12px;display:block;color:var(--border);}
+.market-empty p{font-size:14px;}
+
+/* Item modal */
+.item-modal-photo-wrap{position:relative;width:100%;aspect-ratio:4/3;background:#1A1A1A;overflow:hidden;}
+.item-modal-photo{width:100%;height:100%;object-fit:contain;background:#1A1A1A;}
+.item-modal-photo-nav{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:50%;background:rgba(0,0,0,.5);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;backdrop-filter:blur(4px);transition:background var(--duration);}
+.item-modal-photo-nav:hover{background:rgba(0,0,0,.75);}
+.item-modal-photo-nav.prev{left:12px;}
+.item-modal-photo-nav.next{right:12px;}
+.item-modal-photo-dots{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:6px;}
+.item-modal-photo-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.4);transition:background var(--duration);}
+.item-modal-photo-dot.active{background:#fff;}
+.item-modal-body{padding:22px 24px 28px;}
+.item-modal-cat-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px;}
+.item-modal-cat{display:inline-flex;align-items:center;gap:5px;padding:4px 11px;background:var(--bg-elevated);color:var(--text-2);border-radius:12px;font-size:11px;font-weight:700;}
+.item-modal-condition{display:inline-flex;align-items:center;gap:5px;padding:4px 11px;border-radius:12px;font-size:11px;font-weight:700;}
+.cond-new{background:rgba(74,122,88,.15);color:var(--sage);}
+.cond-good{background:rgba(75,123,187,.15);color:#3A6298;}
+.cond-used{background:rgba(232,168,56,.15);color:var(--amber-d);}
+.cond-junk{background:rgba(140,130,120,.15);color:var(--text-2);}
+.item-modal-title{font-size:22px;font-weight:700;color:var(--text);line-height:1.4;margin-bottom:8px;}
+.item-modal-price{font-size:30px;font-weight:800;color:var(--coral);font-family:'Noto Sans JP',sans-serif;margin-bottom:18px;letter-spacing:-.5px;}
+.item-modal-price .currency{font-size:18px;font-weight:700;}
+.item-modal-section{padding:16px 0;border-top:1px solid var(--border-light);}
+.item-modal-section-title{font-size:11px;font-weight:700;color:var(--text-3);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;}
+.item-modal-desc{font-size:14px;color:var(--text);line-height:1.75;white-space:pre-wrap;}
+.item-modal-info-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;}
+.item-modal-info-item{display:flex;flex-direction:column;gap:3px;}
+.item-modal-info-label{font-size:11px;color:var(--text-3);}
+.item-modal-info-val{font-size:13px;color:var(--text);font-weight:600;}
+.item-modal-package-list{margin-top:8px;display:flex;flex-direction:column;gap:6px;}
+.item-modal-package-item{display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--bg);border-radius:8px;font-size:13px;color:var(--text);}
+.item-modal-package-item i{color:var(--sage);font-size:11px;}
+.item-modal-seller{display:flex;align-items:center;gap:12px;padding:14px;background:var(--bg);border-radius:var(--r-sm);}
+.item-modal-seller-avatar{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:16px;flex-shrink:0;}
+.item-modal-seller-info{flex:1;min-width:0;}
+.item-modal-seller-name{font-size:14px;font-weight:700;color:var(--text);}
+.item-modal-seller-meta{font-size:11px;color:var(--text-3);margin-top:2px;}
+.item-modal-cta-row{display:flex;gap:10px;margin-top:20px;}
+.item-modal-cta-line{flex:1;padding:14px;background:#06C755;color:#fff;border:none;border-radius:var(--r-sm);font-size:14px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;font-family:inherit;transition:filter var(--duration);}
+.item-modal-cta-line:hover{filter:brightness(1.08);}
+.item-modal-cta-line i{font-size:16px;}
+.item-modal-cta-fav{padding:14px 18px;background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r-sm);cursor:pointer;color:var(--text-3);font-size:16px;transition:all var(--duration);}
+.item-modal-cta-fav:hover{border-color:var(--coral);color:var(--coral);}
+.item-modal-cta-fav.active{color:var(--coral);border-color:var(--coral);background:rgba(232,88,58,.05);}
+.item-modal-mine{margin-top:14px;padding:12px;background:var(--bg-elevated);border-radius:var(--r-sm);display:flex;gap:8px;align-items:center;justify-content:center;font-size:12px;color:var(--text-2);}
+.item-modal-mine-actions{display:flex;gap:8px;margin-top:10px;}
+.item-modal-mine-btn{flex:1;padding:10px;border:1.5px solid var(--border);background:var(--surface);border-radius:var(--r-sm);font-size:12px;font-weight:600;cursor:pointer;color:var(--text-2);font-family:inherit;transition:all var(--duration);}
+.item-modal-mine-btn:hover{border-color:var(--text-2);color:var(--text);}
+.item-modal-mine-btn.danger{color:var(--coral);}
+.item-modal-mine-btn.danger:hover{border-color:var(--coral);background:rgba(232,88,58,.05);}
+.item-modal-trust-note{margin-top:14px;padding:12px 14px;background:#F2F7F4;border:1px solid rgba(74,122,88,.2);border-radius:var(--r-sm);font-size:12px;color:#3A5A45;line-height:1.6;display:flex;gap:8px;align-items:flex-start;}
+.item-modal-trust-note i{color:var(--sage);margin-top:2px;flex-shrink:0;}
+
+/* Submit form: market specific */
+.market-form-photo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px;}
+.market-form-photo-slot{aspect-ratio:1/1;border:2px dashed var(--border);border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:4px;color:var(--text-3);cursor:pointer;font-size:11px;transition:all var(--duration);background:var(--bg);}
+.market-form-photo-slot:hover{border-color:var(--sage);color:var(--sage);}
+.market-form-photo-slot i{font-size:16px;}
+.market-form-photo-note{font-size:11px;color:var(--text-3);margin-bottom:14px;text-align:center;padding:10px;background:#FFF8E5;border-radius:var(--r-sm);color:#7A5A20;}
+
+@media(max-width:600px){
+  .item-grid{grid-template-columns:repeat(2,1fr);gap:12px;}
+  .market-content{padding:18px 14px 32px;}
+  .market-hero{padding:30px 18px 24px;}
+  .market-hero h2{font-size:20px;}
+  .market-stat-num{font-size:18px;}
+  .item-title{font-size:13px;}
+  .item-price{font-size:17px;}
+  .item-modal-title{font-size:18px;}
+  .item-modal-price{font-size:24px;}
+  .item-modal-body{padding:18px 18px 24px;}
+  .market-toolbar{gap:8px;}
+  .market-post-btn{padding:9px 14px;font-size:12px;width:100%;justify-content:center;}
+  .market-form-photo-grid{grid-template-columns:repeat(2,1fr);}
+}
+
 /* ── LEAFLET ── */
 .leaflet-popup-content{font-family:'Noto Sans JP',sans-serif;font-size:13px;}
 .popup-title{font-weight:700;font-size:14px;margin-bottom:4px;}
@@ -493,12 +779,16 @@ h1,h2,h3 { font-family: 'Noto Serif JP','Hiragino Mincho ProN',serif; }
 @media(max-width:480px){.handover-action-grid{grid-template-columns:1fr;}.form-row{grid-template-columns:1fr;}.form-toggles{grid-template-columns:1fr;}}
 
 /* ── はじめに PAGE ── */
-.guide-hero-new{background:linear-gradient(160deg,var(--header) 0%,var(--header-dark) 60%,#0F1A38 100%);padding:48px 24px 40px;text-align:center;}
-.guide-hero-new h1{font-size:28px;font-weight:700;color:#fff;margin-bottom:24px;line-height:1.4;letter-spacing:.3px;}
-.flow-steps{display:flex;align-items:center;justify-content:center;gap:0;}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+.guide-hero-new{position:relative;overflow:hidden;background:linear-gradient(160deg,var(--header) 0%,var(--header-dark) 60%,#0F1A38 100%);padding:48px 24px 40px;text-align:center;}
+.guide-hero-new::before{content:'';position:absolute;top:-80px;right:-80px;width:320px;height:320px;background:radial-gradient(circle,rgba(232,168,56,.35) 0%,rgba(232,88,58,.15) 45%,transparent 70%);filter:blur(40px);pointer-events:none;opacity:.9;}
+.guide-hero-new::after{content:'';position:absolute;bottom:-60px;left:-60px;width:220px;height:220px;background:radial-gradient(circle,rgba(232,168,56,.25) 0%,transparent 65%);filter:blur(40px);pointer-events:none;}
+.guide-hero-new > *{position:relative;z-index:1;}
+.guide-hero-new h1{font-size:28px;font-weight:700;color:#fff;margin-bottom:24px;line-height:1.4;letter-spacing:.3px;animation:fadeInUp .8s var(--ease) both;}
+.flow-steps{display:flex;align-items:center;justify-content:center;gap:0;animation:fadeInUp .8s .15s var(--ease) both;}
 .flow-step{display:flex;flex-direction:column;align-items:center;gap:10px;padding:8px 20px;}
-.flow-step-icon{width:56px;height:56px;border-radius:var(--r);background:rgba(255,255,255,.12);color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;transition:background var(--duration);}
-.flow-step:hover .flow-step-icon{background:rgba(255,255,255,.2);}
+.flow-step-icon{width:56px;height:56px;border-radius:var(--r);background:rgba(255,255,255,.12);color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;transition:background var(--duration) var(--ease),transform var(--duration) var(--ease),box-shadow var(--duration) var(--ease);}
+.flow-step:hover .flow-step-icon{background:rgba(232,168,56,.25);transform:translateY(-3px) scale(1.08);box-shadow:0 8px 20px rgba(232,168,56,.25);}
 .flow-step-label{font-size:13px;font-weight:700;color:rgba(255,255,255,.9);letter-spacing:.3px;}
 .flow-arrow{color:rgba(255,255,255,.25);font-size:12px;margin-bottom:24px;}
 .feature-section{padding:32px 20px 12px;}
@@ -618,6 +908,7 @@ html { scroll-behavior:smooth; }
   <button class="main-nav-btn" data-section="learn" onclick="setSection('learn')"><i class="fas fa-book-open"></i> 知る</button>
   <button class="main-nav-btn" data-section="explore" onclick="setSection('explore')"><i class="fas fa-magnifying-glass"></i> 探す</button>
   <button class="main-nav-btn" data-section="handover" onclick="setSection('handover')"><i class="fas fa-arrow-right-arrow-left"></i> 引き継ぐ</button>
+  <button class="main-nav-btn" data-section="market" onclick="setSection('market')"><i class="fas fa-tag"></i> ゆずる</button>
 </div>
 
 <!-- ==================== はじめに SECTION ==================== -->
@@ -887,7 +1178,11 @@ html { scroll-behavior:smooth; }
 <div class="section" id="sectionLearn">
   <div class="learn-content">
     <div id="industryList">
-      <div class="section-heading"><i class="fas fa-briefcase"></i> 業界別ガイド</div>
+      <div class="learn-topbar">
+        <div class="section-heading" style="margin:0;"><i class="fas fa-briefcase"></i> 業界別ガイド</div>
+        <button class="contribute-btn contribute-btn-small" onclick="openContribute('')"><i class="fas fa-pen-to-square"></i> 情報を貢献する</button>
+      </div>
+      <p class="learn-intro">メルボルンで働くメンバーの生の声。トライアルの実態・1日の流れ・採用プロセスを集めています。</p>
       <div class="industry-grid" id="industryGrid"></div>
       <div class="zoom-section">
         <div class="section-heading"><i class="fas fa-video"></i> 先輩の声 — 週1 Zoomイベント</div>
@@ -988,6 +1283,52 @@ html { scroll-behavior:smooth; }
       </button>
     </div>
     <p class="cta-note">12ヶ月フル滞在で<span>最大A$95キャッシュバック</span></p>
+  </div>
+</div>
+
+<!-- ==================== ゆずる SECTION ==================== -->
+<div class="section" id="sectionMarket">
+  <div class="dummy-banner">
+    <i class="fas fa-flask"></i>
+    開発中のデモ版です — 表示されている商品はサンプルデータです。実運用版は近日公開
+  </div>
+  <div class="market-hero">
+    <div class="market-hero-inner">
+      <span class="market-tagline">3rd Place Members Only</span>
+      <h2>使わないモノを、<br>次に来るメンバーへ</h2>
+      <p>帰国前の整理、新生活の準備。コミュニティ内で安心して譲り合えるマーケット。<br>取引はLINEで直接。手数料は一切なし。</p>
+      <div class="market-stats">
+        <div class="market-stat"><div class="market-stat-num" id="marketStatTotal">—</div><div class="market-stat-label">出品中</div></div>
+        <div class="market-stat"><div class="market-stat-num" id="marketStatPackage">—</div><div class="market-stat-label">帰国セット</div></div>
+        <div class="market-stat"><div class="market-stat-num">$0</div><div class="market-stat-label">手数料</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="market-content">
+    <div class="market-toolbar">
+      <div class="market-search-wrap">
+        <i class="fas fa-magnifying-glass market-search-icon"></i>
+        <input type="text" class="market-search" id="marketSearch" placeholder="自転車、炊飯器、布団…" oninput="onMarketSearch(this.value)">
+      </div>
+      <select class="market-sort" id="marketSort" onchange="onMarketSort(this.value)">
+        <option value="new">新着順</option>
+        <option value="cheap">価格が安い順</option>
+        <option value="urgent">引き取り期限が近い順</option>
+      </select>
+      <button class="market-post-btn" onclick="openMarketPostForm()">
+        <i class="fas fa-plus"></i> 出品する
+      </button>
+    </div>
+
+    <div class="market-categories" id="marketCategories"></div>
+
+    <div class="market-result-bar">
+      <div class="market-result-count"><strong id="marketResultCount">0</strong> 件</div>
+      <div id="marketSoldNote"></div>
+    </div>
+
+    <div id="marketGrid" class="item-grid"></div>
   </div>
 </div>
 
@@ -1093,7 +1434,56 @@ const industryGuides=[
     warnings:['「マッサージ」と称した怪しい店に注意。面接時に店の雰囲気を確認','歩合制の場合、閑散期は収入が不安定になる','自分の体を壊すと元も子もない。無理な施術は断る','労災保険の有無を確認する'],
     quotes:[{text:'時給高めで土日休めるのが最高。体力的にきついけど、やりがいはある',attr:'マッサージ経験11ヶ月・South Yarra'}],
     experienceCards:[{name:'みゆき',months:11,area:'South Yarra',hardest:'英語での施術要望の聞き取り。最初は苦労した',skill:'日本の資格と丁寧な施術。リピーターがつきやすい',advice:'指名制度がある店を選ぶと、頑張りが直接収入に反映される'}],
-    relatedIndustry:'マッサージ'}
+    relatedIndustry:'マッサージ'},
+  {id:'farm',icon:'fa-leaf',name:'ファーム',
+    desc:'セカンドビザ取得の定番。田舎で生活費が激安、貯金が貯まる。体力勝負。',
+    summary:{avgPay:'A$24〜28/h',english:'ほぼ不要',hiring:'紹介 or 現地直接交渉',experience:'投稿募集中'},
+    insights:[
+      {title:'採用で見られるポイント',icon:'fa-user-check',items:['体力と継続性が最重要（すぐ辞める人が多いため）','車の有無で採用率が大きく変わる','「何日働けるか」を明確に言えると強い','日本人コミュニティ経由の紹介が一番確実']},
+      {title:'仕事の実態',icon:'fa-tractor',items:['収穫（picking）は歩合制が多い。早く慣れれば稼げる','朝5時起きが普通。夏は特に早い','シーズン（11月〜4月がピーク）で仕事量が変動','住居はファーム提供（家賃天引き）が一般的']},
+      {title:'最初の1週間でやること',icon:'fa-calendar-check',items:['体を慣らす（1週目は筋肉痛で動けない人多数）','水分補給と日焼け対策を徹底する','作業ペースの速い先輩の動きを観察する','給料の計算方法を確認（時給 or 歩合）']},
+      {title:'暗黙のルール',icon:'fa-eye',items:['88日カウント対象かを必ず事前確認（セカンドビザ要件）','ピッキングは自分の記録を毎日メモ','天候で休みになる日がある（給料なし）','車を持つ人が乗せてあげる文化（ガス代シェア）']}
+    ],
+    warnings:['「セカンドビザ対象」と言いつつカウントされないファームがある — ABN・Payslip確認必須','現金払いで記録が残らない業者は要注意','労災保険なしの業者も存在する','田舎すぎると辞めたくても移動手段がない'],
+    quotes:[],
+    experienceCards:[],
+    relatedIndustry:'ファーム'},
+  {id:'delivery',icon:'fa-bicycle',name:'デリバリー',
+    desc:'Uber Eats・DoorDashなど。自分のペースで働ける。自転車 or 車が必須。',
+    summary:{avgPay:'A$20〜35/h（変動大）',english:'ほぼ不要',hiring:'アプリ登録のみ',experience:'投稿募集中'},
+    insights:[
+      {title:'始めるまでの流れ',icon:'fa-user-check',items:['ABN取得が必要（個人事業主扱い）','Uber/DoorDashアプリに登録 → 書類審査（1〜3日）','自転車 or 車、スマホホルダー、保温バッグを用意','保険（第三者賠償）は自分で加入推奨']},
+      {title:'仕事の実態',icon:'fa-stopwatch',items:['ピークタイム（昼12-14時、夜18-21時）が稼ぎ時','エリアによって単価・注文量が大きく異なる','雨の日はボーナスが出る（注文も増える）','ガソリン代・自転車メンテは自腹']},
+      {title:'稼ぎを最大化するコツ',icon:'fa-chart-line',items:['CBDはライバル多い、郊外の方が単価高い時あり','複数アプリ同時ログインで効率UP','雨・イベント日を狙う','ルート効率を意識（最短距離＋駐輪しやすい場所）']},
+      {title:'暗黙のルール',icon:'fa-eye',items:['ABNは四半期ごとのGST申告が必要','タックスリターンで経費計上を忘れずに（ガス代・スマホ代）','事故に備えて第三者賠償保険は必須','お客さんの写真は絶対撮らない（トラブル防止）']}
+    ],
+    warnings:['ABN登録で税金の自己管理が必須','事故時の責任は基本自分持ち','時給換算すると閑散期は最低賃金以下になることも','自転車の盗難・パンクリスクは自己負担'],
+    quotes:[],
+    experienceCards:[],
+    relatedIndustry:'デリバリー'},
+  {id:'factory',icon:'fa-box',name:'工場／倉庫',
+    desc:'単純作業で英語不要、シフト安定。体力は必要だが学ぶことが少なく始めやすい。',
+    summary:{avgPay:'A$25〜30/h',english:'ほぼ不要',hiring:'派遣会社経由が多い',experience:'投稿募集中'},
+    insights:[
+      {title:'採用で見られるポイント',icon:'fa-user-check',items:['派遣会社の面接は形式的。面接すっぽかさなければほぼ通る','夜勤可能だと時給UP（+20%程度）','体力・長時間立ち仕事に耐えられるか','日本語OKの派遣会社（関西支店、NES等）を経由すると安心']},
+      {title:'仕事の実態',icon:'fa-industry',items:['ピッキング・梱包・仕分けが中心','冷蔵・冷凍倉庫は特別手当あり（寒さ対策必須）','8時間立ちっぱなしが基本','同じ作業の繰り返しで慣れれば楽']},
+      {title:'最初の1週間でやること',icon:'fa-calendar-check',items:['安全靴・作業着を指定通り準備','商品の場所とスキャナーの使い方を覚える','先輩の作業ペースを観察','シフト表の読み方・連絡方法を確認']},
+      {title:'暗黙のルール',icon:'fa-eye',items:['派遣会社を介さず直接雇用に切り替えると時給UPのチャンス','夜勤明けは意外とアジアン街が空いていて便利','冷凍倉庫はインナー・手袋を自分で追加で持参','繁忙期（クリスマス前）は時給が上がる']}
+    ],
+    warnings:['派遣会社のマージンで時給が安くなっている場合あり','「試用期間は低時給」は違法の場合あり','重量物を扱う作業は腰を壊すリスク','契約書の労働時間上限を必ず確認'],
+    quotes:[],
+    experienceCards:[],
+    relatedIndustry:'工場／倉庫'},
+  {id:'other',icon:'fa-briefcase',name:'その他',
+    desc:'上記以外の業界（建設・事務・美容・ガス系など）の情報をメンバーで集める枠。',
+    summary:{avgPay:'—',english:'—',hiring:'—',experience:'投稿募集中'},
+    insights:[
+      {title:'この業界で働いた経験ありますか？',icon:'fa-hand-holding-heart',items:['美容・エステ業界','建設・ハンディマン','事務・オフィスワーク','ガス系（バー・ナイトクラブ）','その他、メルボルンで見つけた意外な仕事','あなたの経験が、これからメルボルンに来る後輩の地図になります']}
+    ],
+    warnings:['現金払いのみの職場は税金・保険の確認を','英語が必須な職場では事前に業界用語を予習','無資格で始められる業界か確認（美容・建設は資格必要なものあり）'],
+    quotes:[],
+    experienceCards:[],
+    relatedIndustry:'その他'}
 ];
 
 const zoomEvents=[
@@ -1101,6 +1491,68 @@ const zoomEvents=[
   {month:'APR',day:'19',title:'ジャパレス vs ローカルカフェ どっちがいい？',guest:'けんじ & ゆい',badge:'パネル形式'},
   {month:'APR',day:'26',title:'クリーニング業界のリアル — 英語ゼロからの就活',guest:'ゆうき（Aussie Clean Co.）',badge:'初開催'}
 ];
+
+// ═══════════════ メンバー貢献データ（知るタブ） ═══════════════
+// kind: 'profile'（業界プロフィール 7項目）/ 'wage'（時給データのみ 4項目）
+// 投稿は即時公開。30日以内はNEWバッジ表示。
+let contributionData=[
+  {id:'C001',kind:'profile',industry:'カフェ',area:'CBD',hourlyPay:26,nickname:'ゆうか',
+    trialReality:'2時間無給。ランチピークに皿洗い＋ホール補助。オーナーが横でずっと見てた。英語は"Table 5 ready"くらい言えればOKだった。',
+    dailyFlow:'8-16時勤務。最初2時間は開店準備（豆の計量・カップ補充）、11時から一気に忙しくなる。休憩は客少ない15分×2回。まかない1食あり。',
+    hiringProcess:'Indeedで応募→翌日オーナーからLINEで連絡→3日後トライアル→当日採用連絡。履歴書より"すぐ来られる""週5入れる"が効いた気がする。',
+    adviceToNext:'最初の3日間はとにかくコーヒー豆の名前を覚えろ。それだけで扱いが変わる。オーナーのJamesは厳しいけど裏表ない人だから正直に聞けば教えてくれる。',
+    createdAt:'2026-04-15'},
+  {id:'C002',kind:'profile',industry:'レストラン（日本食）',area:'Fitzroy',hourlyPay:24,nickname:'けんじ',
+    trialReality:'キッチン見習い、5時間分は時給出た。ピーク時の金曜夜に入れられてて完全に試された。食器の場所を聞くタイミングと、パスタを運ぶスピード見られてた感じ。',
+    dailyFlow:'17-23時。開店前に仕込み1時間、18時から21時までが地獄タイム。22時以降は片付けとまかない。週末は追加で12時間勤務もある。',
+    hiringProcess:'知り合い紹介→店長と15分面談→その場でトライアル日程決定→即採用。日本人ネットワーク経由が一番早い。',
+    adviceToNext:'週末必ず入れないと厳しい。逆に週末さえ入れれば平日は融通きく。中村さん（オーナー）は怖く見えるけどちゃんとしてれば超優しい。',
+    createdAt:'2026-04-10'},
+  {id:'C003',kind:'profile',industry:'クリーニング',area:'St Kilda',hourlyPay:27,nickname:'ゆうき',
+    trialReality:'トライアルなし。面接30分のみ。会社の運営ルールと安全講習の説明を聞いて、翌日から現場。意外とあっさり。',
+    dailyFlow:'朝6時開始、14時終わり。Airbnb物件を1日3-5件回る。車で移動（ガス代は自腹）。お客さんと会うことはほぼない。',
+    hiringProcess:'Facebookの日本人コミュニティで求人発見→LINEで応募→翌日面接→即採用。車持ちが条件だった。',
+    adviceToNext:'朝6時起きが最初の1週間はマジで辛い。でも14時に終わって午後フリーになるのは最高。イヤホン持参してPodcast聴きながら作業すると時間が飛ぶ。',
+    createdAt:'2026-04-05'},
+  {id:'C004',kind:'wage',industry:'カフェ',area:'Fitzroy',hourlyPay:25,nickname:'ゆい',createdAt:'2026-04-12'},
+  {id:'C005',kind:'wage',industry:'レストラン（日本食）',area:'Richmond',hourlyPay:25,nickname:'あやか',createdAt:'2026-04-08'},
+  {id:'C006',kind:'profile',industry:'ファーム',area:'Shepparton',hourlyPay:26,nickname:'たけし',
+    trialReality:'トライアル3日間。いちご摘みで歩合制の練習。最初の日は1時間で1kgも摘めなくて焦った。3日目には5kg/hできるようになって合格。',
+    dailyFlow:'朝5:30起き、6時からピッキング。10時休憩15分、12-13時ランチ、15時終了。天気悪い日は休み（給料なし）。',
+    hiringProcess:'88 Days Australiaで求人発見→電話面接→翌週から現地集合。ファーム寮に住み込み（週$150天引き）。',
+    adviceToNext:'88日カウント対象かを契約前に書面で確認。「払う」と口約束されても実際はカウント外だった人を複数知ってる。Payslipは必ずもらうこと。',
+    createdAt:'2026-04-01'}
+];
+try{const sc=localStorage.getItem('3p_contributions');if(sc)contributionData=JSON.parse(sc);}catch(e){}
+function saveContributions(){localStorage.setItem('3p_contributions',JSON.stringify(contributionData));}
+
+function daysSince(dateStr){
+  if(!dateStr)return 999;
+  const d=new Date(dateStr);
+  const now=new Date();
+  return Math.floor((now-d)/(1000*60*60*24));
+}
+function isNewContribution(c){return daysSince(c.createdAt)<=30;}
+function formatRelativeDate(dateStr){
+  const d=daysSince(dateStr);
+  if(d<1)return '今日';
+  if(d<7)return `${d}日前`;
+  if(d<30)return `${Math.floor(d/7)}週間前`;
+  if(d<90)return `${Math.floor(d/30)}ヶ月前`;
+  return `${Math.floor(d/30)}ヶ月前`;
+}
+function getContributionsByIndustry(industryName){
+  return contributionData.filter(c=>c.industry===industryName).sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt));
+}
+function aggregateIndustryStats(industryName){
+  const items=getContributionsByIndustry(industryName);
+  if(items.length===0)return null;
+  const pays=items.filter(c=>c.hourlyPay).map(c=>c.hourlyPay).sort((a,b)=>a-b);
+  const median=pays.length?(pays.length%2===1?pays[(pays.length-1)/2]:(pays[pays.length/2-1]+pays[pays.length/2])/2):null;
+  const areas=[...new Set(items.map(c=>c.area))];
+  const profiles=items.filter(c=>c.kind==='profile').length;
+  return {count:items.length,median,min:pays[0],max:pays[pays.length-1],areas,profiles};
+}
 
 // ── Housing & Job Data ──
 let housingData=[
@@ -1178,18 +1630,29 @@ function setSection(s){
   document.querySelectorAll('.section').forEach(el=>el.classList.remove('active'));
   document.getElementById('section'+s.charAt(0).toUpperCase()+s.slice(1)).classList.add('active');
   if(s==='explore')renderExplore();
+  if(s==='market')renderMarket();
   if(s==='learn'){document.getElementById('industryList').style.display='block';document.getElementById('industryDetail').classList.remove('show');}
 }
 
 // ═══════════════ 知る TAB ═══════════════
 function renderIndustryGrid(){
-  document.getElementById('industryGrid').innerHTML=industryGuides.map(g=>`
+  document.getElementById('industryGrid').innerHTML=industryGuides.map(g=>{
+    const contribs=getContributionsByIndustry(g.relatedIndustry);
+    const hasNew=contribs.some(isNewContribution);
+    const stats=aggregateIndustryStats(g.relatedIndustry);
+    const payDisplay=stats?`A$${stats.min}〜${stats.max}/h`:g.summary.avgPay;
+    return `
     <div class="industry-card" onclick="openIndustryDetail('${g.id}')">
+      ${hasNew?'<span class="industry-card-new">NEW</span>':''}
       <div class="industry-icon"><i class="fas ${g.icon}"></i></div>
       <div class="industry-name">${g.name}</div>
       <div class="industry-sub">${g.desc}</div>
-      <div class="industry-stats"><div class="industry-stat"><strong>${g.summary.avgPay}</strong></div><div class="industry-stat">英語：${g.summary.english}</div></div>
-    </div>`).join('');
+      <div class="industry-stats">
+        <div class="industry-stat"><strong>${payDisplay}</strong></div>
+        <div class="industry-stat"><i class="fas fa-comments"></i> ${contribs.length}件</div>
+      </div>
+    </div>`;
+  }).join('');
 }
 function renderZoomEvents(){
   document.getElementById('zoomEvents').innerHTML=zoomEvents.map(e=>`
@@ -1202,26 +1665,247 @@ function renderZoomEvents(){
 function openIndustryDetail(id){
   const g=industryGuides.find(x=>x.id===id);if(!g)return;
   const relatedJobs=jobData.filter(j=>j.industry===g.relatedIndustry);
+  const contributions=getContributionsByIndustry(g.relatedIndustry);
+  const stats=aggregateIndustryStats(g.relatedIndustry);
   document.getElementById('industryList').style.display='none';
   const d=document.getElementById('industryDetail');d.classList.add('show');
+
+  // 自動集計サマリー（投稿から算出） or 運営の初期値
+  const aggregateHtml=stats?`
+    <div class="industry-aggregate">
+      <div class="industry-aggregate-heading"><i class="fas fa-chart-simple"></i> メンバー投稿から自動集計</div>
+      <div class="data-summary">
+        <div class="data-item"><div class="data-val">$${stats.median}</div><div class="data-label">時給中央値</div></div>
+        <div class="data-item"><div class="data-val">$${stats.min}〜${stats.max}</div><div class="data-label">時給レンジ</div></div>
+        <div class="data-item"><div class="data-val">${stats.count}</div><div class="data-label">投稿数</div></div>
+        <div class="data-item"><div class="data-val">${stats.areas.length}</div><div class="data-label">エリア数</div></div>
+      </div>
+    </div>`:`
+    <div class="industry-aggregate industry-aggregate-empty">
+      <div class="industry-aggregate-heading"><i class="fas fa-chart-simple"></i> メンバー投稿から自動集計</div>
+      <p class="industry-aggregate-empty-msg">まだ投稿がありません。最初の投稿者になって、後輩の地図を作りましょう。</p>
+    </div>`;
+
+  // メンバー投稿カード
+  const contributionsHtml=contributions.length?`
+    <div class="contribution-list">
+      ${contributions.map(c=>contributionCardHTML(c)).join('')}
+    </div>`:`
+    <div class="contribution-empty">
+      <i class="fas fa-comment-dots"></i>
+      <p>まだ投稿がありません</p>
+      <small>「${g.name}」で働いているメンバーの声を集めています</small>
+    </div>`;
+
   d.innerHTML=`
     <button class="detail-back" onclick="closeIndustryDetail()"><i class="fas fa-arrow-left"></i> 業界ガイド一覧に戻る</button>
-    <div class="detail-header"><div class="detail-header-top"><div class="detail-icon"><i class="fas ${g.icon}"></i></div><div><h2>${g.name}で働く</h2><div class="detail-desc">${g.desc}</div></div></div></div>
-    <div class="data-summary">
-      <div class="data-item"><div class="data-val">${g.summary.avgPay.replace('A$','').replace('/h','')}</div><div class="data-label">時給 (A$/h)</div></div>
-      <div class="data-item"><div class="data-val">${g.summary.english}</div><div class="data-label">必要な英語力</div></div>
-      <div class="data-item"><div class="data-val">${g.summary.experience}</div><div class="data-label">データの信頼性</div></div>
-      <div class="data-item"><div class="data-val">${relatedJobs.length}件</div><div class="data-label">登録職場数</div></div>
+    <div class="detail-header">
+      <div class="detail-header-top">
+        <div class="detail-icon"><i class="fas ${g.icon}"></i></div>
+        <div><h2>${g.name}で働く</h2><div class="detail-desc">${g.desc}</div></div>
+      </div>
+      <button class="contribute-btn" onclick="openContribute('${g.relatedIndustry}')"><i class="fas fa-pen-to-square"></i> この業界について投稿する</button>
     </div>
-    <div class="info-blocks">${g.insights.map(ins=>`<div class="info-block"><div class="info-block-title"><i class="fas ${ins.icon}"></i> ${ins.title}</div><div class="info-block-content"><ul>${ins.items.map(i=>`<li>${i}</li>`).join('')}</ul></div></div>`).join('')}</div>
-    <div class="warning-block"><div class="warning-block-title"><i class="fas fa-triangle-exclamation"></i> 危険信号 — こんな職場は避けよう</div><ul>${g.warnings.map(w=>`<li>${w}</li>`).join('')}</ul></div>
-    <div class="voice-section"><div class="section-heading"><i class="fas fa-comment-dots"></i> 先輩の声</div>
-      <div class="voice-quotes">${g.quotes.map(q=>`<div class="voice-quote"><p>「${q.text}」</p><div class="voice-attr">— ${q.attr}</div></div>`).join('')}</div>
-      ${g.experienceCards.length?`<div class="voice-cards">${g.experienceCards.map(c=>`<div class="voice-card"><div class="voice-card-header"><div class="voice-avatar" style="background:${avatarColor(c.name)}">${c.name[0]}</div><div><div class="voice-card-name">${c.name}</div><div class="voice-card-meta">${g.name}経験${c.months}ヶ月 · ${c.area}</div></div></div><div class="voice-card-item"><strong>一番大変だったこと</strong><br>${c.hardest}</div><div class="voice-card-item"><strong>一番役立ったスキル</strong><br>${c.skill}</div><div class="voice-card-item"><strong>次の人へのアドバイス</strong><br>${c.advice}</div></div>`).join('')}</div>`:''}</div>
+
+    ${aggregateHtml}
+
+    <div class="section-heading contribution-heading"><i class="fas fa-comments"></i> メンバーの声（${contributions.length}件）</div>
+    ${contributionsHtml}
+
+    <details class="operator-guide">
+      <summary><i class="fas fa-book"></i> 運営の基礎ガイド（クリックで展開）</summary>
+      <div class="operator-guide-body">
+        <div class="info-blocks">${g.insights.map(ins=>`<div class="info-block"><div class="info-block-title"><i class="fas ${ins.icon}"></i> ${ins.title}</div><div class="info-block-content"><ul>${ins.items.map(i=>`<li>${i}</li>`).join('')}</ul></div></div>`).join('')}</div>
+        <div class="warning-block"><div class="warning-block-title"><i class="fas fa-triangle-exclamation"></i> 危険信号 — こんな職場は避けよう</div><ul>${g.warnings.map(w=>`<li>${w}</li>`).join('')}</ul></div>
+        ${g.quotes.length||g.experienceCards.length?`
+        <div class="voice-section">
+          <div class="section-heading"><i class="fas fa-comment-dots"></i> 初期の先輩の声</div>
+          <div class="voice-quotes">${g.quotes.map(q=>`<div class="voice-quote"><p>「${q.text}」</p><div class="voice-attr">— ${q.attr}</div></div>`).join('')}</div>
+          ${g.experienceCards.length?`<div class="voice-cards">${g.experienceCards.map(c=>`<div class="voice-card"><div class="voice-card-header"><div class="voice-avatar" style="background:${avatarColor(c.name)}">${c.name[0]}</div><div><div class="voice-card-name">${c.name}</div><div class="voice-card-meta">${g.name}経験${c.months}ヶ月 · ${c.area}</div></div></div><div class="voice-card-item"><strong>一番大変だったこと</strong><br>${c.hardest}</div><div class="voice-card-item"><strong>一番役立ったスキル</strong><br>${c.skill}</div><div class="voice-card-item"><strong>次の人へのアドバイス</strong><br>${c.advice}</div></div>`).join('')}</div>`:''}
+        </div>`:''}
+      </div>
+    </details>
+
     ${relatedJobs.length?`<div class="related-jobs"><div class="section-heading"><i class="fas fa-store"></i> この業界の登録職場</div>${relatedJobs.map(j=>`<div class="related-link" onclick="setSection('explore');setMode('job');setTimeout(()=>openJobModal('${j.id}'),100)"><div><div class="related-link-text">${j.name}</div><div class="related-link-sub">${j.area} · ${j.payRange}/h · ${statusLabel(j.status)}</div></div><i class="fas fa-chevron-right"></i></div>`).join('')}</div>`:''}`;
   window.scrollTo(0,0);
 }
+
+function contributionCardHTML(c){
+  const newBadge=isNewContribution(c)?`<span class="contribution-new-badge">NEW</span>`:'';
+  const dateLabel=formatRelativeDate(c.createdAt);
+  const avatar=`<div class="contribution-avatar" style="background:${avatarColor(c.nickname||'?')}">${(c.nickname||'?')[0]}</div>`;
+  const header=`
+    <div class="contribution-header">
+      ${avatar}
+      <div class="contribution-meta">
+        <div class="contribution-name">${c.nickname||'匿名'}${newBadge}</div>
+        <div class="contribution-sub">${c.area} · 時給 A$${c.hourlyPay} · ${dateLabel}</div>
+      </div>
+    </div>`;
+  if(c.kind==='wage'){
+    return `<div class="contribution-card contribution-wage">${header}<div class="contribution-tag"><i class="fas fa-dollar-sign"></i> 時給データのみ</div></div>`;
+  }
+  return `<div class="contribution-card">
+    ${header}
+    <div class="contribution-field"><div class="contribution-field-label"><i class="fas fa-stopwatch"></i> トライアルの実態</div><div class="contribution-field-body">${escapeHtml(c.trialReality||'')}</div></div>
+    <div class="contribution-field"><div class="contribution-field-label"><i class="fas fa-clock-rotate-left"></i> 1日の流れ・雰囲気</div><div class="contribution-field-body">${escapeHtml(c.dailyFlow||'')}</div></div>
+    <div class="contribution-field"><div class="contribution-field-label"><i class="fas fa-handshake"></i> 採用プロセス</div><div class="contribution-field-body">${escapeHtml(c.hiringProcess||'')}</div></div>
+    <div class="contribution-field"><div class="contribution-field-label"><i class="fas fa-comment"></i> 後輩への一言</div><div class="contribution-field-body">${escapeHtml(c.adviceToNext||'')}</div></div>
+  </div>`;
+}
+
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));}
 function closeIndustryDetail(){document.getElementById('industryDetail').classList.remove('show');document.getElementById('industryList').style.display='block';}
+
+// ═══════════════ 投稿フォーム（知るタブ） ═══════════════
+const CONTRIB_INDUSTRIES=['カフェ','レストラン（日本食）','クリーニング','マッサージ','ファーム','デリバリー','工場／倉庫','その他'];
+const CONTRIB_AREAS=['CBD','Fitzroy','Carlton','Richmond','South Yarra','St Kilda','Brunswick','South Melbourne','Footscray','Clayton','その他郊外','地方（田舎）'];
+let contribKind='profile',contribData={};
+
+function openContribute(presetIndustry){
+  contribKind='profile';
+  contribData={industry:presetIndustry||'',area:'',hourlyPay:'',nickname:'',trialReality:'',dailyFlow:'',hiringProcess:'',adviceToNext:''};
+  renderContributeModal();
+  document.getElementById('submitOverlay').classList.add('show');
+  document.body.style.overflow='hidden';
+}
+function closeContribute(){
+  document.getElementById('submitOverlay').classList.remove('show');
+  document.body.style.overflow='';
+}
+function setContribKind(k){
+  contribKind=k;
+  collectContribFields();
+  renderContributeModal();
+}
+function collectContribFields(){
+  const form=document.getElementById('contribForm');if(!form)return;
+  form.querySelectorAll('[data-contrib]').forEach(el=>{contribData[el.dataset.contrib]=el.value;});
+}
+function renderContributeModal(){
+  const industryOptions=CONTRIB_INDUSTRIES.map(i=>`<option value="${i}" ${contribData.industry===i?'selected':''}>${i}</option>`).join('');
+  const areaOptions=CONTRIB_AREAS.map(a=>`<option value="${a}" ${contribData.area===a?'selected':''}>${a}</option>`).join('');
+
+  const commonFields=`
+    <div class="contrib-row">
+      <label class="contrib-label"><i class="fas fa-briefcase"></i> 業界 <span class="contrib-req">必須</span></label>
+      <select class="contrib-input" data-contrib="industry"><option value="">選択してください</option>${industryOptions}</select>
+    </div>
+    <div class="contrib-row">
+      <label class="contrib-label"><i class="fas fa-location-dot"></i> エリア <span class="contrib-req">必須</span></label>
+      <select class="contrib-input" data-contrib="area"><option value="">選択してください</option>${areaOptions}</select>
+    </div>
+    <div class="contrib-row">
+      <label class="contrib-label"><i class="fas fa-dollar-sign"></i> 時給（A$/h） <span class="contrib-req">必須</span></label>
+      <input type="number" class="contrib-input" data-contrib="hourlyPay" value="${escapeHtml(contribData.hourlyPay||'')}" placeholder="例: 26" min="15" max="60" step="0.5">
+    </div>`;
+
+  const profileFields=`
+    <div class="contrib-row">
+      <label class="contrib-label"><i class="fas fa-stopwatch"></i> トライアルの実態 <span class="contrib-req">必須</span></label>
+      <textarea class="contrib-input contrib-textarea" data-contrib="trialReality" rows="4" placeholder="例: 2時間無給、ランチピークに皿洗い＋ホール補助。オーナーが横でずっと見てた。英語は&quot;Table 5 ready&quot;くらい言えればOKだった">${escapeHtml(contribData.trialReality||'')}</textarea>
+    </div>
+    <div class="contrib-row">
+      <label class="contrib-label"><i class="fas fa-clock-rotate-left"></i> 1日の仕事の流れ・雰囲気 <span class="contrib-req">必須</span></label>
+      <textarea class="contrib-input contrib-textarea" data-contrib="dailyFlow" rows="4" placeholder="例: 8-16時勤務、最初2時間は仕込み、11時から忙しくなる。休憩は15分、まかないあり">${escapeHtml(contribData.dailyFlow||'')}</textarea>
+    </div>
+    <div class="contrib-row">
+      <label class="contrib-label"><i class="fas fa-handshake"></i> どうやって受かった？採用プロセス <span class="contrib-req">必須</span></label>
+      <textarea class="contrib-input contrib-textarea" data-contrib="hiringProcess" rows="4" placeholder="例: Indeedで応募→翌日LINE→3日後トライアル→その日に採用連絡。&quot;すぐ来れる&quot;が効いた">${escapeHtml(contribData.hiringProcess||'')}</textarea>
+    </div>
+    <div class="contrib-row">
+      <label class="contrib-label"><i class="fas fa-comment"></i> 後輩への一言（警告 or Tip） <span class="contrib-req">必須</span></label>
+      <textarea class="contrib-input contrib-textarea" data-contrib="adviceToNext" rows="4" placeholder="例: 給料現金払いだからタックス確認必須／忙しい時間帯のシフトしかくれない など">${escapeHtml(contribData.adviceToNext||'')}</textarea>
+    </div>`;
+
+  const nicknameField=`
+    <div class="contrib-row">
+      <label class="contrib-label"><i class="fas fa-user"></i> ニックネーム <span class="contrib-req">必須</span></label>
+      <input type="text" class="contrib-input" data-contrib="nickname" value="${escapeHtml(contribData.nickname||'')}" placeholder="例: たかし（本名非推奨）" maxlength="20">
+      <small class="contrib-hint">他のメンバーに表示される名前。本名でなくてOK。</small>
+    </div>`;
+
+  const kindTabs=`
+    <div class="contrib-kind-tabs">
+      <button type="button" class="contrib-kind-tab ${contribKind==='profile'?'active':''}" onclick="setContribKind('profile')">
+        <i class="fas fa-pen-to-square"></i>
+        <span>業界プロフィール</span>
+        <small>7項目・じっくり書く</small>
+      </button>
+      <button type="button" class="contrib-kind-tab ${contribKind==='wage'?'active':''}" onclick="setContribKind('wage')">
+        <i class="fas fa-dollar-sign"></i>
+        <span>時給データのみ</span>
+        <small>4項目・サクッと</small>
+      </button>
+    </div>`;
+
+  const body=contribKind==='profile'
+    ? `${commonFields}${profileFields}${nicknameField}`
+    : `${commonFields}${nicknameField}`;
+
+  document.getElementById('submitModalContent').innerHTML=`
+    <div class="submit-modal-header">
+      <div class="submit-modal-title"><i class="fas fa-pen-to-square"></i> 情報を貢献する</div>
+      <button class="submit-modal-close" onclick="closeContribute()">×</button>
+    </div>
+    <div class="submit-form-body">
+      ${kindTabs}
+      <p class="contrib-intro">あなたの経験が、次にメルボルンに来る後輩の地図になります。<strong>投稿は即時公開されます。</strong></p>
+      <form id="contribForm" onsubmit="return false;">
+        ${body}
+      </form>
+    </div>
+    <div class="submit-form-nav">
+      <button class="btn-fn btn-fn-back" onclick="closeContribute()"><i class="fas fa-xmark"></i> キャンセル</button>
+      <button class="btn-fn btn-fn-submit" onclick="finalizeContribute()"><i class="fas fa-paper-plane"></i> 投稿する</button>
+    </div>`;
+}
+function finalizeContribute(){
+  collectContribFields();
+  // バリデーション
+  const required=['industry','area','hourlyPay','nickname'];
+  if(contribKind==='profile')required.push('trialReality','dailyFlow','hiringProcess','adviceToNext');
+  const missing=required.filter(k=>!String(contribData[k]||'').trim());
+  if(missing.length){alert('すべての必須項目を入力してください。');return;}
+  const pay=parseFloat(contribData.hourlyPay);
+  if(isNaN(pay)||pay<15||pay>60){alert('時給は A$15〜60 の範囲で入力してください。');return;}
+
+  const newEntry={
+    id:'C'+Date.now().toString().slice(-6),
+    kind:contribKind,
+    industry:contribData.industry,
+    area:contribData.area,
+    hourlyPay:pay,
+    nickname:contribData.nickname.trim(),
+    createdAt:new Date().toISOString().slice(0,10)
+  };
+  if(contribKind==='profile'){
+    newEntry.trialReality=contribData.trialReality.trim();
+    newEntry.dailyFlow=contribData.dailyFlow.trim();
+    newEntry.hiringProcess=contribData.hiringProcess.trim();
+    newEntry.adviceToNext=contribData.adviceToNext.trim();
+  }
+  contributionData.unshift(newEntry);
+  saveContributions();
+
+  document.getElementById('submitModalContent').innerHTML=`
+    <div class="submit-modal-header"><div class="submit-modal-title"><i class="fas fa-check-circle" style="color:var(--sage);"></i> 投稿完了</div><button class="submit-modal-close" onclick="closeContribute()">×</button></div>
+    <div class="submit-form-body">
+      <div class="contrib-success">
+        <div class="contrib-success-icon"><i class="fas fa-circle-check"></i></div>
+        <h3>ありがとうございます！</h3>
+        <p>あなたの投稿が「${escapeHtml(newEntry.industry)}」の業界ページに反映されました。<br>次の後輩の地図になります。</p>
+      </div>
+    </div>
+    <div class="submit-form-nav">
+      <button class="btn-fn btn-fn-submit" onclick="afterContributeSuccess('${escapeHtml(newEntry.industry)}')"><i class="fas fa-arrow-right"></i> 業界ページを見る</button>
+    </div>`;
+}
+function afterContributeSuccess(industryName){
+  closeContribute();
+  const guide=industryGuides.find(g=>g.relatedIndustry===industryName);
+  if(guide)openIndustryDetail(guide.id);
+}
 
 // ═══════════════ 探す TAB ═══════════════
 let currentMode='housing',currentView='list',favFilter='all',activeChips={},searchQuery='',map,markers=[],modalPhotoIndex=0,modalPhotos=[];
@@ -1293,12 +1977,12 @@ function renderCards(items){
   const grid=document.getElementById('cardGrid'),isFav=id=>favorites.has(id);
   if(currentMode==='housing'){
     grid.innerHTML=items.map(h=>`
-      <div class="card ${freshnessCardClass(h.lastUpdated)}" onclick="openHousingModal('${h.id}')">
+      <div class="card ${freshnessCardClass(h.lastUpdated)} ${h.status==='baton_recruiting'?'card-recruiting':''}" onclick="openHousingModal('${h.id}')">
         <div class="card-photo">
           ${h.photos?.length?`<img src="${h.photos[0]}" alt="${h.address}" loading="lazy">`:`<div class="card-photo-placeholder"><i class="fas fa-house"></i></div>`}
           <span class="badge-status ${statusClass(h.status)}">${statusLabel(h.status)}</span>
           <span class="badge-price">A$${h.rent}/w</span>
-          <button class="fav-btn" onclick="toggleFav('${h.id}',event)"><i class="${isFav(h.id)?'fas':'far'} fa-heart"></i></button>
+          <button class="fav-btn ${isFav(h.id)?'active':''}" onclick="toggleFav('${h.id}',event)"><i class="${isFav(h.id)?'fas':'far'} fa-heart"></i></button>
         </div>
         <div class="card-body">
           <div class="card-meta"><span>${h.type} · ${h.area}</span><span class="freshness-tag ${freshnessClass(h.lastUpdated)}">${freshnessLabel(h.lastUpdated)}</span></div>
@@ -1317,12 +2001,12 @@ function renderCards(items){
       </div>`).join('');
   }else{
     grid.innerHTML=items.map(j=>`
-      <div class="card ${freshnessCardClass(j.lastUpdated)}" onclick="openJobModal('${j.id}')">
+      <div class="card ${freshnessCardClass(j.lastUpdated)} ${j.status==='baton_recruiting'?'card-recruiting':''}" onclick="openJobModal('${j.id}')">
         <div class="card-photo">
           ${j.photos?.length?`<img src="${j.photos[0]}" alt="${j.name}" loading="lazy">`:`<div class="card-photo-placeholder"><i class="fas ${industryIcon(j.industry)}"></i></div>`}
           <span class="badge-status ${statusClass(j.status)}">${statusLabel(j.status)}</span>
           <span class="badge-price">${j.payRange}/h</span>
-          <button class="fav-btn" onclick="toggleFav('${j.id}',event)"><i class="${isFav(j.id)?'fas':'far'} fa-heart"></i></button>
+          <button class="fav-btn ${isFav(j.id)?'active':''}" onclick="toggleFav('${j.id}',event)"><i class="${isFav(j.id)?'fas':'far'} fa-heart"></i></button>
         </div>
         <div class="card-body">
           <div class="card-meta"><span>${j.industry}</span><span class="freshness-tag ${freshnessClass(j.lastUpdated)}">${freshnessLabel(j.lastUpdated)}</span></div>
@@ -1653,8 +2337,385 @@ function rejectSubmission(id){
   pendingSubmissions.splice(idx,1);savePending();updateAdminPendingBadge();renderAdminPending();
 }
 
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closeSubmitForm();}});
-renderIndustryGrid();renderZoomEvents();updateFavCount();updateAdminPendingBadge();
+// ═══════════════ ゆずる (MARKET) TAB ═══════════════
+const marketCategories=[
+  {id:'all',label:'すべて',icon:'fa-grip'},
+  {id:'bicycle',label:'自転車',icon:'fa-bicycle'},
+  {id:'electronics',label:'家電',icon:'fa-tv'},
+  {id:'furniture',label:'家具・寝具',icon:'fa-couch'},
+  {id:'kitchen',label:'キッチン',icon:'fa-utensils'},
+  {id:'daily',label:'生活用品',icon:'fa-house-laptop'},
+  {id:'package',label:'帰国セット',icon:'fa-box'},
+];
+const conditionLabels={new:'新品同様',good:'良好',used:'使用感あり',junk:'ジャンク'};
+
+let marketData=[
+  // 自転車
+  {id:'M001',categoryId:'bicycle',title:'シティバイク 24インチ・前カゴ＆鍵2本付き',description:'2年使ってメンテも定期的にしてました。チェーン交換済み。タイヤもまだ十分使えます。前カゴが大きくて買い物に便利。鍵2本付き。\n\n通勤で毎日使ってましたが、帰国するので譲ります。',price:120,photos:['https://images.unsplash.com/photo-1485965120184-e220f721d03e?w=600&h=600&fit=crop'],condition:'good',area:'Carlton',pickupNote:'平日19時以降 or 週末、Carlton駅周辺で受け渡し可',availableUntil:'2026-06-15',sellerName:'ゆうき',lineId:'yuki_mel_2025',status:'available',isPackage:false,postedAt:'2026-04-15'},
+  {id:'M002',categoryId:'bicycle',title:'クロスバイク GIANT Escape (整備済み)',description:'GIANTのクロスバイク。3年使用、半年前にチェーンとブレーキパッド交換済み。サイズはMで身長165〜180cm向け。LEDライト2個（前後）付属。',price:200,photos:['https://images.unsplash.com/photo-1502744688674-c619d1586c9e?w=600&h=600&fit=crop'],condition:'good',area:'Brunswick',pickupNote:'平日夜・週末いつでもOK',availableUntil:'2026-07-01',sellerName:'りな',lineId:'rina_aus',status:'available',isPackage:false,postedAt:'2026-04-13'},
+  {id:'M003',categoryId:'bicycle',title:'折りたたみ自転車 (アパート住みに最適)',description:'狭いシェアハウスでも玄関に置けるサイズ。1年使用。ややキズあり、走行は問題なし。袋付き。',price:80,photos:['https://images.unsplash.com/photo-1559348349-86f1f65817fe?w=600&h=600&fit=crop'],condition:'used',area:'CBD',pickupNote:'CBDで受け渡し、車で来てもらえると◎',availableUntil:'',sellerName:'たくや',lineId:'taku_melb',status:'available',isPackage:false,postedAt:'2026-04-10'},
+
+  // 家電
+  {id:'M004',categoryId:'electronics',title:'炊飯器 5.5合 (Tiger・日本ブランド)',description:'1年半使用。日本ブランドのTiger製、5.5合炊き。日本米が美味しく炊けます。説明書あり。動作確認済み。',price:40,photos:['https://images.unsplash.com/photo-1585515320310-259814833e62?w=600&h=600&fit=crop'],condition:'good',area:'Footscray',pickupNote:'週末取りに来てくれる方',availableUntil:'2026-06-30',sellerName:'みき',lineId:'miki_japan',status:'available',isPackage:false,postedAt:'2026-04-14'},
+  {id:'M005',categoryId:'electronics',title:'24インチ モニター (HDMI/DP対応)',description:'リモートワークで使ってました。24インチ Full HD、HDMI x2 + DisplayPort。スタンドの高さ調整も可能。動作完璧。',price:150,photos:['https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=600&h=600&fit=crop'],condition:'good',area:'Southbank',pickupNote:'CBD/Southbank周辺で受け渡し',availableUntil:'2026-05-25',sellerName:'けんた',lineId:'kenta.dev',status:'available',isPackage:false,postedAt:'2026-04-12'},
+  {id:'M006',categoryId:'electronics',title:'電気ケトル 1.7L (新品同様)',description:'引っ越し前に買って2ヶ月だけ使用。動作問題なし。シンプルなデザインでどんなキッチンにも合います。',price:15,photos:['https://images.unsplash.com/photo-1517668808822-9ebb02f2a0e6?w=600&h=600&fit=crop'],condition:'new',area:'Richmond',pickupNote:'Richmondで受け渡し、平日夜可',availableUntil:'',sellerName:'さき',lineId:'saki_mlb',status:'available',isPackage:false,postedAt:'2026-04-16'},
+  {id:'M007',categoryId:'electronics',title:'ヘアドライヤー (Dyson風・温風強い)',description:'1年使用。風量強めで乾くのが早いです。コード長さ十分。動作問題なし。',price:25,photos:['https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=600&h=600&fit=crop'],condition:'good',area:'St Kilda',pickupNote:'St Kilda周辺で',availableUntil:'2026-05-30',sellerName:'なな',lineId:'nana_st',status:'sold',isPackage:false,postedAt:'2026-04-08'},
+
+  // 家具・寝具
+  {id:'M008',categoryId:'furniture',title:'シングルベッド＋マットレス',description:'IKEAのシングルベッドフレーム＋マットレスのセット。2年使用、シーツも一緒に渡します。マットレスはきれいに使ってました。組み立て式なので分解して持ち帰れます。',price:80,photos:['https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&h=600&fit=crop'],condition:'used',area:'Brunswick',pickupNote:'車での引き取り必須・運搬手伝います',availableUntil:'2026-06-10',sellerName:'こうき',lineId:'koki_brunswick',status:'available',isPackage:false,postedAt:'2026-04-11'},
+  {id:'M009',categoryId:'furniture',title:'デスクチェア (リモートワーク用)',description:'1年半使用。座り心地良好、長時間作業でも疲れにくい。アーム付き。多少のキズあり。',price:50,photos:['https://images.unsplash.com/photo-1592078615290-033ee584e267?w=600&h=600&fit=crop'],condition:'good',area:'CBD',pickupNote:'CBD周辺で',availableUntil:'',sellerName:'ゆうと',lineId:'yuto.cbd',status:'available',isPackage:false,postedAt:'2026-04-09'},
+  {id:'M010',categoryId:'furniture',title:'布団セット (掛け＋敷き＋枕＋カバー)',description:'シングルサイズ一式。クリーニング済み。冬用と夏用の掛け布団2枚あり。日本から持ってきた高品質なやつ。',price:60,photos:['https://images.unsplash.com/photo-1551776235-dde6d482980b?w=600&h=600&fit=crop'],condition:'good',area:'Carlton',pickupNote:'平日夜・週末',availableUntil:'2026-06-20',sellerName:'あや',lineId:'aya_carlton',status:'available',isPackage:false,postedAt:'2026-04-14'},
+
+  // キッチン
+  {id:'M011',categoryId:'kitchen',title:'食器セット (4人分・茶碗・皿・コップ)',description:'4人分の食器一式。茶碗・お椀・大皿・小皿・コップ・マグカップ。日本食用に揃えてました。割れなし。',price:20,photos:['https://images.unsplash.com/photo-1590794056226-79ef3a8147e1?w=600&h=600&fit=crop'],condition:'good',area:'Footscray',pickupNote:'家まで取りに来てください',availableUntil:'2026-06-15',sellerName:'ひろき',lineId:'hiro_foot',status:'available',isPackage:false,postedAt:'2026-04-13'},
+  {id:'M012',categoryId:'kitchen',title:'フライパン 3点セット (20/24/28cm)',description:'IH対応、3サイズセット。1年半使用。テフロン加工まだ問題なし。蓋は28cmのみ付属。',price:15,photos:['https://images.unsplash.com/photo-1593618998160-e34014e67546?w=600&h=600&fit=crop'],condition:'used',area:'Richmond',pickupNote:'Richmond駅近くで',availableUntil:'',sellerName:'まな',lineId:'mana_kitchen',status:'available',isPackage:false,postedAt:'2026-04-12'},
+  {id:'M013',categoryId:'kitchen',title:'三徳包丁＋まな板＋包丁研ぎ',description:'貝印の三徳包丁、木製まな板（IKEA）、シャープナーの3点セット。包丁は研いだばかりで切れ味抜群。',price:12,photos:['https://images.unsplash.com/photo-1574781330855-d0db8cc6a79c?w=600&h=600&fit=crop'],condition:'good',area:'CBD',pickupNote:'CBD周辺で',availableUntil:'2026-06-01',sellerName:'けい',lineId:'kei_cbd',status:'available',isPackage:false,postedAt:'2026-04-15'},
+
+  // 生活用品
+  {id:'M014',categoryId:'daily',title:'コードレス掃除機 (軽量・スティック型)',description:'スティック型コードレス。バッテリー持ち約30分。1年使用、動作問題なし。シェアハウスでの掃除に最適。',price:40,photos:['https://images.unsplash.com/photo-1558317374-067fb5f30001?w=600&h=600&fit=crop'],condition:'good',area:'St Kilda',pickupNote:'St Kilda周辺で',availableUntil:'',sellerName:'りょう',lineId:'ryo_stkilda',status:'available',isPackage:false,postedAt:'2026-04-10'},
+  {id:'M015',categoryId:'daily',title:'スチームアイロン＋アイロン台',description:'アイロンとアイロン台のセット。週1〜2回しか使ってなかったのでまだ綺麗です。スチーム機能あり。',price:15,photos:['https://images.unsplash.com/photo-1604335398480-1d7e5c1a3567?w=600&h=600&fit=crop'],condition:'good',area:'Brunswick',pickupNote:'平日夜・週末',availableUntil:'2026-05-20',sellerName:'えり',lineId:'eri_brunswick',status:'available',isPackage:false,postedAt:'2026-04-11'},
+
+  // 帰国セット
+  {id:'M016',categoryId:'package',title:'【帰国セット】自転車＋炊飯器＋布団 一式',description:'6月帰国予定。3点まとめてどうぞ。バラ売り合計だと$240ですが、まとめて$200でお譲りします。\n\nメルボルン来てすぐの方にぴったりのスタートセット。',price:200,photos:['https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=600&h=600&fit=crop'],condition:'good',area:'Carlton',pickupNote:'車2回に分けて取りに来てくれる方優先',availableUntil:'2026-06-15',sellerName:'たけし',lineId:'take_mel',status:'available',isPackage:true,packageItems:['シティバイク（前カゴ付き）','炊飯器 5.5合','布団セット（掛け＋敷き＋枕＋カバー）'],postedAt:'2026-04-16'},
+  {id:'M017',categoryId:'package',title:'【帰国セット】自炊スタートキット (キッチン全部)',description:'これだけあれば自炊スタートできます。フライパン・鍋・包丁・まな板・食器・カトラリー・調味料入れ。リスト要相談で個別調整も可。',price:65,photos:['https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=600&fit=crop'],condition:'good',area:'Footscray',pickupNote:'家まで取りに来てくれる方',availableUntil:'2026-05-31',sellerName:'みお',lineId:'mio_foot',status:'available',isPackage:true,packageItems:['フライパン 24cm（蓋付き）','片手鍋＋両手鍋','三徳包丁＋まな板','食器セット（2人分）','カトラリー（4人分）','調味料入れ・キッチンばさみ'],postedAt:'2026-04-14'},
+  {id:'M018',categoryId:'package',title:'【帰国セット】シェアハウス丸ごと (家電・家具)',description:'1人部屋の家具家電丸ごと。引越しタイミング調整しやすい人優先。高くても良いものをまとめて買えるので渡航直後の方におすすめ。',price:380,photos:['https://images.unsplash.com/photo-1556228720-195a672e8a03?w=600&h=600&fit=crop'],condition:'good',area:'Brunswick',pickupNote:'帰国日に部屋ごと引き継ぎたい・要相談',availableUntil:'2026-07-05',sellerName:'しょうた',lineId:'shota_b',status:'available',isPackage:true,packageItems:['シングルベッド＋マットレス','デスク＋チェア','24インチモニター','炊飯器・電子レンジ','掃除機・アイロン','カーテン・電気スタンド'],postedAt:'2026-04-09'},
+];
+
+try{const sm=localStorage.getItem('3p_items');if(sm){const stored=JSON.parse(sm);marketData=[...stored,...marketData.filter(d=>!stored.find(s=>s.id===d.id))];}}catch(e){}
+
+let marketState={category:'all',search:'',sort:'new'};
+
+function escHtml(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function placeholderPhoto(item){const map={bicycle:'自転車',electronics:'家電',furniture:'家具',kitchen:'キッチン',daily:'生活用品'};const label=item.isPackage?'帰国セット':(map[item.categoryId]||'商品');return`https://placehold.co/600x600/EAE0D6/8C8278?text=${encodeURIComponent(label)}`;}
+function formatDate(s){if(!s)return'';const d=new Date(s);if(isNaN(d.getTime()))return s;return`${d.getMonth()+1}月${d.getDate()}日`;}
+function getUrgencyTag(item){if(!item.availableUntil)return'';const days=Math.ceil((new Date(item.availableUntil)-new Date())/(1000*60*60*24));if(days<0)return'';if(days<=7)return`<span class="item-urgent"><i class="fas fa-clock"></i> あと${days}日</span>`;if(days<=21)return`<span class="item-urgent" style="background:rgba(232,168,56,.12);color:var(--amber-d);"><i class="fas fa-clock"></i> あと${days}日</span>`;return'';}
+function getUrgencyShort(s){const days=Math.ceil((new Date(s)-new Date())/(1000*60*60*24));if(days<0)return' <span style="color:var(--text-3);">(過ぎてます)</span>';if(days<=7)return` <span style="color:var(--coral);font-weight:700;">(あと${days}日)</span>`;return'';}
+
+function renderMarketCategories(){
+  document.getElementById('marketCategories').innerHTML=marketCategories.map(c=>`<button class="market-cat-chip ${marketState.category===c.id?'active':''}" onclick="setMarketCategory('${c.id}')"><i class="fas ${c.icon}"></i> ${c.label}</button>`).join('');
+}
+function setMarketCategory(c){marketState.category=c;renderMarketCategories();renderMarket();}
+function onMarketSearch(v){marketState.search=v.toLowerCase().trim();renderMarket();}
+function onMarketSort(v){marketState.sort=v;renderMarket();}
+
+function getFilteredMarket(){
+  let d=[...marketData];
+  if(marketState.category==='package')d=d.filter(i=>i.isPackage);
+  else if(marketState.category!=='all')d=d.filter(i=>i.categoryId===marketState.category);
+  if(marketState.search){
+    const q=marketState.search;
+    d=d.filter(i=>(i.title&&i.title.toLowerCase().includes(q))||(i.description&&i.description.toLowerCase().includes(q))||(i.area&&i.area.toLowerCase().includes(q))||(i.packageItems&&i.packageItems.some(p=>p.toLowerCase().includes(q))));
+  }
+  d.sort((a,b)=>{
+    if(a.status==='sold'&&b.status!=='sold')return 1;
+    if(a.status!=='sold'&&b.status==='sold')return-1;
+    if(marketState.sort==='cheap')return(a.price||0)-(b.price||0);
+    if(marketState.sort==='urgent'){
+      const da=a.availableUntil?new Date(a.availableUntil).getTime():Infinity;
+      const db=b.availableUntil?new Date(b.availableUntil).getTime():Infinity;
+      return da-db;
+    }
+    return new Date(b.postedAt).getTime()-new Date(a.postedAt).getTime();
+  });
+  return d;
+}
+
+function renderMarket(){
+  document.getElementById('marketStatTotal').textContent=marketData.filter(i=>i.status==='available').length;
+  document.getElementById('marketStatPackage').textContent=marketData.filter(i=>i.status==='available'&&i.isPackage).length;
+  const filtered=getFilteredMarket();
+  document.getElementById('marketResultCount').textContent=filtered.length;
+  const soldCount=filtered.filter(i=>i.status==='sold').length;
+  document.getElementById('marketSoldNote').innerHTML=soldCount>0?`<span style="color:var(--text-3);">${soldCount}件のSOLD含む</span>`:'';
+  const grid=document.getElementById('marketGrid');
+  if(!filtered.length){grid.innerHTML=`<div class="market-empty" style="grid-column:1/-1;"><i class="fas fa-tag"></i><p>該当する出品がありません</p></div>`;return;}
+  grid.innerHTML=filtered.map(itemCardHTML).join('');
+}
+
+function itemCardHTML(item){
+  const isFav=favorites.has('item_'+item.id);
+  const isSold=item.status==='sold';
+  const cond=conditionLabels[item.condition]||'';
+  const photo=(item.photos&&item.photos[0])||placeholderPhoto(item);
+  const ph=placeholderPhoto(item);
+  return`
+    <div class="item-card ${isSold?'is-sold':''}" onclick="openItemModal('${item.id}')">
+      <div class="item-photo">
+        <img src="${photo}" alt="${escHtml(item.title)}" loading="lazy" onerror="this.onerror=null;this.src='${ph}';">
+        <button class="item-fav-btn ${isFav?'active':''}" onclick="toggleMarketFav('${item.id}',event)" aria-label="お気に入り"><i class="fa${isFav?'s':'r'} fa-heart"></i></button>
+        ${item.isPackage?`<span class="item-package-tag"><i class="fas fa-box"></i> 帰国セット</span>`:''}
+        ${cond?`<span class="item-condition-tag">${cond}</span>`:''}
+      </div>
+      <div class="item-info">
+        <div class="item-title">${escHtml(item.title)}</div>
+        <div class="item-price"><span class="currency">A$</span>${item.price}</div>
+        <div class="item-meta"><span class="item-meta-area"><i class="fas fa-location-dot"></i> ${escHtml(item.area)}</span></div>
+        ${getUrgencyTag(item)}
+      </div>
+    </div>`;
+}
+
+function toggleMarketFav(id,e){
+  e.stopPropagation();
+  const key='item_'+id;
+  if(favorites.has(key))favorites.delete(key);else favorites.add(key);
+  saveFavs();
+  if(currentSection==='market')renderMarket();
+  updateFavCount();
+  if(currentItemModalId===id)openItemModal(id);
+}
+
+let currentItemModalId=null,itemModalPhotoIdx=0;
+
+function openItemModal(id){
+  const item=marketData.find(i=>i.id===id);if(!item)return;
+  currentItemModalId=id;itemModalPhotoIdx=0;
+  const isFav=favorites.has('item_'+id);
+  const isSold=item.status==='sold';
+  const isMine=!!(item.editToken&&localStorage.getItem('3p_my_item_'+id)===item.editToken);
+  const cond=conditionLabels[item.condition]||'';
+  const condClass=({new:'cond-new',good:'cond-good',used:'cond-used',junk:'cond-junk'})[item.condition]||'';
+  const cat=marketCategories.find(c=>c.id===item.categoryId);
+  const photos=item.photos&&item.photos.length?item.photos:[placeholderPhoto(item)];
+  const ph=placeholderPhoto(item);
+  const lineUrl=item.lineId?(item.lineId.startsWith('http')?item.lineId:`https://line.me/R/ti/p/${encodeURIComponent('@'+item.lineId.replace(/^@/,''))}`):'#';
+  document.getElementById('modalContent').innerHTML=`
+    <button class="modal-close" onclick="closeModal()" aria-label="閉じる">&times;</button>
+    <div class="item-modal-photo-wrap">
+      <img class="item-modal-photo" id="itemModalImg" src="${photos[0]}" alt="${escHtml(item.title)}" onerror="this.onerror=null;this.src='${ph}';">
+      ${photos.length>1?`
+        <button class="item-modal-photo-nav prev" onclick="itemModalPhotoNav(-1)"><i class="fas fa-chevron-left"></i></button>
+        <button class="item-modal-photo-nav next" onclick="itemModalPhotoNav(1)"><i class="fas fa-chevron-right"></i></button>
+        <div class="item-modal-photo-dots">${photos.map((_,i)=>`<div class="item-modal-photo-dot ${i===0?'active':''}" data-idx="${i}" onclick="itemModalSetPhoto(${i})" style="cursor:pointer;"></div>`).join('')}</div>`:''}
+      ${isSold?`<div style="position:absolute;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;color:#fff;font-size:48px;font-weight:800;letter-spacing:8px;">SOLD</div>`:''}
+    </div>
+    <div class="item-modal-body">
+      <div class="item-modal-cat-row">
+        ${cat?`<span class="item-modal-cat"><i class="fas ${cat.icon}"></i> ${cat.label}</span>`:''}
+        ${item.isPackage?`<span class="item-modal-cat" style="background:rgba(232,88,58,.1);color:var(--coral);"><i class="fas fa-box"></i> 帰国セット</span>`:''}
+        ${cond?`<span class="item-modal-condition ${condClass}"><i class="fas fa-circle-check"></i> ${cond}</span>`:''}
+      </div>
+      <div class="item-modal-title">${escHtml(item.title)}</div>
+      <div class="item-modal-price"><span class="currency">A$</span>${item.price}</div>
+      <div class="item-modal-section">
+        <div class="item-modal-section-title">商品の説明</div>
+        <div class="item-modal-desc">${escHtml(item.description)}</div>
+      </div>
+      ${item.isPackage&&item.packageItems&&item.packageItems.length?`
+      <div class="item-modal-section">
+        <div class="item-modal-section-title">セット内容</div>
+        <div class="item-modal-package-list">${item.packageItems.map(p=>`<div class="item-modal-package-item"><i class="fas fa-check"></i> ${escHtml(p)}</div>`).join('')}</div>
+      </div>`:''}
+      <div class="item-modal-section">
+        <div class="item-modal-section-title">引き渡し詳細</div>
+        <div class="item-modal-info-grid">
+          <div class="item-modal-info-item"><span class="item-modal-info-label">引き取りエリア</span><span class="item-modal-info-val"><i class="fas fa-location-dot" style="color:var(--text-3);margin-right:4px;"></i>${escHtml(item.area)}</span></div>
+          ${item.availableUntil?`<div class="item-modal-info-item"><span class="item-modal-info-label">引き取り期限</span><span class="item-modal-info-val">${formatDate(item.availableUntil)}${getUrgencyShort(item.availableUntil)}</span></div>`:''}
+          ${item.pickupNote?`<div class="item-modal-info-item" style="grid-column:1/-1;"><span class="item-modal-info-label">受け渡し</span><span class="item-modal-info-val" style="font-weight:500;">${escHtml(item.pickupNote)}</span></div>`:''}
+        </div>
+      </div>
+      <div class="item-modal-section">
+        <div class="item-modal-section-title">出品者</div>
+        <div class="item-modal-seller">
+          <div class="item-modal-seller-avatar" style="background:${avatarColor(item.sellerName)}">${escHtml(item.sellerName[0])}</div>
+          <div class="item-modal-seller-info">
+            <div class="item-modal-seller-name">${escHtml(item.sellerName)}</div>
+            <div class="item-modal-seller-meta">3rd Place メンバー · 出品日 ${formatDate(item.postedAt)}</div>
+          </div>
+        </div>
+      </div>
+      ${isSold?`<div class="item-modal-mine" style="background:rgba(140,130,120,.15);color:var(--text-2);"><i class="fas fa-circle-check"></i> この商品は売却済みです</div>`:`
+        <div class="item-modal-cta-row">
+          <a class="item-modal-cta-line" href="${lineUrl}" target="_blank" rel="noopener"><i class="fab fa-line"></i> LINEで連絡する</a>
+          <button class="item-modal-cta-fav ${isFav?'active':''}" onclick="toggleMarketFav('${id}',event)"><i class="fa${isFav?'s':'r'} fa-heart"></i></button>
+        </div>`}
+      ${isMine?`
+        <div class="item-modal-mine"><i class="fas fa-user-pen"></i> あなたが出品した商品です</div>
+        <div class="item-modal-mine-actions">
+          ${item.status!=='sold'?`<button class="item-modal-mine-btn" onclick="markItemSold('${id}')"><i class="fas fa-check"></i> SOLDにする</button>`:`<button class="item-modal-mine-btn" onclick="markItemAvailable('${id}')"><i class="fas fa-rotate-left"></i> 出品中に戻す</button>`}
+          <button class="item-modal-mine-btn danger" onclick="deleteItem('${id}')"><i class="fas fa-trash"></i> 削除</button>
+        </div>`:''}
+      <div class="item-modal-trust-note">
+        <i class="fas fa-shield-halved"></i>
+        <div>取引はメンバー同士で直接行います。商品を必ず確認してから受け渡し・支払いをしましょう。3rd Place運営は取引には介入しません。</div>
+      </div>
+    </div>`;
+  document.getElementById('modalOverlay').classList.add('show');
+  document.body.style.overflow='hidden';
+}
+
+function itemModalPhotoNav(d){
+  const item=marketData.find(i=>i.id===currentItemModalId);if(!item)return;
+  const photos=item.photos&&item.photos.length?item.photos:[placeholderPhoto(item)];
+  itemModalPhotoIdx=(itemModalPhotoIdx+d+photos.length)%photos.length;
+  itemModalSetPhoto(itemModalPhotoIdx);
+}
+function itemModalSetPhoto(i){
+  const item=marketData.find(it=>it.id===currentItemModalId);if(!item)return;
+  const photos=item.photos&&item.photos.length?item.photos:[placeholderPhoto(item)];
+  itemModalPhotoIdx=i;
+  document.getElementById('itemModalImg').src=photos[i];
+  document.querySelectorAll('.item-modal-photo-dot').forEach((d,idx)=>d.classList.toggle('active',idx===i));
+}
+
+function saveMarketData(){
+  const userItems=marketData.filter(i=>i.editToken);
+  localStorage.setItem('3p_items',JSON.stringify(userItems));
+}
+function markItemSold(id){const item=marketData.find(i=>i.id===id);if(!item)return;item.status='sold';saveMarketData();renderMarket();closeModal();}
+function markItemAvailable(id){const item=marketData.find(i=>i.id===id);if(!item)return;item.status='available';saveMarketData();renderMarket();closeModal();}
+function deleteItem(id){if(!confirm('この出品を削除しますか？'))return;const idx=marketData.findIndex(i=>i.id===id);if(idx===-1)return;marketData.splice(idx,1);localStorage.removeItem('3p_my_item_'+id);saveMarketData();renderMarket();closeModal();}
+
+// ── Post form ──
+let marketSubmitData={},marketSubmitStep=1;
+function openMarketPostForm(){marketSubmitData={category:'',condition:'',area:'',isPackage:false};marketSubmitStep=1;document.getElementById('submitOverlay').classList.add('show');document.body.style.overflow='hidden';renderMarketSubmitStep();}
+function closeMarketSubmit(){document.getElementById('submitOverlay').classList.remove('show');document.body.style.overflow='';marketSubmitData={};marketSubmitStep=1;}
+
+function renderMarketSubmitStep(){
+  const c=document.getElementById('submitModalContent');
+  const dots=`<div class="form-progress"><div class="form-step-dot ${marketSubmitStep>=1?'active':''}"></div><div class="form-step-dot ${marketSubmitStep>=2?'active':''}"></div><div class="form-step-dot ${marketSubmitStep>=3?'active':''}"></div></div>`;
+  const header=`<div class="submit-modal-header"><div class="submit-modal-title"><i class="fas fa-tag"></i> 出品する</div><button class="submit-modal-close" onclick="closeMarketSubmit()">×</button></div>`;
+  if(marketSubmitStep===1){
+    c.innerHTML=header+dots+`
+      <div class="submit-form-body" style="overflow-y:auto;flex:1;padding:20px 22px;">
+        <div class="market-form-photo-note"><i class="fas fa-flask"></i> ダミーモード: 写真アップロードは本番版で実装します</div>
+        <div class="market-form-photo-grid">
+          <div class="market-form-photo-slot"><i class="fas fa-camera"></i><span>メイン</span></div>
+          <div class="market-form-photo-slot"><i class="fas fa-camera"></i><span>追加</span></div>
+          <div class="market-form-photo-slot"><i class="fas fa-camera"></i><span>追加</span></div>
+          <div class="market-form-photo-slot"><i class="fas fa-camera"></i><span>追加</span></div>
+        </div>
+        <div style="margin-bottom:14px;">
+          <label style="display:block;font-size:12px;font-weight:700;color:var(--text-2);margin-bottom:6px;">タイトル <span style="color:var(--coral);">*</span></label>
+          <input type="text" class="market-search" style="padding-left:14px;" placeholder="例: シティバイク 24インチ 前カゴ付き" value="${escHtml(marketSubmitData.title||'')}" oninput="marketSubmitData.title=this.value">
+        </div>
+        <div style="margin-bottom:14px;">
+          <label style="display:block;font-size:12px;font-weight:700;color:var(--text-2);margin-bottom:6px;">カテゴリ <span style="color:var(--coral);">*</span></label>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            ${marketCategories.filter(c=>c.id!=='all').map(c=>`<button type="button" class="market-cat-chip ${marketSubmitData.category===c.id?'active':''}" onclick="marketSubmitData.category='${c.id}';marketSubmitData.isPackage=${c.id==='package'};renderMarketSubmitStep();"><i class="fas ${c.icon}"></i> ${c.label}</button>`).join('')}
+          </div>
+        </div>
+      </div>
+      <div style="padding:14px 22px;border-top:1px solid var(--border-light);display:flex;justify-content:flex-end;gap:10px;">
+        <button onclick="marketSubmitNext()" style="padding:11px 22px;background:var(--sage);color:#fff;border:none;border-radius:var(--r-sm);font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;">次へ <i class="fas fa-chevron-right" style="margin-left:4px;"></i></button>
+      </div>`;
+  } else if(marketSubmitStep===2){
+    c.innerHTML=header+dots+`
+      <div class="submit-form-body" style="overflow-y:auto;flex:1;padding:20px 22px;">
+        <div style="margin-bottom:14px;">
+          <label style="display:block;font-size:12px;font-weight:700;color:var(--text-2);margin-bottom:6px;">価格 (AUD) <span style="color:var(--coral);">*</span></label>
+          <div style="display:flex;align-items:center;gap:8px;"><span style="font-size:18px;font-weight:700;color:var(--text-2);">A$</span><input type="number" class="market-search" style="padding-left:14px;" placeholder="例: 120" value="${marketSubmitData.price||''}" oninput="marketSubmitData.price=parseInt(this.value)||0"></div>
+        </div>
+        <div style="margin-bottom:14px;">
+          <label style="display:block;font-size:12px;font-weight:700;color:var(--text-2);margin-bottom:6px;">商品の状態 <span style="color:var(--coral);">*</span></label>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            ${Object.entries(conditionLabels).map(([k,v])=>`<button type="button" class="market-cat-chip ${marketSubmitData.condition===k?'active':''}" onclick="marketSubmitData.condition='${k}';renderMarketSubmitStep();">${v}</button>`).join('')}
+          </div>
+        </div>
+        <div style="margin-bottom:14px;">
+          <label style="display:block;font-size:12px;font-weight:700;color:var(--text-2);margin-bottom:6px;">商品の説明 <span style="color:var(--coral);">*</span></label>
+          <textarea class="market-search" style="padding:10px 14px;width:100%;min-height:100px;font-family:inherit;resize:vertical;" placeholder="使用期間、状態、付属品、購入時の価格など…" oninput="marketSubmitData.description=this.value">${escHtml(marketSubmitData.description||'')}</textarea>
+        </div>
+        ${marketSubmitData.isPackage?`
+        <div style="margin-bottom:14px;">
+          <label style="display:block;font-size:12px;font-weight:700;color:var(--text-2);margin-bottom:6px;">セット内容（1行ずつ）</label>
+          <textarea class="market-search" style="padding:10px 14px;width:100%;min-height:80px;font-family:inherit;resize:vertical;" placeholder="自転車&#10;炊飯器&#10;布団セット" oninput="marketSubmitData.packageItemsRaw=this.value">${escHtml(marketSubmitData.packageItemsRaw||'')}</textarea>
+        </div>`:''}
+        <div style="margin-bottom:14px;">
+          <label style="display:block;font-size:12px;font-weight:700;color:var(--text-2);margin-bottom:6px;">引き取りエリア <span style="color:var(--coral);">*</span></label>
+          <input type="text" class="market-search" style="padding-left:14px;" placeholder="例: Carlton, CBD, Brunswick" value="${escHtml(marketSubmitData.area||'')}" oninput="marketSubmitData.area=this.value">
+        </div>
+        <div style="margin-bottom:14px;">
+          <label style="display:block;font-size:12px;font-weight:700;color:var(--text-2);margin-bottom:6px;">受け渡しについて</label>
+          <input type="text" class="market-search" style="padding-left:14px;" placeholder="例: 平日夜or週末、駅周辺で受け渡し可" value="${escHtml(marketSubmitData.pickupNote||'')}" oninput="marketSubmitData.pickupNote=this.value">
+        </div>
+        <div style="margin-bottom:14px;">
+          <label style="display:block;font-size:12px;font-weight:700;color:var(--text-2);margin-bottom:6px;">引き取り期限（任意・帰国日など）</label>
+          <input type="date" class="market-search" style="padding-left:14px;" value="${marketSubmitData.availableUntil||''}" oninput="marketSubmitData.availableUntil=this.value">
+        </div>
+      </div>
+      <div style="padding:14px 22px;border-top:1px solid var(--border-light);display:flex;justify-content:space-between;gap:10px;">
+        <button onclick="marketSubmitBack()" style="padding:11px 18px;background:var(--surface);color:var(--text-2);border:1.5px solid var(--border);border-radius:var(--r-sm);font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;"><i class="fas fa-chevron-left" style="margin-right:4px;"></i> 戻る</button>
+        <button onclick="marketSubmitNext()" style="padding:11px 22px;background:var(--sage);color:#fff;border:none;border-radius:var(--r-sm);font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;">次へ <i class="fas fa-chevron-right" style="margin-left:4px;"></i></button>
+      </div>`;
+  } else if(marketSubmitStep===3){
+    c.innerHTML=header+dots+`
+      <div class="submit-form-body" style="overflow-y:auto;flex:1;padding:20px 22px;">
+        <div style="margin-bottom:14px;">
+          <label style="display:block;font-size:12px;font-weight:700;color:var(--text-2);margin-bottom:6px;">あなたの名前（ニックネーム可） <span style="color:var(--coral);">*</span></label>
+          <input type="text" class="market-search" style="padding-left:14px;" placeholder="例: ゆうき" value="${escHtml(marketSubmitData.sellerName||'')}" oninput="marketSubmitData.sellerName=this.value">
+        </div>
+        <div style="margin-bottom:14px;">
+          <label style="display:block;font-size:12px;font-weight:700;color:var(--text-2);margin-bottom:6px;">LINE ID または LINEのURL <span style="color:var(--coral);">*</span></label>
+          <input type="text" class="market-search" style="padding-left:14px;" placeholder="例: yuki_mel または https://line.me/ti/p/...." value="${escHtml(marketSubmitData.lineId||'')}" oninput="marketSubmitData.lineId=this.value">
+          <div style="font-size:11px;color:var(--text-3);margin-top:6px;line-height:1.5;">買い手から直接LINEで連絡が来ます。公開されてもいいIDを入れてください。</div>
+        </div>
+        <div style="background:var(--bg);border-radius:var(--r-sm);padding:14px;margin-bottom:14px;">
+          <div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:8px;display:flex;align-items:center;gap:6px;"><i class="fas fa-circle-check" style="color:var(--sage);"></i> 出品内容の確認</div>
+          <div style="font-size:13px;color:var(--text-2);line-height:1.7;"><div><strong style="color:var(--text);">${escHtml(marketSubmitData.title||'(無題)')}</strong></div><div>A$${marketSubmitData.price||0} · ${conditionLabels[marketSubmitData.condition]||'状態未選択'} · ${escHtml(marketSubmitData.area||'')}</div></div>
+        </div>
+        <div style="background:#FFF8E5;border-radius:var(--r-sm);padding:14px;margin-bottom:14px;">
+          <label style="display:flex;gap:10px;align-items:flex-start;cursor:pointer;">
+            <input type="checkbox" style="margin-top:3px;width:16px;height:16px;flex-shrink:0;cursor:pointer;" ${marketSubmitData.agreed?'checked':''} onchange="marketSubmitData.agreed=this.checked;">
+            <span style="font-size:12px;color:#7A5A20;line-height:1.7;"><strong style="color:#5C3A14;">出品ルールに同意します:</strong><br>・違法品・危険物・偽ブランド品は出品しません<br>・取引のトラブルは当事者間で解決します（運営は仲介しません）<br>・運営は不適切な出品を予告なく削除する権利があります</span>
+          </label>
+        </div>
+      </div>
+      <div style="padding:14px 22px;border-top:1px solid var(--border-light);display:flex;justify-content:space-between;gap:10px;">
+        <button onclick="marketSubmitBack()" style="padding:11px 18px;background:var(--surface);color:var(--text-2);border:1.5px solid var(--border);border-radius:var(--r-sm);font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;"><i class="fas fa-chevron-left" style="margin-right:4px;"></i> 戻る</button>
+        <button onclick="marketSubmitFinish()" style="padding:11px 22px;background:var(--sage);color:#fff;border:none;border-radius:var(--r-sm);font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;"><i class="fas fa-paper-plane" style="margin-right:6px;"></i> 出品する</button>
+      </div>`;
+  }
+}
+
+function marketSubmitNext(){
+  if(marketSubmitStep===1){if(!marketSubmitData.title){alert('タイトルを入力してください');return;}if(!marketSubmitData.category){alert('カテゴリを選択してください');return;}}
+  else if(marketSubmitStep===2){if(!marketSubmitData.price){alert('価格を入力してください');return;}if(!marketSubmitData.condition){alert('状態を選択してください');return;}if(!marketSubmitData.description){alert('説明を入力してください');return;}if(!marketSubmitData.area){alert('エリアを入力してください');return;}}
+  marketSubmitStep++;renderMarketSubmitStep();
+}
+function marketSubmitBack(){marketSubmitStep--;renderMarketSubmitStep();}
+
+function marketSubmitFinish(){
+  if(!marketSubmitData.sellerName){alert('お名前を入力してください');return;}
+  if(!marketSubmitData.lineId){alert('LINE IDを入力してください');return;}
+  if(!marketSubmitData.agreed){alert('出品ルールへの同意が必要です');return;}
+  const id='M'+Date.now().toString(36).toUpperCase();
+  const editToken=Math.random().toString(36).slice(2)+Math.random().toString(36).slice(2);
+  const item={
+    id,editToken,
+    categoryId:marketSubmitData.category,
+    title:marketSubmitData.title,
+    description:marketSubmitData.description,
+    price:marketSubmitData.price,
+    condition:marketSubmitData.condition,
+    area:marketSubmitData.area,
+    pickupNote:marketSubmitData.pickupNote||'',
+    availableUntil:marketSubmitData.availableUntil||'',
+    sellerName:marketSubmitData.sellerName,
+    lineId:marketSubmitData.lineId,
+    isPackage:!!marketSubmitData.isPackage,
+    packageItems:marketSubmitData.packageItemsRaw?marketSubmitData.packageItemsRaw.split('\n').map(s=>s.trim()).filter(s=>s):[],
+    photos:[],
+    status:'available',
+    postedAt:new Date().toISOString().slice(0,10)
+  };
+  marketData.unshift(item);
+  localStorage.setItem('3p_my_item_'+id,editToken);
+  saveMarketData();
+  renderMarket();
+  document.getElementById('submitModalContent').innerHTML=`
+    <div class="submit-modal-header"><div class="submit-modal-title"><i class="fas fa-check-circle" style="color:var(--sage);"></i> 出品完了</div><button class="submit-modal-close" onclick="closeMarketSubmit()">×</button></div>
+    <div class="submit-form-body" style="padding:40px 24px;text-align:center;">
+      <div style="width:64px;height:64px;border-radius:50%;background:rgba(74,122,88,.15);color:var(--sage);display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 16px;"><i class="fas fa-check"></i></div>
+      <h3 style="font-size:18px;font-weight:700;margin-bottom:10px;">出品しました！</h3>
+      <p style="font-size:13px;color:var(--text-2);line-height:1.7;">買い手からLINEで直接連絡が来ます。<br>売れたら商品ページから「SOLD」マークしてください。</p>
+      <div style="margin-top:18px;padding:12px;background:#FFF8E5;border-radius:8px;font-size:11px;color:#7A5A20;line-height:1.6;"><i class="fas fa-flask"></i> ダミーモード: この出品はあなたの端末にのみ保存されます</div>
+    </div>
+    <div style="padding:14px 22px;display:flex;justify-content:center;"><button onclick="closeMarketSubmit()" style="padding:12px 30px;background:var(--sage);color:#fff;border:none;border-radius:var(--r-sm);font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;">閉じる</button></div>`;
+}
+
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closeSubmitForm();closeMarketSubmit();}});
+renderIndustryGrid();renderZoomEvents();updateFavCount();updateAdminPendingBadge();renderMarketCategories();
 </script>
 </body>
 </html>
