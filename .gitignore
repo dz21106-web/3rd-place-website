@@ -11,8 +11,11 @@ build/
 *.tsbuildinfo
 .claude/
 .vscode/
-hub-app/data/
-hub-app/photos/
+
+# Hub App は別リポ（dz21106-web/3rd_place_hub）に移動済み
+# ローカルに残っているファイルは無視する
+hub-app/
+
 docs/private/
 docs/employees/
 docs/operations/*-work-log.md
