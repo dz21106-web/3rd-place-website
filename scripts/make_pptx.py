@@ -529,6 +529,6 @@ add_textbox(sl,
 # ============================================================
 # 保存
 # ============================================================
-out_path = "/Users/fukushidaichi/Desktop/claude code/3rd place job housing referral bank/3rdplace_hub_presentation.pptx"
+out_path = "/Users/fukushidaichi/Desktop/3rd place/3rd_place_website/3rdplace_hub_presentation.pptx"
 prs.save(out_path)
 print(f"✅ 保存完了: {out_path}")

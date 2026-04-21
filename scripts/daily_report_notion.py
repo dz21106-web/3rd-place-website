@@ -36,7 +36,7 @@ ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
 
 CLAUDE_DIR = Path.home() / ".claude"
 HISTORY_FILE = CLAUDE_DIR / "history.jsonl"
-PROJECT_FILTER = os.environ.get("PROJECT_FILTER", "3rd place job housing referral bank")
+PROJECT_FILTER = os.environ.get("PROJECT_FILTER", "3rd_place_website")
 
 # Notion Database IDs
 TASK_DB = "33aeaa14-f6a1-81ba-90cc-c1f2ee1b76bf"

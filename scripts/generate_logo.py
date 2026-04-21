@@ -15,7 +15,7 @@ Color palette: dark navy for text and lines, warm coral and soft earth tones for
 Overall feel: warm, approachable, human, community-oriented.
 Square format, no extra text, no tagline."""
 
-output_dir = "/Users/fukushidaichi/Desktop/claude code/3rd place job housing referral bank/logos"
+output_dir = "/Users/fukushidaichi/Desktop/3rd place/3rd_place_website/logos"
 os.makedirs(output_dir, exist_ok=True)
 
 print("Generating logo images...")
