@@ -2,7 +2,7 @@
 
 ## 📘 事業コンテキストが必要なとき
 このファイルは **Webサイト/アプリのコード規約** に特化している。
-ビジネスモデル・法務NGワード・KPI・チーム体制・サービス設計など **事業全体の前提** が必要な相談（LPコピー・SNS案・サービス改善提案等）では、先に `docs/3rdplace-core.md`（3rd Place コアナレッジベース v3.0）を参照すること。
+ビジネスモデル・法務NGワード・KPI・チーム体制・サービス設計など **事業全体の前提** が必要な相談（LPコピー・SNS案・サービス改善提案等）では、先に別リポの `3rd_place_private/docs/3rdplace-core.md`（3rd Place コアナレッジベース v3.0）を参照すること。ローカルでは `../3rd_place_private/docs/3rdplace-core.md` に配置されている想定。
 
 ## プロジェクト概要
 メルボルンの日本人コミュニティ「3rd Place」の公式Webサイト。Next.js 14 App Router + Tailwind CSS + TypeScript。静的エクスポート。
@@ -39,10 +39,9 @@ fontFamily:
 ## 共通コンポーネント
 | コンポーネント | 用途 |
 |--------------|------|
-| `components/Navbar.tsx` | **全2ページ共通**の統一ナビバー。`usePathname()`でページ検出。ドロップダウン式サブメニュー付き。トップページは透明→白スクロール変化、Japanは常時白 |
-| `components/SubNavbar.tsx` | **未使用（レガシー）** — Navbar.tsxに統合済み |
-| `components/SubFooter.tsx` | Japan/Hub用フッター（bg-ink、クロスリンク付き） |
-| `components/FAQ.tsx` | FAQ アコーディオン（全ページ共通で使う。hub独自実装はNG） |
+| `components/Navbar.tsx` | **全2ページ共通**の統一ナビバー。propsの`page`（melbourne / japan）でページ判定。ドロップダウン式サブメニュー付き。トップページは透明→白スクロール変化、Japanは常時白 |
+| `components/SubFooter.tsx` | Japan用フッター（bg-ink、トップへの戻りリンク付き） |
+| `components/FAQ.tsx` | FAQ アコーディオン（全ページ共通で使う） |
 | `components/GallerySection.tsx` | トップページのギャラリー。カテゴリ別セクション（カレー会：横スクロール、特別イベント：4列グリッド、ワークショップ：2列グリッド） |
 | `components/ScrollReveal.tsx` | スクロール時のフェードインアニメーション（IntersectionObserver） |
 
@@ -114,11 +113,16 @@ fontFamily:
 - **globals.css**: `.scrollbar-hide` ユーティリティ追加（横スクロール用）
 
 ### ナビバー統一（2026-04-13）
-- **SubNavbar廃止** → Navbar.tsxに全3ページ対応のドロップダウン式メニューを実装
-- `usePathname()`でページ検出（melbourne/japan/hub）
-- 3タブ構成: コミュニティ / 東京イベント / 渡航サポート
+- **SubNavbar廃止** → Navbar.tsxにドロップダウン式メニューを統合
+- propsの`page`（melbourne / japan）でページ判定
+- 2タブ構成: コミュニティ / 東京イベント
 - ホバーでサブメニュー表示（デスクトップ）、アコーディオン式（モバイル）
-- ページごとにCTAボタン文言が変化（参加する / 申し込む / 通知を受け取る）
+- ページごとにCTAボタン文言が変化（参加する / 申し込む）
+
+### Hub非公開化 & リポ分離（2026-04-14〜2026-04-21）
+- `/hub` ページと関連セクションをサイトから削除（`app/hub/page.tsx` は feature flag で404返却のみ）
+- Hub Appの実装は別リポ `dz21106-web/3rd_place_hub` に分離
+- 運営内部資料は別リポ `dz21106-web/3rd_place_private` に分離
 
 ## Git履歴
 ```
