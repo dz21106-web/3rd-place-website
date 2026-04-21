@@ -1580,7 +1580,7 @@ let housingData=[
     photos:["https://images.unsplash.com/photo-1571055107559-3e67626fa8be?w=600&h=400&fit=crop"],
     residentProfile:{name:"りょうた",age:23,from:"札幌",flag:"JP",since:"2026年01月",months:3,bio:"Brunswickでアート系の仕事を探しながら生活中。"},reviews:[],
     lockedOwnerTips:"",lockedHousemateTips:"",lockedFirstWeek:""},
-  {id:"H006",status:"baton_recruiting",batonDeadline:"2026年5月20日",type:"一軒家シェアハウス（5人）",area:"Clayton",address:"Clayton駅付近",lat:-37.9254,lng:145.1200,rent:250,roomType:"own",addressVisibility:"area",billsIncluded:true,wifiIncluded:true,furnished:true,minStay:"6ヶ月〜",shortTermOk:false,jpHousemate:false,jpHousemateCount:0,totalHousemates:4,nearestTram:"Clayton駅・Huntingdale駅、バス630番（Elwood行き）",nearestSuper:"Coles・アジアンスーパー 徒歩15分",availableDate:"2026年5月16日〜",atmosphere:"",rating:0,pastMembers:0,currentMember:"ちあき",lastUpdated:"2026-04",
+  {id:"H006",status:"baton_recruiting",batonDeadline:"2026年5月10日",moveOutDate:"2026年4月23日",type:"一軒家シェアハウス（5人）",area:"Clayton",address:"Clayton駅付近",lat:-37.9254,lng:145.1200,rent:250,roomType:"own",addressVisibility:"area",billsIncluded:true,wifiIncluded:true,furnished:true,minStay:"6ヶ月〜",shortTermOk:false,jpHousemate:false,jpHousemateCount:0,totalHousemates:4,nearestTram:"Clayton駅・Huntingdale駅、バス630番（Elwood行き）",nearestSuper:"Coles・アジアンスーパー 徒歩15分",availableDate:"2026年5月16日〜",atmosphere:"",rating:0,pastMembers:0,currentMember:"ちあき",lastUpdated:"2026-04",
     photos:["photos/H006/S__99131398.jpg","photos/H006/S__99131401.jpg","photos/H006/S__99131400.jpg","photos/H006/S__99131402.jpg","photos/H006/S__99131403.jpg"],
     residentProfile:null,
     reviews:[],
@@ -2063,7 +2063,7 @@ function openHousingModal(id){
       <div class="modal-title">${displayAddress(h)}</div>
       <div class="modal-sub"><span>${h.type} · ${h.area}</span><span>${starsHtml(h.rating)}</span></div>
       <div style="font-size:11px;color:var(--text-3);margin-bottom:12px;"><i class="fas fa-clock" style="margin-right:4px;"></i>最終更新：${h.lastUpdated||'不明'} <span class="freshness-tag ${freshnessClass(h.lastUpdated)}" style="margin-left:6px;">${freshnessLabel(h.lastUpdated)}</span></div>
-      ${h.status==='baton_recruiting'?`<div class="baton-banner"><i class="fas fa-fire"></i><div><strong>後任募集中</strong><p>${h.currentMember||'現メンバー'}が${h.batonDeadline||'近日'}に退去予定。</p></div></div>`:''}
+      ${h.status==='baton_recruiting'?`<div class="baton-banner"><i class="fas fa-fire"></i><div><strong>後任募集中</strong><p>${h.currentMember||'現メンバー'}が${h.moveOutDate||h.batonDeadline||'近日'}に退去予定${h.moveOutDate&&h.batonDeadline?` ／ 引き継ぎ期限：${h.batonDeadline}`:''}。</p></div></div>`:''}
       <div class="modal-section"><div class="modal-section-title">基本情報</div><div class="info-grid">
         <div class="info-item"><div class="info-icon coral"><i class="fas fa-dollar-sign"></i></div><div><div class="key">家賃</div><div class="val">A$${h.rent}/w${h.billsIncluded?' (光熱費込)':''}</div></div></div>
         <div class="info-item"><div class="info-icon blue"><i class="fas fa-door-open"></i></div><div><div class="key">部屋タイプ</div><div class="val">${h.roomType==='own'?'オウンルーム':'シェアルーム'}</div></div></div>
@@ -2237,7 +2237,11 @@ function hsStep2(){return `<div class="form-step-title"><i class="fas fa-people-
 <div class="form-group"><label class="form-label">最寄りのスーパー</label><input class="form-input" data-field="nearestSuper" placeholder="例: Coles 徒歩5分" value="${v('nearestSuper')}"></div>
 <div class="form-row">
   <div class="form-group"><label class="form-label">ステータス</label><select class="form-select" data-field="status"><option value="">選択…</option><option value="baton_recruiting" ${sel('status','baton_recruiting')}>後任募集中</option><option value="available" ${sel('status','available')}>入居可能</option><option value="stocked" ${sel('status','stocked')}>満室（情報のみ）</option></select></div>
-  <div class="form-group"><label class="form-label">退去・後任募集の締切</label><input class="form-input" data-field="batonDeadline" placeholder="例: 2026年6月末" value="${v('batonDeadline')}"></div>
+  <div class="form-group"><label class="form-label">退去予定日</label><input class="form-input" data-field="moveOutDate" placeholder="例: 2026年5月末" value="${v('moveOutDate')}"></div>
+</div>
+<div class="form-row">
+  <div class="form-group"><label class="form-label">後任引き継ぎ期限</label><input class="form-input" data-field="batonDeadline" placeholder="例: 2026年5月20日" value="${v('batonDeadline')}"></div>
+  <div class="form-group"></div>
 </div>`;}
 
 function hsStep3(){return `<div class="form-step-title"><i class="fas fa-comment-dots"></i>住んでみた感想</div>
