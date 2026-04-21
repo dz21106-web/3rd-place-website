@@ -23,7 +23,8 @@ npm run build
 
 ## 重要な運用ポイント
 - 外部リンクと公開フラグは `lib/site.ts` で一元管理
-- `/hub` は `app/hub/page.tsx` で公開判定し、実体は `app/hub/HubPageClient.tsx`
+- `/hub` は現在非公開。`app/hub/page.tsx` が feature flag で判定し、無効時は404を返す
+- Hub Appの実装は別リポ（`dz21106-web/3rd_place_hub`）で管理
 - `main` 直pushは禁止。作業ブランチを切ってPRで反映する
 - 作業開始前とPR前に `git fetch origin main` を実行し、最新の `origin/main` を確認する
 
