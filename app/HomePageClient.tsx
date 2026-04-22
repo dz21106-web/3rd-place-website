@@ -110,7 +110,7 @@ export default function Home() {
 
           <p className="animate-fade-up delay-300 text-white/50 text-base md:text-lg leading-relaxed mb-10 max-w-xl mx-auto">
             {s(
-              'ワーホリ・留学・駐在・永住者が集まる、メルボルンの日本人コミュニティ。先輩たちのリアルな経験が、あなたのメルボルン生活を豊かにします。',
+              'ワーホリ・留学・駐在・永住者が集まる、メルボルンの日系コミュニティ。先輩たちのリアルな経験が、あなたのメルボルン生活を豊かにします。',
               'A Japanese community in Melbourne for working holidaymakers, students, expats, and residents.',
               l
             )}
