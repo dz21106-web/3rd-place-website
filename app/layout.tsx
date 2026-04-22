@@ -4,9 +4,9 @@ import { getSiteUrl } from '../lib/site-url'
 
 const siteUrl = getSiteUrl()
 const siteName = '3rd Place'
-const defaultTitle = 'メルボルン日本人コミュニティ・交流イベント | 3rd Place'
+const defaultTitle = 'メルボルン日系コミュニティ・交流イベント | 3rd Place'
 const defaultDescription =
-  'メルボルンで、仲間と出会い、自分を広げる場所。初参加や一人参加でも入りやすい、日本人コミュニティです。'
+  'メルボルンで、仲間と出会い、自分を広げる場所。初参加や一人参加でも入りやすい、日系コミュニティです。'
 const socialImage = '/images/events/curry1.jpg'
 
 export const metadata: Metadata = {

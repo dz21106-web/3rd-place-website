@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 import HomePageClient from './HomePageClient'
 
-const title = 'メルボルン日本人コミュニティ・交流イベント'
+const title = 'メルボルン日系コミュニティ・交流イベント'
 const description =
-  'メルボルンで、仲間と出会い、自分を広げる場所。初参加や一人参加でも入りやすい、日本人コミュニティです。'
+  'メルボルンで、仲間と出会い、自分を広げる場所。初参加や一人参加でも入りやすい、日系コミュニティです。'
 const socialImage = '/images/events/curry/curry12.jpg'
 
 export const metadata: Metadata = {

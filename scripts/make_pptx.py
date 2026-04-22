@@ -116,7 +116,7 @@ add_textbox(sl, "3rd Place Hub",
             Inches(1), Inches(1.2), Inches(11), Inches(1.4),
             font_size=60, bold=True, color=C_WHITE, align=PP_ALIGN.CENTER)
 
-add_textbox(sl, "メルボルン日本人コミュニティ × 仕事・住居マッチング",
+add_textbox(sl, "メルボルン日系コミュニティ × 仕事・住居マッチング",
             Inches(1), Inches(2.7), Inches(11), Inches(0.7),
             font_size=22, color=C_ACCENT, align=PP_ALIGN.CENTER)
 
@@ -156,7 +156,7 @@ for i, item in enumerate(items):
 # ============================================================
 sl = prs.slides.add_slide(blank_layout)
 bg_cream(sl)
-header_bar(sl, "3rd Place Hub とは", "メルボルン日本人コミュニティ発・仕事と住居のマッチングプラットフォーム")
+header_bar(sl, "3rd Place Hub とは", "メルボルン日系コミュニティ発・仕事と住居のマッチングプラットフォーム")
 accent_line(sl)
 
 # 大見出しキャッチ
