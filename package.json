@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "rm -rf .next && next dev",
+    "prebuild": "lsof -iTCP:3000 -sTCP:LISTEN >/dev/null 2>&1 && { echo 'ERROR: dev server is running on port 3000. Stop it (Ctrl+C in the dev terminal) before running build.'; exit 1; } || true",
     "build": "next build",
     "postbuild": "node scripts/remove-hub-output.mjs",
     "start": "next start",
