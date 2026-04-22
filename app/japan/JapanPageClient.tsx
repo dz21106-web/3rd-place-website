@@ -136,11 +136,11 @@ export default function JapanPage() {
         <div className="max-w-5xl mx-auto px-6 md:px-12 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-center sm:text-left">
           <div className="flex items-center gap-2">
             <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-            <span className="text-white font-bold text-sm">{s('次回イベント', 'Next Event', l)}</span>
+            <span className="text-white font-bold text-sm">{s('次回イベント（第9回目）', 'Next Event (9th)', l)}</span>
           </div>
           <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-4">
             <span className="text-white/90 text-sm">
-              {s('4月19日（日）', 'Apr 19 (Sun)', l)}
+              {s('5月17日（日）', 'May 17 (Sun)', l)}
             </span>
             <span className="text-white/80 text-xs">
               {s('18:00〜20:00 ワーホリ・留学相談会 / 20:00〜22:00 外国人との交流会', '18:00–20:00 WHV Consultation / 20:00–22:00 International Exchange', l)}

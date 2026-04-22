@@ -5,11 +5,10 @@
 ## 1. 設定確認
 - [ ] `lib/site.ts` の `EXTERNAL_LINKS` が最新
 - [ ] `hubPublic` が意図した値
-- [ ] `japanFormPublic` が意図した値
 
 ## 2. 画面確認
 - [ ] トップ `/` で主要CTAが正しく遷移
-- [ ] `/japan` のCTAが意図どおり（Form or Instagram）
+- [ ] `/japan` のCTAが申込フォームに遷移
 - [ ] `hubPublic: false` の場合、`/hub` が404表示
 - [ ] ナビ/フッターに不要なHub導線が出ていない
 - [ ] SNS補助導線の注意文（ログインが必要な場合あり）が表示されている

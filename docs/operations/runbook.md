@@ -32,13 +32,9 @@
 - `hubPublic`
   - `false`: `/hub` は 404（非公開）。ビルド後に `out/hub.html` / `out/hub.txt` も自動削除する
   - `true`: `/hub` を公開
-- `japanFormPublic`
-  - `false`: JapanページCTAは Instagram誘導
-  - `true`: JapanページCTAは Google Form誘導
 
 ## よくある変更
 - Hubを公開する: `hubPublic: true`
-- フォーム導線を有効にする: `japanFormPublic: true`
 - SNSリンク更新: `EXTERNAL_LINKS` のみ修正
 
 ## Git運用ルール
