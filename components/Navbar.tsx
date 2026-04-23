@@ -31,7 +31,7 @@ const subLinks: Record<PageKey, { href: string; ja: string; en: string }[]> = {
 }
 
 const ctaConfig: Record<PageKey, { href: string; ja: string; en: string }> = {
-  melbourne: { href: EXTERNAL_LINKS.lineGroup, ja: '参加する', en: 'Join Us' },
+  melbourne: { href: EXTERNAL_LINKS.melbourneApplyForm, ja: '参加する', en: 'Join Us' },
   japan: { href: '#apply', ja: '申し込む', en: 'Apply' },
 }
 

@@ -47,7 +47,7 @@ export default function Home() {
 
   const faqItems = {
     ja: [
-      { q: 'カレー会に参加するには何が必要ですか？', a: '特別な準備は何もいらないですよ！まずは運営のLINEを友だち追加してください。追加後、運営から参加申請フォームをお送りします。内容を確認次第、コミュニティLINEグループへご招待します。費用はもちろん無料です。' },
+      { q: 'カレー会に参加するには何が必要ですか？', a: '特別な準備は何もいらないですよ！まずは参加申請フォームにご回答ください。運営が内容を確認次第、コミュニティLINEグループへご招待します。費用はもちろん無料です。' },
       { q: '初めてで一人なのですが、大丈夫ですか？', a: '全然大丈夫です！毎回5〜10人くらい初参加の方がいて、ほぼみんな一人で来てますよ。到着したら運営メンバーから声をかけるので、安心してきてくださいね。' },
       { q: '英語が話せなくても大丈夫ですか？', a: '全然問題ないです！コミュニティ内は基本日本語なので安心してください。英語交流の機会もあるけど、もちろん参加は自由です。' },
       { q: 'ワーホリ以外の方も参加できますか？', a: 'もちろん！ワーホリ・留学・駐在・永住者・旅行者まで、いろんな人が参加してます。メルボルンに関わるすべての日本人を歓迎してるよ。' },
@@ -56,7 +56,7 @@ export default function Home() {
       { q: '運営に参加したい場合はどうすればいいですか？', a: <>ぜひぜひ！メルボルン現地の運営メンバーを絶賛募集中です。<a href={EXTERNAL_LINKS.melbourneStaffApplyForm} target="_blank" rel="noopener noreferrer" className="text-orange underline hover:text-orange-dark transition-colors duration-200 cursor-pointer">こちらのフォーム</a>からお気軽にご応募ください。</> },
     ],
     en: [
-      { q: 'What do I need to join the Curry Gathering?', a: 'Nothing to prepare! Just add us on LINE. Once added, we\'ll send you a short application form. After a quick review, you\'ll be invited into the community LINE group. And yep, it\'s totally free.' },
+      { q: 'What do I need to join the Curry Gathering?', a: 'Nothing to prepare! Just fill out our short application form. Once we review it, you\'ll be invited into the community LINE group. And yep, it\'s totally free.' },
       { q: 'Is it okay to come alone for the first time?', a: 'Totally fine! Every event has 5–10 first-timers, and almost everyone shows up solo. Our team will say hi when you arrive, so don\'t stress.' },
       { q: 'Is it okay if I can\'t speak English?', a: 'No problem at all! The community runs mostly in Japanese. There are English exchange opportunities too, but jumping in is totally up to you.' },
       { q: 'Can people other than working holidaymakers join?', a: 'Of course! WHV folks, students, expats, PRs, travelers — anyone with a Melbourne connection is welcome here.' },
@@ -117,8 +117,8 @@ export default function Home() {
           </p>
 
           <div className="animate-fade-up delay-500 flex flex-col sm:flex-row gap-4 justify-center">
-            <a href={EXTERNAL_LINKS.lineGroup} target="_blank" rel="noopener noreferrer" className="animate-pulse-glow bg-orange text-white font-semibold px-8 py-3.5 rounded-full hover:bg-orange-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 text-sm cursor-pointer">
-              {s('LINEで参加する', 'Join via LINE', l)}
+            <a href={EXTERNAL_LINKS.melbourneApplyForm} target="_blank" rel="noopener noreferrer" className="animate-pulse-glow bg-orange text-white font-semibold px-8 py-3.5 rounded-full hover:bg-orange-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 text-sm cursor-pointer">
+              {s('LINEグループに参加する', 'Join the LINE Group', l)}
             </a>
             <a href="#about" className="border border-white/25 text-white font-medium px-8 py-3.5 rounded-full hover:bg-white/10 transition-colors duration-200 text-sm cursor-pointer">
               {s('3rd Placeってどんなとこ？', 'What\'s this place?', l)}
@@ -185,9 +185,9 @@ export default function Home() {
           <span className="text-white/70 text-xs">
             {s('※ 住所はLINEグループでお知らせします', '* Address shared in LINE group', l)}
           </span>
-          <a href={EXTERNAL_LINKS.lineGroup} target="_blank" rel="noopener noreferrer"
+          <a href={EXTERNAL_LINKS.melbourneApplyForm} target="_blank" rel="noopener noreferrer"
             className="bg-white text-orange font-bold text-xs px-4 py-2 rounded-full hover:bg-cream transition-colors duration-200 cursor-pointer whitespace-nowrap">
-            {s('LINEを追加する', 'Add on LINE', l)}
+            {s('LINEグループに参加する', 'Join the LINE Group', l)}
           </a>
         </div>
       </section>
@@ -305,8 +305,8 @@ export default function Home() {
             {[
               {
                 step: '1',
-                title: s('運営のLINEを追加', 'Add our LINE', l),
-                desc: s('下のボタンから運営のLINEを友だち追加してください。追加後、運営から簡単な参加申請フォームをお送りします。', 'Tap the button to add us on LINE. Once added, we\'ll send you a quick application form.', l),
+                title: s('参加申請フォームに回答', 'Fill out the form', l),
+                desc: s('下のボタンから参加申請フォームにご回答ください。簡単な質問が数問だけです。', 'Tap the button and fill out our quick application form — just a few short questions.', l),
                 icon: (
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
                 ),
@@ -571,18 +571,18 @@ export default function Home() {
               </div>
               <p className="text-white/50 text-sm leading-relaxed mb-7 flex-grow">
                 {s(
-                  'まずは運営のLINEを友だち追加→届くフォームに答えるだけ。確認後、カレー会や他のイベントに遊びに来てね。月1ペースで集まってます。',
-                  'Just add our organizer on LINE and fill out the form we send you. Once reviewed, come hang out at curry nights and other events — we meet monthly.',
+                  'まずは参加申請フォームに答えるだけ。運営が確認したら、カレー会や他のイベントに遊びに来てね。月1ペースで集まってます。',
+                  'Just fill out our application form. Once reviewed, come hang out at curry nights and other events — we meet monthly.',
                   l
                 )}
               </p>
               <div className="flex flex-col gap-3">
-                <a href={EXTERNAL_LINKS.lineGroup} target="_blank" rel="noopener noreferrer"
+                <a href={EXTERNAL_LINKS.melbourneApplyForm} target="_blank" rel="noopener noreferrer"
                   className="bg-orange text-white font-semibold px-6 py-3 rounded-xl text-center hover:bg-orange-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 text-sm cursor-pointer">
-                  {s('運営のLINEを追加する', 'Add us on LINE', l)}
+                  {s('LINEグループに参加する', 'Join the LINE Group', l)}
                 </a>
                 <p className="text-white/40 text-xs text-center">
-                  {s('LINE追加→届くフォームに回答→確認後にご招待。シンプルな3ステップです。', 'Add us → fill the form we send → invited after review. Simple 3 steps.', l)}
+                  {s('フォーム回答→運営が確認→LINEグループにご招待。シンプルな3ステップです。', 'Fill the form → we review → invited to our group. Simple 3 steps.', l)}
                 </p>
               </div>
               <p className="text-white/50 text-xs text-center mt-4">
@@ -621,9 +621,9 @@ export default function Home() {
                   className="bg-white text-orange font-bold px-6 py-3 rounded-xl text-center hover:bg-cream transition-colors duration-200 text-sm cursor-pointer">
                   {s('東京イベント（3rd Place Japan）を見る', 'See 3rd Place Japan (Tokyo)', l)}
                 </Link>
-                <a href={EXTERNAL_LINKS.lineGroup} target="_blank" rel="noopener noreferrer"
+                <a href={EXTERNAL_LINKS.melbourneApplyForm} target="_blank" rel="noopener noreferrer"
                   className="animate-pulse-glow bg-white/15 border border-white/40 text-white font-medium px-6 py-3 rounded-xl text-center hover:bg-white/25 transition-colors duration-200 text-sm cursor-pointer">
-                  {s('または、まずLINEを追加する', 'Or just add us on LINE', l)}
+                  {s('または、LINEグループに参加する', 'Or join the LINE group', l)}
                 </a>
               </div>
             </div>

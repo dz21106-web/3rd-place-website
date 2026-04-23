@@ -83,8 +83,14 @@ fontFamily:
 
 ※ `events/` 直下にも旧写真あり（curry1-8, bbq, cafe, nabe, curry2）— GallerySectionはサブフォルダを参照
 
+## 参加申込フロー
+- **Melbourne CTA**: `EXTERNAL_LINKS.melbourneApplyForm`（`https://forms.gle/RTyR2oJR8jB6dC3z9`）。全CTAがこのGoogleフォーム直結。
+- **Japan CTA**: `EXTERNAL_LINKS.japanApplyForm`（Japan側の既存フォーム）。
+- **フロー**: サイトCTA → 参加申請フォーム回答 → 運営が内容を確認（スクリーニング目的） → 承認後、運営がコミュニティLINEグループへ招待。
+- **フォーム内にLINE友だち追加URL欄が必須項目**として含まれており、運営はその情報を使って個人LINEで招待を送る。
+- 公式LINEアカウント（`lin.ee/U8PVapG`）は告知配信用に運用継続中だが、**サイトCTAからは外している**（スクリーニング経由に一本化するため）。
+
 ## 保留事項（実装しないでおくもの）
-- **CTA の LINE URL**: 全ページ `https://line.me/ti/p/5ET_QCNdpX`（運営の個人LINE）。友だち追加→運営がフォームを送付→回答確認後にコミュニティLINEグループに招待、というフロー
 - **Hub のダミーテスティモニアル**: 実際の参加者の声が集まるまで置き換えない
 - **GitHub Pages デプロイ**: 未実施
 
@@ -123,6 +129,14 @@ fontFamily:
 - `/hub` ページと関連セクションをサイトから削除（`app/hub/page.tsx` は feature flag で404返却のみ）
 - Hub Appの実装は別リポ `dz21106-web/3rd_place_hub` に分離
 - 運営内部資料は別リポ `dz21106-web/3rd_place_private` に分離
+
+### 参加申込フロー刷新（2026-04-23）
+- **CTA差し替え**: MelbourneサイトのCTAを公式LINE（`lin.ee/U8PVapG`）→ 参加申請フォーム（`forms.gle/RTyR2oJR8jB6dC3z9`）に全面変更
+- `EXTERNAL_LINKS.lineGroup` を `EXTERNAL_LINKS.melbourneApplyForm` にリネーム（`lib/site.ts`）
+- Hero/次回カレー会バナー/はじめかたStep1/Melbourneカード/Heading to Melbourneカードの計5箇所のCTAボタンコピーを「LINEを追加」系→「参加を申し込む」系に統一
+- FAQとMelbourneカードの説明文を新フロー（フォーム回答 → 運営が確認 → LINEグループ招待）に書き換え
+- 運用: フォームに「LINE友だち追加URL」必須欄を設置。運営がフォーム内容でスクリーニング後、個人LINEからグループに招待
+- 公式LINEは廃止せず、告知配信専用として運用継続（サイトCTAからは外す）
 
 ## Git履歴
 ```
