@@ -1,6 +1,6 @@
 # 3rd Place 運用ランブック
 
-最終更新: 2026-04-13
+最終更新: 2026-04-23
 
 ## 目的
 このドキュメントは、Webサイト公開時の運用ルールを統一するための手順書です。
@@ -12,10 +12,11 @@
 ## 外部リンク運用
 `lib/site.ts` の `EXTERNAL_LINKS` を更新する。
 
-- `lineGroup`: LINEグループURL
+- `melbourneApplyForm`: Melbourne参加申請フォームURL（全サイトCTAの遷移先）
 - `instagram`: Instagram URL
 - `facebook`: Facebook URL
 - `japanApplyForm`: Japan申込フォームURL
+- `melbourneStaffApplyForm`: Melbourne運営スタッフ応募フォームURL
 
 変更手順:
 1. `lib/site.ts` を修正
@@ -24,7 +25,8 @@
 
 補足:
 - Instagram/Facebook は未ログイン時に閲覧制限やログイン画面へ遷移する場合がある。
-- 主要導線は LINE を維持し、SNS は補助導線として扱う。
+- 主要導線は参加申請フォームを維持し、SNS は補助導線として扱う。
+- 参加フロー: フォーム回答 → 運営が内容確認 → LINEグループへ招待（フォーム内のLINE友だち追加URL欄を使用）。
 
 ## 公開フラグ運用
 `lib/site.ts` の `FEATURE_FLAGS` を使って公開状態を切り替える。
