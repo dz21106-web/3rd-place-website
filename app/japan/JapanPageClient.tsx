@@ -242,6 +242,52 @@ export default function JapanPage() {
               </div>
             ))}
           </div>
+
+          {/* Values cards — staggered reveal */}
+          <div className="mt-20">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {[
+                {
+                  n: '01',
+                  title: s('仲間ができる', 'Make Friends', l),
+                  desc: s('同じく渡航を目指す仲間と、出発前から繋がれる', 'Connect with fellow future-travelers before you go', l),
+                  icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>,
+                },
+                {
+                  n: '02',
+                  title: s('情報が手に入る', 'Get Real Info', l),
+                  desc: s('メルボルン経験者から、ネットにないリアルが聞ける', 'Hear real stories from returnees you won\'t find online', l),
+                  icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
+                },
+                {
+                  n: '03',
+                  title: s('英語に慣れる', 'Get Comfortable in English', l),
+                  desc: s('日本在住の外国人と、英語で話す感覚をつかめる', 'Practice English with international participants in Japan', l),
+                  icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>,
+                },
+                {
+                  n: '04',
+                  title: s('一歩を踏み出せる', 'Take the First Step', l),
+                  desc: s('漠然とした「いつか」が、具体的な行動に変わる', 'Turn "someday" into a concrete next step', l),
+                  icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>,
+                },
+              ].map((v, i) => (
+                <StaggerReveal key={i} index={i}>
+                <div className="group relative bg-navy rounded-2xl p-6 overflow-hidden hover:-translate-y-1 hover:shadow-xl transition-all duration-300 cursor-default">
+                  <div className="absolute top-0 left-0 h-1 w-8 group-hover:w-full bg-orange transition-all duration-500" />
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 rounded-xl bg-orange/15 flex items-center justify-center text-orange flex-shrink-0">
+                      {v.icon}
+                    </div>
+                    <span className="text-white/20 font-bold text-xs">{v.n}</span>
+                  </div>
+                  <p className="font-bold text-white text-sm mb-2">{v.title}</p>
+                  <p className="text-white/50 text-xs leading-relaxed">{v.desc}</p>
+                </div>
+                </StaggerReveal>
+              ))}
+            </div>
+          </div>
         </div>
         </ScrollReveal>
       </section>
