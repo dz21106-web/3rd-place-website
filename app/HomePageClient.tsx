@@ -180,7 +180,7 @@ export default function Home() {
             <span className="text-white font-bold text-sm">{s('次回カレー会', 'Next Curry Night', l)}</span>
           </div>
           <span className="text-white/90 text-sm">
-            {s('6月6日（土）18:00〜22:00 @ みんなの館', 'June 6 (Sat) 18:00–22:00 @ Minna no Yakata', l)}
+            {s('5月30日（土）18:00〜22:00 @ みんなの館', 'May 30 (Sat) 18:00–22:00 @ Minna no Yakata', l)}
           </span>
           <span className="text-white/70 text-xs">
             {s('※ 住所はLINEグループでお知らせします', '* Address shared in LINE group', l)}
