@@ -81,7 +81,7 @@ export default function JapanPage() {
               {/* Mini stats */}
               <div className="flex gap-6">
                 {[
-                  { value: '¥1,000', label: s('参加費', 'Entry', l) },
+                  { value: s('¥500〜', '¥500〜', l), label: s('参加費', 'Entry', l) },
                   { value: s('毎月', 'Monthly', l), label: s('定期開催', 'Regular', l) },
                   { value: s('2部制', '2 Parts', l), label: s('相談+交流', 'Talk+Mix', l) },
                 ].map((stat, i) => (
@@ -115,7 +115,7 @@ export default function JapanPage() {
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
-              { num: '¥1,000', label: s('参加費（1ドリンク付）', 'Entry Fee (1 drink incl.)', l) },
+              { num: s('¥500〜', '¥500〜', l), label: s('日本人¥500 / 外国人¥1,000（ドリンク込）', 'JP ¥500 / Intl ¥1,000 (drinks incl.)', l) },
               { num: s('毎月', 'Monthly', l), label: s('定期開催', 'Regular Event', l) },
               { num: s('2部制', '2 Parts', l), label: s('相談会 + 交流会', 'Consultation + Exchange', l) },
               { num: s('東京', 'Tokyo', l), label: s('神保町で開催', 'Jimbocho Venue', l) },
@@ -143,7 +143,7 @@ export default function JapanPage() {
               {s('5月17日（日）', 'May 17 (Sun)', l)}
             </span>
             <span className="text-white/80 text-xs">
-              {s('18:00〜20:00 ワーホリ・留学相談会 / 20:00〜22:00 外国人との交流会', '18:00–20:00 WHV Consultation / 20:00–22:00 International Exchange', l)}
+              {s('18:00〜19:30 ワーホリ・留学相談会 / 19:30〜21:00 外国人との交流会', '18:00–19:30 WHV Consultation / 19:30–21:00 International Exchange', l)}
             </span>
           </div>
           <div className="flex flex-col items-center sm:items-start gap-1">
@@ -501,8 +501,8 @@ export default function JapanPage() {
                 a: s('神保町/御茶ノ水のBar/Grill PINEで開催しています。詳細な場所は申し込み後にメールでお知らせします。', 'We hold it at Bar/Grill PINE in Jimbocho/Ochanomizu. Full details are emailed to you after you apply.', l),
               },
               {
-                q: s('参加費の¥1,000はどうやって払いますか？', 'How do I pay the ¥1,000 entry fee?', l),
-                a: s('当日現地でお支払いいただきます。事前決済は不要です。', 'Pay on the day at the venue. No advance payment required.', l),
+                q: s('参加費はいくらですか？', 'How much is the entry fee?', l),
+                a: s('日本人参加者は¥500（ドリンク別途）、外国人参加者は一律¥1,000（ドリンク飲み放題込み）です。日本人の方はドリンクオプションとして、ソフトドリンク飲み放題が+¥500、アルコール飲み放題が+¥1,000でお選びいただけます。お支払いは当日現地で、事前決済は不要です。', 'Entry is ¥500 for Japanese participants (drinks separate), and a flat ¥1,000 for international participants (drinks included). Japanese participants can add drink options: +¥500 for unlimited soft drinks, +¥1,000 for unlimited alcohol. Pay on the day at the venue — no advance payment required.', l),
               },
               {
                 q: s('ワーホリ・留学の予定がまだ決まっていなくても参加できますか？', 'Can I join even if I haven\'t decided to go yet?', l),
@@ -544,8 +544,8 @@ export default function JapanPage() {
           </h2>
           <p className="text-white/80 text-lg mb-10 leading-relaxed">
             {s(
-              '毎月東京で開催中。参加費¥1,000（1ドリンク付き）。申し込みは下記フォームからどうぞ。',
-              'Held monthly in Tokyo. ¥1,000 entry (1 drink included). Apply via the form below.',
+              '毎月東京で開催中。参加費は日本人¥500（ドリンク別）／外国人¥1,000（ドリンク飲み放題込）。日本人の方はソフトドリンク飲み放題+¥500、アルコール飲み放題+¥1,000を追加できます。申し込みは下記フォームからどうぞ。',
+              'Held monthly in Tokyo. Entry: ¥500 for JP (drinks separate) / ¥1,000 flat for intl (drinks included). JP can add: +¥500 unlimited soft drinks, +¥1,000 unlimited alcohol. Apply via the form below.',
               l
             )}
           </p>
