@@ -7,6 +7,7 @@ import Navbar from '../components/Navbar'
 import FAQSection from '../components/FAQ'
 import ScrollReveal from '../components/ScrollReveal'
 import GallerySection from '../components/GallerySection'
+import EventsSection from '../components/EventsSection'
 import CountUp from '../components/CountUp'
 import StaggerReveal from '../components/StaggerReveal'
 import ScrollProgress from '../components/ScrollProgress'
@@ -172,25 +173,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── NEXT EVENT BANNER ────────────────── */}
-      <section id="next-event" className="bg-orange py-5">
-        <div className="max-w-5xl mx-auto px-6 md:px-12 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-center sm:text-left">
-          <div className="flex items-center gap-2">
-            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-            <span className="text-white font-bold text-sm">{s('次回カレー会', 'Next Curry Night', l)}</span>
-          </div>
-          <span className="text-white/90 text-sm">
-            {s('6月6日（土）18:00〜22:00 @ みんなの館', 'June 6 (Sat) 18:00–22:00 @ Minna no Yakata', l)}
-          </span>
-          <span className="text-white/70 text-xs">
-            {s('※ 住所はLINEグループでお知らせします', '* Address shared in LINE group', l)}
-          </span>
-          <a href={EXTERNAL_LINKS.melbourneApplyForm} target="_blank" rel="noopener noreferrer"
-            className="bg-white text-orange font-bold text-xs px-4 py-2 rounded-full hover:bg-cream transition-colors duration-200 cursor-pointer whitespace-nowrap">
-            {s('LINEグループに参加する', 'Join the LINE Group', l)}
-          </a>
-        </div>
-      </section>
+      {/* ── UPCOMING EVENTS ──────────────────── */}
+      <EventsSection lang={l} />
 
       {/* ── ABOUT ────────────────────────────── */}
       <section id="about" className="py-28 bg-white">
@@ -588,7 +572,7 @@ export default function Home() {
               </div>
               <p className="text-white/50 text-xs text-center mt-4">
                 {s('すでにメンバーの方 → ', 'Already a member? → ', l)}
-                <a href="#next-event" className="text-orange hover:text-orange-dark underline underline-offset-2 transition-colors duration-200 cursor-pointer">
+                <a href="#events" className="text-orange hover:text-orange-dark underline underline-offset-2 transition-colors duration-200 cursor-pointer">
                   {s('次回開催日をチェック ↑', 'Check next event date ↑', l)}
                 </a>
               </p>

@@ -16,6 +16,9 @@ build/
 # ローカルに残っているファイルは無視する
 hub-app/
 
+# イベント告知の原稿・元写真フォルダ（lib/events.ts へ転記したらコミットしない）
+upcoming event/
+
 docs/private/
 docs/employees/
 docs/operations/*-work-log.md
