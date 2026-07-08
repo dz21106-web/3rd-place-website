@@ -466,44 +466,6 @@ export default function Home() {
       <GallerySection l={l} />
 
 
-      {/* ── TEAM ─────────────────────────────── */}
-      <section id="team" className="py-20 bg-cream">
-        <ScrollReveal>
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="text-center mb-12">
-            <span className="text-orange text-xs font-semibold uppercase tracking-widest">
-              {s('運営チーム', 'Our Team', l)}
-            </span>
-            <p className="text-slate-500 text-sm mt-3">
-              {s('日本とメルボルンをつなぐ、元ワーホリメンバーが運営しています', 'Run by former WHV members bridging Japan and Melbourne', l)}
-            </p>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {[
-              { name: 'ヒロト', nameEn: 'Hiroto', from: s('東京都出身', 'From Tokyo', l), bio: s('メルボルンワーホリ2024年経験。ウクレレと山登りが趣味。', 'Melbourne WHV 2024. Loves ukulele and hiking.', l), img: '/images/team/hiroto.png', scale: 'scale-100', pos: '60% 30%' },
-              { name: 'ダイチ', nameEn: 'Daichi', from: s('青森県出身', 'From Aomori', l), bio: s('メルボルンワーホリ2024年経験。海外旅行とサッカーが趣味。', 'Melbourne WHV 2024. Into travel and football.', l), img: '/images/team/daichi-new.jpg', scale: 'scale-125', pos: 'center center' },
-              { name: 'あさひ', nameEn: 'Asahi', from: s('福島県出身', 'From Fukushima', l), bio: s('世界一周で約35カ国を経験。ランニングとサウナが趣味。', 'Traveled to 35+ countries. Loves running and sauna.', l), img: '/images/team/asahi-new.jpg', scale: 'scale-110', pos: 'center center' },
-              { name: 'みなと', nameEn: 'Minato', from: s('神奈川県出身', 'From Kanagawa', l), bio: s('メルボルンワーホリ2024年経験。中国語も話せるムードメーカー。', 'Melbourne WHV 2024. Speaks Chinese. The mood maker.', l), img: '/images/team/minato-new2.png', scale: 'scale-110', pos: 'center 40%' },
-            ].map((m, i) => (
-              <div key={i} className="flex flex-col items-center text-center">
-                <div className="relative w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden ring-2 ring-orange/20 mb-3">
-                  <Image src={m.img} alt={m.name} fill className={`object-cover ${m.scale}`} style={{ objectPosition: m.pos }} sizes="112px" />
-                </div>
-                <p className="font-bold text-navy text-base">{l === 'ja' ? m.name : m.nameEn}</p>
-                <p className="text-slate-400 text-xs mt-0.5">{m.from}</p>
-                <p className="text-slate-500 text-xs mt-1 leading-relaxed">{m.bio}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-        </ScrollReveal>
-      </section>
-
-      {/* Subtle divider between Team and FAQ (both cream) */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="border-t border-gray-200/60" />
-      </div>
-
       {/* ── FAQ ──────────────────────────────── */}
       <section id="faq" className="py-28 bg-cream">
         <div className="max-w-3xl mx-auto px-6 md:px-12">
@@ -629,7 +591,6 @@ export default function Home() {
           <div className="flex flex-wrap justify-center gap-6 text-sm">
             <a href="#about" className="text-white/40 hover:text-white/80 transition-colors duration-200 cursor-pointer">{s('わたしたちについて', 'About', l)}</a>
             <Link href="/japan" className="text-white/40 hover:text-white/80 transition-colors duration-200 cursor-pointer">3rd Place Japan</Link>
-            <a href="#team" className="text-white/40 hover:text-white/80 transition-colors duration-200 cursor-pointer">{s('チーム', 'Team', l)}</a>
           </div>
           <div className="flex items-center gap-4">
             <a href={EXTERNAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-white/70 transition-colors duration-200 cursor-pointer" aria-label="Instagram">
