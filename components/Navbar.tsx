@@ -21,7 +21,6 @@ const pageConfig: Record<PageKey, { path: string; ja: string; en: string }> = {
 const subLinks: Record<PageKey, { href: string; ja: string; en: string }[]> = {
   melbourne: [
     { href: '#about', ja: '3rd Placeとは？', en: "What's 3rd Place?" },
-    { href: '#team', ja: 'チーム', en: 'Team' },
     { href: '#faq', ja: 'FAQ', en: 'FAQ' },
   ],
   japan: [
