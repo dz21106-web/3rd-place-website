@@ -2,6 +2,7 @@
 
 import { useEffect, useCallback } from 'react'
 import Image from 'next/image'
+import { img } from '../lib/images'
 
 interface LightboxProps {
   photos: string[]
@@ -64,7 +65,7 @@ export default function Lightbox({ photos, index, onClose, onPrev, onNext }: Lig
       {/* Image */}
       <div className="relative w-[90vw] h-[80vh] z-10">
         <Image
-          src={photos[index]}
+          src={img(photos[index], 'full')}
           alt=""
           fill
           className="object-contain"

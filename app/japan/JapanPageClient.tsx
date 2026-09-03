@@ -12,6 +12,7 @@ import ScrollProgress from '../../components/ScrollProgress'
 import Parallax from '../../components/Parallax'
 import ScrollGlow from '../../components/ScrollGlow'
 import { EXTERNAL_LINKS } from '../../lib/site'
+import { img } from '../../lib/images'
 
 type Lang = 'ja' | 'en'
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -32,17 +33,17 @@ export default function JapanPage() {
       {/* ── Hero ── */}
       <section className="pt-32 pb-24 bg-navy relative overflow-hidden">
         <div className="absolute inset-0 opacity-15">
-          <Image src="/images/japan/event1.jpg" alt="3rd Place Japan" fill className="object-cover" />
+          <Image src={img("/images/japan/event1.jpg", 'full')} alt="3rd Place Japan" fill sizes="100vw" priority className="object-cover" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-navy/60 to-navy" />
 
         {/* Glow effects — scroll-linked */}
-        <ScrollGlow className="absolute top-1/3 right-1/4 w-80 h-80 rounded-full bg-orange/10 blur-[100px] pointer-events-none" range={60} />
-        <ScrollGlow className="absolute bottom-1/4 left-[20%] w-64 h-64 rounded-full bg-orange/5 blur-[80px] pointer-events-none" range={40} />
+        <ScrollGlow className="absolute top-1/3 right-1/4 -mr-40 -mt-40 w-[40rem] h-[40rem] rounded-full glow-orange pointer-events-none" range={60} />
+        <ScrollGlow className="absolute bottom-1/4 left-[20%] -ml-32 -mb-32 w-[32rem] h-[32rem] rounded-full glow-orange-soft pointer-events-none" range={40} />
 
         <div className="relative max-w-7xl mx-auto px-6 md:px-12">
           <div className="animate-fade-in flex items-center gap-3 mb-6">
-            <Image src="/images/japan/logo-japan.jpg" alt="3rd Place Japan" width={48} height={48} className="object-contain rounded-xl" />
+            <Image src={img("/images/japan/logo-japan.jpg", 'thumb')} alt="3rd Place Japan" width={48} height={48} sizes="48px" className="object-contain rounded-xl" />
             <div>
               <p className="text-orange text-xs font-bold uppercase tracking-widest">3rd Place Japan</p>
               <p className="text-white/50 text-xs">{s('東京 × メルボルン', 'Tokyo × Melbourne', l)}</p>
@@ -101,7 +102,7 @@ export default function JapanPage() {
                   '/images/japan/farewell1.jpg',
                 ].map((src, i) => (
                   <div key={i} className="relative w-14 h-14 md:w-16 md:h-16 rounded-lg overflow-hidden opacity-70 hover:opacity-100 transition-opacity duration-200">
-                    <Image src={src} alt="" fill className="object-cover" sizes="64px" />
+                    <Image src={img(src, 'thumb')} alt="" fill className="object-cover" sizes="64px" />
                   </div>
                 ))}
               </div>
@@ -238,7 +239,7 @@ export default function JapanPage() {
               '/images/japan/event4.jpg',
             ].map((src, i) => (
               <div key={i} className="relative aspect-square rounded-xl overflow-hidden">
-                <Image src={src} alt={`Event photo ${i + 1}`} fill className="object-cover hover:scale-105 transition-transform duration-500" />
+                <Image src={img(src, 'card')} alt={`Event photo ${i + 1}`} fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover hover:scale-105 transition-transform duration-500" />
               </div>
             ))}
           </div>
@@ -375,10 +376,10 @@ export default function JapanPage() {
             <Parallax speed={0.08}>
             <div className="grid grid-cols-2 gap-4">
               <div className="relative aspect-[3/4] rounded-xl overflow-hidden shadow-md">
-                <Image src="/images/japan/farewell1.jpg" alt="Farewell party" fill className="object-cover hover:scale-105 transition-transform duration-500" />
+                <Image src={img("/images/japan/farewell1.jpg", 'card')} alt="Farewell party" fill sizes="(max-width: 768px) 45vw, 320px" className="object-cover hover:scale-105 transition-transform duration-500" />
               </div>
               <div className="relative aspect-[3/4] rounded-xl overflow-hidden mt-8 shadow-md">
-                <Image src="/images/japan/farewell-new2.jpg" alt="Farewell party" fill className="object-cover hover:scale-105 transition-transform duration-500" />
+                <Image src={img("/images/japan/farewell-new2.jpg", 'card')} alt="Farewell party" fill sizes="(max-width: 768px) 45vw, 320px" className="object-cover hover:scale-105 transition-transform duration-500" />
               </div>
             </div>
             </Parallax>

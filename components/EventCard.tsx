@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { CATEGORY_LABELS, type EventItem } from '../lib/events'
+import { img } from '../lib/images'
 
 type Lang = 'ja' | 'en'
 
@@ -40,7 +41,7 @@ export default function EventCard({ event, lang, onDetailClick }: EventCardProps
     <article className="group flex flex-col bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-200 border border-slate-100">
       <div className="relative aspect-[16/10] overflow-hidden">
         <Image
-          src={event.image}
+          src={img(event.image, 'card')}
           alt={event.title[lang]}
           fill
           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"

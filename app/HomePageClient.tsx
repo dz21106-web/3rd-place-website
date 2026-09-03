@@ -14,6 +14,7 @@ import ScrollProgress from '../components/ScrollProgress'
 import Parallax from '../components/Parallax'
 import ScrollGlow from '../components/ScrollGlow'
 import { EXTERNAL_LINKS } from '../lib/site'
+import { img } from '../lib/images'
 
 type Lang = 'ja' | 'en'
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -75,15 +76,15 @@ export default function Home() {
       {/* ── HERO ─────────────────────────────── */}
       <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-navy">
         {/* Scroll-linked background glows */}
-        <ScrollGlow className="absolute top-1/3 right-1/4 w-96 h-96 rounded-full bg-orange/10 blur-[120px] pointer-events-none" range={60} />
-        <ScrollGlow className="absolute bottom-1/4 left-1/4 w-72 h-72 rounded-full bg-orange/5 blur-[80px] pointer-events-none" range={40} />
+        <ScrollGlow className="absolute top-1/3 right-1/4 -mr-44 -mt-44 w-[46rem] h-[46rem] rounded-full glow-orange pointer-events-none" range={60} />
+        <ScrollGlow className="absolute bottom-1/4 left-1/4 -ml-28 -mb-28 w-[32rem] h-[32rem] rounded-full glow-orange-soft pointer-events-none" range={40} />
 
         {/* Top photo strip — scrolls right */}
         <div className="relative z-10 overflow-hidden mt-20 mb-8 opacity-80">
           <div className="flex w-max animate-scroll-right">
             {[...heroStripTop, ...heroStripTop].map((src, i) => (
               <div key={i} className="flex-shrink-0 w-48 h-32 md:w-56 md:h-36 rounded-xl overflow-hidden ml-3">
-                <Image src={src} alt="" width={224} height={144} className="object-cover w-full h-full" />
+                <Image src={img(src, 'card')} alt="" width={224} height={144} sizes="224px" className="object-cover w-full h-full" />
               </div>
             ))}
           </div>
@@ -138,7 +139,7 @@ export default function Home() {
           <div className="flex w-max animate-scroll-left">
             {[...heroStripBottom, ...heroStripBottom].map((src, i) => (
               <div key={i} className="flex-shrink-0 w-48 h-32 md:w-56 md:h-36 rounded-xl overflow-hidden ml-3">
-                <Image src={src} alt="" width={224} height={144} className="object-cover w-full h-full" />
+                <Image src={img(src, 'card')} alt="" width={224} height={144} sizes="224px" className="object-cover w-full h-full" />
               </div>
             ))}
           </div>
@@ -204,19 +205,19 @@ export default function Home() {
           {/* Photo Collage */}
           <Parallax speed={0.08} className="relative">
             {/* Glow */}
-            <div className="absolute -top-8 -right-8 w-64 h-64 bg-orange/10 rounded-full blur-[80px] pointer-events-none" />
+            <div className="absolute -top-8 -right-8 -mr-32 -mt-32 w-[32rem] h-[32rem] rounded-full glow-orange pointer-events-none" />
             <div className="grid grid-cols-3 gap-3 relative">
               <div className="col-span-2 relative aspect-[4/3] rounded-xl overflow-hidden shadow-lg">
-                <Image src="/images/events/curry/curry12.jpg" alt="カレー会" fill className="object-cover hover:scale-105 transition-transform duration-500" />
+                <Image src={img("/images/events/curry/curry12.jpg", 'card')} alt="カレー会" fill sizes="(max-width: 768px) 60vw, 420px" className="object-cover hover:scale-105 transition-transform duration-500" />
               </div>
               <div className="relative aspect-[3/4] rounded-xl overflow-hidden shadow-lg mt-6">
-                <Image src="/images/events/special/christmas.jpg" alt="クリスマスパーティー" fill className="object-cover hover:scale-105 transition-transform duration-500" />
+                <Image src={img("/images/events/special/christmas.jpg", 'card')} alt="クリスマスパーティー" fill sizes="(max-width: 768px) 30vw, 210px" className="object-cover hover:scale-105 transition-transform duration-500" />
               </div>
               <div className="relative aspect-[3/4] rounded-xl overflow-hidden shadow-lg -mt-4">
-                <Image src="/images/events/workshop/udon1.jpg" alt="うどんワークショップ" fill className="object-cover hover:scale-105 transition-transform duration-500" />
+                <Image src={img("/images/events/workshop/udon1.jpg", 'card')} alt="うどんワークショップ" fill sizes="(max-width: 768px) 30vw, 210px" className="object-cover hover:scale-105 transition-transform duration-500" />
               </div>
               <div className="col-span-2 relative aspect-[5/3] rounded-xl overflow-hidden shadow-lg -mt-4">
-                <Image src="/images/events/special/bbq.jpg" alt="BBQ" fill className="object-cover hover:scale-105 transition-transform duration-500" />
+                <Image src={img("/images/events/special/bbq.jpg", 'card')} alt="BBQ" fill sizes="(max-width: 768px) 60vw, 420px" className="object-cover hover:scale-105 transition-transform duration-500" />
               </div>
             </div>
           </Parallax>
@@ -374,7 +375,7 @@ export default function Home() {
             <div>
               <div className="flex items-center gap-5 mb-8">
                 <div className="relative w-16 h-16 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-orange/40">
-                  <Image src="/images/team/masa.jpg" alt="野口まさ" fill className="object-cover" />
+                  <Image src={img("/images/team/masa.jpg", 'thumb')} alt="野口まさ" fill sizes="80px" className="object-cover" />
                 </div>
                 <div>
                   <p className="text-white font-bold text-lg">{s('野口 まさ', 'Masa Noguchi', l)}</p>
@@ -514,7 +515,7 @@ export default function Home() {
                 </h3>
               </div>
               <div className="relative aspect-[16/9] rounded-xl overflow-hidden mb-5">
-                <Image src="/images/events/curry/curry12.jpg" alt="カレー会" fill className="object-cover" />
+                <Image src={img("/images/events/curry/curry12.jpg", 'card')} alt="カレー会" fill sizes="(max-width: 768px) 90vw, 560px" className="object-cover" />
               </div>
               <p className="text-white/50 text-sm leading-relaxed mb-7 flex-grow">
                 {s(
@@ -554,7 +555,7 @@ export default function Home() {
                 {s('日本にいる方・渡航を検討中の方はこちら', 'For those in Japan or considering the move', l)}
               </p>
               <div className="relative aspect-[16/9] rounded-xl overflow-hidden mb-5">
-                <Image src="/images/japan/event1.jpg" alt="3rd Place Japan" fill className="object-cover" />
+                <Image src={img("/images/japan/event1.jpg", 'card')} alt="3rd Place Japan" fill sizes="(max-width: 768px) 90vw, 560px" className="object-cover" />
               </div>
               <p className="text-white/80 text-sm leading-relaxed mb-7 flex-grow">
                 {s(
@@ -582,7 +583,7 @@ export default function Home() {
       <footer className="py-12 bg-ink border-t border-white/5">
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3">
-            <Image src="/images/3rd-place-melbourne.jpg" alt="3rd Place" width={30} height={30} className="object-contain rounded-lg" />
+            <Image src={img("/images/3rd-place-melbourne.jpg", 'thumb')} alt="3rd Place" width={30} height={30} sizes="30px" className="object-contain rounded-lg" />
             <div>
               <p className="text-white font-bold text-sm">3rd Place</p>
               <p className="text-white/30 text-xs">Melbourne Japanese Community</p>
