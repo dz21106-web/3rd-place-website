@@ -4,6 +4,7 @@ import { useState, useCallback } from 'react'
 import Image from 'next/image'
 import ScrollReveal from './ScrollReveal'
 import Lightbox from './Lightbox'
+import { img } from '../lib/images'
 
 type Lang = 'ja' | 'en'
 const s = (ja: string, en: string, l: Lang) => l === 'ja' ? ja : en
@@ -172,7 +173,7 @@ export default function GallerySection({ l }: { l: Lang }) {
                       className="group relative rounded-xl overflow-hidden aspect-[4/3] shadow-md cursor-pointer"
                     >
                       <Image
-                        src={event.cover}
+                        src={img(event.cover, 'card')}
                         alt={l === 'ja' ? event.labelJa : event.labelEn}
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -203,7 +204,7 @@ export default function GallerySection({ l }: { l: Lang }) {
                             className="relative rounded-lg overflow-hidden aspect-square cursor-pointer hover:ring-2 hover:ring-orange transition-all duration-200"
                           >
                             <Image
-                              src={photo}
+                              src={img(photo, 'thumb')}
                               alt={l === 'ja' ? event.labelJa : event.labelEn}
                               fill
                               className="object-cover"

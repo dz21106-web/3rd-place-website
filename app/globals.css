@@ -19,6 +19,41 @@ body {
   font-family: 'Noto Serif JP', 'Inter', serif;
 }
 
+/* オレンジの光（ヒーロー背景などの装飾）
+ *
+ * なぜ blur() を使わないか:
+ *   blur(120px) は元の要素の外側にも大きくはみ出して描画されるため、
+ *   384px の円でも実質 1,100px 四方の描画領域を確保する。iPhone は
+ *   3倍解像度なので約 3,300 × 3,300 ピクセル分のGPUメモリを1個で消費し、
+ *   2個並べると iOS Safari のGPU上限を超える。超えると低速な描画方式に
+ *   切り替わり、同じ画面のCSSアニメーションが全部止まる。
+ *   実測: 0.7秒のフェードインが iPhone 上で 11.9秒 かかっていた。
+ *
+ *   放射グラデーションは「最初からぼけている」ので filter が不要で、
+ *   はみ出し領域も発生しない。見た目はほぼ同じでコストはほぼゼロ。
+ */
+:root {
+  --glow-rgb: 212 135 74; /* tailwind.config.ts の orange (#D4874A) と同じ値 */
+}
+
+.glow-orange {
+  background: radial-gradient(
+    circle closest-side,
+    rgb(var(--glow-rgb) / 0.18),
+    rgb(var(--glow-rgb) / 0.07) 45%,
+    transparent 72%
+  );
+}
+
+.glow-orange-soft {
+  background: radial-gradient(
+    circle closest-side,
+    rgb(var(--glow-rgb) / 0.10),
+    rgb(var(--glow-rgb) / 0.04) 45%,
+    transparent 72%
+  );
+}
+
 /* Stagger animation utilities */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }

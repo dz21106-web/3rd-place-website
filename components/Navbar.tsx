@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { EXTERNAL_LINKS } from '../lib/site'
+import { img } from '../lib/images'
 
 interface NavbarProps {
   lang: 'ja' | 'en'
@@ -71,7 +72,7 @@ export default function Navbar({ lang, setLang, page = 'melbourne' }: NavbarProp
         {/* Logo */}
         <Link href={isHome ? '/' : '/japan'} className="flex items-center gap-3">
           <Image
-            src={isHome ? '/images/3rd-place-melbourne.jpg' : '/images/japan/logo-japan.jpg'}
+            src={img(isHome ? '/images/3rd-place-melbourne.jpg' : '/images/japan/logo-japan.jpg', 'thumb')}
             alt="3rd Place"
             width={34}
             height={34}

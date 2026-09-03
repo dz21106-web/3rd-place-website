@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { CATEGORY_LABELS, type EventItem } from '../lib/events'
 import { EXTERNAL_LINKS } from '../lib/site'
 import { formatEventDate } from './EventCard'
+import { img } from '../lib/images'
 
 type Lang = 'ja' | 'en'
 
@@ -82,7 +83,7 @@ export default function EventDetailModal({ event, lang, onClose }: EventDetailMo
 
         <div className="relative aspect-[16/9] w-full">
           <Image
-            src={event.image}
+            src={img(event.image, 'full')}
             alt={event.title[lang]}
             fill
             sizes="(min-width: 768px) 672px, 100vw"
