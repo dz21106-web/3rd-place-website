@@ -16,6 +16,7 @@ npm run build
 ```
 
 ## 仕様書と運用ドキュメント
+- はじめての人向け編集手順書: `docs/operations/onboarding.md`
 - 仕様書: `CLAUDE.md`
 - 運用メモ: `docs/operations/runbook.md`
 - リリースチェック: `docs/operations/release-checklist.md`
