@@ -80,20 +80,20 @@ flowchart TB
     L1["① CLAUDE.md<br/>リポジトリのルールを毎回自動で読む"]
     L1 -->|ルール違反に気づく| S1["作業を止めて<br/>あなたに確認する"]
     L1 -->|それでも実行しようとした| L2
-    L2["② .claude/settings.json<br/>危ないコマンドの禁止リスト"]
-    L2 -->|リストに一致| S2["コマンド自体が<br/>ブロックされる"]
-    L2 -->|すり抜けた| L3
-    L3["③ GitHub の main 保護<br/>承認がない変更は本番に入らない"]
+    L2["② 禁止リスト＋フック<br/>（.claude/settings.json と .claude/hooks/）<br/>コマンドを実行する直前にチェック"]
+    L2 -->|危ない操作| S2["実行前に止まり<br/>[guard-git] ブロックしました と表示"]
+    L2 -->|想定外の書き方ですり抜けた| L3
+    L3["③ GitHub の main 保護<br/>承認がない変更は main に入らない<br/>（管理者も同じ）"]
     L3 --> S3["本番サイトは<br/>守られる"]
 ```
 
 | 層 | ファイル／設定 | 何をしているか |
 |---|---|---|
 | ① ルール | `CLAUDE.md` の「作業ルール」 | 作業の手順と禁止事項。Claude Code はこのリポジトリを開くたびに自動で読む |
-| ② 禁止リスト | `.claude/settings.json` | `main` への push、強制上書き（force push）、`gh pr merge`、`rm -rf`、`.env` の読み取りなどを実行できなくする |
-| ③ GitHub | main ブランチの保護設定 | 1人の承認がない PR は main に入れられない |
+| ② 禁止リスト＋フック | `.claude/settings.json`、`.claude/hooks/guard-git.mjs` | コマンドを実行する直前に中身を調べ、main への commit・push、強制上書き（force push）、作業が消える操作、`gh pr merge`、`rm -rf` などを止める。今いるブランチも見て判断するので、書き方を変えても止まる。ただし完全ではないので ③ がある |
+| ③ GitHub | main ブランチの保護設定 | 1人の承認がない PR は main に入れられない（管理者も例外なし）。承認後に変更を追加すると、承認は自動で取り消される |
 
-**この3つのファイル・設定は、あなたも Claude Code も勝手に変えないでください。** 変えたいときは先に相談してください。
+**これらのファイル・設定は、あなたも Claude Code も勝手に変えないでください。** 変えたいときは先に相談してください。
 
 ---
 
@@ -104,6 +104,9 @@ flowchart LR
     A["① GitHub の<br/>招待を承認"] --> B["② Git と Node.js<br/>を入れる"] --> C["③ Claude Code と<br/>gh を入れる"] --> D["④ コードを<br/>コピー"] --> E["⑤ 表示を<br/>確認"]
 ```
 
+Windows と Mac で手順が少し違います。自分のパソコンの方だけ読んでください。
+以下「ターミナル」は、Windows では **PowerShell**（スタートメニューで「PowerShell」と検索）、Mac では **ターミナル**（アプリケーション → ユーティリティ）のことです。
+
 ### ① GitHub の招待を承認する
 
 1. GitHub アカウントを作る（https://github.com/signup）
@@ -112,48 +115,72 @@ flowchart LR
 
 これをしないと、Claude Code が GitHub に送る段階で「権限がない（403）」エラーになります。
 
-### ② Git と Node.js を入れる（Mac の場合）
+### ② Git と Node.js を入れる
 
-ターミナル（Mac の「アプリケーション → ユーティリティ → ターミナル」）を開いて実行します。
+| | Windows | Mac |
+|---|---|---|
+| Git | https://git-scm.com/downloads/win から「Git for Windows」をダウンロードして入れる（途中の選択肢はすべて初期設定のまま「Next」でよい）。**Claude Code は Windows では Git for Windows が必須** | ターミナルで `git --version` を実行。入っていなければインストール画面が出るので従う |
+| Node.js（サイトを自分のパソコンで動かすソフト） | https://nodejs.org から **LTS 版** の Windows Installer（.msi）を入れる | https://nodejs.org から **LTS 版** の macOS Installer（.pkg）を入れる |
+
+入れたら **ターミナルを一度閉じて開き直し**、次を実行します（開き直さないと、入れたソフトが見つからないと言われます）。
 
 ```bash
-# Git が入っているか確認する（入っていなければインストール画面が出るので従う）
+# Git と Node.js が入ったか確認する（バージョン番号が出れば OK。Node.js は v22 以上）
 git --version
-```
-
-Node.js（サイトを自分のパソコンで動かすためのソフト）は https://nodejs.org から **LTS 版** をダウンロードして入れます。
-
-```bash
-# Node.js が入ったか確認する（v20 以上の番号が出れば OK）
 node -v
 ```
 
 ### ③ Claude Code と gh を入れる
 
+gh は GitHub をターミナルから操作する道具で、Claude Code が PR を作るときに使います。
+
+**Windows（PowerShell）**
+
+```powershell
+# Claude Code をインストールする
+irm https://claude.ai/install.ps1 | iex
+
+# gh をインストールする
+winget install --id GitHub.cli
+```
+
+**Mac（ターミナル）**
+
 ```bash
 # Claude Code をインストールする
 curl -fsSL https://claude.ai/install.sh | bash
 
-# GitHub をターミナルから操作する道具（gh）を入れる。Claude Code が PR を作るときに使う
+# gh をインストールする（brew が無いと言われたら https://brew.sh の1行目を先に実行する）
 brew install gh
-
-# gh を自分の GitHub アカウントにつなぐ（ブラウザが開くのでログインして許可する）
-gh auth login
 ```
 
-`brew` が無いと言われたら、https://brew.sh の1行目のコマンドを実行してから、もう一度実行します。
+ここで **ターミナルを閉じて開き直し**、次を実行します（Windows・Mac 共通）。
+
+```bash
+# gh を自分の GitHub アカウントにつなぐ（質問はすべて Enter で OK。ブラウザが開くのでログインして許可する）
+gh auth login
+
+# Claude Code を一度起動して、Claude（Pro プラン）のアカウントでログインする。終わったら /exit で閉じる
+claude
+```
 
 ### ④ コードを自分のパソコンにコピーする（clone）
 
 ```bash
-# デスクトップにサイトのコードをまるごとコピーする
-cd ~/Desktop
+# ホームフォルダの中に作業用の dev フォルダを作って移動する
+cd ~
+mkdir dev
+cd dev
+
+# サイトのコードをまるごとコピーする
 git clone https://github.com/dz21106-web/3rd-place-website.git
 cd 3rd-place-website
 
 # サイトを動かすのに必要な部品をダウンロードする（数分かかる）
 npm install
 ```
+
+デスクトップではなく `dev` フォルダに置くのは、Windows ではデスクトップが OneDrive と同期されていることが多いからです。同期中のフォルダに置くと、`npm install` で入る大量のファイルまで同期しようとして、動作が極端に遅くなったりファイルが壊れたりします。
 
 ### ⑤ 自分のパソコンでサイトを表示してみる
 
@@ -163,7 +190,7 @@ npm run dev
 ```
 
 ブラウザで http://localhost:3000 を開いて、サイトが表示されれば準備完了です。
-止めるときはターミナルで `Ctrl + C` を押します。
+止めるときはターミナルで `Ctrl + C` を押します（Windows で「バッチ ジョブを終了しますか (Y/N)?」と聞かれたら `Y` → Enter）。
 
 ---
 
@@ -172,8 +199,8 @@ npm run dev
 ### 4-1. Claude Code を起動する
 
 ```bash
-# サイトのフォルダに移動して Claude Code を起動する
-cd ~/Desktop/3rd-place-website
+# サイトのフォルダに移動して Claude Code を起動する（Windows・Mac 共通）
+cd ~/dev/3rd-place-website
 claude
 ```
 
@@ -225,6 +252,22 @@ Claude Code は、コマンドを実行する前に「実行していいです�
 | 新しいブランチの作成・`git commit`・自分のブランチへの `git push`・`gh pr create` | 内容を確認してから許可 |
 | `main` という言葉を含む push、`--force`、`reset --hard`、`rm -rf`、ファイルの削除 | **許可しない（No）**。何をしようとしたのか聞く |
 | 意味が分からないコマンド | **許可しない**で「これは何をするコマンド？」と聞く |
+
+**質問を AI に任せるモード（auto mode）を使う場合**：このモードでは上のような質問がほとんど来ません。そのぶん、4-3 の **②計画の確認** と **④画面・変更内容の確認** が、あなたが止められる唯一のタイミングになります。この2つは飛ばさないでください。
+なお、確認を全部スキップするモード（`--dangerously-skip-permissions`）は、このリポジトリでは使えない設定にしてあります。
+
+### 4-6. PR に「ここを直して」とコメントが付いたら
+
+```mermaid
+flowchart LR
+    A["PR にコメントが付く"] --> B["コメントを Claude Code に貼って<br/>「この PR のブランチで直して」と頼む"]
+    B --> C["同じブランチで直して push"]
+    C --> D["同じ PR に自動で追加される<br/>（新しい PR は作らない）"]
+    D --> E["もう一度<br/>承認をもらう"]
+```
+
+- Claude Code を閉じていた場合は、PR の URL も一緒に伝えると、そのブランチに切り替えてから直してくれます
+- **承認をもらったあとに変更を追加すると、その承認は自動で取り消されます。** 承認後に誰も見ていない変更が本番に入るのを防ぐためです。もう一度確認を頼んでください
 
 ---
 
@@ -311,6 +354,9 @@ flowchart TB
 | build で `dev server is running on port 3000` | `npm run dev` が動いたまま。そのターミナルで `Ctrl + C` |
 | `CONFLICT`（同じ場所を他の人も直している） | 無理に解決せず、何もしないで相談する |
 | Claude Code が禁止事項をやろうとした | 許可せずに止めて、何をしようとしたかを相談する |
+| `[guard-git] ブロックしました` と出た | 2章の仕組みが危ない操作を止めた。Claude Code に別の書き方で再挑戦させず、何をしようとしたかを相談する |
+| Windows で `npm` や `git` が「見つからない」と言われる | インストール後にターミナルを開き直していない。PowerShell を閉じて開き直す |
+| Windows で `npm run dev` がとても遅い・ファイルが壊れる | コードを OneDrive と同期しているフォルダ（デスクトップ等）に置いている。3-④ の `~/dev` に clone し直す |
 | どうしていいか分からない | 何もせずに、その時の画面（ターミナルの表示）を送って相談する |
 
 関連ドキュメント：

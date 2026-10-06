@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "node scripts/optimize-images.mjs && rm -rf .next && next dev",
-    "prebuild": "lsof -iTCP:3000 -sTCP:LISTEN >/dev/null 2>&1 && { echo 'ERROR: dev server is running on port 3000. Stop it (Ctrl+C in the dev terminal) before running build.'; exit 1; } || true",
+    "dev": "node scripts/optimize-images.mjs && node scripts/clean-next.mjs && next dev",
+    "prebuild": "node scripts/check-dev-server.mjs",
     "build": "node scripts/optimize-images.mjs && next build",
     "postbuild": "node scripts/remove-hub-output.mjs",
     "start": "next start",
