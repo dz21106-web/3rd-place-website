@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import Link from 'next/link'
 import { createPortal } from 'react-dom'
 import { EXTERNAL_LINKS } from '../lib/site'
 
@@ -13,7 +12,6 @@ interface MenuItem {
 interface SiteMenuProps {
   items: MenuItem[]
   hubLabel: string
-  japanLabel: string
 }
 
 const socials = [
@@ -39,7 +37,7 @@ const socials = [
  * パネルは body 直下に描画する（ヘッダーの backdrop-blur の中に置くと、fixed がヘッダー基準になり画面全体に広がらないため）。
  * 目次をタップするとパネルを閉じ、そのセクションへスクロールする（スクロールは Lenis の anchors に任せる）。
  */
-export default function SiteMenu({ items, hubLabel, japanLabel }: SiteMenuProps) {
+export default function SiteMenu({ items, hubLabel }: SiteMenuProps) {
   const [open, setOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
   useEffect(() => setMounted(true), [])
@@ -113,9 +111,6 @@ export default function SiteMenu({ items, hubLabel, japanLabel }: SiteMenuProps)
           >
             {hubLabel}
           </a>
-          <Link href="/japan" className="mt-5 block text-center text-sm font-bold opacity-70 hover:opacity-100 hover:text-orange transition-colors duration-200 cursor-pointer">
-            {japanLabel}
-          </Link>
         </nav>
 
         <div className="px-6 py-6 flex items-center gap-5 flex-shrink-0">

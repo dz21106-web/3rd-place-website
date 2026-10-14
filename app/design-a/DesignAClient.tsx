@@ -142,7 +142,7 @@ export default function DesignAClient() {
     },
     {
       title: s('イベントにすぐ参加', 'Join events in a tap', l),
-      desc: s('開催予定をHUBでチェックして、参加ボタンを押すだけ。', 'Check what\'s coming up on HUB and tap to join.', l),
+      desc: s('開催予定をhubでチェックして、参加ボタンを押すだけ。', 'Check what\'s coming up on the hub and tap to join.', l),
       icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>,
     },
   ]
@@ -150,7 +150,7 @@ export default function DesignAClient() {
   const hubSteps = [
     {
       n: '01',
-      title: s('HUBに登録', 'Sign up for HUB', l),
+      title: s('3rdPlace hubに登録', 'Sign up for 3rdPlace hub', l),
       desc: s('確認事項を読んで同意し、LINEを登録します。安心できるコミュニティのために、全員にお願いしています。', 'Read and agree to our guidelines, then connect your LINE. We ask everyone, to keep this a safe community.', l),
       screenLabel: s('3rd Placeの仲間', 'Your community', l),
       // スクリーンショット（848×1928）上の位置を % で指定: ホーム上部の「380+ の仲間」
@@ -179,18 +179,18 @@ export default function DesignAClient() {
 
   const faqItems = {
     ja: [
-      { q: 'どうやって参加すればいいですか？', a: 'コミュニティアプリ「HUB」に登録して、自己紹介を書くだけです。登録後は、HUBから気になるイベントに参加できます。' },
+      { q: 'どうやって参加すればいいですか？', a: 'コミュニティアプリ「3rdPlace hub」に登録して、自己紹介を書くだけです。登録後は、hubから気になるイベントに参加できます。' },
       { q: 'なぜ自己紹介が必要なんですか？', a: 'メンバー同士が、趣味や関心ごとの近い仲間を見つけやすくするためです。お互いを知ったうえでつながれる、安心できるコミュニティを保つためにも、全員にお願いしています。' },
-      { q: '初めてで一人なのですが、大丈夫ですか？', a: '全然大丈夫です！毎回5〜10人くらい初参加の方がいて、ほぼみんな一人で来てますよ。HUBで事前にメンバーの自己紹介を見られるので、話のきっかけも見つけやすいです。' },
+      { q: '初めてで一人なのですが、大丈夫ですか？', a: '全然大丈夫です！毎回5〜10人くらい初参加の方がいて、ほぼみんな一人で来てますよ。hubで事前にメンバーの自己紹介を見られるので、話のきっかけも見つけやすいです。' },
       { q: '英語が話せなくても大丈夫ですか？', a: '全然問題ないです！コミュニティ内は基本日本語なので安心してください。英語交流の機会もあるけど、もちろん参加は自由です。' },
       { q: 'メルボルンに着いてからでも参加できますか？', a: 'もちろん！渡航前でも到着直後でも、滞在中でも帰国前でも、どんなタイミングでも歓迎ですよ。' },
       { q: 'カレー会の参加費はかかりますか？', a: 'カレー会は完全無料！まごころ精神のもと、これからもずっと無料でやっていきます。' },
       { q: '運営に参加したい場合はどうすればいいですか？', a: <>ぜひぜひ！メルボルン現地の運営メンバーを絶賛募集中です。<a href={EXTERNAL_LINKS.melbourneStaffApplyForm} target="_blank" rel="noopener noreferrer" className="text-orange underline hover:text-orange-dark transition-colors duration-200 cursor-pointer">こちらのフォーム</a>からお気軽にご応募ください。</> },
     ],
     en: [
-      { q: 'How do I join?', a: 'Sign up for our community app, HUB, and write a short self-introduction. After that, you can join any event right from HUB.' },
+      { q: 'How do I join?', a: 'Sign up for our community app, 3rdPlace hub, and write a short self-introduction. After that, you can join any event right from the hub.' },
       { q: 'Why do I need to write a self-introduction?', a: 'It helps members find people with similar interests, and keeps this a safe community where people connect knowing a little about each other.' },
-      { q: 'Is it okay to come alone for the first time?', a: 'Totally fine! Every event has 5–10 first-timers, and almost everyone shows up solo. You can read members\' introductions on HUB beforehand, too.' },
+      { q: 'Is it okay to come alone for the first time?', a: 'Totally fine! Every event has 5–10 first-timers, and almost everyone shows up solo. You can read members\' introductions on the hub beforehand, too.' },
       { q: 'Is it okay if I can\'t speak English?', a: 'No problem at all! The community runs mostly in Japanese. There are English exchange opportunities too, but it\'s totally up to you.' },
       { q: 'Can I join after arriving in Melbourne?', a: 'Yep, anytime works! Before you leave, right after you land, mid-stay, or right before heading home.' },
       { q: 'Is there a fee for the Curry Night?', a: 'Curry Night is completely free — always has been, always will be. That\'s the spirit of magokoro.' },
@@ -230,19 +230,18 @@ export default function DesignAClient() {
               rel="noopener noreferrer"
               className={`text-xs md:text-sm font-bold px-4 md:px-5 py-2.5 rounded-full transition-colors duration-200 cursor-pointer ${theme === 'sumi' ? 'bg-orange text-white hover:bg-white hover:ring-1 hover:ring-black' : 'bg-sumi text-white hover:bg-white hover:ring-1 hover:ring-black'}`}
             >
-              {s('HUBで参加', 'Join on HUB', l)}
+              {s('参加する', 'Join', l)}
             </a>
             <SiteMenu
               items={[
                 { href: '#purpose', label: s('わたしたちの目的', 'Our purpose', l) },
                 { href: '#who', label: s('どんな人がいる？', "Who's here", l) },
                 { href: '#voices', label: s('参加者の声', 'Voices', l) },
-                { href: '#hub', label: s('HUBで参加する', 'How to join', l) },
+                { href: '#hub', label: s('3rdPlace hubで参加する', 'Join on 3rdPlace hub', l) },
                 { href: '#founder', label: s('創設者の想い', 'Our founder', l) },
                 { href: '#faq', label: s('よくある質問', 'FAQ', l) },
               ]}
-              hubLabel={s('HUBに登録して参加する', 'Sign up on HUB', l)}
-              japanLabel={s('日本にいる方は → 東京イベント', 'In Japan? → 3rd Place Japan', l)}
+              hubLabel={s('3rdPlace hubに登録して参加する', 'Sign up on 3rdPlace hub', l)}
             />
           </nav>
         </div>
@@ -260,10 +259,18 @@ export default function DesignAClient() {
 
         <div className="relative z-10 text-center px-4 max-w-5xl">
           <SectionLabel n="00">Melbourne · Japanese Community</SectionLabel>
+          {/* コミュニティ名をいちばん大きく見せる */}
           <SlideUpText
             as="h1"
-            delay={200}
-            className="mt-6 font-black tracking-tight leading-[1.15] text-[clamp(2.1rem,7.5vw,6rem)] drop-shadow-sm"
+            delay={150}
+            className="mt-4 font-display-en font-extrabold tracking-tighter leading-none text-[clamp(4rem,17vw,13rem)] drop-shadow-sm"
+            lines={[['3rd Place', { text: '.', className: 'text-orange' }]]}
+            split="char"
+          />
+          <SlideUpText
+            as="p"
+            delay={700}
+            className="mt-6 font-black tracking-tight leading-[1.25] text-[clamp(1.4rem,4.2vw,3rem)] drop-shadow-sm"
             lines={s(
               ['メルボルンで、', [{ text: '仲間', className: 'text-orange' }, 'と出会い、'], '自分を広げる場所。'],
               [[{ text: 'Meet friends.', className: 'text-orange' }], 'Grow yourself.', 'In Melbourne.'],
@@ -326,8 +333,8 @@ export default function DesignAClient() {
               <h2 className="font-black tracking-tight leading-[1.15] text-4xl md:text-6xl">{s(<>つながり、<br className="md:hidden" />助け合い、<br className="md:hidden" />高め合い</>, <>Connect, support,<br className="md:hidden" /> grow together</>, l)}</h2>
               <p className="mt-6 text-lg md:text-2xl leading-relaxed md:leading-relaxed font-bold">
                 {s(
-                  <>ただ、イベントはあくまで<span className="text-orange opacity-100">きっかけ</span>。ここで出会った仲間と新しいことを始め、高め合い、助け合える。そんな関係が自然と生まれる場所をつくることが、わたしたちの目的です。</>,
-                  <>But events are only the <span className="text-orange">starting point</span>. Starting things together, growing together, helping each other — that&apos;s what we&apos;re here for.</>,
+                  <>イベントで出会った仲間と、新しいことを始めたり、高め合ったり、困ったときに助け合ったり。そんな関係が自然と生まれる場所をつくることが、わたしたちの目的です。</>,
+                  <>Meet people at our events, then start new things together, push each other forward, and help each other out when it counts. Building a place where those relationships grow naturally — that&apos;s our purpose.</>,
                   l
                 )}
               </p>
@@ -348,15 +355,16 @@ export default function DesignAClient() {
                 {i < memberTypes.length - 1 && <span className="text-white no-outline mx-2 md:mx-4">/</span>}
               </span>
             ))}
+            <span className="text-[0.5em] ml-2 md:ml-4">{s('など', '& more', l)}</span>
           </p>
           <p className="mt-6 opacity-70 md:text-lg">
-            {s('年齢も立場もさまざま。メルボルンでの毎日を、もっと豊かにしたい人たちが集まっています。', 'All ages, all backgrounds — people who want more from life in Melbourne.', l)}
+            {s('ここに挙げたのはほんの一部。年齢も立場もさまざまな、メルボルンでの毎日をもっと豊かにしたい人たちが集まっています。', "And that's just a few. People of all ages and backgrounds who want more from life in Melbourne.", l)}
           </p>
 
           <div className="mt-16 md:mt-20 grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-6">
             {stats.map(stat => (
               <div key={stat.label}>
-                <p className="font-display-en font-extrabold tracking-tight text-5xl md:text-7xl">
+                <p className="font-display-en font-extrabold tracking-tight whitespace-nowrap text-[clamp(2.25rem,5vw,4.5rem)]">
                   <CountUp value={stat.num} />
                   <span className="text-white no-outline text-2xl md:text-3xl ml-1">{stat.unit}</span>
                 </p>
@@ -382,15 +390,15 @@ export default function DesignAClient() {
           </div>
 
           {/* カードは sticky で少しずつずれて重なっていく */}
-          <div className="md:col-span-7 space-y-8 md:space-y-0">
+          <div className="md:col-span-7">
             {voices.map((v, i) => (
               <figure
                 key={i}
-                className="md:sticky md:mb-[25vh] md:last:mb-0"
-                style={{ top: `calc(7rem + ${i * 2}rem)` }}
+                className="sticky mb-[20vh] md:mb-[25vh] last:mb-0"
+                style={{ top: `calc(6rem + ${i}rem)` }}
               >
                 <div
-                  className={`relative bg-white/60 backdrop-blur-xl ring-1 ring-black text-white rounded-3xl p-7 md:p-10 shadow-xl shadow-sumi/10 ${i % 2 === 0 ? 'md:-rotate-2' : 'md:rotate-2'}`}
+                  className={`relative bg-white/60 backdrop-blur-xl ring-1 ring-black text-white rounded-3xl p-7 md:p-10 shadow-xl shadow-sumi/10 ${i % 2 === 0 ? '-rotate-1 md:-rotate-2' : 'rotate-1 md:rotate-2'}`}
                 >
                   <svg className="w-10 h-10 text-orange" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.17 6A5.17 5.17 0 002 11.17V18h6.83v-6.83H5.41A1.76 1.76 0 017.17 9.4V6zm10 0A5.17 5.17 0 0012 11.17V18h6.83v-6.83h-3.42a1.76 1.76 0 011.76-1.77V6z" /></svg>
                   <blockquote className="mt-5 text-lg md:text-2xl font-bold leading-relaxed">{v.text}</blockquote>
@@ -411,7 +419,7 @@ export default function DesignAClient() {
           <div className="max-w-4xl">
             <SectionLabel n="04">How to Join</SectionLabel>
             <h2 className="mt-6 font-black tracking-tight leading-[1.15] text-[clamp(2.2rem,6vw,5rem)]">
-              {s(<>仲間とつながる、<br />コミュニティアプリ<span className="text-orange">「HUB」</span></>, <>HUB — the app that<br /><span className="text-orange">connects our community.</span></>, l)}
+              {s(<>仲間とつながる、<br />コミュニティアプリ<span className="text-orange">「3rdPlace hub」</span></>, <><span className="text-orange">3rdPlace hub</span> — the app that<br />connects our community.</>, l)}
             </h2>
           </div>
 
@@ -421,13 +429,13 @@ export default function DesignAClient() {
               steps={hubSteps}
               screen="/images/hub/app-home.jpg"
               screenRatio={848 / 1928}
-              screenAlt={s('HUBアプリのホーム画面', 'HUB app home screen', l)}
+              screenAlt={s('3rdPlace hub のホーム画面', '3rdPlace hub home screen', l)}
               intro={
                 <>
                   <p className="text-base md:text-xl leading-relaxed opacity-70">
                     {s(
-                      '3rd Placeへの参加は、HUBへの登録から始まります。メンバーの趣味や関心ごとが自己紹介で見えるから、気の合う仲間が見つけやすく、イベントにもHUBから参加できます。',
-                      "Joining 3rd Place starts with HUB. Self-introductions make members' interests visible, so it's easier to find people you click with — and you can join events right from the app.",
+                      '3rd Placeへの参加は、3rdPlace hubへの登録から始まります。メンバーの趣味や関心ごとが自己紹介で見えるから、気の合う仲間が見つけやすく、イベントにもhubから参加できます。',
+                      "Joining 3rd Place starts with 3rdPlace hub. Self-introductions make members' interests visible, so it's easier to find people you click with — and you can join events right from the app.",
                       l
                     )}
                   </p>
@@ -453,7 +461,7 @@ export default function DesignAClient() {
 
           <div className="mt-16 md:mt-24 text-center">
             <a href={EXTERNAL_LINKS.hub} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-3 bg-orange text-white font-bold text-lg px-10 py-5 rounded-full hover:bg-white hover:ring-1 hover:ring-black transition-colors duration-200 cursor-pointer">
-              {s('HUBに登録して参加する', 'Sign up on HUB', l)}
+              {s('3rdPlace hubに登録して参加する', 'Sign up on 3rdPlace hub', l)}
               <Arrow className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
             </a>
           </div>
@@ -463,24 +471,28 @@ export default function DesignAClient() {
       {/* ── FOUNDER（オレンジ）──────────────────── */}
       <section id="founder" data-theme="orange" className="py-28 md:py-40 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 md:px-12">
-          <div className="grid md:grid-cols-12 gap-12 items-center">
-            <div className="md:col-span-5 flex justify-center">
-              {/* 元写真が顔のアップなので、拡大・切り抜きはせず元の比率（564×649）のまま小さめに見せる */}
-              <div className="relative w-full max-w-[16rem] md:max-w-xs aspect-[564/649] rounded-[2rem] overflow-hidden shadow-2xl ring-1 ring-black md:-rotate-2">
-                <Image src={img('/images/team/masa.jpg', 'full')} alt={s('創設者 野口まさ', 'Founder Masa Noguchi', l)} fill sizes="(max-width: 768px) 256px, 320px" className="object-cover" />
+          {/* 見出し → 写真 → 名前と肩書き → ひとこと の順に、中央で縦に並べる */}
+          <div className="flex flex-col items-center text-center">
+            <SectionLabel n="05">Founder</SectionLabel>
+            <h2 className="mt-6 font-black tracking-tight leading-[1.15] text-5xl md:text-7xl">{s('創設者の想い', "Our founder's story", l)}</h2>
+
+            {/* 元写真（564×649）が顔のアップで、これ以上は引けない。余白の広い額（ポラロイド風）に入れ、写真自体を小さく見せて顔の比率を下げる */}
+            <div className="mt-12 md:mt-14 w-full max-w-[13rem] md:max-w-[15rem] bg-sumi/80 backdrop-blur-xl p-3 md:p-4 pb-12 md:pb-14 rounded-2xl shadow-2xl ring-1 ring-black -rotate-2">
+              <div className="relative aspect-[564/649] rounded-lg overflow-hidden">
+                <Image src={img('/images/team/masa.jpg', 'full')} alt={s('創設者 野口まさ', 'Founder Masa Noguchi', l)} fill sizes="(max-width: 768px) 184px, 208px" className="object-cover" />
               </div>
             </div>
-            <div className="md:col-span-7">
-              <SectionLabel n="05">Founder</SectionLabel>
-              <blockquote className="mt-6 font-black tracking-tight leading-snug text-2xl md:text-4xl">
-                {s(
-                  '「肩書きや立場を気にせず、ありのままの自分でいられる居場所を。世代や立場を超えて、誰もが気軽につながれる場所を、メルボルンにつくりたかった。」',
-                  '"A place where you can just be yourself, whatever your title or status. I wanted to create somewhere in Melbourne where anyone can connect easily, across generations and backgrounds."',
-                  l
-                )}
-              </blockquote>
-              <p className="mt-6 font-bold">{s('野口 まさ — 創設者 · メルボルン在住大学教授', 'Masa Noguchi — Founder · University Professor in Melbourne', l)}</p>
-            </div>
+
+            <p className="mt-8 font-black text-2xl md:text-3xl">{s('野口 まさ', 'Masa Noguchi', l)}</p>
+            <p className="mt-2 text-sm md:text-base font-bold opacity-90">{s('創設者 · メルボルン在住大学教授', 'Founder · University Professor in Melbourne', l)}</p>
+
+            <blockquote className="mt-10 max-w-3xl font-black tracking-tight leading-snug text-xl md:text-3xl">
+              {s(
+                '「肩書きや立場を気にせず、ありのままの自分でいられる居場所を。世代や立場を超えて、誰もが気軽につながれる場所を、メルボルンにつくりたかった。」',
+                '"A place where you can just be yourself, whatever your title or status. I wanted to create somewhere in Melbourne where anyone can connect easily, across generations and backgrounds."',
+                l
+              )}
+            </blockquote>
           </div>
 
           {/* 創設の経緯（創設者本人に確認済みの内容） */}
@@ -493,8 +505,8 @@ export default function DesignAClient() {
                 <div className="mt-4 space-y-4 text-sm md:text-base leading-relaxed opacity-90">
                   <p>
                     {s(
-                      '2024年、メルボルン大学建築・建設・計画学部の学生展示会「MSDx Winter」に、Facebookを通じて日系コミュニティの皆さんを招待したことがきっかけでした。そこでみんなから付けてもらったニックネームは「ボス」。翌日、CBDでラーメンを食べに行くと、遠くから「ボス！」と呼ぶ声が。振り返ると、展示会に来てくれた仲間たちが集まっていました。',
-                      "It began in 2024, when Masa invited the Japanese community via Facebook to MSDx Winter, the student exhibition of the University of Melbourne's Faculty of Architecture, Building and Planning. There, everyone gave him a nickname: \"Boss.\" The next day, on his way to get ramen in the CBD, he heard someone shout \"Boss!\" from down the street. He turned around to find the friends he'd met at the exhibition.",
+                      '2024年、大学の学生展示会に、Facebookを通じて日系コミュニティの皆さんを招待したことがきっかけでした。そこでみんなから付けてもらったニックネームは「ボス」。翌日、CBDでラーメンを食べに行くと、遠くから「ボス！」と呼ぶ声が。振り返ると、展示会に来てくれた仲間たちが集まっていました。',
+                      "It began in 2024, when Masa invited the Japanese community via Facebook to a university student exhibition. There, everyone gave him a nickname: \"Boss.\" The next day, on his way to get ramen in the CBD, he heard someone shout \"Boss!\" from down the street. He turned around to find the friends he'd met at the exhibition.",
                       l
                     )}
                   </p>
@@ -579,17 +591,14 @@ export default function DesignAClient() {
             {s(<>出会いを、<br /><span className="text-orange">その先のつながり</span>へ。</>, <>From meeting<br /><span className="text-orange">to real connection.</span></>, l)}
           </p>
           <p className="mt-6 opacity-70 md:text-lg">
-            {s('まずはHUBに登録して、自己紹介を書いてみよう。', 'Start by signing up on HUB and writing your introduction.', l)}
+            {s('まずは3rdPlace hubに登録して、自己紹介を書いてみよう。', 'Start by signing up on 3rdPlace hub and writing your introduction.', l)}
           </p>
           <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
             <a href={EXTERNAL_LINKS.hub} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center justify-center gap-3 bg-orange text-white font-bold text-lg px-10 py-5 rounded-full hover:bg-white hover:ring-1 hover:ring-black transition-colors duration-200 cursor-pointer">
-              {s('HUBに登録して参加する', 'Sign up on HUB', l)}
+              {s('3rdPlace hubに登録して参加する', 'Sign up on 3rdPlace hub', l)}
               <Arrow className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
             </a>
           </div>
-          <Link href="/japan" className="mt-10 inline-flex items-center gap-2 text-sm font-bold opacity-70 hover:opacity-100 hover:text-orange transition-colors duration-200 cursor-pointer">
-            {s('日本にいる方は → 東京イベント（3rd Place Japan）', 'In Japan? → 3rd Place Japan (Tokyo)', l)}
-          </Link>
         </div>
       </section>
 
@@ -602,8 +611,7 @@ export default function DesignAClient() {
           <div className="mt-10 flex flex-col md:flex-row md:items-center justify-between gap-6 text-sm">
             <div className="flex flex-wrap gap-6 font-bold">
               <a href="#purpose" className="opacity-70 hover:opacity-100 transition-opacity duration-200 cursor-pointer">{s('わたしたちについて', 'About', l)}</a>
-              <a href={EXTERNAL_LINKS.hub} target="_blank" rel="noopener noreferrer" className="opacity-70 hover:opacity-100 transition-opacity duration-200 cursor-pointer">HUB</a>
-              <Link href="/japan" className="opacity-70 hover:opacity-100 transition-opacity duration-200 cursor-pointer">3rd Place Japan</Link>
+              <a href={EXTERNAL_LINKS.hub} target="_blank" rel="noopener noreferrer" className="opacity-70 hover:opacity-100 transition-opacity duration-200 cursor-pointer">3rdPlace hub</a>
               <a href={EXTERNAL_LINKS.instagramMelbourne} target="_blank" rel="noopener noreferrer" className="opacity-70 hover:opacity-100 transition-opacity duration-200 cursor-pointer">Instagram</a>
               <a href={EXTERNAL_LINKS.facebook} target="_blank" rel="noopener noreferrer" className="opacity-70 hover:opacity-100 transition-opacity duration-200 cursor-pointer">Facebook</a>
               <a href={EXTERNAL_LINKS.tiktok} target="_blank" rel="noopener noreferrer" className="opacity-70 hover:opacity-100 transition-opacity duration-200 cursor-pointer">TikTok</a>
