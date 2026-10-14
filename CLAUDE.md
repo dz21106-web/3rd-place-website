@@ -30,11 +30,16 @@ fontFamily:
 ## ページ構成
 | パス | 内容 |
 |------|------|
-| `/` (app/page.tsx) | トップページ — Hero, Stats, About, Founder, Gallery, Team, FAQ, Final CTA, Footer |
-| `/japan` (app/japan/page.tsx) | 3rd Place Japan — 東京での月1イベント（¥1,000） |
+| `/` (app/page.tsx) | トップページ — Hero, Stats, Purpose（目的）, Who（どんな人がいる？）, Events（Gallery）, Voices（参加者の声）, HUB（参加方法）, Founder, FAQ, Final CTA, Footer |
+| `/japan` (app/japan/page.tsx) | 3rd Place Japan — 東京での月1イベント（¥1,000）。HUB導線の対象外（従来のフォームのまま） |
+| `/design-a` (app/design-a/) | 新デザインの試作（noindex）。確認が取れたら `/` と置き換える。構成: Hero, 動画, 目的, どんな人がいる？, 参加者の声, HUB, 創設者, FAQ, CTA。文字はすべて「白＋黒フチ」（`.design-a`）、背景は cream / sumi / orange をスクロールで切り替え |
 
-> **⚠️ 3rd Place Hub は現在非公開（2026-04-14〜）**
-> 運営判断により `/hub` ページおよびHub関連セクションは全てサイトから削除済み。サイト上には「渡航サポートサービス開発中・LINEグループで随時公開予定」の一言のみ残している。サービス内容が確定するまで復元しないこと。アーカイブは `docs/hub-archive/` に保存（hub-page.tsx.txt / README.md）。
+> **HUB（コミュニティアプリ）への一本化（2026-10〜）**
+> WEBの役割は「3rd Placeの目的と、どんな人がいるかを事前に知ってもらい、HUBへ送る」こと。イベントは目的ではなく「つながるきっかけ」として見せる。
+> - HUB: `EXTERNAL_LINKS.hub`（https://3rd-place-hub.vercel.app/）。Melbourne の参加CTAはすべてここ。
+> - 「どんな人がいる？」は属性（ワーホリ・留学・駐在・永住者）だけ。個人の趣味・関心ごとは HUB の自己紹介の役割。
+> - イベント日程はWEBに載せず HUB に任せる（`EventsSection` / `lib/events.ts` はトップから外した）。
+> - 旧「渡航サポートとしての Hub」ページ（`/hub`、`FEATURE_FLAGS.hubPublic`）は引き続き非公開。アーカイブは `docs/hub-archive/`。
 
 ## 共通コンポーネント
 | コンポーネント | 用途 |
@@ -84,14 +89,13 @@ fontFamily:
 ※ `events/` 直下にも旧写真あり（curry1-8, bbq, cafe, nabe, curry2）— GallerySectionはサブフォルダを参照
 
 ## 参加申込フロー
-- **Melbourne CTA**: `EXTERNAL_LINKS.melbourneApplyForm`（`https://forms.gle/RTyR2oJR8jB6dC3z9`）。全CTAがこのGoogleフォーム直結。
-- **Japan CTA**: `EXTERNAL_LINKS.japanApplyForm`（Japan側の既存フォーム）。
-- **フロー**: サイトCTA → 参加申請フォーム回答 → 運営が内容を確認（スクリーニング目的） → 承認後、運営がコミュニティLINEグループへ招待。
-- **フォーム内にLINE友だち追加URL欄が必須項目**として含まれており、運営はその情報を使って個人LINEで招待を送る。
-- 公式LINEアカウント（`lin.ee/U8PVapG`）は告知配信用に運用継続中だが、**サイトCTAからは外している**（スクリーニング経由に一本化するため）。
+- **Melbourne CTA**: `EXTERNAL_LINKS.hub`。フロー: SNS → WEB → HUB登録（確認事項・LINE登録）→ 自己紹介 → イベントの参加ボタン。
+- 旧Googleフォーム（`melbourneApplyForm`）は廃止。フォームの質問はHUB登録時の確認事項に移植済みで、スクリーニングはHUBの自己紹介で行う。
+- **Japan CTA**: `EXTERNAL_LINKS.japanApplyForm`（Japan側の既存フォーム、変更なし）。
 
 ## 保留事項（実装しないでおくもの）
-- **Hub のダミーテスティモニアル**: 実際の参加者の声が集まるまで置き換えない
+- **参加者の声（Voices）**: `/design-a` は実際の声に差し替え済み。`/`（`HomePageClient.tsx`）はダミーのまま（`Sample` バッジ＋注記付き）なので、`/design-a` を `/` に置き換えるまで本番公開しない
+- **HUB 画面のスクリーンショット**: `/design-a` は `public/images/hub/app-home.jpg` を使用済み。`/` は点線のプレースホルダーのまま
 - **GitHub Pages デプロイ**: 未実施
 
 ---

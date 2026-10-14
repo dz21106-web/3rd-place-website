@@ -140,21 +140,21 @@ export default function GallerySection({ l }: { l: Lang }) {
 
   return (
     <>
-      <section className="py-28 bg-cream">
+      <section id="events" className="py-28 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           {/* Header */}
           <ScrollReveal>
             <div className="mb-12">
               <span className="text-orange text-xs font-semibold uppercase tracking-widest">
-                {s('活動の様子', 'Gallery', l)}
+                {s('つながりの入口', 'Where It Starts', l)}
               </span>
               <h2 className="font-heading text-3xl md:text-5xl font-bold text-navy mt-4">
-                {s('みんなの写真', 'Our Moments', l)}
+                {s('イベントは、きっかけ。', 'Events are just the beginning.', l)}
               </h2>
-              <p className="text-slate-500 text-sm mt-3 max-w-xl">
+              <p className="text-slate-600 text-sm mt-3 max-w-xl leading-relaxed">
                 {s(
-                  'カレー会を中心に、メンバーの「これやりたい！」って声から生まれたイベントをいろいろやってます。',
-                  'Regular Curry Nights plus all kinds of events that started with someone saying "let\'s do this!"',
+                  '毎月のカレー会や、メンバーの「これやりたい！」から生まれたイベント。ここで出会った人たちが、その後も一緒に何かを始めたり、支え合ったりしています。',
+                  'Monthly Curry Nights and events born from members saying "let\'s do this!" — the people who meet here go on to start things together and support each other.',
                   l
                 )}
               </p>
@@ -222,7 +222,7 @@ export default function GallerySection({ l }: { l: Lang }) {
 
           {/* Request message */}
           <ScrollReveal>
-            <div className="mt-12 bg-white rounded-xl p-6 border border-gray-100 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+            <div className="mt-12 bg-cream rounded-xl p-6 border border-gray-100 flex flex-col sm:flex-row items-start sm:items-center gap-4">
               <div className="w-10 h-10 rounded-full bg-orange/10 flex items-center justify-center flex-shrink-0">
                 <svg className="w-5 h-5 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
               </div>
@@ -241,8 +241,8 @@ export default function GallerySection({ l }: { l: Lang }) {
             </div>
 
             <div className="mt-10 text-center">
-              <a href="#cta" className="inline-flex items-center gap-2 text-slate-400 hover:text-orange text-sm font-medium transition-colors duration-200 cursor-pointer">
-                {s('LINEグループに参加する', 'Join the LINE Group', l)}
+              <a href="#hub" className="inline-flex items-center gap-2 text-slate-500 hover:text-orange text-sm font-medium transition-colors duration-200 cursor-pointer">
+                {s('最新のイベントはHUBでチェック', 'See upcoming events on HUB', l)}
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
               </a>
             </div>

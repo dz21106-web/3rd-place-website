@@ -131,7 +131,7 @@ export default function EventDetailModal({ event, lang, onClose }: EventDetailMo
           <div className="mt-7 pt-6 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center gap-3 sm:justify-between">
             <p className="text-slate-500 text-xs">{noteLabel}</p>
             <a
-              href={EXTERNAL_LINKS.melbourneApplyForm}
+              href={EXTERNAL_LINKS.hub}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-orange text-white font-semibold px-6 py-3 rounded-full hover:bg-orange-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 text-sm cursor-pointer text-center whitespace-nowrap"

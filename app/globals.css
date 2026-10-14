@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@500;700;800&family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -138,4 +138,145 @@ body {
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
+}
+
+/* ── Design A（試作）: 文字のせり上がり・慣性スクロール ───────────── */
+
+/* 英字の見出し・ラベル用（Manrope） */
+.font-display-en {
+  font-family: 'Manrope', 'Inter', sans-serif;
+}
+
+/* SlideUpText: 1文字ずつ overflow:hidden の箱に入れ、下からせり上げる。
+ * padding/margin は「ぎ」「g」などの下端が箱で切れないための余白。 */
+.slide-up-unit {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+.slide-up-unit > span {
+  display: inline-block;
+  transform: translate3d(0, 110%, 0);
+  transition: transform 1.1s cubic-bezier(0.77, 0, 0.18, 1);
+  will-change: transform;
+}
+.slide-up-unit > span.is-in {
+  transform: translate3d(0, 0, 0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .slide-up-unit > span {
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Lenis が有効な間は、ブラウザ標準の smooth スクロールと二重にならないようにする */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* FloatingPhoto: 写真がふわっと拡大しながら現れる */
+@keyframes popIn {
+  0% { opacity: 0; transform: scale(0.6) translateY(40px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+.animate-pop-in {
+  opacity: 0;
+  animation: popIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-pop-in { animation: none; opacity: 1; }
+}
+
+/* 画面全体にうっすら重ねる紙の質感（グレイン）。
+ * SVG のノイズを小さなタイルで敷くだけなので、blur や mix-blend より軽い。 */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ── 透明感: 背景にゆっくり漂う光のにじみ ─────────────────────
+ * 放射グラデーションだけで描く（blur を使わない理由は上の .glow-orange を参照）。
+ * テーマごとに3枚を重ねておき、opacity の切り替えでなめらかに入れ替える。 */
+:root {
+  --sumi-rgb: 36 33 29; /* tailwind.config.ts の sumi (#24211D) と同じ値 */
+}
+.ambient {
+  position: fixed;
+  inset: -20%;
+  z-index: -10;
+  pointer-events: none;
+  transition: opacity 0.9s ease;
+}
+/* クリーム背景: オレンジの光＋白い光で、紙に陽が差したような明るさ */
+.ambient-cream {
+  background:
+    radial-gradient(38% 32% at 18% 22%, rgb(var(--glow-rgb) / 0.22), transparent 70%),
+    radial-gradient(34% 30% at 82% 72%, rgb(255 255 255 / 0.75), transparent 70%),
+    radial-gradient(30% 26% at 70% 18%, rgb(var(--glow-rgb) / 0.10), transparent 70%);
+}
+/* 墨色背景: 灯りがにじむような、ごく控えめなオレンジ */
+.ambient-sumi {
+  background:
+    radial-gradient(42% 36% at 78% 20%, rgb(var(--glow-rgb) / 0.20), transparent 70%),
+    radial-gradient(38% 34% at 14% 82%, rgb(255 255 255 / 0.06), transparent 70%);
+}
+/* オレンジ背景: 白い光を重ねて、ベタ塗りではなく発光しているように */
+.ambient-orange {
+  background:
+    radial-gradient(44% 38% at 22% 28%, rgb(255 255 255 / 0.32), transparent 70%),
+    radial-gradient(40% 34% at 82% 78%, rgb(255 255 255 / 0.18), transparent 70%);
+}
+@keyframes drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(4%, -3%, 0) scale(1.08); }
+}
+.animate-drift {
+  animation: drift 18s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-drift { animation: none; }
+}
+
+/* ── 試作デザイン: 文字はすべて「白＋黒のアウトライン」 ─────────────
+ * 背景が クリーム／墨色／オレンジ と切り替わっても読めるよう、文字色は常に白にし、
+ * 8方向 1px の黒い影でフチ取る（text-shadow は継承されるのでページ全体に効く）。
+ * -webkit-text-stroke は線が文字の内側にも食い込み、太字が痩せるため使わない。 */
+.design-a {
+  text-shadow:
+    -1px -1px 0 rgb(0 0 0 / 0.9),
+     0   -1px 0 rgb(0 0 0 / 0.9),
+     1px -1px 0 rgb(0 0 0 / 0.9),
+     1px  0   0 rgb(0 0 0 / 0.9),
+     1px  1px 0 rgb(0 0 0 / 0.9),
+     0    1px 0 rgb(0 0 0 / 0.9),
+    -1px  1px 0 rgb(0 0 0 / 0.9),
+    -1px  0   0 rgb(0 0 0 / 0.9);
+}
+/* ボタンはブラウザ標準で text-shadow: none になり、上のフチ取りが継承されない
+ * （FAQ の質問文・言語切替など）。明示的に引き継がせる。 */
+.design-a button {
+  text-shadow: inherit;
+}
+/* 小さな記号や単位はフチ取りでにじんで見えるので、フチなしにする（数字の「人」「+」、区切りの「/」など） */
+.design-a .no-outline {
+  text-shadow: none;
+}
+
+/* Instagram のブランドカラー（アイコンの背景） */
+.instagram-gradient {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
 }

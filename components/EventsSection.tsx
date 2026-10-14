@@ -70,7 +70,7 @@ export default function EventsSection({ lang }: EventsSectionProps) {
             </div>
             <div className="mt-4">
               <a
-                href={EXTERNAL_LINKS.melbourneApplyForm}
+                href={EXTERNAL_LINKS.hub}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-orange text-white font-semibold px-6 py-3 rounded-full hover:bg-orange-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 text-sm cursor-pointer"
@@ -90,7 +90,7 @@ export default function EventsSection({ lang }: EventsSectionProps) {
               <h3 className="font-heading text-xl font-bold text-navy">{emptyTitle}</h3>
               <p className="text-slate-600 text-sm leading-relaxed mt-3">{emptyBody}</p>
               <a
-                href={EXTERNAL_LINKS.melbourneApplyForm}
+                href={EXTERNAL_LINKS.hub}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-6 inline-block bg-orange text-white font-semibold px-6 py-3 rounded-full hover:bg-orange-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 text-sm cursor-pointer"
