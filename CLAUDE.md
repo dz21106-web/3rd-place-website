@@ -30,25 +30,36 @@ fontFamily:
 ## ページ構成
 | パス | 内容 |
 |------|------|
-| `/` (app/page.tsx) | トップページ — Hero, Stats, Purpose（目的）, Who（どんな人がいる？）, Events（Gallery）, Voices（参加者の声）, HUB（参加方法）, Founder, FAQ, Final CTA, Footer |
-| `/japan` (app/japan/page.tsx) | 3rd Place Japan — 東京での月1イベント（¥1,000）。HUB導線の対象外（従来のフォームのまま） |
-| `/design-a` (app/design-a/) | 新デザインの試作（noindex）。確認が取れたら `/` と置き換える。構成: Hero, 動画, 目的, どんな人がいる？, 参加者の声, HUB, 創設者, FAQ, CTA。文字はすべて「白＋黒フチ」（`.design-a`）、背景は cream / sumi / orange をスクロールで切り替え |
+| `/` (app/page.tsx → app/HomePageClient.tsx) | トップページ — Hero（フライヤー6枚 + Instagram / TikTok）, 01 目的, 02 どんな人がいる？, 03 参加者の声, 04 3rdPlace hub（特長3つ + 登録の流れ）, 05 創設者の想い, 06 FAQ, 07 Join Us, Footer。背景は cream / sumi / orange をスクロールで切り替え |
+| `/japan` (app/japan/page.tsx) | 3rd Place Japan — 東京での月1イベント（¥1,000）。HUB導線の対象外（従来のフォームのまま）。東京イベントは現在休止中で、トップからはリンクしていない（旧デザインのまま。整理は別PR） |
 
 > **HUB（コミュニティアプリ）への一本化（2026-10〜）**
 > WEBの役割は「3rd Placeの目的と、どんな人がいるかを事前に知ってもらい、HUBへ送る」こと。イベントは目的ではなく「つながるきっかけ」として見せる。
 > - HUB: `EXTERNAL_LINKS.hub`（https://3rd-place-hub.vercel.app/）。Melbourne の参加CTAはすべてここ。
 > - 「どんな人がいる？」は属性（ワーホリ・留学・駐在・永住者）だけ。個人の趣味・関心ごとは HUB の自己紹介の役割。
-> - イベント日程はWEBに載せず HUB に任せる（`EventsSection` / `lib/events.ts` はトップから外した）。
+> - イベント日程はWEBに載せず HUB に任せる（`EventsSection` などは削除済み。`lib/events.ts` はデータだけ残っている）。
 > - 旧「渡航サポートとしての Hub」ページ（`/hub`、`FEATURE_FLAGS.hubPublic`）は引き続き非公開。アーカイブは `docs/hub-archive/`。
 
 ## 共通コンポーネント
 | コンポーネント | 用途 |
 |--------------|------|
-| `components/Navbar.tsx` | **全2ページ共通**の統一ナビバー。propsの`page`（melbourne / japan）でページ判定。ドロップダウン式サブメニュー付き。トップページは透明→白スクロール変化、Japanは常時白 |
+| `components/SiteMenu.tsx` | トップの右上の三本線メニュー（目次・hub への登録ボタン・SNS） |
+| `components/SlideUpText.tsx` | 見出しの文字が1文字（1単語）ずつ下からせり上がる演出（ヒーロー） |
+| `components/SmoothScroll.tsx` | なめらかスクロール（`lenis`）。トップだけで使う |
+| `components/motion/FloatingPhoto.tsx` | ヒーローで浮かびながら流れるフライヤー写真 |
+| `components/motion/ScrollPhotoRow.tsx` | 「どんな人がいる？」で横に流れる写真の帯 |
+| `components/motion/StickyPhoneSteps.tsx` | hub のアプリ画面を固定し、スクロールに合わせてスマホ本体ごと各特長の部分へズームする。1ステップのスクロール量は `STEP_SCROLL` |
+| `components/Navbar.tsx` | `/japan` のナビバー（トップは HomePageClient 内のヘッダー + SiteMenu） |
 | `components/SubFooter.tsx` | Japan用フッター（bg-ink、トップへの戻りリンク付き） |
-| `components/FAQ.tsx` | FAQ アコーディオン（全ページ共通で使う） |
-| `components/GallerySection.tsx` | トップページのギャラリー。カテゴリ別セクション（カレー会：横スクロール、特別イベント：4列グリッド、ワークショップ：2列グリッド） |
+| `components/FAQ.tsx` | FAQ アコーディオン（トップ・Japan 共通） |
 | `components/ScrollReveal.tsx` | スクロール時のフェードインアニメーション（IntersectionObserver） |
+
+### トップページ（`.design-a`）の文字のルール
+- 地の文字は「白 + 黒フチ」（`app/globals.css` の `.design-a` の text-shadow）
+- セクションの頭は `SectionLabel`（丸い番号 + オレンジの英語 + 線）+ 日本語の大見出し。**全セクション左詰め**
+- 見出しは `font-heading font-bold`（明朝体）。本文は `.body-text`（普通の太さ・フチなし。地がオレンジ / クリームのときは墨色）
+- クリームの地の見出しは墨色・フチなし（明朝体の細い線にフチを付けると中が抜けて見えるため）
+- iPhone ではタップ後も hover の色が残るので、必要なボタンは `[@media(hover:hover)]:hover:` と `active:` を使い分ける
 
 ## 多言語対応
 - `useState<Lang>('ja')` + `const s = (ja, en, l) => l === 'ja' ? ja : en` ヘルパー
@@ -86,16 +97,15 @@ fontFamily:
 | ワークショップ | `workshop/` | 4枚（udon1-2, ikebana1-2） |
 | Japan用 | `../japan/` | 5枚（japan-event1/2/4, farewell-new1/2） |
 
-※ `events/` 直下にも旧写真あり（curry1-8, bbq, cafe, nabe, curry2）— GallerySectionはサブフォルダを参照
+※ `events/` 直下にも旧写真あり（curry1-8, bbq, cafe, nabe, curry2）。ヒーローのフライヤーは `events/flyers/`、トップの「目的」の写真はリンクのサムネイル（OGP）と同じ `curry/curry12.jpg`
 
 ## 参加申込フロー
-- **Melbourne CTA**: `EXTERNAL_LINKS.hub`。フロー: SNS → WEB → HUB登録（確認事項・LINE登録）→ 自己紹介 → イベントの参加ボタン。
+- **Melbourne CTA**: `EXTERNAL_LINKS.hub`。フロー: SNS → WEB → hub に LINE でログイン → かんたんな質問に答える（自己紹介を含む）→ 運営が確認 → hub の全機能が使えるようになり、コミュニティの LINE グループにも招待される。hub のスタート画面（`3rd_place_hub` の `js/features/onboarding.js`）の3ステップと文言をそろえる
 - 旧Googleフォーム（`melbourneApplyForm`）は廃止。フォームの質問はHUB登録時の確認事項に移植済みで、スクリーニングはHUBの自己紹介で行う。
 - **Japan CTA**: `EXTERNAL_LINKS.japanApplyForm`（Japan側の既存フォーム、変更なし）。
 
 ## 保留事項（実装しないでおくもの）
-- **参加者の声（Voices）**: `/design-a` は実際の声に差し替え済み。`/`（`HomePageClient.tsx`）はダミーのまま（`Sample` バッジ＋注記付き）なので、`/design-a` を `/` に置き換えるまで本番公開しない
-- **HUB 画面のスクリーンショット**: `/design-a` は `public/images/hub/app-home.jpg` を使用済み。`/` は点線のプレースホルダーのまま
+- **hub のメンバー・家探しページのスクリーンショット**: 用意できたら、ズーム後にそのページの画面へ切り替える演出を追加する（`StickyPhoneSteps`）
 - **GitHub Pages デプロイ**: 未実施
 
 ---
@@ -141,6 +151,13 @@ fontFamily:
 - FAQとMelbourneカードの説明文を新フロー（フォーム回答 → 運営が確認 → LINEグループ招待）に書き換え
 - 運用: フォームに「LINE友だち追加URL」必須欄を設置。運営がフォーム内容でスクリーニング後、個人LINEからグループに招待
 - 公式LINEは廃止せず、告知配信専用として運用継続（サイトCTAからは外す）
+
+### トップページを新デザインに置き換え（2026-10-15, PR #18）
+- 試作 `/design-a` を `/` に置き換え（`app/design-a/` は削除）。参加CTAはすべて 3rdPlace hub へ
+- hub セクション: 特長3つ（気の合う仲間が見つかる / メルボルンのリアルがわかる / イベントにすぐ参加）をアプリ画面のズームで説明 + 登録の流れ3ステップ（hub のスタート画面とそろえる）
+- 項目名を大きく（丸い番号 + オレンジの英語 + 線）して全セクション左詰め。見出しは明朝体、本文はフチなし
+- ヒーロー: Instagram と TikTok のボタン、スマホでもフライヤー6枚を表示
+- 旧トップ専用の部品（GallerySection / Lightbox / EventsSection / EventCard / EventDetailModal）と、使わなくなった演出（ScaleReveal / HorizontalGallery / HoverImageList）・動画を削除
 
 ## Git履歴
 ```
