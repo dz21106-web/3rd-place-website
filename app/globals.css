@@ -276,6 +276,31 @@ html.lenis body {
   text-shadow: none;
 }
 
+/* 見出しと本文の見分けをつける。見出しは白 + フチ（上の .design-a）のまま、
+ * 本文はフチを外して普通の太さ・少し透けた白にする */
+.design-a .body-text {
+  text-shadow: none;
+  font-weight: 400;
+  color: rgb(255 255 255 / 0.85);
+}
+/* オレンジ・クリームの地ではフチなしの白が読めないので、本文は墨色にする */
+.design-a [data-theme="orange"] .body-text,
+.design-a [data-theme="cream"] .body-text {
+  color: theme('colors.sumi');
+}
+/* クリームの地では、明朝体の細い線に黒いフチが付くと中が抜けた文字に見えるので、見出しも墨色・フチなしにする */
+.design-a [data-theme="cream"] .font-heading {
+  color: theme('colors.sumi');
+  text-shadow: none;
+}
+/* 英語の項目名はオレンジで目印にする（地がオレンジのセクションだけ白） */
+.design-a .section-label-en {
+  color: theme('colors.orange');
+}
+.design-a [data-theme="orange"] .section-label-en {
+  color: theme('colors.white');
+}
+
 /* Instagram のブランドカラー（アイコンの背景） */
 .instagram-gradient {
   background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
