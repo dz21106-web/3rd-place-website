@@ -9,7 +9,10 @@ build/
 .tools/
 *:Zone.Identifier
 *.tsbuildinfo
-.claude/
+.claude/*
+# チーム共通の Claude Code 設定（危ない操作の禁止リストとフック）だけは共有する
+!.claude/settings.json
+!.claude/hooks/
 .vscode/
 
 # Hub App は別リポ（dz21106-web/3rd_place_hub）に移動済み

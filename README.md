@@ -16,6 +16,7 @@ npm run build
 ```
 
 ## 仕様書と運用ドキュメント
+- はじめての人向け編集手順書: `docs/operations/onboarding.md`
 - 仕様書: `CLAUDE.md`
 - 運用メモ: `docs/operations/runbook.md`
 - リリースチェック: `docs/operations/release-checklist.md`
@@ -34,9 +35,8 @@ npm run build
 - 非公開資料は `docs/private/` または外部ストレージで管理する
 - 詳細ルールは `docs/operations/public-repo-policy.md` を参照
 
-## GitHub CLI と自動PR作成
-- `gh` ローカル導入: `npm run gh:install`
-- この環境では `gh` をローカル配置で利用: `.tools/gh/bin/gh`
-- 初回のみ認証: `.tools/gh/bin/gh auth login`
-- PR自動作成: `npm run pr:create`
-- 既定のベースブランチは `main`。変更する場合は `BASE_BRANCH=develop npm run pr:create`
+## GitHub CLI（gh）と PR 作成
+- `gh` は各自のパソコンに入れる（Mac: `brew install gh` / Windows: `winget install --id GitHub.cli`）。手順は `docs/operations/onboarding.md` の「最初の1回だけやる準備」
+- 初回のみ認証: `gh auth login`
+- PR 作成: `gh pr create --base main`（Claude Code に「PR を出して」と頼めば実行される）
+- 旧方式の `npm run gh:install` / `npm run pr:create` は bash 前提のため Mac 専用
