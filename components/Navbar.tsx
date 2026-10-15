@@ -21,7 +21,9 @@ const pageConfig: Record<PageKey, { path: string; ja: string; en: string }> = {
 
 const subLinks: Record<PageKey, { href: string; ja: string; en: string }[]> = {
   melbourne: [
-    { href: '#about', ja: '3rd Placeとは？', en: "What's 3rd Place?" },
+    { href: '#purpose', ja: '3rd Placeとは？', en: "What's 3rd Place?" },
+    { href: '#voices', ja: '参加者の声', en: 'Voices' },
+    { href: '#hub', ja: 'HUBで参加する', en: 'Join via HUB' },
     { href: '#faq', ja: 'FAQ', en: 'FAQ' },
   ],
   japan: [
@@ -31,7 +33,7 @@ const subLinks: Record<PageKey, { href: string; ja: string; en: string }[]> = {
 }
 
 const ctaConfig: Record<PageKey, { href: string; ja: string; en: string }> = {
-  melbourne: { href: EXTERNAL_LINKS.melbourneApplyForm, ja: '参加する', en: 'Join Us' },
+  melbourne: { href: EXTERNAL_LINKS.hub, ja: 'HUBで参加', en: 'Join on HUB' },
   japan: { href: '#apply', ja: '申し込む', en: 'Apply' },
 }
 

@@ -15,6 +15,9 @@ const config: Config = {
         cream:   '#F5F2EC',
         'cream-dark': '#EDE9DF',
         ink:     '#1C1C1E',
+        // 墨色 — 青みのない、わずかに温かい黒。オレンジ・クリームと温度感を揃える
+        sumi:    '#24211D',
+        'sumi-light': '#36322C',
       },
       fontFamily: {
         sans:    ['Noto Sans JP', 'Inter', 'sans-serif'],
